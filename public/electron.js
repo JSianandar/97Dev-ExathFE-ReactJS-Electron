@@ -5,7 +5,7 @@ const path = require("path");
 const isDev = require("electron-is-dev");
 let mainWindow;
 function createWindow() {
-mainWindow = new BrowserWindow({ width: 900, height: 680 });
+mainWindow = new BrowserWindow({ width: 1280, height: 720 });
 mainWindow.loadURL(
 isDev
 ? "http://localhost:3000"
