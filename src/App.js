@@ -14,13 +14,14 @@ function App() {
   return (
     <div className="App">
         <Navbar />
+        <Home />
         <div className="content">
             <h1>{title}</h1>
-            <h3>{welcome}</h3>
             <p>Tasks - {totaltasks}</p>
             <p>Running Tasks - {runningtasks}</p>
 
             <a href ={link}>Exath Site </a>
+            
         </div>
     </div>
   );

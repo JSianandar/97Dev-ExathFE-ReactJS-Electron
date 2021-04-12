@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\public"
+    "\\public",
+    "\\src"
   ],
-  "SelectedNode": "\\public\\index.html",
+  "SelectedNode": "\\src\\SiteList.js",
   "PreviewInSolutionExplorer": false
 }
