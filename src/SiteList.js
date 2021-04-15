@@ -1,9 +1,6 @@
 import { useState } from "react";
 
 const SiteList = ({ sites, title}) => {
-  // const blogs = props.blogs;
-  // const title = props.title;
-  // console.log(blogs);
   return(
      <div className="home">
         <h2>{title}</h2>

@@ -1,19 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SiteList from "./SiteList";
+
 const Home = () => {
     //let name = 'Bluu#1234'
-    const [name, setName] = useState('Bluu#1234');
+    //const [name, setName] = useState('Bluu#1234');
     const [age, setAge] = useState(20);
-    const [sites, setSites] = useState([
-    { title: 'Site', body: 'Custom Shopify', status: 'Safe', id: 1 },
-    { title: 'Site', body: 'Invincible', status: 'Fast', id: 2 },
-    { title: 'Site', body: 'Invincible', status: 'Safe', id: 3 }
-  ])
+    const [sites, setSites] = useState(null);
+
+  const [name, setName] = useState('Bluu#1234');
+  const [isLoading, setIsLoading] = useState(true);
+
+ 
+  useEffect(()=> {
+    setTimeout(()=>{
+        fetch('http://localhost:8000/sites')
+        .then(res => {
+            return res.json();
+        })
+        .then(data => {
+            setSites(data);
+            setIsLoading(false);
+        });
+    }, 3000);
+  }, []); 
 
     return (
         <div className="home">
-            <SiteList sites={sites} title="All Sites" />
-            <SiteList sites={sites.filter((site) => site.status === 'Safe')} title = "Bluu#1234 Tasks" />
+            {isLoading && <div>Loading...</div>}
+            {sites && <SiteList sites={sites} title="All Sites"/>}
+            <button onClick={()=> setName('Jason#12345')}>Change Name</button>
+            <p>{name}</p>
         </div>
     );
 }

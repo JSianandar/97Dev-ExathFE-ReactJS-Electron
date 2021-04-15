@@ -1,0 +1,25 @@
+{
+	"sites": [
+		{
+			"title": "Site",
+			"body": "Custom Shopify",
+			"status": "Safe", 
+			"id": 1
+		},
+
+		{
+			"title": "Site",
+			"body": "Invincible",
+			"status": "Fast", 
+			"id": 2
+		},
+
+		{
+			"title": "Site",
+			"body": "Invincible",
+			"status": "Safe", 
+			"id": 3
+		}
+
+	]
+}
