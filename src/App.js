@@ -1,6 +1,10 @@
 import './App.css';
 import Navbar from './Navbar';
 import Home from './Home';
+import{ BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import CreateTask from './CreateTask';
+import EditTask from './EditTask';
+
 
 function App() {
   
@@ -12,18 +16,29 @@ function App() {
 
 
   return (
-    <div className="App">
-        <Navbar />
-        <Home />
-        <div className="content">
-            <h1>{title}</h1>
-            <p>Tasks - {totaltasks}</p>
-            <p>Running Tasks - {runningtasks}</p>
+    <Router>
+        <div className="App">
+            <Navbar />
+            <div className="content">
+                <h1>{title}</h1>
+                <p>Tasks - {totaltasks}</p>
+                <p>Running Tasks - {runningtasks}</p>
 
-            <a href ={link}>Exath Site </a>
-            
+                <a href ={link}>Exath Site </a>
+                <Switch>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    <Route path="/createTask">
+                        <CreateTask />
+                    </Route>
+                    <Route path="/sites/:id">
+                        <EditTask />
+                    </Route>
+                </Switch>
+            </div>
         </div>
-    </div>
+    </Router>
   );
 }
 

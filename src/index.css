@@ -47,3 +47,6 @@
   color: #808080;
   margin-bottom: 8px;
 }
+.site-preview a{
+	text-decoration: none;
+}

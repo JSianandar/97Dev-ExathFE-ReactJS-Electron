@@ -5,7 +5,7 @@ import edit_delay_logo from './assets/icons/edit_delay_logo.svg';
 import quick_task_logo from './assets/icons/quick_task_logo.svg';
 import delete_task from './assets/icons/delete_task.svg';
 import create_task_logo from './assets/icons/create_task_logo.svg';
-
+import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -34,6 +34,12 @@ const Navbar = () => {
 				
 				<img src= {create_task_logo} 
 				alt = "Start Button" width="30" height="30"/>
+				<Link to="/">Home</Link>
+				<Link to="/createTask" style={{ 
+					color: 'white', 
+					backgroundColor: '#808080',
+					borderRadius: '8px' 
+				}}>New Task</Link>
 			</div>
 		</nav>
 	);

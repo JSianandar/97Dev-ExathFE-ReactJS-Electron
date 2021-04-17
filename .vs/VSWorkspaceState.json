@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\data",
     "\\public",
     "\\src"
   ],
-  "SelectedNode": "\\src\\SiteList.js",
+  "SelectedNode": "\\public\\logo192.png",
   "PreviewInSolutionExplorer": false
 }
