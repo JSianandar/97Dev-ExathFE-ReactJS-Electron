@@ -50,3 +50,53 @@
 .site-preview a{
 	text-decoration: none;
 }
+
+/* Edit task page */
+.edit-task h2{
+	font-size: 20px;
+	color: #808080;
+	margin-bottom: 10px;
+}
+.edit-task div{
+	margin:20px 0;
+}
+.edit-task button{
+	background: ##000000;
+	color: #fff;
+	border: 0;
+	padding: 8px;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+/* create new site form */
+.createTask {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+.createTask label {
+  text-align: left;
+  display: block;
+}
+.createTask h2 {
+  font-size: 20px;
+  color: #808080;
+  margin-bottom: 30px;
+}
+.createTask input, .createTask textarea, .createTask select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+.createTask button {
+  background: #808080;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}

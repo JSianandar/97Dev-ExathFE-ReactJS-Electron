@@ -1,25 +1,22 @@
 {
-	"sites": [
-		{
-			"title": "Site",
-			"body": "Custom Shopify",
-			"status": "Safe", 
-			"id": 1
-		},
-
-		{
-			"title": "Site",
-			"body": "Invincible",
-			"status": "Fast", 
-			"id": 2
-		},
-
-		{
-			"title": "Site",
-			"body": "Invincible",
-			"status": "Safe", 
-			"id": 3
-		}
-
-	]
+  "sites": [
+    {
+      "title": "Site",
+      "body": "Invincible",
+      "status": "Safe",
+      "id": 3
+    },
+    {
+      "title": "asdasd",
+      "body": "asdasd",
+      "status": "Fast",
+      "id": 4
+    },
+    {
+      "title": "asda",
+      "body": "asdasd",
+      "status": "Queue-it",
+      "id": 5
+    }
+  ]
 }

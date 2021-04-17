@@ -3,7 +3,8 @@ import Navbar from './Navbar';
 import Home from './Home';
 import{ BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import CreateTask from './CreateTask';
-import EditTask from './EditTask';
+import Edit from './Edit';
+import NotFound from './NotFound';
 
 
 function App() {
@@ -33,7 +34,10 @@ function App() {
                         <CreateTask />
                     </Route>
                     <Route path="/sites/:id">
-                        <EditTask />
+                        <Edit />
+                    </Route>
+                    <Route path="*">
+                        <NotFound />
                     </Route>
                 </Switch>
             </div>
