@@ -3,8 +3,11 @@
     "",
     "\\data",
     "\\public",
-    "\\src"
+    "\\src",
+    "\\src\\assets",
+    "\\src\\assets\\icons",
+    "\\src\\assets\\panels"
   ],
-  "SelectedNode": "\\public\\logo192.png",
+  "SelectedNode": "\\src\\assets\\panels\\tasks.png",
   "PreviewInSolutionExplorer": false
 }
