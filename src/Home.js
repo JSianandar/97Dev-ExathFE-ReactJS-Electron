@@ -1,23 +1,8 @@
-import './App.css';
-import{ BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Home from './Home.js';
-import './css/Task.css';
-import {useState} from "react";
-import Task from './Task.js';
-import Activation from'./Activation.js';
+import {Link} from 'react-router-dom';
 
+const Home = () => {
 
-import { Link } from 'react-router-dom';
-
-function App() {
-  const [key, setKey] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-
-
-  return (
-    <Router>
-    {/* Panel Navbar */}
-
+    return(
         <div className="panel-background">
             {/* Exath Logo */}
             <div className="exath-logo">
@@ -74,22 +59,7 @@ function App() {
             {/* Version Panel */}
             <h1 className= "version-number">2.0.1</h1>
         </div>
-    
-        
-
-       <Switch>
-            
-            <Route exact path="/activation">
-                <Activation />
-            </Route>
-           
-           <Route exact path="/task">
-                <Task />
-           </Route>
-           
-       </Switch>
-    </Router>
-  );
+    );
 }
 
-export default App;
+export default Home;

@@ -1,0 +1,8 @@
+ @import url('http://db.onlinewebfonts.com/c/f608cf0f495fc936317f6ba9637d3b7e?family=MADE+TOMMY');
+/* base styles */
+* {
+  margin: 0;
+  font-family: "MADE TOMMY";
+  color: #333;
+}
+

@@ -5,9 +5,8 @@
     "\\public",
     "\\src",
     "\\src\\assets",
-    "\\src\\assets\\icons",
-    "\\src\\assets\\panels"
+    "\\src\\css"
   ],
-  "SelectedNode": "\\src\\assets\\panels\\tasks.png",
+  "SelectedNode": "\\src\\css\\Task.css",
   "PreviewInSolutionExplorer": false
 }
