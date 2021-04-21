@@ -7,7 +7,7 @@ In the project directory, you can run:
 1. yarn add cross-env electron-is-dev
 3. yarn add --dev concurrently electron electron-builder wait-on 
 4. npm start
-5. npx json-server --watch data/db.json --port 8000 (for loading the JSON File and enable Fetch request (API) ).
+5. npm install --save react-router-dom
 
 Runs the app in the development mode using command prompt.
 CD to the folder dir.
