@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/Proxies.css';
+import {Link} from 'react-router-dom';
 
 class Proxies extends React.Component{
 	constructor(){
@@ -19,7 +20,7 @@ class Proxies extends React.Component{
 				<div className="rectangle_background">
 					<div className="export"></div>
 					<div className="import"></div>
-					<div className="create"></div>
+					<Link to="/create_proxy" className="create"></Link>
 				</div>
 
 				<div className="proxies_heading">
@@ -31,7 +32,7 @@ class Proxies extends React.Component{
 				<div className="proxies_table">
 					<p className="group">Proxy 1</p>
 					<p className="counts">999</p>
-					<div className="table_edit"></div>
+					<Link to="/edit_proxy" className="table_edit"></Link>
 					<div className="table_delete"></div>
 				</div>
 			</div>

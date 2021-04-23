@@ -13,6 +13,9 @@ import CreateCaptcha from './CreateCaptcha';
 import EditCaptcha from './EditCaptcha';
 import CaptchaHarvester from './CaptchaHarvester';
 
+import CreateProxy from './CreateProxy';
+import EditProxy from './EditProxy';
+
 import{ BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Redirect } from "react-router-dom";
 import { Link } from 'react-router-dom';
@@ -71,6 +74,18 @@ function App() {
           <Route exact path="/captcha_harvester">
             <CaptchaHarvester />
           </Route>
+
+          {/*Proxy Related Pages*/}
+          <Route exact path="/create_proxy">
+            <CreateProxy />
+          </Route>
+
+          <Route exact path="/edit_proxy">
+            <EditProxy />
+          </Route>
+
+
+
           
       </Switch>
     </Router>
