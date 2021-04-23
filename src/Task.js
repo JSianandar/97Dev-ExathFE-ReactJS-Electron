@@ -2,7 +2,19 @@ import React from 'react';
 import './css/Task.css';
 import App from './App.js'
 
-const Task = () => {
+class Task extends React.Component{
+   constructor(){
+    super()
+    this.state = {
+    }
+  }
+
+  componentDidMount(){
+
+  }
+
+  render(){
+
 	return(
     <div>
 	    <div className="control-panel">
@@ -48,6 +60,8 @@ const Task = () => {
         </div>
 	</div>
 	);
+
+    }
 	
 
 }

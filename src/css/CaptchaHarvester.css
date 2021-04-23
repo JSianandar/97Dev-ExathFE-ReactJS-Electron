@@ -1,0 +1,80 @@
+@import url('http://db.onlinewebfonts.com/c/f608cf0f495fc936317f6ba9637d3b7e?family=MADE+TOMMY');
+/* base styles */
+* {
+  margin: 0;
+  font-family: "MADE TOMMY";
+  color: #C4C4C4;
+}
+
+.rectangle_background3{
+	position: relative;
+	left: 330px;
+	width: 432px;
+	height: 720px;
+
+	background: #21232E;
+}
+
+.captcha_harvester_title{
+	position: absolute;
+	left: 20px;
+	top: 20px;
+
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 37px;
+	letter-spacing: 0.03em;
+
+	color: #C4C4C4;
+
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	
+}
+
+.exit_logo{
+	position: absolute;
+	width: 26px;
+	height: 26px;
+	left: 382px;
+	top: 26px;
+
+	background: url(../assets/icons/exit_logo.png)
+}
+
+.text_area{
+	position: absolute;
+	width: 392px;
+	height: 504px;
+	left: 20px;
+	top: 67px;
+
+	background: #3D4158;
+	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
+	border-radius: 15px;
+}
+
+.email_logo{
+	position: absolute;
+	width: 388px;
+	height: 36px;
+	left: 20px;
+	top: 599px;
+
+	background: url(../assets/icons/email_logo.png);
+	border-radius: 30px;
+	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
+}
+
+.proxy_logo{
+	position: absolute;
+	width: 388px;
+	height: 36px;
+	left: 20px;
+	top: 655px;
+
+	background: url(../assets/icons/proxy_logo.png);
+	border-radius: 30px;
+	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
+}

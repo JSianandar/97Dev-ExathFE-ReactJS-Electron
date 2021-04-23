@@ -1,4 +1,4 @@
- @import url('http://db.onlinewebfonts.com/c/f608cf0f495fc936317f6ba9637d3b7e?family=MADE+TOMMY');
+@import url('http://db.onlinewebfonts.com/c/f608cf0f495fc936317f6ba9637d3b7e?family=MADE+TOMMY');
 /* base styles */
 * {
   margin: 0;
@@ -16,29 +16,6 @@
 	background: #2B303C;
 	border-radius: 25px;
 }
-
-.export{
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	left: 40px;
-	top: 20px;
-
-	background: url(../assets/icons/export_logo.png)
-
-}
-
-.import{
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	left:  80px;
-	top: 20px;
-
-	background: url(../assets/icons/import_logo.png)
-
-}
-
 .create{
 	position: absolute;
 	width: 30px;
@@ -49,7 +26,7 @@
 	background: url(../assets/icons/create_task_logo.png)
 }
 
-.profile_heading{
+.captcha_heading{
 	/* Panel Background */
 	position: absolute;
 	width: 1020px;
@@ -62,12 +39,11 @@
 	border-radius: 15px;
 
 }
-.profile_name{
-	/* Profile Name */
+.captcha_harvester{
 	position: absolute;
-	width: 117px;
+	width: 88px;
 	height: 24px;
-	left: 45px;
+	left: 59px;
 	top: 10px;
 
 	font-family: MADE TOMMY;
@@ -78,51 +54,31 @@
 	text-align: center;
 
 	color: #C4C4C4;
+
 }
-.profile_email{
+.captcha_email{
 	position: absolute;
 	width: 47px;
 	height: 24px;
 	left: 315px;
-	top: 11px;
+	top: 10px;
 
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 20px;
-	line-height: 24px;
-	display: flex;
-	align-items: center;
-
-	color: #C4C4C4;
-
-}
-.profile_card_number{
-	/* Card Number */
-
-
-	position: absolute;
-	width: 124px;
-	height: 24px;
-	left: 489px;
-	top: 11px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
+	font-size: 20px; 
 	line-height: 24px;
 	display: flex;
 	align-items: center;
 
 	color: #C4C4C4;
 }
-.profile_shipping_name{
+.captcha_proxy{
 	position: absolute;
-	width: 139px;
+	width: 51px;
 	height: 24px;
-	left: 695.5px;
-	top: 11px;
+	left: 602px;
+	top: 10px;
 
 	font-family: MADE TOMMY;
 	font-style: normal;
@@ -139,7 +95,7 @@
 	width: 70.33px;
 	height: 25.91px;
 	left: 907px;
-	top: 11px;
+	top: 10px;
 
 	font-family: MADE TOMMY;
 	font-style: normal;
@@ -149,8 +105,7 @@
 
 	color: #C4C4C4;
 }
-
-.profile_table{
+.captcha_table{
 	position: absolute;
 	width: 1020px;
 	height: 41px;
@@ -160,7 +115,7 @@
 	background: #232530;
 	border-radius: 15px;
 }
-.name{
+.harvester{
 	position: absolute;
 	width: 207px;
 	height: 17px;
@@ -180,8 +135,8 @@
 	position: absolute;
 	width: 223px;
 	height: 17px;
-	left: 230px;
-	top: 11px;
+	left: 227px;
+	top: 10px;
 
 	font-family: MADE TOMMY;
 	font-style: normal;
@@ -192,12 +147,12 @@
 
 	color: #C4C4C4;
 }
-.card_number{
+.proxy{
 	position: absolute;
-	width: 31px;
+	width: 276px;
 	height: 17px;
-	left: 533px;
-	top: 11px;
+	left: 490px;
+	top: 10px;
 
 	font-family: MADE TOMMY;
 	font-style: normal;
@@ -207,25 +162,16 @@
 	text-align: center;
 
 	color: #C4C4C4;
-
 }
-.shipping_name{
+
+.external_link{
 	position: absolute;
-	width: 68px;
-	height: 17px;
-	left: 733px;
+	width: 16.37px;
+	height: 16.37px;
+	left: 906px;
 	top: 11px;
 
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 17px;
-	text-align: center;
-
-	color: #C4C4C4;
-
-
+	background: url(../assets/icons/external_link_logo.png)
 }
 .table_edit{
 	position: absolute;
@@ -245,4 +191,20 @@
 
 	background: url(../assets/icons/table_delete.png)
 
+}
+
+.captcha_harvester_button{
+	position: absolute;
+	
+	left: 250px;
+	top: 600px;
+
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 17px;
+	text-align: center;
+
+	color: #C4C4C4;
 }

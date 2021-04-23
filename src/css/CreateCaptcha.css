@@ -1,0 +1,94 @@
+@import url('http://db.onlinewebfonts.com/c/f608cf0f495fc936317f6ba9637d3b7e?family=MADE+TOMMY');
+/* base styles */
+* {
+  margin: 0;
+  font-family: "MADE TOMMY";
+  color: #C4C4C4;
+}
+
+.rectangle_background1{
+	position: relative;
+	width: 567px;
+	height: 240px;
+	left: 330px;
+	top: 180px;
+
+	background: #21232E;
+	border-radius: 10px;
+}
+.create_captcha{
+	position: absolute;
+	left: 21px;
+	top: 11px;
+
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 37px;
+	letter-spacing: 0.03em;
+
+	color: #C4C4C4;
+}
+.email_captcha{
+	position: absolute;
+	width: 525px;
+	height: 30px;
+	left: 21px;
+	top: 56px;
+
+	background: #3D4158;
+	border-radius: 10px;
+	
+}
+.proxy_captcha{
+	position: absolute;
+	width: 525px;
+	height: 30px;
+	left: 21px;
+	top: 106px;
+
+	background: #3D4158;
+	border-radius: 10px;
+}
+.harvester_name{
+	position: absolute;
+	width: 180px;
+	height: 30px;
+	left: 21px;
+	top: 169px;
+
+	background: #3D4158;
+	border-radius: 10px;
+}
+
+.exit_cc{
+	position: absolute;
+	width: 55px;
+	height: 26px;
+	left: 376px;
+	top: 191px;
+
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 25px;
+
+	color: #C4C4C4;
+}
+.create_cc{
+	position: absolute;
+	width: 65px;
+	height: 26px;
+	left: 481px;
+	top: 191px;
+
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 25px;
+
+	color: #C4C4C4;
+}

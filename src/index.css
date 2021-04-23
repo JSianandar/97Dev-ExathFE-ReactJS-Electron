@@ -73,38 +73,10 @@
 	height: 47.33px;
 	left: 8px;
 	top: 95.5px;
-	background: url(./assets/panels/panel.png);
+	background: url(./assets/icons/task_panel.png);
 
 	filter: drop-shadow(5px 9px 5px rgba(0, 0, 0, 0.25));
 	border-radius: 10px;
-}
-
-.task-logo{
-	position: absolute;
-	width: 20.11px;
-	height: 18.93px;
-	left: 18.05px;
-	top: 110px;
-	background: url(./assets/panels/task_logo.png);
-}
-
-.task-button{
-	position: absolute;
-	width: 75px;
-	height: 25px;
-	left: 48px;
-	top: 107px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 25px;
-	/* identical to box height */
-
-
-	color: #C4C4C4;
-	background-color: 'transparent';
 }
 
 /*Profiles Panel */
@@ -114,40 +86,12 @@
 	height: 47.33px;
 	left: 8px;
 	top: 160.58px;
-	background: url(./assets/panels/panel.png);
+	background: url(./assets/icons/profile_panel.png);
 
-	opacity: 0.4;
 	filter: drop-shadow(5px 9px 5px rgba(0, 0, 0, 0.25));
 	border-radius: 10px;
 }
-.profile-logo{
-	position: absolute;
-	width: 18.31px;
-	height: 18.93px;
-	left: 21.05px;
-	top: 174.78px;
-	background: url(./assets/panels/profile_logo.png);
 
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-	transform: matrix(-1, 0, 0, 1, 0, 0);
-}
-.profile-button
-{
-	position: absolute;
-	width: 67px;
-	height: 25px;
-	left: 48px;
-	top: 172px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 25px;
-	/* identical to box height */
-	color: #C4C4C4;
-
-}
 
 /*Proxies Panel */
 .proxies-panel{
@@ -156,40 +100,12 @@
 	height: 47.33px;
 	left: 8px;
 	top: 225.67px;
-	background: url(./assets/panels/panel.png);
+	background: url(./assets/icons/proxies_panel.png);
 
-	opacity: 0.4;
 	filter: drop-shadow(5px 9px 5px rgba(0, 0, 0, 0.25));
 	border-radius: 10px;
 }
-.proxies-logo{
-	position: absolute;
-	width: 20.11px;
-	height: 18.93px;
-	left: 19.06px;
-	top: 239.87px;
-	background: url(./assets/panels/proxies_logo.png);
 
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-	
-}
-.proxies-button
-{
-	position: absolute;
-	width: 67px;
-	height: 25px;
-	left: 48px;
-	top: 237px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 25px;
-	/* identical to box height */
-	color: #C4C4C4;
-
-}
 
 /*Captcha Panel */
 .captcha-panel{
@@ -198,39 +114,12 @@
 	height: 47.33px;
 	left: 8px;
 	top: 290.75px;
-	background: url(./assets/panels/panel.png);
+	background: url(./assets/icons/captcha_panel.png);
 
-	opacity: 0.4;
 	filter: drop-shadow(5px 9px 5px rgba(0, 0, 0, 0.25));
 	border-radius: 10px;
 }
-.captcha-logo{
-	position: absolute;
-	width: 18.93px;
-	height: 18.93px;
-	left: 19px;
-	top: 305.91px;
-	background: url(./assets/panels/captcha_logo.png);
 
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); 
-}
-.captcha-button
-{
-	position: absolute;
-	width: 78px;
-	height: 25px;
-	left: 48px;
-	top: 302.91px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 25px;
-	/* identical to box height */
-	color: #C4C4C4;
-
-}
 
 /*Dashboard Panel */
 .dashboard-panel{
@@ -239,39 +128,13 @@
 	height: 47.33px;
 	left: 8px;
 	top: 355.83px;
-	background: url(./assets/panels/panel.png);
+	background: url(./assets/icons/dashboard_panel.png);
 
-	opacity: 0.4;
+
 	filter: drop-shadow(5px 9px 5px rgba(0, 0, 0, 0.25));
 	border-radius: 10px;
 }
-.dashboard-logo{
-	position: absolute;
-	width: 16.09px;
-	height: 18.93px;
-	left: 21.07px;
-	top: 370.03px;
-	background: url(./assets/panels/dashboard_logo.png);
 
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-.dashboard-button
-{
-	position: absolute;
-	width: 100px;
-	height: 25px;
-	left: 48px;
-	top: 367.08px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 25px;
-	/* identical to box height */
-	color: #C4C4C4;
-
-}
 
 /*Settings Panel */
 .settings-panel{
@@ -280,39 +143,12 @@
 	height: 47.33px;
 	left: 8px;
 	top: 420.91px;
-	background: url(./assets/panels/panel.png);
+	background: url(./assets/icons/settings_panel.png);
 
-	opacity: 0.4;
+	
 	filter: drop-shadow(5px 9px 5px rgba(0, 0, 0, 0.25));
 	border-radius: 10px;
 }
-.settings-logo{
-	position: absolute;
-	width:  16.09px;
-	height: 18.93px;
-	left: 21.07px;
-	top: 435.11px;
-	background: url(./assets/panels/settings_logo.png);
-
-	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-.settings-button
-{
-	position: absolute;
-	width: 75px;
-	height: 25px;
-	left: 48px;
-	top: 431.99px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 25px;
-	/* identical to box height */
-	color: #C4C4C4;
-
-} 
 
 /* Version Number */
 .version-number{

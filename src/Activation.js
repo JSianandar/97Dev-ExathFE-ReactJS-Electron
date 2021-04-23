@@ -2,7 +2,7 @@ import {useState} from "react";
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class Activation extends React.component {
+class Activation extends React.Component {
   constructor(){
     super()
     this.state = {
@@ -16,7 +16,8 @@ class Activation extends React.component {
 
   render(){
         return(
-	        <div className="exath-activation">
+            <div>
+	            <div className="exath-activation"></div>
                 <form>
                     <input 
                     type="text"

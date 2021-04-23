@@ -1,4 +1,4 @@
- @import url('http://db.onlinewebfonts.com/c/f608cf0f495fc936317f6ba9637d3b7e?family=MADE+TOMMY');
+@import url('http://db.onlinewebfonts.com/c/f608cf0f495fc936317f6ba9637d3b7e?family=MADE+TOMMY');
 /* base styles */
 * {
   margin: 0;
@@ -49,7 +49,7 @@
 	background: url(../assets/icons/create_task_logo.png)
 }
 
-.profile_heading{
+.proxies_heading{
 	/* Panel Background */
 	position: absolute;
 	width: 1020px;
@@ -62,12 +62,11 @@
 	border-radius: 15px;
 
 }
-.profile_name{
-	/* Profile Name */
+.proxies_group{
 	position: absolute;
-	width: 117px;
+	width: 115px;
 	height: 24px;
-	left: 45px;
+	left: 56px;
 	top: 10px;
 
 	font-family: MADE TOMMY;
@@ -79,12 +78,12 @@
 
 	color: #C4C4C4;
 }
-.profile_email{
+.proxies_counts{
 	position: absolute;
-	width: 47px;
-	height: 24px;
-	left: 315px;
-	top: 11px;
+	width: 122px;
+	height: 26px;
+	left: 268px;
+	top: 10px;
 
 	font-family: MADE TOMMY;
 	font-style: normal;
@@ -96,50 +95,13 @@
 
 	color: #C4C4C4;
 
-}
-.profile_card_number{
-	/* Card Number */
-
-
-	position: absolute;
-	width: 124px;
-	height: 24px;
-	left: 489px;
-	top: 11px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 24px;
-	display: flex;
-	align-items: center;
-
-	color: #C4C4C4;
-}
-.profile_shipping_name{
-	position: absolute;
-	width: 139px;
-	height: 24px;
-	left: 695.5px;
-	top: 11px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 24px;
-	display: flex;
-	align-items: center;
-
-	color: #C4C4C4;
 }
 .actions{
 	position: absolute;
 	width: 70.33px;
 	height: 25.91px;
-	left: 907px;
-	top: 11px;
+	left: 917px;
+	top: 10px;
 
 	font-family: MADE TOMMY;
 	font-style: normal;
@@ -148,9 +110,9 @@
 	line-height: 24px;
 
 	color: #C4C4C4;
-}
+	}
 
-.profile_table{
+.proxies_table{
 	position: absolute;
 	width: 1020px;
 	height: 41px;
@@ -160,11 +122,11 @@
 	background: #232530;
 	border-radius: 15px;
 }
-.name{
+.group{
 	position: absolute;
-	width: 207px;
+	width: 46px;
 	height: 17px;
-	left: 0px;
+	left: 91px;
 	top: 10px;
 
 	font-family: MADE TOMMY;
@@ -176,12 +138,12 @@
 
 	color: #C4C4C4;
 }
-.email{
+.counts{
 	position: absolute;
-	width: 223px;
+	width: 25px;
 	height: 17px;
-	left: 230px;
-	top: 11px;
+	left: 316px;
+	top: 10px;
 
 	font-family: MADE TOMMY;
 	font-style: normal;
@@ -191,41 +153,6 @@
 	text-align: center;
 
 	color: #C4C4C4;
-}
-.card_number{
-	position: absolute;
-	width: 31px;
-	height: 17px;
-	left: 533px;
-	top: 11px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 17px;
-	text-align: center;
-
-	color: #C4C4C4;
-
-}
-.shipping_name{
-	position: absolute;
-	width: 68px;
-	height: 17px;
-	left: 733px;
-	top: 11px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 17px;
-	text-align: center;
-
-	color: #C4C4C4;
-
-
 }
 .table_edit{
 	position: absolute;
