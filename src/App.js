@@ -9,12 +9,16 @@ import Proxies from './Proxies.js';
 import Captcha from './Captcha.js';
 import Settings from './Settings.js';
 
-import CreateCaptcha from './CreateCaptcha';
-import EditCaptcha from './EditCaptcha';
-import CaptchaHarvester from './CaptchaHarvester';
+import CreateProfileShipping from './CreateProfileShipping';
+import CreateProfileBilling from './CreateProfileBilling';
+import CreateProfileCard from './CreateProfileCard';
 
 import CreateProxy from './CreateProxy';
 import EditProxy from './EditProxy';
+
+import CreateCaptcha from './CreateCaptcha';
+import EditCaptcha from './EditCaptcha';
+import CaptchaHarvester from './CaptchaHarvester';
 
 import{ BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Redirect } from "react-router-dom";
@@ -61,6 +65,22 @@ function App() {
             <NavBar />
             <Settings />
           </Route>
+
+          {/*Profile Related Pages*/}
+          <Route exact path="/create_profile_shipping">
+            <CreateProfileShipping />
+          </Route>
+
+          <Route exact path="/create_profile_billing">
+            <CreateProfileBilling />
+          </Route>
+
+          <Route exact path="/create_profile_card">
+            <CreateProfileCard />
+          </Route>
+
+
+
 
           {/*Captcha Related Pages*/}
           <Route exact path="/create_captcha">

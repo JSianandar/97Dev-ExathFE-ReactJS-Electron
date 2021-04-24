@@ -4,8 +4,9 @@
     "\\data",
     "\\public",
     "\\src",
+    "\\src\\assets",
     "\\src\\css"
   ],
-  "SelectedNode": "\\src\\index.css",
+  "SelectedNode": "\\src\\EditProxy.js",
   "PreviewInSolutionExplorer": false
 }

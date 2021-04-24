@@ -21,7 +21,7 @@ class Profile extends React.Component{
 				<div className="rectangle_background">
 					<div className="export"></div>
 					<div className="import"></div>
-					<div className="create"></div>
+					<Link to ="/create_profile_shipping" className="create"></Link>
 				</div>
 				
 				<div className="profile_heading">
