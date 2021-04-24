@@ -1,0 +1,245 @@
+@import url('http://db.onlinewebfonts.com/c/f608cf0f495fc936317f6ba9637d3b7e?family=MADE+TOMMY');
+/* base styles */
+* {
+  margin: 0;
+  font-family: "MADE TOMMY";
+  color: #333;
+}
+
+.rectangle_background7{
+	position: relative;
+	width: 850px;
+	height: 442px;
+	left: 205px;
+	top: 115px;
+	background: #21232E;
+	border-radius: 15px;
+}
+.edit_profile_shipping
+{
+	position: absolute;
+	left: 21px;
+	top: 11px;
+
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 37px;
+	letter-spacing: 0.03em;
+
+	color: #C4C4C4;
+}
+
+.shipping_logo{
+	position: absolute;
+	width: 130px;
+	height: 35px;
+	left: 419px;
+	top: 12px;
+
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
+	background: url(../assets/icons/shipping_logo.png)
+}
+
+.billing_logo{
+	position: absolute;
+	width: 130px;
+	height: 35px;
+	left: 559px;
+	top: 12px;
+
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
+	background: url(../assets/icons/billing_logo.png)
+}
+
+.card_logo{
+	position: absolute;
+	width: 130px;
+	height: 35px;
+	left: 699px;
+	top: 12px;
+
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
+	background: url(../assets/icons/card_logo.png)
+}
+
+.shipping_address{
+	position: absolute;
+	left: 337px;
+	top: 76px;
+
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	line-height: 26px;
+	letter-spacing: 0.03em;
+
+	color: #C4C4C4;
+}
+
+.first_name{
+	position: absolute;
+	width: 410px;
+	height: 30px;
+	left: 68px;
+	top: 131px;
+
+	background: #3D4158;
+	border-radius: 10px;
+}
+.last_name{
+	position: absolute;
+	width: 410px;
+	height: 30px;
+	left: 68px;
+	top: 176px;
+
+	background: #3D4158;
+	border-radius: 10px;
+
+}
+.email_address{
+	position: absolute;
+	width: 410px;
+	height: 30px;
+	left: 68px;
+	top: 221px;
+
+	background: #3D4158;
+	border-radius: 10px;
+}
+.address1{
+	position: absolute;
+	width: 410px;
+	height: 30px;
+	left: 68px;
+	top: 266px;
+
+	background: #3D4158;
+	border-radius: 10px;
+
+}
+.address2{
+	position: absolute;
+	width: 410px;
+	height: 30px;
+	left: 68px;
+	top: 311px;
+
+	background: #3D4158;
+	border-radius: 10px;
+
+}
+.city{
+	position: absolute;
+	width: 180px;
+	height: 30px;
+	left: 603px;
+	top: 131px;
+
+	background: #3D4158;
+	border-radius: 10px;
+}
+.postal_code{
+	position: absolute;
+	width: 180px;
+	height: 30px;
+	left: 603px;
+	top: 176px;
+
+	background: #3D4158;
+	border-radius: 10px;
+
+}
+.phone_number{
+	position: absolute;
+	width: 180px;
+	height: 30px;
+	left: 603px;
+	top: 221px;
+
+	background: #3D4158;
+	border-radius: 10px;
+
+}
+.country{
+	position: absolute;
+	width: 180px;
+	height: 30px;
+	left: 603px;
+	top: 266px;
+
+	background: #3D4158;
+	border-radius: 10px;
+
+}
+.province{
+	position: absolute;
+	width: 180px;
+	height: 30px;
+	left: 603px;
+	top: 311px;
+
+	background: #3D4158;
+	border-radius: 10px;
+}
+.profile_name_eps{
+	position: absolute;
+	width: 180px;
+	height: 30px;
+	left: 21px;
+	top: 382px;
+
+	background: #3D4158;
+	border-radius: 10px;
+}
+
+.use_for_billing{
+	position: absolute;
+	left: 271px;
+	top: 387px;
+
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 20px;
+	/* identical to box height */
+
+
+	color: #C4C4C4;
+}
+
+.close_eps{
+	position: absolute;
+	width: 55px;
+	height: 26px;
+	left: 659px;
+	top: 384px;
+
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 25px;
+
+	color: #C4C4C4;
+}
+.create_eps
+{
+	position: absolute;
+	width: 65px;
+	height: 26px;
+	left: 764px;
+	top: 384px;
+
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 25px;
+
+	color: #C4C4C4;
+}

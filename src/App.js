@@ -12,6 +12,9 @@ import Settings from './Settings.js';
 import CreateProfileShipping from './CreateProfileShipping';
 import CreateProfileBilling from './CreateProfileBilling';
 import CreateProfileCard from './CreateProfileCard';
+import EditProfileShipping from './EditProfileShipping';
+import EditProfileBilling from './EditProfileBilling';
+import EditProfileCard from './EditProfileCard';
 
 import CreateProxy from './CreateProxy';
 import EditProxy from './EditProxy';
@@ -79,8 +82,17 @@ function App() {
             <CreateProfileCard />
           </Route>
 
+          <Route exact path="/edit_profile_shipping">
+            <EditProfileShipping />
+          </Route>
 
+          <Route exact path="/edit_profile_billing">
+            <EditProfileBilling />
+          </Route>
 
+          <Route exact path="/edit_profile_card">
+            <EditProfileCard />
+          </Route>
 
           {/*Captcha Related Pages*/}
           <Route exact path="/create_captcha">

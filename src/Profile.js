@@ -37,7 +37,7 @@ class Profile extends React.Component{
 					<h1 className="email">randomrandom@gmail.com</h1>
 					<h1 className="card_number">4120</h1>
 					<h1 className="shipping_name">First Name</h1>
-					<div className="table_edit"></div>
+					<Link to ="/edit_profile_shipping" className="table_edit"></Link>
 					<div className="table_delete"></div>
 				</div>
 			</div>
