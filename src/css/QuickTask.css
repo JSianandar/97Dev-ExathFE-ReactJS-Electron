@@ -1,0 +1,74 @@
+@import url('http://db.onlinewebfonts.com/c/f608cf0f495fc936317f6ba9637d3b7e?family=MADE+TOMMY');
+/* base styles */
+* {
+  margin: 0;
+  font-family: "MADE TOMMY";
+  color: #333;
+}
+
+.rectangle_background10{
+	position: relative;
+	width: 650px;
+	height: 150px;
+	left: 315px;
+	top: 255px;
+
+	background: #21232E;
+	border-radius: 15px;
+}
+.quick_task{
+	position: absolute;
+	left: 247px;
+	top: 9px;
+
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 37px;
+	letter-spacing: 0.03em;
+
+	color: #C4C4C4;
+
+}
+.enter_link{
+	position: absolute;
+	width: 610px;
+	height: 40px;
+	left: 20px;
+	top: 55px;
+
+	background: #3D4158;
+	border-radius: 10px;
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.6));
+}
+.close_qt{
+	position: absolute;
+	left: 484px;
+	top: 110px;
+
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 25px;
+	/* identical to box height */
+
+
+	color: #C4C4C4;
+}
+.save_qt{
+	position: absolute;
+	left: 586px;
+	top: 110px;
+	
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 25px;
+	/* identical to box height */
+
+
+	color: #C4C4C4;
+}

@@ -1,13 +1,16 @@
 import './App.css';
 import {useState} from "react";
 
-import Task from './Task.js';
-import Activation from'./Activation.js';
 import NavBar from './Navbar.js';
+import Activation from'./Activation.js';
+import Task from './Task.js';
 import Profile from './Profile.js';
 import Proxies from './Proxies.js';
 import Captcha from './Captcha.js';
 import Settings from './Settings.js';
+
+import QuickTask from './QuickTask.js';
+import DelayTask from './DelayTask.js';
 
 import CreateProfileShipping from './CreateProfileShipping';
 import CreateProfileBilling from './CreateProfileBilling';
@@ -67,6 +70,15 @@ function App() {
           <Route exact path="/settings">
             <NavBar />
             <Settings />
+          </Route>
+
+          {/*Task Related Pages*/}
+          <Route exact path="/quick_task">
+            <QuickTask />
+          </Route>
+
+          <Route exact path="/delay_task">
+            <DelayTask />
           </Route>
 
           {/*Profile Related Pages*/}

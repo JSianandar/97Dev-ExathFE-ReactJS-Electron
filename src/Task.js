@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/Task.css';
 import App from './App.js'
+import {Link} from 'react-router-dom';
 
 class Task extends React.Component{
    constructor(){
@@ -28,8 +29,8 @@ class Task extends React.Component{
             <div className="startalltask"></div>
             <div className="stopalltask"></div>
             <div className="edittask"></div>
-            <div className="delaytask"></div>
-            <div className="quicktask"></div>
+            <Link to="/delay_task" className="delaytask"></Link>
+            <Link to="/quick_task" className="quicktask"></Link>
             <div className="deletetask"></div>
             <div className="createtask"></div>
         </div>
