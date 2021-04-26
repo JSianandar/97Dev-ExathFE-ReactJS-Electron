@@ -1,5 +1,7 @@
 import './App.css';
+import './App.scss';
 import {useState} from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import NavBar from './Navbar.js';
 import Activation from'./Activation.js';
@@ -9,8 +11,10 @@ import Proxies from './Proxies.js';
 import Captcha from './Captcha.js';
 import Settings from './Settings.js';
 
+import CreateTask from './CreateTask.js';
 import QuickTask from './QuickTask.js';
 import DelayTask from './DelayTask.js';
+
 
 import CreateProfileShipping from './CreateProfileShipping';
 import CreateProfileBilling from './CreateProfileBilling';
@@ -48,8 +52,10 @@ function App() {
 
           {/*With Navbar*/}
           <Route exact path="/task">
-            <NavBar />
-            <Task />
+            <div className="d-flex">
+              <NavBar />
+              <Task />
+            </div>
           </Route>
           
           <Route exact path="/profile">
@@ -79,6 +85,10 @@ function App() {
 
           <Route exact path="/delay_task">
             <DelayTask />
+          </Route>
+
+          <Route exact path="/create_task">
+            <CreateTask />
           </Route>
 
           {/*Profile Related Pages*/}
@@ -127,9 +137,6 @@ function App() {
           <Route exact path="/edit_proxy">
             <EditProxy />
           </Route>
-
-
-
           
       </Switch>
     </Router>

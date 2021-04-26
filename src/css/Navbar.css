@@ -1,0 +1,72 @@
+.navbar-wrapper {
+    width: 200px;
+    height: 100vh;
+    background: #1B1B24;
+}
+
+.exath-logo {
+    width: 46px;
+    height: auto;
+    padding-top: 18px;
+    padding-bottom: 20.5px;
+}
+
+.navbar-item {
+    border-radius: 10px;
+    background: #2B303C;
+    height: 47.33px;
+    width: 184px;
+    cursor: pointer;
+    margin-bottom: 18px;
+    opacity: 0.5;
+    
+}
+
+.navbar-item .navbar-item-icon {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.navbar-item .task-icon {
+    width: 20.11px;
+    height: 18.93px;
+}
+
+.navbar-item .profile-icon {
+    width: 18.31px;
+    height: 18.93px;
+}
+
+.navbar-item .proxies-icon{
+    width: 20.11px;
+    height: 18.93px;
+}
+
+.navbar-item .captcha-icon{
+    width: 18.93px;
+    height: 18.93px;
+}
+
+.navbar-item .dashboard-icon{
+    width: 16.09px;
+    height: 18.93px;
+}
+
+.navbar-item .settings-icon{
+    width: 16.09px;
+    height: 18.93px;
+}
+
+.navbar-item p {
+    font-family: MADE TOMMY;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    color: #C4C4C4;
+}
+
+.version-number {
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+}

@@ -1,481 +1,72 @@
-@import url('http://db.onlinewebfonts.com/c/f608cf0f495fc936317f6ba9637d3b7e?family=MADE+TOMMY');
-/* base styles */
-* {
-  margin: 0;
-  font-family: "MADE TOMMY";
-  color: #333;
+.tasks-container {
+	width: 1080px;
 }
 
-/*Control Panel */
-.control-panel{
-	position: absolute;
+.tasks-container h1 p {
+	color: #C4C4C4;
+}
+
+.tasks-container .control-panel-wrapper {
 	width: 1060px;
 	height: 110px;
-	left: 210px;
-	top: 20px;
-
 	background: #1B1B24;
 	border-radius: 25px;
 }
-.task-title{
-	position: absolute;
-	width: 76px;
-	height: 37px;
-	left: 43px;
-	top: 13px;
 
+.tasks-container .control-panel-wrapper .left-control-panel h1 {
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 30px;
-	line-height: 37px;
+	font-size: 30px !important;
 	letter-spacing: 0.03em;
-
-	color: #C4C4C4;
-
-	
 }
-.time{
-	position: absolute;
-	width: 54px;
-	height: 19px;
-	left: 53px;
-	top: 53px;
 
+.tasks-container .control-panel-wrapper .left-control-panel .clock {
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 15px;
-	line-height: 19px;
-	/* identical to box height */
-
-
-	color: #C4C4C4;
+	font-size: 15px !important;
 }
-.welcome{
-	position: absolute;
-	width: 77px;
-	height: 20px;
-	left: 166px;
-	top: 25px;
 
+.task-container .control-panel-wrapper .middle-control-panel .welcome-message {
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 16px;
-	line-height: 20px;
-	/* identical to box height */
-
+	font-size: 16px !important;
 	letter-spacing: 0.03em;
-
-	color: #C4C4C4;
-}
-.username{
-	position: absolute;
-	width: 80px;
-	height: 20px;
-	left: 246px;
-	top: 25px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 16px;
-	line-height: 20px;
-	/* identical to box height */
-
-	letter-spacing: 0.03em;
-
-	color: #C4C4C4;
-}
-.alltask{
-	position: absolute;
-	width: 86px;
-	height: 30px;
-	left: 166px;
-	top: 45px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 12px;
-	line-height: 15px;
-
-	color: #C4C4C4;
+	text-align: left;
 }
 
-.runningtask{
-	position: absolute;
-	width: 86px;
-	height: 30px;
-	left: 166px;
-	top: 61px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 12px;
-	line-height: 15px;
-
-	color: #C4C4C4;
-}
-.startalltask{
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	left: 740px;
-	top: 25px;
-	background: url(../assets/icons/start_all_logo.png);
-
-	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.7));
+.right-control-panel .icons-wrapper {
+	list-style-type: none;
 }
 
-.stopalltask{
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	left: 780px;
-	top: 25px;
-	background: url(../assets/icons/stop_task_logo.png);
-
-	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.7));
+.right-control-panel .icons-wrapper .icon {
+	display: inline;
+	padding-right: 10px;
 }
 
-.edittask{
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	left: 820px;
-	top: 24px;
-	background: url(../assets/icons/edit_task_logo.png);
+.tasks-container .table-heading{
+	width: 1060px;
+	height: 570px;
 
-	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.7));
+	background: #2B303C;
+	border-radius: 25px;
 }
 
-.delaytask{
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	left: 860px;
-	top: 24px;
-	background: url(../assets/icons/edit_delay_logo.png);
-
-	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.7));
-}
-
-.quicktask{
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	left: 900px;
-	top: 25px;
-	background: url(../assets/icons/quick_task_logo.png);
-
-	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.7));
-}
-
-.deletetask{
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	left: 940px;
-	top: 25px;
-	background: url(../assets/icons/delete_task.png);
-
-	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.7));
-
-}
-
-.createtask{
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	left: 980px;
-	top: 25px;
-	background: url(../assets/icons/create_task_logo.png);
-
-	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.7));
-}
-
-/*Task Table*/
-.task-heading{
-	position: absolute;
+.tasks-container .table-heading-wrapper{
 	width: 1020px;
 	height: 43px;
-	left: 230px;
-	top: 150px;
 
 	background: #1B1B24;
+	border-radius: 15px;
 	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius: 15px;
 }
-.task-site{
-	/* Site */
-	position: absolute;
-	width: 36.36px;
-	height: 26.41px;
-	left: 43px;
-	top: 10px;
-
+.tasks-container .table-heading-wrapper .headings{
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 20px;
-	line-height: 24px;
+	font-size: 20px !important;
 
 	color: #C4C4C4;
-}
-.task-size{
-	position: absolute;
-	width: 38.44px;
-	height: 26.41px;
-	left: 147px;
-	top: 10px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 24px;
-
-	color: #C4C4C4;
-}
-.task-product{
-	position: absolute;
-	width: 74.4px;
-	height: 25.91px;
-	left: 258px;
-	top: 9px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 24px;
-	display: flex;
-	align-items: center;
-
-	color: #C4C4C4;
-}
-.task-profile{
-	position: absolute;
-	width: 59.12px;
-	height: 25.91px;
-	left: 442px;
-	top: 10px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 24px;
-
-	color: #C4C4C4;
-}
-.task-proxies{
-	position: absolute;
-	width: 68.57px;
-	height: 26.41px;
-	left: 563px;
-	top: 10px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 24px;
-
-	color: #C4C4C4;
-}
-.task-status{
-	position: absolute;
-	width: 59.22px;
-	height: 26.41px;
-	left: 746px;
-	top: 10px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 24px;
-
-	color: #C4C4C4;
-}
-.task-actions{
-	position: absolute;
-	width: 70.33px;
-	height: 25.91px;
-	left: 907px;
-	top: 10px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 24px;
-
-	color: #C4C4C4;
-}
-
-/* Task table */
-.task-table{
-	position: absolute;
-	width: 1020px;
-	height: 41px;
-	left: 230px;
-	top: 205px;
-
-	background: #232530;
-	border-radius: 15px;
-}
-.table-site{
-	position: absolute;
-	width: 150px;
-	height: 34px;
-	left: 0px;
-	top: 5px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 12px;
-	line-height: 17px;
-	text-align: center;
-	color: #C4C4C4;
-}
-.table-site-quality{
-	position: absolute;
-	width: 102px;
-	height: 34px;
-	left: 20px;
-	top: 20px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 17px;
-	text-align: center;
-	color: 	#808080;
-}
-.table-size{
-	position: absolute;
-	width: 64px;
-	height: 17px;
-	left: 138px;
-	top: 10px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 17px;
-	text-align: center;
-
-	color: #C4C4C4;
-}
-.table-product{
-	position: absolute;
-	width: 219px;
-	height: 17px;
-	left: 185px;
-	top: 10px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 17px;
-	text-align: center;
-
-	color: #C4C4C4;
-}
-.table-profile{
-	position: absolute;
-	width: 115px;
-	height: 17px;
-	left: 413px;
-	top: 10px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 17px;
-	text-align: center;
-
-	color: #C4C4C4;
-}
-
-.table-proxies{
-	position: absolute;
-	width: 115px;
-	height: 17px;
-	left: 538px;
-	top: 10px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 17px;
-	text-align: center;
-
-	color: #C4C4C4;
-}
-.table-status{
-	position: absolute;
-	width: 200px;
-	height: 17px;
-	left: 678px;
-	top: 10px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 17px;
-	text-align: center;
-
-	color: #FA0606;
-}
-.table-play{
-	position: absolute;
-	width: 14.27px;
-	height: 16.31px;
-	left: 898px;
-	top: 10px;
-
-	background: url(../assets/icons/table_play.png)
-}
-.table-stop{
-	position: absolute;
-	width: 16.31px;
-	height: 16.31px;
-	left: 922px;
-	top: 10px;
-
-	background: #C4C4C4;
-	border-radius: 3px;
-	background: url(../assets/icons/table_stop.png)
-}
-.table-edit{
-	position: absolute;
-	width: 18.35px;
-	height: 16.31px;
-	left: 948px;
-	top: 10px;
-	
-	background: url(../assets/icons/table_edit.png)
-}
-.table-delete{
-	position: absolute;
-	width: 14.27px;
-	height: 16.31px;
-	left: 976px;
-	top: 10px;
-
-	background: url(../assets/icons/table_delete.png)
-
-}
+}	
