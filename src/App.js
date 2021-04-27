@@ -59,18 +59,24 @@ function App() {
           </Route>
           
           <Route exact path="/profile">
-            <NavBar />
-            <Profile />
+            <div className="d-flex">
+                <NavBar />
+                <Profile />
+            </div>
           </Route>
 
           <Route exact path="/proxies">
-            <NavBar />
-            <Proxies />
+            <div className="d-flex">
+                <NavBar />
+                <Proxies />
+            </div>
           </Route>
 
           <Route exact path="/captcha">
-            <NavBar />
-            <Captcha />
+            <div className="d-flex">
+                <NavBar />
+                <Captcha />
+            </div>
           </Route>
 
           <Route exact path="/settings">

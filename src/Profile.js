@@ -2,6 +2,10 @@ import React from 'react';
 import './css/Profile.css';
 import {Link} from 'react-router-dom';
 
+import export_logo from "./assets/icons/export_logo.png";
+import import_logo from "./assets/icons/import_logo.png";
+import create_logo from "./assets/icons/create_task_logo.png";
+
 
 class Profile extends React.Component{
 	constructor(){
@@ -17,28 +21,47 @@ class Profile extends React.Component{
 
 	render(){
 		return(
-			<div>
-				<div className="rectangle_background">
-					<div className="export"></div>
-					<div className="import"></div>
-					<Link to ="/create_profile_shipping" className="create"></Link>
-				</div>
-				
-				<div className="profile_heading">
-					<h1 className="profile_name">Profile Name</h1>
-					<h1 className="profile_email">Email</h1>
-					<h1 className="profile_card_number">Card Number</h1>
-					<h1 className="profile_shipping_name">Shipping Name</h1>
-					<h1 className="actions">Actions</h1>
-				</div>
+			<div className="profile-container pt-1">
+				<div className="page-wrapper row mx-auto">
+					<div className="left-control-panel col-2 pt-1">
+						<ul className="icons-wrapper pt-4 mr-0">
+							<li className="icon"><img src={export_logo}/></li>
+							<li className="icon"><img src={import_logo}/></li>
+						</ul>
+					</div>
+					<div className="col-2"></div>
+					<div className="col-2"></div>
+					<div className="col-2"></div>
+					<div className="col-2"></div>
+					<div className="right-control-panel col-2 pt-1">
+						<ul className="icons-wrapper pt-4 mr-0">
+							<li></li>
+							<li className="icon"><img src={create_logo}/></li>
+						</ul>
+					</div>
 
-				<div className="profile_table">
-					<h1 className="name">Main</h1>
-					<h1 className="email">randomrandom@gmail.com</h1>
-					<h1 className="card_number">4120</h1>
-					<h1 className="shipping_name">First Name</h1>
-					<Link to ="/edit_profile_shipping" className="table_edit"></Link>
-					<div className="table_delete"></div>
+					<div className="table-heading mx-auto row">
+						<div className="col-4">
+							<h1 className="profile-name text-center">Profile Name</h1>
+						</div>
+
+						<div className="col-2">
+							<h1 className="headings text-center">Email</h1>
+						</div>
+
+						<div className="col-2">
+							<h1 className="headings text-center">Card Number</h1>
+						</div>
+
+						<div className="col-2">
+							<h1 className="headings text-center">Shipping Name</h1>
+						</div>
+
+						<div className="col-2">
+							<h1 className="headings text-center">Actions</h1>
+						</div>
+						
+					</div>
 				</div>
 			</div>
 		);

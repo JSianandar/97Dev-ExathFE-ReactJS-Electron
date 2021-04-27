@@ -1,175 +1,50 @@
-@import url('http://db.onlinewebfonts.com/c/f608cf0f495fc936317f6ba9637d3b7e?family=MADE+TOMMY');
-/* base styles */
-* {
-  margin: 0;
-  font-family: "MADE TOMMY";
-  color: #333;
+.proxies-container{
+	width: 1080px;
+}
+.proxies-container h1 p{
+	color: #C4C4C4;
 }
 
-.rectangle_background{
-	position: absolute;
+.proxies-container .page-wrapper{
 	width: 1040px;
-	height: 680px;
-	left: 220px;
-	top: 20px;
-
+	height: 100%;
 	background: #2B303C;
 	border-radius: 25px;
 }
 
-.export{
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	left: 40px;
-	top: 20px;
-
-	background: url(../assets/icons/export_logo.png)
-
+.left-control-panel .icons-wrapper {
+	list-style-type: none;
 }
 
-.import{
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	left:  80px;
-	top: 20px;
-
-	background: url(../assets/icons/import_logo.png)
-
+.left-control-panel .icons-wrapper .icon {
+	display: inline;
+	padding-right: 10px;
 }
 
-.create{
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	left: 970px;
-	top: 20px;
-
-	background: url(../assets/icons/create_task_logo.png)
+.right-control-panel .icons-wrapper {
+	list-style-type: none;
 }
 
-.proxies_heading{
-	/* Panel Background */
-	position: absolute;
+.right-control-panel .icons-wrapper .icon {
+	display: inline;
+	padding-right: 10px;
+}
+
+.proxies-container .table-heading{
 	width: 1020px;
 	height: 43px;
-	left: 230px;
-	top: 101px;
-
 	background: #1B1B24;
 	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 15px;
-
 }
-.proxies_group{
-	position: absolute;
-	width: 115px;
-	height: 24px;
-	left: 56px;
-	top: 10px;
-
+.proxies-container .table-heading .headings{
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 20px;
+	font-size: 20px !important;
 	line-height: 24px;
-	text-align: center;
+	padding-top: 7%;
 
 	color: #C4C4C4;
 }
-.proxies_counts{
-	position: absolute;
-	width: 122px;
-	height: 26px;
-	left: 268px;
-	top: 10px;
 
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 24px;
-	display: flex;
-	align-items: center;
-
-	color: #C4C4C4;
-
-}
-.actions{
-	position: absolute;
-	width: 70.33px;
-	height: 25.91px;
-	left: 917px;
-	top: 10px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 24px;
-
-	color: #C4C4C4;
-	}
-
-.proxies_table{
-	position: absolute;
-	width: 1020px;
-	height: 41px;
-	left: 230px;
-	top: 156px;
-
-	background: #232530;
-	border-radius: 15px;
-}
-.group{
-	position: absolute;
-	width: 46px;
-	height: 17px;
-	left: 91px;
-	top: 10px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 17px;
-	text-align: center;
-
-	color: #C4C4C4;
-}
-.counts{
-	position: absolute;
-	width: 25px;
-	height: 17px;
-	left: 316px;
-	top: 10px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 17px;
-	text-align: center;
-
-	color: #C4C4C4;
-}
-.table_edit{
-	position: absolute;
-	width: 18.35px;
-	height: 16.31px;
-	left: 933px;
-	top: 11px;
-
-	background: url(../assets/icons/table_edit.png)
-}
-.table_delete{
-	position: absolute;
-	width: 14.27px;
-	height: 16.31px;
-	left: 965px;
-	top: 11px;
-
-	background: url(../assets/icons/table_delete.png)
-
-}
