@@ -6,6 +6,10 @@
   color: #333;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .exath-activation{
 	position: absolute;
 	width: 91.94px;

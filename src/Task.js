@@ -35,8 +35,8 @@ class Task extends React.Component{
                     <p className="m-0">Tasks - <span style={{color: '#F6FB06'}}>10</span></p>
                     <p className="m-0" >Running Tasks - <span style={{color: '#0DFE5F'}}>9</span></p>
                 </div>
-                <div className="col-2"></div>
-                <div className="right-control-panel col-4">
+                <div className="col-1"></div>
+                <div className="right-control-panel col-5">
                     <ul className="icons-wrapper pt-4 mr-0">
                         <li className="icon"><img src={play_button} /></li>
                         <li className="icon"><img src={stop_button} /></li>

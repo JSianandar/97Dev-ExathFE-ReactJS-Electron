@@ -1,12 +1,13 @@
 .profile-container{
-	width: 1080px;
+	width: 100%;
+	height: 100vh;
+	padding: 10px;
 }
 .profile-container h1 p{
 	color: #C4C4C4;
 }
 
 .profile-container .page-wrapper{
-	width: 1040px;
 	height: 100%;
 	background: #2B303C;
 	border-radius: 25px;
