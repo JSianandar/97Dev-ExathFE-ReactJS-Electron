@@ -1,28 +1,18 @@
- @import url('http://db.onlinewebfonts.com/c/f608cf0f495fc936317f6ba9637d3b7e?family=MADE+TOMMY');
-/* base styles */
-* {
-  margin: 0;
-  font-family: "MADE TOMMY";
-  color: #333;
+.settings-container{
+	width: 100%;
+	height: 100vh;
+	padding: 10px;
+}
+.settings-container h1 p{
+	color: #C4C4C4;
 }
 
-.rectangle_background{
-	position: absolute;
-	width: 1040px;
-	height: 680px;
-	left: 220px;
-	top: 20px;
-
+.settings-container .page-wrapper{
+	height: 100%;
 	background: #2B303C;
 	border-radius: 25px;
 }
-.settings{
-	position: absolute;
-	width: 118px;
-	height: 37px;
-	left: 40px;
-	top: 20px;
-
+.settings-container .page-wrapper .title-wrapper .settings{
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
@@ -31,52 +21,9 @@
 	letter-spacing: 0.03em;
 
 	color: #C4C4C4;
-
-	
-}
-.setup{
-	position: absolute;
-	width: 71px;
-	height: 31px;
-	left: 40px;
-	top: 87px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 25px;
-	line-height: 31px;
-	letter-spacing: 0.03em;
-
-	color: #C4C4C4;	
-}
-.discord_webhook{
-	position: absolute;
-	width: 450px;
-	height: 31px;
-	left: 40px;
-	top: 138px;
-
-	background: url(../assets/icons/settings/discord_webhook.png)
 }
 
-.test_discord_webhook{
-	position: absolute;
-	width: 62px;
-	height: 31px;
-	left: 590px;
-	top: 138px;
-
-	background: url(../assets/icons/settings/test_discord_webhook.png)
-}
-
-.quick_task{
-	position: absolute;
-	width: 159px;
-	height: 31px;
-	left: 40px;
-	top: 199px;
-
+.settings-container .page-wrapper .setup-wrapper .setup{
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
@@ -85,97 +32,4 @@
 	letter-spacing: 0.03em;
 
 	color: #C4C4C4;
-
-}
-.choose_profile{
-	position: absolute;
-	width: 450px;
-	height: 31px;
-	left: 40px;
-	top: 250px;
-	border-radius: 10px;
-
-	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.25));
-	background: url(../assets/icons/settings/choose_profiles.png)
-}
-
-.preferred_size{
-	position: absolute;
-	width: 450px;
-	height: 31px;
-	left: 40px;
-	top: 301px;
-	border-radius: 10px;
-
-	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.25));
-	background: url(../assets/icons/settings/preferred_size.png)
-}
-
-.account{
-	position: absolute;
-	width: 383.51px;
-	height: 31px;
-	left: 464.97px;
-	top: 352px;
-	border-radius: 10px;
-
-	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.25));
-	background: url(../assets/icons/settings/account.png)
-}
-.user_logo{
-	position: absolute;
-	width: 14.51px;
-	height: 16.53px;
-	left: 0px;
-	top: 379.23px;
-	background: url(../assets/icons/settings/user-regular.png)
-}
-
-.password{
-	position: absolute;
-	width: 383.51px;
-	height: 31px;
-	left: 40px;
-	top: 352px;
-	border-radius: 10px;
-
-	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.25));
-	background: url(../assets/icons/settings/password.png)
-}
-
-.password_logo{
-	position: absolute;
-	left: 52.84%;
-	right: 45.86%;
-	top: 52.64%;
-	bottom: 45.06%;
-
-	background: #C4C4C4;
-	background: url(../assets/icons/settings/password_logo.png)
-}
-
-.updates{
-	position: absolute;
-	width: 101px;
-	height: 31px;
-	left: 40px;
-	top: 413px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 25px;
-	line-height: 31px;
-	letter-spacing: 0.03em;
-
-	color: #C4C4C4;
-}
-.check_for_updates{
-	position: absolute;
-	width: 177px;
-	height: 31px;
-	left: 40px;
-	top: 464px;
-
-	background: url(../assets/icons/settings/check_for_updates.png)
 }

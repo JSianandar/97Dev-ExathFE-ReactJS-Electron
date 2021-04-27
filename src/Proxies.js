@@ -22,22 +22,21 @@ class Proxies extends React.Component{
 	render(){
 		return(
 			<div className="proxies-container pt-1">
-				<div className="page-wrapper row mx-auto">
-					<div className="left-control-panel col-2 pt-1">
-						<ul className="icons-wrapper pt-4 mr-0">
-							<li className="icon"><img src={export_logo}/></li>
-							<li className="icon"><img src={import_logo}/></li>
-						</ul>
-					</div>
-					<div className="col-2"></div>
-					<div className="col-2"></div>
-					<div className="col-2"></div>
-					<div className="col-2"></div>
-					<div className="right-control-panel col-2 pt-1">
-						<ul className="icons-wrapper pt-4 mr-0">
-							<li></li>
-							<li className="icon"><img src={create_logo}/></li>
-						</ul>
+				<div className="page-wrapper mx-auto">
+					<div className="profile-icons-wrapper row">
+						<div className="left-control-panel col-2 pt-1">
+							<ul className="icons-wrapper pt-4 mr-0">
+								<li className="icon"><img src={export_logo}/></li>
+								<li className="icon"><img src={import_logo}/></li>
+							</ul>
+						</div>
+						<div className="col-8"></div>
+						<div className="right-control-panel col-2 pt-1">
+							<ul className="icons-wrapper pt-4 mr-0">
+								<li></li>
+								<li className="icon"><Link to ="create_proxy"><img src={create_logo}/></Link></li>
+							</ul>
+						</div>
 					</div>
 
 					<div className="table-heading mx-auto row">
@@ -50,9 +49,8 @@ class Proxies extends React.Component{
 							<h1 className="headings text-center">Proxy Counts</h1>
 						</div>
 
-						<div className="col-2"></div>
-						<div className="col-2"></div>
-						<div className="col-2"></div>
+						<div className="col-6"></div>
+						
 						
 						<div className="col-2">
 							<h1 className="headings text-center">Actions</h1>

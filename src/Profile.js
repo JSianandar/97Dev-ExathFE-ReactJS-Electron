@@ -33,7 +33,7 @@ class Profile extends React.Component{
 						<div className="col-8"></div>
 						<div className="right-control-panel col-2 pt-1">
 							<ul className="icons-wrapper pt-4 mr-0">
-								<li className="icon"><img src={create_logo}/></li>
+								<li className="icon"><Link to="/create_profile_shipping"><img src={create_logo}/></Link></li>
 							</ul>
 						</div>
 					</div>

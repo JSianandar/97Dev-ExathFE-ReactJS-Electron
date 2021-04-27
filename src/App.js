@@ -79,8 +79,10 @@ function App() {
           </Route>
 
           <Route exact path="/settings">
-            <NavBar />
-            <Settings />
+            <div className="d-flex">
+                <NavBar />
+                <Settings />
+            </div>
           </Route>
 
           {/*Task Related Pages*/}
