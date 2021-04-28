@@ -59,3 +59,31 @@
 
 	color: #C4C4C4;
 }
+.profile-container .individual-profile{
+	width: 1020px;
+	height: 41px;
+
+	background: #232530;
+	border-radius: 15px;
+	padding: 10px;
+}
+.profile-container .individual-profile .headings{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 17px;
+	text-align: center;
+	margin-right: 10px;
+
+	color: #C4C4C4;
+
+}
+.profile-container .individual-profile .icons-wrapper{
+	list-style-type: none;
+}
+
+.profile-container .individual-profile .icons-wrapper .icon{
+	display: inline;
+	padding-right: 10px;
+}

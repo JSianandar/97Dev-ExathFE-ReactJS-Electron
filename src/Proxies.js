@@ -6,6 +6,8 @@ import export_logo from "./assets/icons/export_logo.png";
 import import_logo from "./assets/icons/import_logo.png";
 import create_logo from "./assets/icons/create_task_logo.png";
 
+import table_edit from "./assets/icons/table_edit.png";
+import table_delete from "./assets/icons/table_delete.png";
 
 class Proxies extends React.Component{
 	constructor(){
@@ -56,6 +58,25 @@ class Proxies extends React.Component{
 							<h1 className="headings text-center">Actions</h1>
 						</div>
 						
+					</div>
+
+					<div className="individual-proxy mx-auto row">
+						<div className="col-2">
+							<h1 className="headings text-center">Proxy 1</h1>
+						</div>
+
+						<div className="col-2">
+							<h1 className="headings text-center">999</h1>
+						</div>
+
+						<div className="col-6"></div>
+
+						<div className="col-2">
+							<ul className="icons-wrapper">
+                                <li className="icon"><img src={table_edit} /></li>
+                                <li className="icon"><img src={table_delete} /></li>
+                            </ul>
+						</div>
 					</div>
 				</div>
 			</div>

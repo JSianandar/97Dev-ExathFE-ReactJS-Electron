@@ -6,6 +6,9 @@ import export_logo from "./assets/icons/export_logo.png";
 import import_logo from "./assets/icons/import_logo.png";
 import create_logo from "./assets/icons/create_task_logo.png";
 
+import table_edit from "./assets/icons/table_edit.png";
+import table_delete from "./assets/icons/table_delete.png";
+
 class Captcha extends React.Component{
 	constructor(){
 		super()
@@ -20,7 +23,7 @@ class Captcha extends React.Component{
 
 	render(){
 		return(
-			<div className="proxies-container pt-1">
+			<div className="captcha-container pt-1">
 				<div className="page-wrapper mx-auto">
 					<div className="profile-icons-wrapper row">
 						<div className="left-control-panel col-2 pt-1">
@@ -60,6 +63,32 @@ class Captcha extends React.Component{
 						</div>
 						
 					</div>
+
+					<div className="individual-captcha mx-auto row">
+						<div className="col-2 mr-3">
+							<h1 className="headings text-center">Captcha1</h1>
+						</div>
+
+						<div className="col-2 mr-5">
+							<h1 className="headings text-center">randomrandom@gmail.com</h1>
+						</div>
+
+						<div className="col-2 mr-5">
+							<h1 className="headings text-center">71.18.73.232:7556:space_fOHrX:hSvquyBeJF</h1>
+						</div>
+
+						
+						<div className="col-2 mr-5"></div>
+
+						<div className="col-2">
+							<ul className="icons-wrapper">
+                                <li className="icon"><img src={table_edit} /></li>
+                                <li className="icon"><img src={table_delete} /></li>
+                            </ul>
+						</div>
+					
+					</div>
+					
 					<Link to ="/captcha_harvester" className="captcha_harvester_button">Captcha Harvester (Testing)</Link>
 				</div>
 
