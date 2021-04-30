@@ -56,14 +56,14 @@ class Settings extends React.Component{
 					</div>
 					<div className="row mx-auto pt-2">
 						<div className="setup-button-wrapper col-6 pt-2 d-flex">
-							<img className="discord_icon" src={profile_logo} />
+							<img className="icon" src={profile_logo} />
 							<p className="heading my-auto">Choose Profile</p>
 						</div>
 					</div>
 
 					<div className="row mx-auto pt-2">
 						<div className="setup-button-wrapper col-6 pt-2 d-flex">
-							<img className="discord_icon" src={ruler_logo} />
+							<img className="icon" src={ruler_logo} />
 							<p className="heading my-auto">Preferred Size</p>
 						</div>
 					</div>
