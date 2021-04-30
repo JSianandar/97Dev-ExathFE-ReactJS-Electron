@@ -2,7 +2,7 @@ import React from 'react';
 import './css/CreateCaptcha.css';
 import {Link} from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
-import Form from 'react-bootstrap/Form'
+import Form from 'react-bootstrap/Form';
 
 class CreateCaptcha extends React.Component{
 	constructor(){

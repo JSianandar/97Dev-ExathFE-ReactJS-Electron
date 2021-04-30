@@ -1,19 +1,13 @@
-
-
-.rectangle_background3{
-	position: relative;
-	left: 330px;
+.captcha-harvester-container{
 	width: 432px;
 	height: 720px;
+	top: 50%;
 
 	background: #21232E;
+	margin: auto;
+	padding: 10px;
 }
-
-.captcha_harvester_title{
-	position: absolute;
-	left: 20px;
-	top: 20px;
-
+.captcha-harvester-container h1{
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
@@ -22,53 +16,26 @@
 	letter-spacing: 0.03em;
 
 	color: #C4C4C4;
-
 	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	
 }
 
-.exit_logo{
-	position: absolute;
+.captcha-harvester-container .icon{
 	width: 26px;
 	height: 26px;
-	left: 382px;
-	top: 26px;
-
-	background: url(../assets/icons/exit_logo.png)
 }
 
-.text_area{
-	position: absolute;
+.captcha-harvester-container .text-area{
 	width: 392px;
-	height: 504px;
-	left: 20px;
-	top: 67px;
-
+	height: 484px;
 	background: #3D4158;
 	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
 	border-radius: 15px;
 }
 
-.email_logo{
-	position: absolute;
+.captcha-harvester-container .textarea{
 	width: 388px;
 	height: 36px;
-	left: 20px;
-	top: 599px;
-
-	background: url(../assets/icons/email_logo.png);
-	border-radius: 30px;
+	background: #3D4158;
 	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
-}
-
-.proxy_logo{
-	position: absolute;
-	width: 388px;
-	height: 36px;
-	left: 20px;
-	top: 655px;
-
-	background: url(../assets/icons/proxy_logo.png);
-	border-radius: 30px;
-	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
+	border-radius: 10px;
 }
