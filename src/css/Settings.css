@@ -11,6 +11,7 @@
 	height: 100%;
 	background: #2B303C;
 	border-radius: 25px;
+	padding: 10px;
 }
 .settings-container .page-wrapper .title-wrapper .settings{
 	font-family: MADE TOMMY;
@@ -32,4 +33,112 @@
 	letter-spacing: 0.03em;
 
 	color: #C4C4C4;
+}
+
+.settings-container .page-wrapper .setup-button-wrapper{
+	width: 450px;
+	height: 31px;
+
+	background: #3D4158;
+	border-radius: 10px;
+	cursor: pointer;
+	padding-left: 10px;
+	
+}
+
+.settings-container .page-wrapper .setup-button-wrapper .discord-icon{
+	width: 16px;
+	height: 16px;
+	
+}
+.settings-container .page-wrapper .setup-button-wrapper .heading{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 22px;
+	/* identical to box height */
+
+	color: #C4C4C4;
+
+}
+
+.settings-container .page-wrapper .test-button-wrapper{
+	width: 62px;
+	height: 31px;
+	background: #3D4158;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.settings-container .page-wrapper .test-button-wrapper .heading{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 22px;
+	/* identical to box height */
+
+	color: #C4C4C4;
+}
+
+.settings-container .page-wrapper .quick-task-wrapper .quick-task{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	line-height: 31px;
+	letter-spacing: 0.03em;
+
+	color: #C4C4C4;
+}
+
+.settings-container .page-wrapper .updates-wrapper .update{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	line-height: 31px;
+	letter-spacing: 0.03em;
+
+	color: #C4C4C4;
+}
+
+.settings-container .page-wrapper .cfu-button-wrapper{
+	width: 177px;
+	height: 31px;
+	background: #3D4158;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.settings-container .page-wrapper .cfu-button-wrapper .heading{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 22px;
+
+	color: #C4C4C4;
+}
+
+.settings-container .page-wrapper .quick-task-button-wrapper{
+	width: 450px;
+	height: 31px;
+
+	background: #3D4158;
+	border-radius: 10px;
+	padding-left: 10px;
+	
+}
+
+.settings-container .page-wrapper .quick-task-button-wrapper .heading{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 22px;
+
+	color: #C4C4C4;
+	
 }
