@@ -82,7 +82,7 @@
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 10px!important; 
+	font-size: 9px!important; 
 	line-height: 17px;
 
 	color: #C4C4C4;
@@ -92,7 +92,7 @@
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 14px!important; 
+	font-size: 11px!important; 
 	line-height: 17px;
 	padding-top: 12px;
 	margin-right: 30px;
@@ -105,5 +105,5 @@
 
 .tasks-container .individual-task-wrapper .individual-task .icons-wrapper .icon{
 	display: inline;
-	padding-right: 10px;
+	padding-right: 5px;
 }

@@ -96,20 +96,20 @@ class Task extends React.Component{
                                 <p className="headings-other text-center">7W</p>
                             </div>
 
-                            <div className="col-3 ">
+                            <div className="col-2 ml-5">
                                 <p className="headings-other text-center">Jordan 1 High OG</p>
                             </div>
-                            <div className="col-1 ">
+                            <div className="col-1 ml-4">
                                 <p className="headings-other text-center">ExathBluu</p>
                             </div>
                             <div className="col-1 ">
                                 <p className="headings-other text-center">ExathProxies</p>
                             </div> 
-                            <div className="col-3 ">
+                            <div className="col-2 ml-5 ">
                                 <p className="headings-other text-center"><span style={{color: '#FA0606'}}>Waiting for Restocks</span></p>
                             </div>
-                            <div className="col-2">
-                                <ul className="icons-wrapper  mr-0">
+                            <div className="col-2 ml-3">
+                                <ul className="icons-wrapper pt-1">
                                     <li className="icon"><img src={table_play} /></li>
                                     <li className="icon"><img src={table_stop} /></li>
                                     <li className="icon"><img src={table_edit} /></li>
