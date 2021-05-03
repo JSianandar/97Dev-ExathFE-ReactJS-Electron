@@ -73,7 +73,7 @@ class Proxies extends React.Component{
 
 						<div className="col-2">
 							<ul className="icons-wrapper">
-                                <li className="icon"><img src={table_edit} /></li>
+                                <li className="icon"><Link to="/edit_proxy"><img src={table_edit} /></Link></li>
                                 <li className="icon"><img src={table_delete} /></li>
                             </ul>
 						</div>

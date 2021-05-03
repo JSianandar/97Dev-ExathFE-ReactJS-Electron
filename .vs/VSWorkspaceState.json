@@ -1,12 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\data",
     "\\public",
     "\\src",
     "\\src\\assets",
     "\\src\\css"
   ],
-  "SelectedNode": "\\src\\css\\CreateCaptcha.css",
+  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }
