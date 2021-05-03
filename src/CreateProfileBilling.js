@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/CreateProfileBilling.css';
 import {Link} from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
 
 class CreateProfileBilling extends React.Component{
 	constructor(){
@@ -16,90 +17,172 @@ class CreateProfileBilling extends React.Component{
 
 	render(){
 		return(
-			<div>
-				<div className="rectangle_background4">
-					<h1 className="create_profile_billing">Create Profile</h1>
-					<Link to="/create_profile_shipping" className="shipping_logo"></Link>
-					<Link className="billing_logo"></Link>
-					<Link to="/create_profile_card" className="card_logo"></Link>
+			<div className="create-profile-billing-container ">
+				<div className="row pt-2">
+					<div className="col-3 ml-4">
+						<h1>Create Profile</h1>
+					</div>
+					<div className="col-2"></div>
+					<Link to="/create_profile_shipping"className=" button col-2 ">	
+						<h2 className="text-center pt-1">Shipping</h2>
+					</Link>
 
-					<h1 className="billing_address">Billing Address</h1>
-					<form>
-						<input
-						type="text"
-						required
-						placeholder = "First Name"
-						className= "first_name"
-						/>
+					<Link className=" button col-2 ml-2 ">
+						<h2 className="my-auto text-center pt-1">Billing</h2>
+					</Link>
 
-						<input
-						type="text"
-						required
-						placeholder = "Last Name"
-						className= "last_name"
-						/>
-
-						<input
-						type="text"
-						required
-						placeholder = "First Name"
-						className= "email_address"
-						/>
-
-						<input
-						type="text"
-						required
-						placeholder = "Address 1"
-						className= "address1"
-						/>
-
-						<input
-						type="text"
-						required
-						placeholder = "Address 2"
-						className= "address2"
-						/>
-
-						<input
-						type="text"
-						required
-						placeholder = "City"
-						className= "city"
-						/>
-
-						<input
-						type="text"
-						required
-						placeholder = "Postal Code"
-						className= "postal_code"
-						/>
-
-						<input
-						type="text"
-						required
-						placeholder = "Phone Number"
-						className= "phone_number"
-						/>
-
-						<input
-						type="text"
-						required
-						placeholder = "Country"
-						className= "country"
-						/>
-
-						<input
-						type="text"
-						required
-						placeholder = "Province"
-						className= "province"
-						/>
-
-					</form>
-
-					<Link to ="/profile"className="close_cpb">Close</Link>
-					<Link to="/create_profile_card" className="create_cpb">Create</Link>
+					<Link to ="/profile" className="button col-2 ml-2  ">
+						<h2 className="my-auto text-center pt-1">Card</h2>
+					</Link>
 				</div>
+
+				<div className="row pt-3">
+					<h1 className="billing-address mx-auto">Billing Address</h1>
+				</div>
+
+				<div className="row pt-3">
+					<div className="col-1"></div>
+					<div className="col-6">
+						<form>
+							<input
+								type="text"
+								placeholder="First Name"
+								className="text-area-left"
+							/>
+						</form>
+						
+					</div>
+					<div className="col-1"></div>
+					<div className="col-4">
+						<form>
+							<input
+								type="text"
+								placeholder="City"
+								className="text-area-right"
+							/>
+						</form>
+					</div>
+
+
+				</div>
+
+				<div className="row pt-3">
+					<div className="col-1"></div>
+					<div className="col-6">
+						<form>
+							<input
+								type="text"
+								placeholder="Last Name"
+								className="text-area-left"
+							/>
+						</form>
+						
+					</div>
+					<div className="col-1"></div>
+					<div className="col-4">
+						<form>
+							<input
+								type="text"
+								placeholder="Postal Code"
+								className="text-area-right"
+							/>
+						</form>
+					</div>
+
+
+				</div>
+
+				<div className="row pt-3">
+					<div className="col-1"></div>
+					<div className="col-6">
+						<form>
+							<input
+								type="text"
+								placeholder="Email Address"
+								className="text-area-left"
+							/>
+						</form>
+						
+					</div>
+					<div className="col-1"></div>
+					<div className="col-4">
+						<form>
+							<input
+								type="text"
+								placeholder="Phone Number"
+								className="text-area-right"
+							/>
+						</form>
+					</div>
+
+
+				</div>
+
+				<div className="row pt-3">
+					<div className="col-1"></div>
+					<div className="col-6">
+						<form>
+							<input
+								type="text"
+								placeholder="Address 1"
+								className="text-area-left"
+							/>
+						</form>
+						
+					</div>
+					<div className="col-1"></div>
+					<div className="col-4">
+						<form>
+							<input
+								type="text"
+								placeholder="Country"
+								className="text-area-right"
+							/>
+						</form>
+					</div>
+
+
+				</div>
+
+				<div className="row pt-3">
+					<div className="col-1"></div>
+					<div className="col-6">
+						<form>
+							<input
+								type="text"
+								placeholder="Address 2"
+								className="text-area-left"
+							/>
+						</form>
+						
+					</div>
+					<div className="col-1"></div>
+					<div className="col-4">
+						<form>
+							<input
+								type="text"
+								placeholder="Province"
+								className="text-area-right"
+							/>
+						</form>
+					</div>
+
+
+				</div>
+
+				<div className="row pt-5">
+					<div className="col-8"></div>
+					<div className="col-1 ml-5">
+						<Link to="/profile" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
+					</div>
+					<div className="col-2 ml-4">
+						<Link className="button-text" style={{ textDecoration: 'none' }}>Create</Link>
+					</div>
+					
+
+
+				</div>
+
 			</div>
 		);
 	}
