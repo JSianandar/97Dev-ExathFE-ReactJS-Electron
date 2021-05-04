@@ -27,11 +27,11 @@ class CreateProfileShipping extends React.Component{
 						<h2 className="text-center pt-1">Shipping</h2>
 					</Link>
 
-					<Link to="/create_profile_billing"className=" button col-2 ml-2 ">
+					<Link to="/create_profile_billing" className=" button col-2 ml-2 ">
 						<h2 className="my-auto text-center pt-1">Billing</h2>
 					</Link>
 
-					<Link to ="/profile" className="button col-2 ml-2  ">
+					<Link to="/create_profile_card" className="button col-2 ml-2  ">
 						<h2 className="my-auto text-center pt-1">Card</h2>
 					</Link>
 				</div>

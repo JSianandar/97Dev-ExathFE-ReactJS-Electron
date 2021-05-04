@@ -31,7 +31,7 @@ class editProfileBilling extends React.Component{
 						<h2 className="my-auto text-center pt-1">Billing</h2>
 					</Link>
 
-					<Link to ="/profile" className="button col-2 ml-2  ">
+					<Link to ="/edit_profile_card" className="button col-2 ml-2  ">
 						<h2 className="my-auto text-center pt-1">Card</h2>
 					</Link>
 				</div>
@@ -176,7 +176,7 @@ class editProfileBilling extends React.Component{
 						<Link to="/profile" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
 					</div>
 					<div className="col-2 ml-4">
-						<Link className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
+						<Link to="/edit_profile_card"className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
 					</div>
 					
 

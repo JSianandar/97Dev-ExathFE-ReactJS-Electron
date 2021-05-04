@@ -4,7 +4,11 @@
 	padding-left: 10px;
 }
 
-.tasks-container h1 p {
+.tasks-container  b {
+	color: #C4C4C4;
+}
+
+.tasks-container  p {
 	color: #C4C4C4;
 }
 
@@ -21,6 +25,7 @@
 	font-weight: normal;
 	font-size: 30px !important;
 	letter-spacing: 0.03em;
+	color: #C4C4C4;
 }
 
 .tasks-container .control-panel-wrapper .left-control-panel .clock {
@@ -28,6 +33,7 @@
 	font-style: normal;
 	font-weight: normal;
 	font-size: 15px !important;
+	color: #C4C4C4;
 }
 
 .task-container .control-panel-wrapper .middle-control-panel .welcome-message {
@@ -37,6 +43,7 @@
 	font-size: 16px !important;
 	letter-spacing: 0.03em;
 	text-align: left;
+	color: #C4C4C4;
 }
 
 .right-control-panel .icons-wrapper {

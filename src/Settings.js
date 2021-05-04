@@ -50,8 +50,8 @@ class Settings extends React.Component{
 					</div>
 
 					<div className="quick-task-wrapper row">
-						<div className="col-3 pt-2 pr-5">
-							<h1 className="quick-task text-center">Quick Task</h1>
+						<div className="col-3 pt-2 ml-3">
+							<h1 className="quick-task">Quick Task</h1>
 						</div>
 					</div>
 					<div className="row mx-auto pt-1">
