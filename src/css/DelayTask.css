@@ -1,26 +1,13 @@
-@import url('http://db.onlinewebfonts.com/c/f608cf0f495fc936317f6ba9637d3b7e?family=MADE+TOMMY');
-/* base styles */
-* {
-  margin: 0;
-  font-family: "MADE TOMMY";
-  color: #333;
-}
-
-.rectangle_background11{
-	position: relative;
+.delay-task-container{
 	width: 550px;
 	height: 200px;
-	left: 366px;
-	top: 240px;
 
 	background: #21232E;
 	border-radius: 15px;
+	margin: auto;
 }
-.delay_task{
-	position: absolute;
-	left: 235px;
-	top: 7px;
 
+.delay-task-container h1{
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
@@ -30,57 +17,32 @@
 
 	color: #C4C4C4;
 }
-.monitor_delay{
-	position: absolute;
-	width: 220px;
-	height: 51px;
-	left: 40px;
-	top: 75px;
-
-	background: url(../assets/icons/monitor_delay.png);
-	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
-}
-
-.retry_delay{
-	position: absolute;
-	width: 220px;
-	height: 51px;
-	left: 290px;
-	top: 75px;
-
-	background: url(../assets/icons/retry_delay.png);
-	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
-}
-
-.close_dt{
-	position: absolute;
-	width: 55px;
-	height: 26px;
-	left: 371px;
-	top: 157px;
-
+.delay-task-container h2{
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 20px;
 	line-height: 25px;
+	letter-spacing: 0.03em;
+	padding-top: 12px;
 
 	color: #C4C4C4;
+}
+.delay-task-container .button{
+	width: 220px;
+	height: 51px;
+	background: #3D4158;
+	border-radius: 10px;
+	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
 	
 }
 
-.save_dt{
-	position: absolute;
-	left: 476px;
-	top: 157px;
-
+.delay-task-container .button-text{
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 20px;
 	line-height: 25px;
 
-
 	color: #C4C4C4;
-
 }
