@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/CreateTask.css';
+import './css/EditTask.css';
 import {Link} from 'react-router-dom';
 
 import account_icon from './assets/icons/createtask/account.svg';
@@ -11,7 +11,7 @@ import proxy_icon from './assets/icons/createtask/proxy.svg';
 import ruler_icon from './assets/icons/createtask/ruler.svg';
 import select_site_icon from './assets/icons/createtask/select_site.svg';
 
-class CreateTask extends React.Component{
+class EditTask extends React.Component{
 	constructor(){
 		super()
 		this.state = {
@@ -25,10 +25,10 @@ class CreateTask extends React.Component{
 
 	render(){
 		return(
-			<div className="create-task-container">
+			<div className="edit-task-container">
 				<div className="row pt-2">
 					<div className="col-4 ml-3">
-						<h1>Create Task</h1>
+						<h1>Edit Task</h1>
 					</div>
 				</div>
 
@@ -59,10 +59,6 @@ class CreateTask extends React.Component{
 						<img src={profile_icon}/>
 					</div>
 					<div className="col-1"></div>
-					<div className="text-area-right col-4 mr-1">
-						<img src={number_of_task_icon}/>
-					</div>
-
 				</div>
 
 				<div className="row pt-4">
@@ -89,7 +85,7 @@ class CreateTask extends React.Component{
 						<Link to="/task" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
 					</div>
 					<div className="col-2 ml-4">
-						<Link to="/task" className="button-text" style={{ textDecoration: 'none' }}>Create</Link>
+						<Link to="/task" className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
 					</div>
 					
 
@@ -103,4 +99,4 @@ class CreateTask extends React.Component{
 
 
 
-export default CreateTask;
+export default EditTask;

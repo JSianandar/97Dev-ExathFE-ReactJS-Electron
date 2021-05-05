@@ -13,6 +13,8 @@ import Settings from './Settings.js';
 import CreateTask from './CreateTask.js';
 import QuickTask from './QuickTask.js';
 import DelayTask from './DelayTask.js';
+import EditTask from './EditTask.js';
+import EditAllTask from './EditAllTask.js';
 
 
 import CreateProfileShipping from './CreateProfileShipping';
@@ -97,6 +99,15 @@ function App() {
           <Route exact path="/create_task">
             <CreateTask />
           </Route>
+
+          <Route exact path="/edit_task">
+            <EditTask />
+          </Route>
+
+          <Route exact path="/edit_all_task">
+            <EditAllTask />
+          </Route>
+
 
           {/*Profile Related Pages*/}
           <Route exact path="/create_profile_shipping">

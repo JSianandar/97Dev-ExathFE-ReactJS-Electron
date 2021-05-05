@@ -45,11 +45,11 @@ class Task extends React.Component{
                     <ul className="icons-wrapper pt-4 mr-0">
                         <li className="icon"><img src={play_button} /></li>
                         <li className="icon"><img src={stop_button} /></li>
-                        <li className="icon"><img src={edit_button} /></li>
+                        <li className="icon"><Link to="/edit_all_task"><img src={edit_button} /></Link></li>
                         <li className="icon"><Link to="/delay_task"><img src={delay_button} /></Link></li>
                         <li className="icon"><Link to="/quick_task"><img src={quick_task_button} /></Link></li>
                         <li className="icon"><img src={delete_button} /></li>
-                        <li className="icon"><img src={create_button} /></li>
+                        <li className="icon"><Link to ="/create_task"><img src={create_button} /></Link></li>
                     </ul>
                 </div>
             </div>
@@ -112,7 +112,7 @@ class Task extends React.Component{
                                 <ul className="icons-wrapper pt-1">
                                     <li className="icon"><img src={table_play} /></li>
                                     <li className="icon"><img src={table_stop} /></li>
-                                    <li className="icon"><img src={table_edit} /></li>
+                                    <li className="icon"><Link to ="/edit_task"><img src={table_edit} /></Link></li>
                                     <li className="icon"><img src={table_delete} /></li>
                                 </ul>
                             </div>

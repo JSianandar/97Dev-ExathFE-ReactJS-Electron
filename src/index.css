@@ -10,6 +10,14 @@
     display: none;
 }
 
+.activation-container{
+	width: 1080px;
+	height: 360px;
+
+	background: #21232E;
+	margin: auto;
+}
+
 .exath-activation{
 	position: absolute;
 	width: 91.94px;

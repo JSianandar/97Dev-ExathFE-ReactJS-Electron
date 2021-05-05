@@ -42,9 +42,6 @@ class DelayTask extends React.Component{
 				<div className="col-2 ml-4">
 					<Link to="/task"className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
 				</div>
-					
-
-
 			</div>
             
         </div>

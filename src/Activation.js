@@ -16,20 +16,29 @@ class Activation extends React.Component {
 
   render(){
         return(
-            <div>
-	            <div className="exath-activation"></div>
-                <form>
-                    <input 
-                    type="text"
-                    required
-                    placeholder = "Enter your key"
-                    className="key_input"
-                    />
-                </form>
-    
-                <Link className="close_button"></Link>
-                <Link to="/task" className="activate_button"></Link>
-            </div>
+            <div className="activation-container">
+	            <div className="row mx-auto">
+                    <div className="col-12">
+                        <div className="exath-activation"></div>
+                    </div>
+                </div>
+                <div className="row mx-auto">
+                    <div className="col-12">
+                        <form>
+                            <input 
+                            type="text"
+                            required
+                            placeholder = "Enter your key"
+                            className="key_input"
+                            />
+                        </form>
+                    </div>
+                </div>
+                <div className="row mx-auto">
+                    <Link className="close_button ml-5"></Link>
+                    <Link to="/task" className="activate_button ml-5"></Link>
+                </div>
+             </div>
 	    );
     }
 }
