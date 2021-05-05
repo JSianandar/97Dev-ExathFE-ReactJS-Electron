@@ -41,6 +41,7 @@ class Proxies extends React.Component{
 						</div>
 					</div>
 
+
 					<div className="table-heading mx-auto row">
 
 						<div className="col-2">
@@ -59,13 +60,13 @@ class Proxies extends React.Component{
 						</div>
 						
 					</div>
-
+					<div className="row pt-2"></div>
 					<div className="individual-proxy mx-auto row">
-						<div className="col-2">
+						<div className="col-2 pt-1">
 							<h1 className="headings text-center">Proxy 1</h1>
 						</div>
 
-						<div className="col-2">
+						<div className="col-2 pt-1">
 							<h1 className="headings text-center">999</h1>
 						</div>
 

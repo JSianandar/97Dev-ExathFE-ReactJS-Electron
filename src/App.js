@@ -8,6 +8,7 @@ import Task from './Task.js';
 import Profile from './Profile.js';
 import Proxies from './Proxies.js';
 import Captcha from './Captcha.js';
+import Dashboard from './Dashboard.js';
 import Settings from './Settings.js';
 
 import CreateTask from './CreateTask.js';
@@ -77,6 +78,13 @@ function App() {
             <div className="d-flex">
                 <NavBar />
                 <Captcha />
+            </div>
+          </Route>
+
+          <Route exact path="/dashboard">
+            <div className="d-flex">
+                <NavBar />
+                <Dashboard />
             </div>
           </Route>
 
