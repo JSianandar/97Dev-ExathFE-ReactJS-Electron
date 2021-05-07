@@ -30,10 +30,21 @@
 	color: #C4C4C4;
 }
 
-.dashboard-container .individual-dashboard-wrapper{
+.dashboard-container .inside-wrapper{
 	width: 981px;
 	height: 85.72px;
 	background: #232530;
 	border-radius: 15px;
 	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.dashboard-container h2{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 17px;
+	text-align: center;
+
+	color: #C4C4C4;
 }
