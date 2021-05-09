@@ -13,8 +13,10 @@
 	font-size: 28px;
 	line-height: 37px;
 	letter-spacing: 0.03em;
+	font-weight: bold;
 
 	color: #C4C4C4;
+	font-weight: bold;
 }
 
 .create-profile-card-container .card-address{
@@ -48,6 +50,15 @@
 	background: #3D4158;
 	border-radius: 10px;
 	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45))
+}
+
+.create-profile-card-container .button2{
+	width: 130px;
+	height: 35px;
+	background: #3D4158;
+	border-radius: 10px;
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
+	opacity: 0.4;
 }
 
 .create-profile-card-container .text-area-left{

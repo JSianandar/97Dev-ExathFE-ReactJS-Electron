@@ -23,15 +23,15 @@ class CreateProfileBilling extends React.Component{
 						<h1>Create Profile</h1>
 					</div>
 					<div className="col-2"></div>
-					<Link to="/create_profile_shipping"className=" button col-2 ">	
+					<Link to="/create_profile_shipping" className=" button2 col-2  "style={{ textDecoration: 'none' }}>	
 						<h2 className="text-center pt-1">Shipping</h2>
 					</Link>
 
-					<Link className=" button col-2 ml-2 ">
+					<Link className=" button col-2 ml-2 "style={{ textDecoration: 'none' }}>
 						<h2 className="my-auto text-center pt-1">Billing</h2>
 					</Link>
 
-					<Link to="/create_profile_card" className="button col-2 ml-2  ">
+					<Link to="/create_profile_card" className="button2 col-2 ml-2  "style={{ textDecoration: 'none' }}>
 						<h2 className="my-auto text-center pt-1">Card</h2>
 					</Link>
 				</div>
