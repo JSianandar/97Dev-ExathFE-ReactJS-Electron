@@ -44,10 +44,11 @@ function App() {
   return (
     <Router>
       <Switch>
+          
           <Route exact path="/">
             <Redirect to="/activation" />
           </Route>
-          
+         
           <Route exact path="/activation">
             <Activation />
           </Route>
