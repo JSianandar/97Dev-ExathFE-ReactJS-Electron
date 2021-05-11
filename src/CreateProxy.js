@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/CreateProxy.css';
 import {Link} from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
 
 class CreateProxy extends React.Component{
 	constructor(){
@@ -16,29 +17,47 @@ class CreateProxy extends React.Component{
 
 	render(){
 		return(
-			<div className="rectangle_background1">
-				<h1 className="create_proxy_group">Create Proxy Group</h1>
-				<div className="text_area">
-					<h1 className="paste_proxy_group">Paste Your Proxy Here</h1>
-					<form>
-						<input
-							type="text"
-							required
-							placeholder = "ipadress:port:user:password"
-							className="input_proxy_group"
-						/>
-					</form>
+			<div className="create-proxy-container">
+				<div className="row">
+					<div className="col-6 ml-1">
+						<h1>Create Proxy Group</h1>
+					</div>
 				</div>
-				<form>
-					<input
-						type="text"
-						required
-						placeholder = "Group Name"
-						className="proxy_group_name"
-					/>
-				</form>
-				<Link to="/proxies" className="exit_cp">Close</Link>
-				<Link to="/proxies" className="create_cp">Create</Link>
+
+				<div className="row pt-3">
+					<div className="text-area mx-auto">
+						<div className="row ml-4 pt-3">
+							<p>Enter Your Proxy Here</p>
+						</div>
+						<div className="row ml-4">
+							<p>Format = ipadress:port:user:password</p>
+						</div>
+						<div className="row ml-4">
+							<Form>
+								<Form.Group controlId="formProxy">
+									<Form.Control type="text" placeholder="Enter your proxy" />
+								</Form.Group>
+							</Form>
+						</div>
+					</div>
+				</div>
+
+				<div className="row pt-1">
+					<div className="col-4 ml-3">
+						<Form>
+							<Form.Group controlId="formProxy">
+								<Form.Control type="text" placeholder="Group Name" className="group-name"/>
+							</Form.Group>
+						</Form>
+					</div>
+					<div className="col-4"></div>
+					<div className="col-2 ml-3 pt-3">
+						<Link to = "/proxies" className="routing" style={{ textDecoration: 'none' }}>Close</Link>
+					</div>
+					<div className="col-1 pt-3">
+						<Link to = "/proxies" className="routing" style={{ textDecoration: 'none' }}>Create</Link>
+					</div>
+				</div>
 			</div>
 		);
 	}

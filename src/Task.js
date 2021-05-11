@@ -45,11 +45,11 @@ class Task extends React.Component{
                     <ul className="icons-wrapper pt-4 mr-0">
                         <li className="icon"><img src={play_button} /></li>
                         <li className="icon"><img src={stop_button} /></li>
-                        <li className="icon"><img src={edit_button} /></li>
+                        <li className="icon"><Link to="/edit_all_task"><img src={edit_button} /></Link></li>
                         <li className="icon"><Link to="/delay_task"><img src={delay_button} /></Link></li>
                         <li className="icon"><Link to="/quick_task"><img src={quick_task_button} /></Link></li>
                         <li className="icon"><img src={delete_button} /></li>
-                        <li className="icon"><img src={create_button} /></li>
+                        <li className="icon"><Link to ="/create_task"><img src={create_button} /></Link></li>
                     </ul>
                 </div>
             </div>
@@ -96,23 +96,23 @@ class Task extends React.Component{
                                 <p className="headings-other text-center">7W</p>
                             </div>
 
-                            <div className="col-3 ">
+                            <div className="col-2 ml-5">
                                 <p className="headings-other text-center">Jordan 1 High OG</p>
                             </div>
-                            <div className="col-1 ">
+                            <div className="col-1 ml-4">
                                 <p className="headings-other text-center">ExathBluu</p>
                             </div>
                             <div className="col-1 ">
                                 <p className="headings-other text-center">ExathProxies</p>
                             </div> 
-                            <div className="col-3 ">
+                            <div className="col-2 ml-5 ">
                                 <p className="headings-other text-center"><span style={{color: '#FA0606'}}>Waiting for Restocks</span></p>
                             </div>
-                            <div className="col-2">
-                                <ul className="icons-wrapper  mr-0">
+                            <div className="col-2 ml-3">
+                                <ul className="icons-wrapper pt-2">
                                     <li className="icon"><img src={table_play} /></li>
                                     <li className="icon"><img src={table_stop} /></li>
-                                    <li className="icon"><img src={table_edit} /></li>
+                                    <li className="icon"><Link to ="/edit_task"><img src={table_edit} /></Link></li>
                                     <li className="icon"><img src={table_delete} /></li>
                                 </ul>
                             </div>
@@ -125,26 +125,6 @@ class Task extends React.Component{
 
                 
             </div>
-
-
-
-            {/*
-            
-            <div className="task-table">
-                <h1 className="table-site">Custom Shopify</h1>
-                <p className="table-site-quality">Safe</p>
-                <h1 className="table-size">7W</h1>
-                <h1 className="table-product">Jordan 1 High OG</h1>
-                <h1 className="table-profile">ExathBluu</h1>
-                <h1 className="table-proxies">ExathProxies</h1>
-                <h1 className="table-status">Waiting for Restocks</h1>
-                
-                <div className="table-play"></div>
-                <div className="table-stop"></div>
-                <div className="table-edit"></div>
-                <div className="table-delete"></div>
-
-            </div> */}
         </div>
 	);
 

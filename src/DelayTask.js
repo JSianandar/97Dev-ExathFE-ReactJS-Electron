@@ -15,15 +15,35 @@ class DelayTask extends React.Component{
 
   render(){
     return(
-        <div>
-            <div className="rectangle_background11">
-                <h1 className="delay_task">Delay</h1>
-                <Link className="monitor_delay"></Link>
-                <Link className="retry_delay"></Link>
-
-                <Link to="/task" className="close_dt">Close</Link>
-                <Link to="/task" className="save_dt">Save</Link>
+        <div className="delay-task-container">
+            <div className="row pt-2">
+                <div className="col-12">
+                    <h1 className="text-center">Delay Task</h1>
+                </div>
             </div>
+
+            <div className="row pt-4">
+                <div className="col-1 ml-4"></div>
+                <div className=" button col-4">
+                    <h2 className="text-center">Monitor Delay</h2>
+                </div>
+                <div className="col-1"></div>
+                <div className=" button col-4">
+                    <h2 className="text-center">Retry Delay</h2>
+                </div>
+                <div className="col-1"></div>
+            </div>
+
+            <div className="row pt-4">
+				<div className="col-7"></div>
+				<div className="col-1 ml-4">
+					<Link to="/task" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
+				</div> 
+				<div className="col-2 ml-4">
+					<Link to="/task"className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
+				</div>
+			</div>
+            
         </div>
     );
   }

@@ -6,12 +6,12 @@ import Nav from 'react-bootstrap/Nav';
 import './css/Navbar.css';
 
 import logo from './assets/icons/exath_logo.png';
-import tasks_icon from './assets/icons/task_logo.png';
-import profiles_icon from './assets/icons/profile_logo.png';
-import proxies_icon from './assets/icons/proxies_logo.png';
-import captcha_icon from './assets/icons/captcha_logo.png';
-import dashboard_icon from './assets/icons/dashboard_logo.png';
-import settings_icon from './assets/icons/settings_logo.png';
+import tasks_icon from './assets/icons/task_logo.svg';
+import profiles_icon from './assets/icons/profile_logo.svg';
+import proxies_icon from './assets/icons/proxies_logo.svg';
+import captcha_icon from './assets/icons/captcha_logo.svg';
+import dashboard_icon from './assets/icons/dashboard_logo.svg';
+import settings_icon from './assets/icons/settings_logo.svg';
 
 class NavBar extends React.Component {
   constructor(){

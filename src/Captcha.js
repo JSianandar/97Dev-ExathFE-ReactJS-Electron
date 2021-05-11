@@ -63,17 +63,17 @@ class Captcha extends React.Component{
 						</div>
 						
 					</div>
-
+					<div className="row pt-2"></div>
 					<div className="individual-captcha mx-auto row">
-						<div className="col-2 mr-3">
+						<div className="col-2 mr-3 pt-1">
 							<h1 className="headings text-center">Captcha1</h1>
 						</div>
 
-						<div className="col-2 mr-5">
+						<div className="col-2 mr-5 pt-1">
 							<h1 className="headings text-center">randomrandom@gmail.com</h1>
 						</div>
 
-						<div className="col-2 mr-5">
+						<div className="col-2 mr-5 pt-1">
 							<h1 className="headings text-center">71.18.73.232:7556:space_fOHrX:hSvquyBeJF</h1>
 						</div>
 

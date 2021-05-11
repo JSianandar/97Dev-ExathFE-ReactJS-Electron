@@ -8,11 +8,14 @@ import Task from './Task.js';
 import Profile from './Profile.js';
 import Proxies from './Proxies.js';
 import Captcha from './Captcha.js';
+import Dashboard from './Dashboard.js';
 import Settings from './Settings.js';
 
 import CreateTask from './CreateTask.js';
 import QuickTask from './QuickTask.js';
 import DelayTask from './DelayTask.js';
+import EditTask from './EditTask.js';
+import EditAllTask from './EditAllTask.js';
 
 
 import CreateProfileShipping from './CreateProfileShipping';
@@ -78,6 +81,13 @@ function App() {
             </div>
           </Route>
 
+          <Route exact path="/dashboard">
+            <div className="d-flex">
+                <NavBar />
+                <Dashboard />
+            </div>
+          </Route>
+
           <Route exact path="/settings">
             <div className="d-flex">
                 <NavBar />
@@ -97,6 +107,15 @@ function App() {
           <Route exact path="/create_task">
             <CreateTask />
           </Route>
+
+          <Route exact path="/edit_task">
+            <EditTask />
+          </Route>
+
+          <Route exact path="/edit_all_task">
+            <EditAllTask />
+          </Route>
+
 
           {/*Profile Related Pages*/}
           <Route exact path="/create_profile_shipping">

@@ -17,21 +17,34 @@ class QuickTask extends React.Component{
 
 	render(){
 		return(
-			<div>
-				<div className="rectangle_background10">
-					<h1 className="quick_task">Quick Task</h1>
-					<form>
-						<input
-						type="text"
-						placeholder = "Enter Link"
-						className="enter_link"
-						/>
-					</form>
-
-					<Link to ="/task" className="close_qt">Close</Link>
-					<Link to ="/task" className="save_qt">Save</Link>
+			<div className="quick-task-container">
+				<div className="row pt-1">
+					<div className="col-12">
+						<h1 className="text-center">Quick Task</h1>
+					</div>
 				</div>
-			</div>
+				<div className="row">
+					<div className="col-12 ml-3">
+						<form>
+							<input
+								type="text"
+								placeholder="Enter Link"
+								className="button"
+							/>
+						</form>
+					</div>
+				</div>
+
+				<div className="row pt-4">
+					<div className="col-8"></div>
+					<div className="col-2">
+						<Link to="/task" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
+					</div> 
+					<div className="col-2 ">
+						<Link to="/task"className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
+					</div>
+				</div>
+            </div>
 		);
 	}
 

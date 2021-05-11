@@ -6,7 +6,11 @@
 	margin-top:10px
 }
 
-.tasks-container h1 p {
+.tasks-container  b {
+	color: #C4C4C4;
+}
+
+.tasks-container  p {
 	color: #C4C4C4;
 }
 
@@ -24,6 +28,7 @@
 	font-size: 30px !important;
 	letter-spacing: 0.03em;
 	padding-top: 5px;
+	color: #C4C4C4;
 }
 
 .tasks-container .control-panel-wrapper .left-control-panel .clock {
@@ -31,6 +36,7 @@
 	font-style: normal;
 	font-weight: normal;
 	font-size: 15px !important;
+	color: #C4C4C4;
 }
 
 .task-container .control-panel-wrapper .middle-control-panel .welcome-message {
@@ -40,6 +46,7 @@
 	font-size: 16px !important;
 	letter-spacing: 0.03em;
 	text-align: left;
+	color: #C4C4C4;
 }
 
 .right-control-panel .icons-wrapper {
@@ -87,7 +94,7 @@
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 10px!important; 
+	font-size: 9px!important; 
 	line-height: 17px;
 
 	color: #C4C4C4;
@@ -97,7 +104,7 @@
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 14px!important; 
+	font-size: 11px!important; 
 	line-height: 17px;
 	padding-top: 12px;
 	margin-right: 30px;
@@ -110,5 +117,5 @@
 
 .tasks-container .individual-task-wrapper .individual-task .icons-wrapper .icon{
 	display: inline;
-	padding-right: 10px;
+	padding-right: 5px;
 }

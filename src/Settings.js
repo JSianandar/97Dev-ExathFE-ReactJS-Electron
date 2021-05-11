@@ -50,24 +50,24 @@ class Settings extends React.Component{
 					</div>
 
 					<div className="quick-task-wrapper row">
-						<div className="col-3 pt-2 pr-5">
-							<h1 className="quick-task text-center">Quick Task</h1>
+						<div className="col-3 pt-2 ml-3">
+							<h1 className="quick-task">Quick Task</h1>
 						</div>
 					</div>
-					<div className="row mx-auto pt-2">
+					<div className="row mx-auto pt-1">
 						<div className="setup-button-wrapper col-6 pt-2 d-flex">
 							<img className="icon" src={profile_logo} />
 							<p className="heading my-auto">Choose Profile</p>
 						</div>
 					</div>
 
-					<div className="row mx-auto pt-2">
+					<div className="row mx-auto pt-3">
 						<div className="setup-button-wrapper col-6 pt-2 d-flex">
 							<img className="icon" src={ruler_logo} />
 							<p className="heading my-auto">Preferred Size</p>
 						</div>
 					</div>
-					<div className="row mx-auto pt-4">
+					<div className="row mx-auto pt-3">
 						<div className="col-4 quick-task-button-wrapper">
 							<img className="discord_icon" src={user_logo} />
 						</div>

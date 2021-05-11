@@ -41,6 +41,7 @@ class Proxies extends React.Component{
 						</div>
 					</div>
 
+
 					<div className="table-heading mx-auto row">
 
 						<div className="col-2">
@@ -59,13 +60,13 @@ class Proxies extends React.Component{
 						</div>
 						
 					</div>
-
+					<div className="row pt-2"></div>
 					<div className="individual-proxy mx-auto row">
-						<div className="col-2">
+						<div className="col-2 pt-1">
 							<h1 className="headings text-center">Proxy 1</h1>
 						</div>
 
-						<div className="col-2">
+						<div className="col-2 pt-1">
 							<h1 className="headings text-center">999</h1>
 						</div>
 
@@ -73,7 +74,7 @@ class Proxies extends React.Component{
 
 						<div className="col-2">
 							<ul className="icons-wrapper">
-                                <li className="icon"><img src={table_edit} /></li>
+                                <li className="icon"><Link to="/edit_proxy"><img src={table_edit} /></Link></li>
                                 <li className="icon"><img src={table_delete} /></li>
                             </ul>
 						</div>
