@@ -90,8 +90,19 @@
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 9px!important; 
+	font-size: 14px!important; 
 	line-height: 17px;
+
+	color: #C4C4C4;
+}
+
+.tasks-container .individual-task-wrapper .individual-task  .headings-status{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 11px!important; 
+	line-height: 17px;
+	opacity: 0.5;
 
 	color: #C4C4C4;
 }

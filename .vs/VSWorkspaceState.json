@@ -2,10 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\public",
-    "\\src",
     "\\src\\assets",
     "\\src\\css"
   ],
-  "SelectedNode": "\\src\\css\\Activation.css",
+  "SelectedNode": "\\public\\styles.css",
   "PreviewInSolutionExplorer": false
 }
