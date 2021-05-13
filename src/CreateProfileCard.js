@@ -24,22 +24,22 @@ class CreateProfileCard extends React.Component{
 						<h1>Create Profile</h1>
 					</div>
 					<div className="col-2"></div>
-					<Link to="/create_profile_shipping"className=" button col-2 ">	
+					<Link to="/create_profile_shipping"className=" button2 col-2 "style={{ textDecoration: 'none' }}>	
 						<h2 className="text-center pt-1">Shipping</h2>
 					</Link>
 
-					<Link to="/create_profile_billing" className=" button col-2 ml-2 ">
+					<Link to="/create_profile_billing" className=" button2 col-2 ml-2 "style={{ textDecoration: 'none' }}>
 						<h2 className="my-auto text-center pt-1">Billing</h2>
 					</Link>
 
-					<Link className="button col-2 ml-2  ">
+					<Link className="button col-2 ml-2  "style={{ textDecoration: 'none' }}>
 						<h2 className="my-auto text-center pt-1">Card</h2>
 					</Link>
 				</div>
 
-				<div className="row pt-2">
+				<div className="row pt-5 ml-4">
 					<div className="col-6 ml-5">
-						<img src={credit_card_logo} />
+						<img src={credit_card_logo} / >
 					</div>
 					
 					<div className="col-4 pt-4">
@@ -85,7 +85,7 @@ class CreateProfileCard extends React.Component{
 
 				</div>
 				
-				<div className="row pt-5">
+				<div className="row pt-4">
 					<div className="col-8"></div>
 					<div className="col-1 ml-5">
 						<Link to="/profile" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>

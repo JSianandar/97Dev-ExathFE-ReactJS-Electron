@@ -42,7 +42,7 @@ class Task extends React.Component{
                 </div>
                 <div className="col-1"></div>
                 <div className="right-control-panel col-5">
-                    <ul className="icons-wrapper pt-4 mr-0">
+                    <ul className="icons-wrapper ml-5">
                         <li className="icon"><img src={play_button} /></li>
                         <li className="icon"><img src={stop_button} /></li>
                         <li className="icon"><Link to="/edit_all_task"><img src={edit_button} /></Link></li>

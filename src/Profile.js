@@ -79,6 +79,28 @@ class Profile extends React.Component{
                             </ul>
 						</div>
 					</div>
+
+					<div className="row pt-2"></div>
+					<div className="individual-profile mx-auto row">
+						<div className="col-4 pt-1">
+							<p className="headings text-center">Main</p>
+						</div>
+						<div className="col-2 pt-1">
+							<h1 className="headings text-center">randomrandom@gmail.com </h1>
+						</div>
+						<div className="col-2 pt-1">
+							<h1 className="headings text-center">4120</h1>
+						</div>
+						<div className="col-2 pt-1">
+							<h1 className="headings text-center">First Name</h1>
+						</div>
+						<div className="col-2">
+							<ul className="icons-wrapper">
+                                <li className="icon"><Link to="/edit_profile_shipping"><img src={table_edit} /></Link></li>
+                                <li className="icon"><img src={table_delete} /></li>
+                            </ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		);

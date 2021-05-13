@@ -23,15 +23,15 @@ class EditProfileShipping extends React.Component{
 						<h1>Edit Profile</h1>
 					</div>
 					<div className="col-2"></div>
-					<Link className=" button col-2 ">	
+					<Link className=" button col-2 " style={{ textDecoration: 'none' }}>	
 						<h2 className="text-center pt-1">Shipping</h2>
 					</Link>
 
-					<Link to="/edit_profile_billing"className=" button col-2 ml-2 ">
+					<Link to="/edit_profile_billing"className=" button2 col-2 ml-2 " style={{ textDecoration: 'none' }}>
 						<h2 className="my-auto text-center pt-1">Billing</h2>
 					</Link>
 
-					<Link to ="/edit_profile_card" className="button col-2 ml-2  ">
+					<Link to ="/edit_profile_card" className="button2 col-2 ml-2  " style={{ textDecoration: 'none' }}>
 						<h2 className="my-auto text-center pt-1">Card</h2>
 					</Link>
 				</div>

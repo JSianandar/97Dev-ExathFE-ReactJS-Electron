@@ -15,6 +15,7 @@
 	letter-spacing: 0.03em;
 
 	color: #C4C4C4;
+	font-weight: bold;
 }
 
 .create-profile-shipping-container .shipping-address{
@@ -48,6 +49,15 @@
 	background: #3D4158;
 	border-radius: 10px;
 	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45))
+}
+
+.create-profile-shipping-container .button2{
+	width: 130px;
+	height: 35px;
+	background: #3D4158;
+	border-radius: 10px;
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
+	opacity: 0.4;
 }
 
 .create-profile-shipping-container .text-area-left{
