@@ -1,0 +1,43 @@
+.activation-container{
+	width: 1080px;
+	height: 360px;
+
+	background: #21232E;
+	margin: auto;
+}
+
+.activation-container .exath-activation{
+	width: 91.94px;
+	height: 90px;
+	background: url(../assets/icons/exath_activation.png);
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+.activation-container .key_input{
+	width: 920px;
+	height: 50px;
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
+
+	background: #3D4158;
+	border-radius: 20px;
+	margin-left: 75px;
+}
+.activation-container .button{
+	background: #3D4158;
+	border-radius: 15px;
+	width: 160px;
+	height: 60px;
+
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
+}
+.activation-container h1{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	line-height: 31px;
+
+	color: #C4C4C4;
+	padding-top: 13px;
+}
