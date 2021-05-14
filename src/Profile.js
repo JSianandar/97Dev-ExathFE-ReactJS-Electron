@@ -41,6 +41,8 @@ class Profile extends React.Component{
 						</div>
 					</div>
 
+					
+
 					<div className="table-heading mx-auto row">
 						<div className="col-4">
 							<h1 className="profile-name text-center">Profile Name</h1>

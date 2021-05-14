@@ -52,9 +52,9 @@ class Task extends React.Component{
                         <li className="icon"><img src={delete_button} /></li>
                         <li className="icon"><Link to ="/create_task"><img src={create_button} /></Link></li>
                     </ul>
-                </div>
+                </div> 
             </div>
-
+            <div className="row pt-1"></div>
             <div className="table-heading row mx-auto pt-2">
                 <div className="table-heading-wrapper ">
                     <div className="table row">

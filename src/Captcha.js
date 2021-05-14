@@ -89,7 +89,7 @@ class Captcha extends React.Component{
 					
 					</div>
 					
-					<Link to ="/captcha_harvester" className="captcha_harvester_button">Captcha Harvester (Testing)</Link>
+					
 				</div>
 
 				

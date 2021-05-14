@@ -2,6 +2,7 @@ import './App.css';
 import {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import TitleBar from './TitleBar.js';
 import NavBar from './Navbar.js';
 import Activation from'./Activation.js';
 import Task from './Task.js';
@@ -43,6 +44,7 @@ function App() {
 
   return (
     <Router>
+      <TitleBar />
       <Switch>
           
           <Route exact path="/">
@@ -50,7 +52,10 @@ function App() {
           </Route>
          
           <Route exact path="/activation">
-            <Activation />
+            
+            <div style={{height:"100vh"}}>
+                <Activation />
+            </div>
           </Route>
 
           {/*With Navbar*/}
