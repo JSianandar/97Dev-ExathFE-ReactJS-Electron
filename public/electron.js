@@ -15,7 +15,8 @@ function createWindow() {
             resizable: false,
             webPreferences: {
                 contextIsolation: false
-            }
+            },
+            frame:false
         }
     );
     mainWindow.setMenuBarVisibility(false);
