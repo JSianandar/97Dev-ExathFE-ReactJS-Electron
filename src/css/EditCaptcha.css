@@ -25,6 +25,7 @@
 
 	background: #3D4158;
 	border-radius: 10px;
+	border: 0;
 }
 
 .edit-captcha-container .textarea-hn{
@@ -34,6 +35,7 @@
 
 	background: #3D4158;
 	border-radius: 10px;
+	border: 0;
 }
 
 .edit-captcha-container .textarea .text{

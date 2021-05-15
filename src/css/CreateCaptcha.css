@@ -25,7 +25,9 @@
 
 	background: #3D4158;
 	border-radius: 10px;
+	border: 0;
 }
+
 
 .create-captcha-container .textarea-hn{
 	position: absolute;
@@ -34,6 +36,7 @@
 
 	background: #3D4158;
 	border-radius: 10px;
+	border: 0;
 }
 
 .create-captcha-container .textarea .text{
@@ -57,4 +60,7 @@
 
 	color: #C4C4C4;
 	
+}
+#formEmail input{
+	border:0;
 }

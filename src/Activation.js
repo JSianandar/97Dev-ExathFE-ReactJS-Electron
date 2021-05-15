@@ -2,6 +2,7 @@ import {useState} from "react";
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './css/Activation.css';
+import TitleBar from './TitleBar.js';
 
 
 class Activation extends React.Component {
@@ -18,12 +19,9 @@ class Activation extends React.Component {
 
   render(){
         return(
-            <div className="activation">
                 <div className="activation-container">
 	                <div className="row pt-4">
-                        <div className="col-12">
-                            <div className="exath-activation"></div>
-                        </div>
+                        <div className="exath-activation mx-auto"></div>   
                     </div>
                     <div className="row pt-3">
                         <div className="col-12">
@@ -50,7 +48,6 @@ class Activation extends React.Component {
                         <div className="col-3"></div>
                     </div>
                  </div>
-            </div>
 	    );
     }
 }

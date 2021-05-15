@@ -30,13 +30,14 @@ class CreateCaptcha extends React.Component{
 				<div className="row ml-2 pt-1">
 					<div className="col-8">
 						<div className="textarea">
-							{/*
-							<Form>
-								<Form.Group controlId="formEmail">
-									<Form.Control type="text" className="text" placeholder="Email"/>
-								</Form.Group>
-							</Form>
-							*/}
+							<form>
+                                <input 
+                                type="text"
+                                required
+                                placeholder = "Email"
+                                className="textarea"
+                                />
+                            </form>
 						</div>
 					</div>
 				</div>
@@ -44,13 +45,14 @@ class CreateCaptcha extends React.Component{
 				<div className="row ml-2 pt-5">
 					<div className="col-8">
 						<div className="textarea">
-							{/*
-							<Form>
-								<Form.Group controlId="formEmail">
-									<Form.Control type="text" className="text" placeholder="Proxy"/>
-								</Form.Group>
-							</Form>
-							*/}
+							<form>
+                                <input 
+                                type="text"
+                                required
+                                placeholder = "Proxy"
+                                className="textarea"
+                                />
+                            </form>
 						</div>
 					</div>
 				</div>
@@ -58,13 +60,14 @@ class CreateCaptcha extends React.Component{
 				<div className="row ml-2 pt-5">
 					<div className="col-4">
 						<div className="textarea-hn">
-							{/*
-							<Form>
-								<Form.Group controlId="formEmail">
-									<Form.Control type="text" className="text" placeholder=""/>
-								</Form.Group>
-							</Form>
-							*/}
+							<form>
+                                <input 
+                                type="text"
+                                required
+                                placeholder = "Harvester Name"
+                                className="textarea-hn"
+                                />
+                            </form>
 						</div>
 					</div>
 

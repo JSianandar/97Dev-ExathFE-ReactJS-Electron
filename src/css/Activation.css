@@ -4,14 +4,18 @@
 
 	background: #21232E;
 	margin: auto;
+
 }
 
 .activation-container .exath-activation{
 	width: 91.94px;
 	height: 90px;
 	background: url(../assets/icons/exath_activation.png);
+	{/*
 	margin-left: auto;
 	margin-right: auto;
+	*/}
+	
 	
 }
 .activation-container .key_input{
@@ -22,6 +26,7 @@
 	background: #3D4158;
 	border-radius: 20px;
 	margin-left: 75px;
+	border: 0;
 }
 .activation-container .button{
 	background: #3D4158;

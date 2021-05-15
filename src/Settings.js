@@ -2,12 +2,15 @@ import React from 'react';
 import './css/Settings.css';
 import {Link} from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
+import Dropdown from 'react-bootstrap/Dropdown';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form'
 
-import discord_logo from './assets/icons/discord_logo.png';
-import user_logo from './assets/icons/user_logo.png';
-import password_logo from './assets/icons/password_logo.png';
-import profile_logo from './assets/icons/profile_logo.png';
-import ruler_logo from './assets/icons/ruler_logo.png';
+import discord_logo from './assets/icons/discord_logo.svg';
+import user_logo from './assets/icons/account_logo.svg';
+import password_logo from './assets/icons/password_logo.svg';
+import profile_logo from './assets/icons/profile_logo.svg';
+import ruler_logo from './assets/icons/ruler_logo.svg';
 
 
 class Settings extends React.Component{
@@ -28,64 +31,66 @@ class Settings extends React.Component{
 				<div className="page-wrapper mx-auto">
 					<div className="title-wrapper row">
 						<div className="col-2 pt-3">
-							<h1 className="settings text-center">Settings</h1>
+							<h1 className="settings text-center" style={{fontWeight: "bold"}}>Settings</h1>
 						</div>
 					</div>
 
 					<div className="setup-wrapper row">
-						<div className="col-2 pt-2 pr-5">
-							<h1 className="setup text-center">Setup</h1>
+						<div className="col-2 pt-4 pr-5">
+							<h1 className="setup text-center" style={{fontWeight: "bold"}}>Setup</h1>
 						</div>
 					</div>
 
 					<div className="row mx-auto">
-						<div className="setup-button-wrapper col-6 pt-2 d-flex">
-							<img className="discord_icon" src={discord_logo} />
-							<p className="heading my-auto">Discord Webhook</p>
-						</div>
+						<Button variant="outline-none" className="setup-button-wrapper col-6 d-flex pt-1 ml-3" >
+							<img className="discord_icon pt-1" src={discord_logo} />
+							<p className="heading ml-2">Discord Webhook</p>
+						</Button>
 						<div className="col-1"></div>
-						<div className="test-button-wrapper col-1">
-							<p className="heading my-auto text-center pt-1">Test</p>
-						</div>
+						<Button variant="outline-none" className="test-button-wrapper col-1">
+							<p className="heading my-auto text-center">Test</p>
+						</Button>
 					</div>
 
 					<div className="quick-task-wrapper row">
-						<div className="col-3 pt-2 ml-3">
-							<h1 className="quick-task">Quick Task</h1>
+						<div className="col-3 pt-4 ml-3">
+							<h1 className="quick-task" style={{fontWeight: "bold"}}>Quick Task</h1>
 						</div>
 					</div>
-					<div className="row mx-auto pt-1">
-						<div className="setup-button-wrapper col-6 pt-2 d-flex">
+					<div className="row mx-auto pt-2">
+						<Button variant="outline-none" className="setup-button-wrapper col-6 pt-1 d-flex ml-3">
 							<img className="icon" src={profile_logo} />
-							<p className="heading my-auto">Choose Profile</p>
-						</div>
+							<p className="heading my-auto ml-2">Choose Profile</p>
+						</Button>
 					</div>
 
 					<div className="row mx-auto pt-3">
-						<div className="setup-button-wrapper col-6 pt-2 d-flex">
+						<Button variant="outline-none" className="setup-button-wrapper col-6 pt-1 d-flex ml-3">
 							<img className="icon" src={ruler_logo} />
-							<p className="heading my-auto">Preferred Size</p>
-						</div>
+							<p className="heading my-auto ml-2" >Preferred Size</p>
+						</Button>
 					</div>
 					<div className="row mx-auto pt-3">
-						<div className="col-4 quick-task-button-wrapper">
+						<form className="col-4 quick-task-button-wrapper ml-3">
 							<img className="discord_icon" src={user_logo} />
-						</div>
+							<input type="text" className="background-color ml-3" style={{outline: 'none'}} placeholder = "Account"/>
+						</form>
 						<div className="col-1"></div>
-						<div className="col-4 quick-task-button-wrapper">
+						<form className="col-4 quick-task-button-wrapper">
 							<img className="discord_icon" src={password_logo} />
-						</div>
+							<input type="text" className="background-color ml-3" placeholder = "Password"/>
+						</form>
 					</div>
-					<div className="updates-wrapper row">
+					<div className="updates-wrapper row pt-4">
 						<div className="col-2 pt-2 pr-4">
-							<h1 className="update text-center">Updates</h1>
+							<h1 className="update text-center" style={{fontWeight: "bold"}}>Updates</h1>
 						</div>
 					</div>
 
-					<div className="row mx-auto">
-						<div className="cfu-button-wrapper pt-1">
-							<h1 className="heading text-center">Check for Updates</h1>
-						</div>
+					<div className="row   mx-auto pt-2">
+						<Button variant="outline-none" className="cfu-button-wrapper pt-1 ml-3">
+							<p className="heading text-center">Check for Updates</p>
+						</Button>
 					</div>
 				</div>
 			</div>

@@ -1,6 +1,13 @@
 import React from 'react';
 import './css/TitleBar.css';
 
+import minimize_logo from './assets/icons/titlebar/minus.svg';
+
+import maximize_logo from './assets/icons/titlebar/stop.svg';
+
+import close_logo from './assets/icons/titlebar/close.svg';
+import Button from 'react-bootstrap/Button';
+
 class TitleBar extends React.Component{
 	constructor(){
 		super()
@@ -16,15 +23,9 @@ class TitleBar extends React.Component{
 	render(){
 		return(
 			<div className="title-container">
-				<div className="col-9"></div>
-				<div className="col-1">
-					<button id="minimizeBtn" className="minimize-btn"></button>
-				</div>
-				<div className="col-1">
-					<button id="maximizeBtn" className="maximize-btn"></button>
-				</div>
-				<div className="col-1">
-					<button id="closeBtn" className="close-btn"></button>
+				<div className="button-wrapper">
+					<Button variant="outline-none" size="sm" id="minimizeBtn" className="minimize-btn"><img src={minimize_logo}/></Button>
+					<Button variant="outline-none" size="sm" id="closeBtn" className="close-btn"><img src={close_logo}/></Button>
 				</div>
 			</div>
 		)
