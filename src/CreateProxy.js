@@ -19,8 +19,8 @@ class CreateProxy extends React.Component{
 		return(
 			<div className="create-proxy-container">
 				<div className="row">
-					<div className="col-6 ml-1">
-						<h1>Create Proxy Group</h1>
+					<div className="col-6 ml-3">
+						<h1 style={{fontWeight: "bold"}}>Create Proxy Group</h1>
 					</div>
 				</div>
 

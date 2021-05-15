@@ -65,6 +65,7 @@
 	height: 30px;
 	background: #3D4158;
 	border-radius: 10px;
+	border:0;
 }
 
 .edit-profile-billing-container .text-area-right{
@@ -72,6 +73,7 @@
 	height: 30px;
 	background: #3D4158;
 	border-radius: 10px;
+	border:0;
 }
 
 .edit-profile-billing-container .button-text{
