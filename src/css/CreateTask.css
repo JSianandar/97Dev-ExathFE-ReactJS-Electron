@@ -22,6 +22,7 @@
 	font-weight: normal;
 	font-size: 18px;
 	line-height: 22px;
+	margin-bottom: 10px;
 
 	color: #C4C4C4;
 
@@ -58,4 +59,9 @@
 	line-height: 25px;
 
 	color: #C4C4C4;
+}
+
+.create-task-container .background-color{
+	background: #3D4158;
+	border: 0;
 }

@@ -42,7 +42,7 @@ class EditProfileCard extends React.Component{
 						<img src={credit_card_logo} />
 					</div>
 					
-					<div className="col-4 pt-4">
+					<div className="col-4 ml-2 pt-4">
 						<div className="row">
 							<form>
 								<input

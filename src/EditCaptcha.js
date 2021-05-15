@@ -21,7 +21,7 @@ class EditCaptcha extends React.Component{
 			<div className="edit-captcha-container">
 				<div className="row ml-2 pt-1">
 					<div className="col-9">
-						<h1 className="cch">Edit Captcha Harvester</h1> 
+						<h1 className="cch" style={{fontWeight: "bold"}}>Edit Captcha Harvester</h1> 
 					</div>
 				</div>
 

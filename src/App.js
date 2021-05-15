@@ -44,9 +44,7 @@ function App() {
 
   return (
     <Router>
-      <TitleBar />
       <Switch>
-          
           <Route exact path="/">
             <Redirect to="/activation" />
           </Route>

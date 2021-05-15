@@ -189,7 +189,7 @@ class EditProfileShipping extends React.Component{
 						</Form>
 					</div>
 					<div className="col-2"></div>
-					<div className="col-1 ml-3">
+					<div className="col-1 ml-4">
 						<Link to="/profile" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
 					</div>
 					<div className="col-2 ml-4">

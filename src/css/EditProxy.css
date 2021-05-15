@@ -50,6 +50,7 @@
 
 	background: #3D4158;
 	border-radius: 10px;
+	border: 0;
 }
 
 .edit-proxy-container .routing{

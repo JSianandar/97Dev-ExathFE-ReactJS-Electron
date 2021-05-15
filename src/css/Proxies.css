@@ -8,6 +8,7 @@
 }
 
 .proxies-container .page-wrapper{
+	width:1020px;
 	height: 96%;
 	background: #2B303C;
 	border-radius: 25px;
@@ -33,7 +34,7 @@
 }
 
 .proxies-container .table-heading{
-	width: 1010px;
+	width: 995px;
 	height: 43px;
 	background: #1B1B24;
 	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
@@ -51,7 +52,7 @@
 }
 
 .proxies-container .individual-proxy{
-	width: 1010px;
+	width: 995px;
 	height: 41px;
 
 	background: #232530;

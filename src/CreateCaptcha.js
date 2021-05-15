@@ -22,7 +22,7 @@ class CreateCaptcha extends React.Component{
 			<div className="create-captcha-container">
 				<div className="row ml-2 pt-1">
 					<div className="col-9">
-						<h1 className="cch">Create Captcha Harvester</h1> 
+						<h1 className="cch" style={{fontWeight: "bold"}}>Create Captcha Harvester</h1> 
 					</div>
 					
 				</div>

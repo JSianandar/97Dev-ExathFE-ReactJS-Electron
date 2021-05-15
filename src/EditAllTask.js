@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/EditAllTask.css';
 import {Link} from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 import account_icon from './assets/icons/createtask/account.svg';
 import keyword_icon from './assets/icons/createtask/keyword.svg';
@@ -28,55 +29,67 @@ class EditAllTask extends React.Component{
 			<div className="edit-all-task-container">
 				<div className="row pt-2">
 					<div className="col-4 ml-3">
-						<h1>Edit All Tasks</h1>
+						<h1 style={{fontWeight: "bold"}}>Edit All Tasks</h1>
 					</div>
 				</div>
 
 				<div className="row pt-4">
-					<div className="text-area-left col-6 ml-5">
-						<img src={select_site_icon}/>
-					</div>
+					<Button variant="outline-none" className="text-area-left col-6 ml-5 d-flex">
+						<img className="pt-0" src={select_site_icon}/>
+						<h2 className="ml-2">Select Site</h2>
+					</Button>
 					<div className="col-1"></div>
-					<div className="text-area-right col-4 mr-1">
-						<h2 className="pt-1">Select Mode</h2>
-					</div>
+					<Button variant="outline-none"className="text-area-right col-4 mr-1 d-flex">
+						<h2 className="">Select Mode</h2>
+					</Button>
 
 				</div>
 
 				<div className="row pt-4">
-					<div className="text-area-left col-6 ml-5">
+					<Button variant="outline-none" className="text-area-left col-6 ml-5 d-flex">
 						<img src={keyword_icon}/>
-					</div>
+						<h2 className="ml-2">Keywords/URL/SKU</h2>
+					</Button>
 					<div className="col-1"></div>
-					<div className="text-area-right col-4 mr-1">
+					<Button variant="outline-none" className="text-area-right col-4 mr-1 d-flex">
 						<img src={ruler_icon}/>
-					</div>
+						<h2 className="ml-2">Size</h2>
+					</Button>
 
 				</div>
 
 				<div className="row pt-4">
-					<div className="text-area-left col-6 ml-5">
+					<Button variant="outline-none" className="text-area-left col-6 ml-5 d-flex">
 						<img src={profile_icon}/>
-					</div>
+						<h2 className="ml-2">Profile</h2>
+					</Button>
 					<div className="col-1"></div>
+					<Button variant="outline-none" className="text-area-right col-4 mr-1 d-flex">
+						<img src={number_of_task_icon}/>
+						<h2 className="ml-2">Number of Tasks</h2>
+					</Button>
+
 				</div>
 
 				<div className="row pt-4">
-					<div className="text-area-left col-6 ml-5">
+					<Button variant="outline-none" className="text-area-left col-6 ml-5 d-flex">
 						<img src={proxy_icon}/>
-					</div>
+						<h2 className="ml-2">Proxies</h2>
+					</Button>
 					
 
 				</div>
 
 				<div className="row pt-4">
-					<div className="text-area-left col-5 ml-5">
+					<form className="text-area-left col-5 ml-5">
 						<img src={account_icon}/>
-					</div>
+						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Account"/>
+					</form>
 					<div className=""></div>
-					<div className="text-area-left col-5 ml-5">
+					<form className="text-area-left col-5 ml-5">
 						<img src={password_icon}/>
-					</div>
+						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Password"/>
+					</form>
 				</div>
 
 				<div className="row pt-5">

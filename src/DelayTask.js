@@ -2,6 +2,7 @@ import React from 'react';
 import './css/DelayTask.css';
 import {Link} from 'react-router-dom';
 
+
 class DelayTask extends React.Component{
 	constructor(){
     super()
@@ -24,13 +25,13 @@ class DelayTask extends React.Component{
 
             <div className="row pt-4">
                 <div className="col-1 ml-4"></div>
-                <div className=" button col-4">
+                <Link className=" button col-4" style={{textDecoration: "none"}}>
                     <h2 className="text-center">Monitor Delay</h2>
-                </div>
+                </Link>
                 <div className="col-1"></div>
-                <div className=" button col-4">
+                <Link className=" button col-4" style={{textDecoration: "none"}}>
                     <h2 className="text-center">Retry Delay</h2>
-                </div>
+                </Link>
                 <div className="col-1"></div>
             </div>
 
