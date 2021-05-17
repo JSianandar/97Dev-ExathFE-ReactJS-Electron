@@ -1,5 +1,5 @@
 .title-container{
-	background: #242934;
+	background: transparent;
 	opacity: 1.0;
 	width: 1050x;
 	height: 35px;
@@ -7,20 +7,20 @@
 }
 .title-container .button-wrapper{
 	float: right;
-	background: #242934;
+	background: transparent;
 	
 }
 
 .title-container .button-wrapper .close-btn{
 	margin-left:10px;
-	background: #242934;
+	background: transparent;
 	opacity: 1.0;
 
 }
 
 .title-container .button-wrapper .minimize-btn{
 	
-	background: #242934;
+	background: transparent;
 	opacity: 1.0;
 }
 

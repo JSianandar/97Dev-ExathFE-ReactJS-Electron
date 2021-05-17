@@ -2,7 +2,7 @@
 	width: 1080px;
 	height: 360px;
 
-	background: #21232E;
+	background: #180F29;
 	margin: auto;
 
 }
@@ -23,13 +23,13 @@
 	height: 50px;
 	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
 
-	background: #3D4158;
+	background: #25193E;
 	border-radius: 20px;
 	margin-left: 75px;
 	border: 0;
 }
 .activation-container .button{
-	background: #3D4158;
+	background: #25193E;
 	border-radius: 15px;
 	width: 160px;
 	height: 60px;
