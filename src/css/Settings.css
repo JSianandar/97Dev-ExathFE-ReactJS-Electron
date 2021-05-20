@@ -10,7 +10,7 @@
 .settings-container .page-wrapper{
 	width:1020px;
 	height: 96%;
-	background: #2B303C;
+	background: #201636;
 	border-radius: 25px;
 	padding: 15px;
 }
@@ -40,7 +40,7 @@
 	width: 450px;
 	height: 31px;
 
-	background: #3D4158;
+	background: #291C43;
 	border-radius: 10px;
 	cursor: pointer;
 	padding-left: 10px;
@@ -69,7 +69,7 @@
 .settings-container .page-wrapper .test-button-wrapper{
 	width: 62px;
 	height: 31px;
-	background: #3D4158;
+	background: #25193E;
 	border-radius: 10px;
 	cursor: pointer;
 }
@@ -111,7 +111,7 @@
 .settings-container .page-wrapper .cfu-button-wrapper{
 	width: 177px;
 	height: 31px;
-	background: #3D4158;
+	background: #25193E;
 	border-radius: 10px;
 	cursor: pointer;
 }
@@ -130,7 +130,7 @@
 	width: 450px;
 	height: 31px;
 
-	background: #3D4158;
+	background: #25193E;
 	border-radius: 10px;
 	padding-left: 10px;
 	border: 0;
@@ -149,6 +149,6 @@
 }
 
 .settings-container .background-color{
-	background: #3D4158;
+	background: #25193E;
 	border: 0;
 }
