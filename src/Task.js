@@ -3,6 +3,7 @@ import './css/Task.css';
 import App from './App.js';
 import {Link} from 'react-router-dom';
 import {useState} from 'react';
+import IndividualTask from './IndividualTask.js';
 
 import play_button from "./assets/icons/start_all_logo.png";
 import stop_button from "./assets/icons/stop_task_logo.png";
@@ -48,12 +49,12 @@ class Task extends React.Component{
                     <div className="col-1"></div>
                     <div className="right-control-panel col-5">
                         <ul className="icons-wrapper ml-5">
-                            <li className="icon"><img src={play_button} /></li>
-                            <li className="icon"><img src={stop_button} /></li>
+                            <li className="icon"><Link><img src={play_button} /></Link></li>
+                            <li className="icon"><Link><img src={stop_button} /></Link></li>
                             <li className="icon"><Link to="/edit_all_task"><img src={edit_button} /></Link></li>
                             <li className="icon"><Link to="/delay_task"><img src={delay_button} /></Link></li>
                             <li className="icon"><Link to="/quick_task"><img src={quick_task_button} /></Link></li>
-                            <li className="icon"><img src={delete_button} /></li>
+                            <li className="icon"><Link><img src={delete_button} /></Link></li>
                             <li className="icon"><Link to ="/create_task"><img src={create_button} /></Link></li>
                         </ul>
                     </div> 
@@ -90,215 +91,9 @@ class Task extends React.Component{
                                 <h1 className="headings text-center">Actions</h1>
                             </div>
                         </div>
-
-                        <div className="individual-task-wrapper mx-auto">
-                            <div className="individual-task row">
-                                <div className="col-1">
-                                    <div className="row ml-5 pt-1">
-                                        <p className="headings text-center">Custom Shopify</p>
-                                    </div>
-                                    {/*
-                                    <div className="row ml-5">
-                                        <p className="headings-status text-center">Safe</p>
-                                    </div>
-                                    */}
-                                </div>
-
-                                <div className="col-1 ml-5 ">
-                                    <p className="headings-other text-center">7W</p>
-                                </div>
-
-                                <div className="col-2 ml-2">
-                                    <p className="headings-other text-center">Jordan 1 High OG</p>
-                                </div>
-                                <div className="col-1">
-                                    <p className="headings-other text-center">ExathBluu</p>
-                                </div>
-                                <div className="col-1 ">
-                                    <p className="headings-other text-center">ExathProxies</p>
-                                </div> 
-                                <div className="col-2 ml-5 ">
-                                    <p className="headings-other text-center"><span style={{color: '#FA0606'}}>Waiting for Restocks</span></p>
-                                </div>
-                                <div className="col-2 ml-3">
-                                    <ul className="icons-wrapper pt-2">
-                                        <li className="icon"><img src={table_play} /></li>
-                                        <li className="icon"><img src={table_stop} /></li>
-                                        <li className="icon"><Link to ="/edit_task"><img src={table_edit} /></Link></li>
-                                        <li className="icon"><img src={table_delete} /></li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div className="row pt-2"></div>
-                        <div className="individual-task-wrapper mx-auto">
-                            <div className="individual-task row">
-                                <div className="col-1">
-                                    <div className="row ml-5 pt-2">
-                                        <p className="headings text-center">Invincible</p>
-                                    </div>
-                                    {/*
-                                    <div className="row ml-5">
-                                        <p className="headings-status text-center">Safe</p>
-                                    </div>
-                                    */}
-                                </div>
-
-                                <div className="col-1 ml-5 ">
-                                    <p className="headings-other text-center">8,9,10,11</p>
-                                </div>
-
-                                <div className="col-2 ml-2">
-                                    <p className="headings-other text-center">+jordan,+mid,-gs,-w,-td </p>
-                                </div>
-                                <div className="col-1">
-                                    <p className="headings-other text-center">BluCC</p>
-                                </div>
-                                <div className="col-1 ">
-                                    <p className="headings-other text-center">ExathProxies</p>
-                                </div> 
-                                <div className="col-2 ml-5 ">
-                                    <p className="headings-other text-center"><span style={{color: '#0BE1D6'}}>Logging in </span></p>
-                                </div>
-                                <div className="col-2 ml-3">
-                                    <ul className="icons-wrapper pt-2">
-                                        <li className="icon"><img src={table_play} /></li>
-                                        <li className="icon"><img src={table_stop} /></li>
-                                        <li className="icon"><Link to ="/edit_task"><img src={table_edit} /></Link></li>
-                                        <li className="icon"><img src={table_delete} /></li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div className="row pt-2"></div>
-                        <div className="individual-task-wrapper mx-auto">
-                            <div className="individual-task row">
-                                <div className="col-1">
-                                    <div className="row ml-5 pt-2">
-                                        <p className="headings text-center">Invincible</p>
-                                    </div>
-                                    {/*
-                                    <div className="row ml-5">
-                                        <p className="headings-status text-center">Safe</p>
-                                    </div>
-                                    */}
-                                </div>
-
-                                <div className="col-1 ml-5 ">
-                                    <p className="headings-other text-center">8,9,10,11</p>
-                                </div>
-
-                                <div className="col-2 ml-2">
-                                    <p className="headings-other text-center">+jordan,+mid,-gs,-w,-td </p>
-                                </div>
-                                <div className="col-1">
-                                    <p className="headings-other text-center">BluCC</p>
-                                </div>
-                                <div className="col-1 ">
-                                    <p className="headings-other text-center">ExathProxies</p>
-                                </div> 
-                                <div className="col-2 ml-5 ">
-                                    <p className="headings-other text-center"><span style={{color: '#F6FB06'}}>Product Found</span></p>
-                                </div>
-                                <div className="col-2 ml-3">
-                                    <ul className="icons-wrapper pt-2">
-                                        <li className="icon"><img src={table_play} /></li>
-                                        <li className="icon"><img src={table_stop} /></li>
-                                        <li className="icon"><Link to ="/edit_task"><img src={table_edit} /></Link></li>
-                                        <li className="icon"><img src={table_delete} /></li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div className="row pt-2"></div>
-                        <div className="individual-task-wrapper mx-auto">
-                            <div className="individual-task row">
-                                <div className="col-1">
-                                    <div className="row ml-5 pt-2">
-                                        <p className="headings text-center">Invincible</p>
-                                    </div>
-                                    {/*
-                                    <div className="row ml-5">
-                                        <p className="headings-status text-center">Safe</p>
-                                    </div>
-                                    */}
-                                </div>
-
-                                <div className="col-1 ml-5 ">
-                                    <p className="headings-other text-center">8,9,10,11</p>
-                                </div>
-
-                                <div className="col-2 ml-2">
-                                    <p className="headings-other text-center">+jordan,+mid,-gs,-w,-td </p>
-                                </div>
-                                <div className="col-1">
-                                    <p className="headings-other text-center">BluCC</p>
-                                </div>
-                                <div className="col-1 ">
-                                    <p className="headings-other text-center">ExathProxies</p>
-                                </div> 
-                                <div className="col-2 ml-5 ">
-                                    <p className="headings-other text-center"><span style={{color: '#0DFE5F'}}>Success</span></p>
-                                </div>
-                                <div className="col-2 ml-3">
-                                    <ul className="icons-wrapper pt-2">
-                                        <li className="icon"><img src={table_play} /></li>
-                                        <li className="icon"><img src={table_stop} /></li>
-                                        <li className="icon"><Link to ="/edit_task"><img src={table_edit} /></Link></li>
-                                        <li className="icon"><img src={table_delete} /></li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div className="row pt-2"></div>
-                        <div className="individual-task-wrapper mx-auto">
-                            <div className="individual-task row">
-                                <div className="col-1">
-                                    <div className="row ml-5 pt-2">
-                                        <p className="headings text-center">Invincible</p>
-                                    </div>
-                                    {/*
-                                    <div className="row ml-5">
-                                        <p className="headings-status text-center">Safe</p>
-                                    </div>
-                                    */}
-                                </div>
-
-                                <div className="col-1 ml-5 ">
-                                    <p className="headings-other text-center">8,9,10,11</p>
-                                </div>
-
-                                <div className="col-2 ml-2">
-                                    <p className="headings-other text-center">+jordan,+mid,-gs,-w,-td </p>
-                                </div>
-                                <div className="col-1">
-                                    <p className="headings-other text-center">BluCC</p>
-                                </div>
-                                <div className="col-1 ">
-                                    <p className="headings-other text-center">ExathProxies</p>
-                                </div> 
-                                <div className="col-2 ml-5 ">
-                                    <p className="headings-other text-center"><span style={{color: '#777777'}}>Idle</span></p>
-                                </div>
-                                <div className="col-2 ml-3">
-                                    <ul className="icons-wrapper pt-2">
-                                        <li className="icon"><img src={table_play} /></li>
-                                        <li className="icon"><img src={table_stop} /></li>
-                                        <li className="icon"><Link to ="/edit_task"><img src={table_edit} /></Link></li>
-                                        <li className="icon"><img src={table_delete} /></li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-
+                        {/*IndividualTask*/}
+                        <IndividualTask/>
+                        {/*IndividualTask*/}
                     
                 
                     </div>

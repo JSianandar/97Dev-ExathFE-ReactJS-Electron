@@ -30,6 +30,7 @@
 	background: #3D4158;
 	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
 	border-radius: 15px;
+	border: none;
 }
 
 .captcha-harvester-container .textarea{
@@ -38,4 +39,8 @@
 	background: #3D4158;
 	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
 	border-radius: 10px;
+}
+.captcha-harvester-container .background-color{
+	background: #3D4158;
+	border: 0;
 }

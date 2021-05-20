@@ -5,10 +5,12 @@ import {Link} from 'react-router-dom';
 import export_logo from "./assets/icons/export_logo.png";
 import import_logo from "./assets/icons/import_logo.png";
 import create_logo from "./assets/icons/create_task_logo.png";
+import harvester_logo from "./assets/icons/harvester_logo.svg";
 
 import table_edit from "./assets/icons/table_edit.png";
 import table_delete from "./assets/icons/table_delete.png";
 import TitleBar from './TitleBar.js';
+import IndividualCaptcha from './IndividualCaptcha.js';
 
 class Captcha extends React.Component{
 	constructor(){
@@ -31,8 +33,8 @@ class Captcha extends React.Component{
 						<div className="profile-icons-wrapper row">
 							<div className="left-control-panel col-2 pt-1">
 								<ul className="icons-wrapper pt-4 mr-0">
-									<li className="icon"><img src={export_logo}/></li>
-									<li className="icon"><img src={import_logo}/></li>
+									<li className="icon"><Link><img src={export_logo}/></Link></li>
+									<li className="icon"><Link><img src={import_logo}/></Link></li>
 								</ul>
 							</div>
 							<div className="col-8"></div>
@@ -61,37 +63,13 @@ class Captcha extends React.Component{
 						
 							<div className="col-2 mr-5"></div>
 						
-							<div className="col-2">
+							<div className="col-2 ml-2">
 								<h1 className="headings text-center">Actions</h1>
 							</div>
 						
 						</div>
-						<div className="row pt-2"></div>
-						<div className="individual-captcha mx-auto row">
-							<div className="col-2 mr-3 pt-1">
-								<h1 className="headings text-center">Captcha1</h1>
-							</div>
-
-							<div className="col-2 mr-5 pt-1">
-								<h1 className="headings text-center">randomrandom@gmail.com</h1>
-							</div>
-
-							<div className="col-2 mr-5 pt-1">
-								<h1 className="headings text-center">71.18.73.232:7556:space_fOHrX:hSvquyBeJF</h1>
-							</div>
-
 						
-							<div className="col-2 mr-5"></div>
-
-							<div className="col-2">
-								<ul className="icons-wrapper">
-									<li className="icon"><Link to="edit_captcha"><img src={table_edit} /></Link></li>
-									<li className="icon"><img src={table_delete} /></li>
-								</ul>
-							</div>
-					
-						</div>
-					
+						<IndividualCaptcha/>
 					
 					</div>
 

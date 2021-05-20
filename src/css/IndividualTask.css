@@ -1,0 +1,47 @@
+.individual-task-wrapper{
+	width: 100%;
+	height: 41px;
+
+	background: #291C43;
+	border-radius: 15px;
+}
+.individual-task-wrapper .individual-task  .headings{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px!important; 
+	line-height: 17px;
+
+	color: #C4C4C4;
+}
+
+.individual-task-wrapper .individual-task  .headings-status{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 11px!important; 
+	line-height: 17px;
+	opacity: 0.5;
+
+	color: #C4C4C4;
+}
+
+.individual-task-wrapper .individual-task  .headings-other{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 11px!important; 
+	line-height: 17px;
+	padding-top: 12px;
+	margin-right: 30px;
+
+	color: #C4C4C4;
+}
+.individual-task-wrapper .individual-task .icons-wrapper{
+	list-style-type: none;
+}
+
+.individual-task-wrapper .individual-task .icons-wrapper .icon{
+	display: inline;
+	padding-right: 5px;
+}

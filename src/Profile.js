@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/Profile.css';
 import {Link} from 'react-router-dom';
+import IndividualProfile from './IndividualProfile.js';
 
 import export_logo from "./assets/icons/export_logo.png";
 import import_logo from "./assets/icons/import_logo.png";
@@ -63,49 +64,9 @@ class Profile extends React.Component{
 								<h1 className="headings text-center">Actions</h1>
 							</div>
 						</div>
-						<div className="row pt-2"></div>
-						<div className="individual-profile mx-auto row">
-							<div className="col-4 pt-1">
-								<p className="headings text-center">Main</p>
-							</div>
-							<div className="col-2 pt-1">
-								<h1 className="headings text-center">randomrandom@gmail.com </h1>
-							</div>
-							<div className="col-2 pt-1">
-								<h1 className="headings text-center">4120</h1>
-							</div>
-							<div className="col-2 pt-1">
-								<h1 className="headings text-center">First Name</h1>
-							</div>
-							<div className="col-2">
-								<ul className="icons-wrapper">
-									<li className="icon"><Link to="/edit_profile_shipping"><img src={table_edit} /></Link></li>
-									<li className="icon"><img src={table_delete} /></li>
-								</ul>
-							</div>
-						</div>
-
-						<div className="row pt-2"></div>
-						<div className="individual-profile mx-auto row">
-							<div className="col-4 pt-1">
-								<p className="headings text-center">Main</p>
-							</div>
-							<div className="col-2 pt-1">
-								<h1 className="headings text-center">randomrandom@gmail.com </h1>
-							</div>
-							<div className="col-2 pt-1">
-								<h1 className="headings text-center">4120</h1>
-							</div>
-							<div className="col-2 pt-1">
-								<h1 className="headings text-center">First Name</h1>
-							</div>
-							<div className="col-2">
-								<ul className="icons-wrapper">
-									<li className="icon"><Link to="/edit_profile_shipping"><img src={table_edit} /></Link></li>
-									<li className="icon"><img src={table_delete} /></li>
-								</ul>
-							</div>
-						</div>
+						{/*individual Profile*/}
+						<IndividualProfile />
+						{/*individual Profile*/}
 					</div>
 				</div>
 			</div>
