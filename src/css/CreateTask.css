@@ -1,7 +1,7 @@
 .create-task-container{
 	width: 850px;
 	height: 442px;
-	background: #21232E;
+	background: #201636;
 	border-radius: 15px;
 	margin:auto;
 }
@@ -30,7 +30,7 @@
 .create-task-container .text-area-left{
 	width: 445.7px;
 	height: 31.1px;
-	background: #3D4158;
+	background: #291C43;
 	border-radius: 10px;
 	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.25));
 }
@@ -38,7 +38,7 @@
 .create-task-container .text-area-right{
 	width: 321.32px;
 	height: 31.1px;
-	background: #3D4158;
+	background: #291C43;
 	border-radius: 10px;
 	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.25));
 }
@@ -46,7 +46,7 @@
 .create-task-container .text-area-below{
 	width: 381.51px;
 	height: 31.1px;
-	background: #3D4158;
+	background: #291C43;
 	border-radius: 10px;
 	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.25));
 }
@@ -62,6 +62,6 @@
 }
 
 .create-task-container .background-color{
-	background: #3D4158;
+	background: #291C43;
 	border: 0;
 }

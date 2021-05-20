@@ -2,7 +2,7 @@
 	width: 850px;
 	height: 442px;
 
-	background: #21232E;
+	background: #201636;
 	border-radius: 15px;
 	margin: auto;
 }
@@ -46,7 +46,7 @@
 .edit-profile-billing-container .button{
 	width: 130px;
 	height: 35px;
-	background: #3D4158;
+	background: #291C43;
 	border-radius: 10px;
 	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45))
 }
@@ -54,7 +54,7 @@
 .edit-profile-billing-container .button2{
 	width: 130px;
 	height: 35px;
-	background: #3D4158;
+	background: #291C43;
 	border-radius: 10px;
 	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
 	opacity: 0.4;
@@ -63,7 +63,7 @@
 .edit-profile-billing-container .text-area-left{
 	width: 410px;
 	height: 30px;
-	background: #3D4158;
+	background: #291C43;
 	border-radius: 10px;
 	border:0;
 }
@@ -71,7 +71,7 @@
 .edit-profile-billing-container .text-area-right{
 	width: 180px;
 	height: 30px;
-	background: #3D4158;
+	background: #291C43;
 	border-radius: 10px;
 	border:0;
 }

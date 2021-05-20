@@ -2,7 +2,7 @@
 	width: 650px;
 	height: 150px;
 
-	background: #21232E;
+	background: #201636;
 	border-radius: 15px;
 	margin: auto;
 }
@@ -31,7 +31,7 @@
 .quick-task-container .button{
 	width: 610px;
 	height: 40px;
-	background: #3D4158;
+	background: #291C43;
 	border-radius: 10px;
 	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
 	border:0;
