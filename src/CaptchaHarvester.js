@@ -27,7 +27,7 @@ class CaptchaHarvester extends React.Component{
 					</div>
 
 					<div className="col-3 pt-1">
-						<Link to="/captcha"><img src={exit_logo} /></Link>
+						<Link data-dismiss="modal"><img src={exit_logo} /></Link>
 					</div>
 				</div>
 

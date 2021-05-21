@@ -6,6 +6,9 @@ import {Link} from 'react-router-dom';
 import table_edit from "./assets/icons/table_edit.png";
 import table_delete from "./assets/icons/table_delete.png";
 import harvester_logo from './assets/icons/harvester_logo.svg';
+import EditCaptcha from './EditCaptcha.js';
+import CaptchaHarvester from './CaptchaHarvester.js';
+
 
 
 class IndividualCaptcha extends React.Component{
@@ -60,13 +63,30 @@ class IndividualCaptcha extends React.Component{
 
 								<div className="col-2 ml-2">
 									<ul className="icons-wrapper">
-										<li className="icon"><Link to ="/captcha_harvester"><img src= {harvester_logo}/></Link></li>
-										<li className="icon"><Link to="edit_captcha"><img src={table_edit} /></Link></li>
+										<li className="icon"><Link data-toggle="modal" data-target="#editCaptcha"><img src= {harvester_logo}/></Link></li>
+										<li className="icon"><Link data-toggle="modal" data-target="#captchaHarvester"><img src={table_edit} /></Link></li>
 										<li className="icon"><Link><img src={table_delete} /></Link></li>
 									</ul>
 								</div>
 							</div>
-							
+							{/*EditCaptchaModal*/}
+								<div className="modal fade" id="editCaptcha" tabIndex="-1" aria-labelledby="editCaptchaLabel" aria-hidden="true">
+									<div className= "modal-dialog">
+										<div className="modal-content">
+											<EditCaptcha/>
+										</div>
+									</div>
+								</div>
+							{/*EditCaptchaModal*/}
+							{/*CaptchaHarvesterModal*/}
+								<div className="modal fade" id="captchaHarvester" tabIndex="-1" aria-labelledby="captchaHarvesterLabel" aria-hidden="true">
+									<div className= "modal-dialog">
+										<div className="modal-content">
+											<CaptchaHarvester/>
+										</div>
+									</div>
+								</div>
+							{/*CaptchaHarvesterModal*/}
 						</React.Fragment>
 					)
 				})

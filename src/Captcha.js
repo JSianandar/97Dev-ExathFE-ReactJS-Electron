@@ -11,6 +11,9 @@ import table_edit from "./assets/icons/table_edit.png";
 import table_delete from "./assets/icons/table_delete.png";
 import TitleBar from './TitleBar.js';
 import IndividualCaptcha from './IndividualCaptcha.js';
+import CreateCaptcha from './CreateCaptcha.js';
+import EditCaptcha from './EditCaptcha.js';
+import CaptchaHarvester from './CaptchaHarvester.js';
 
 class Captcha extends React.Component{
 	constructor(){
@@ -41,7 +44,7 @@ class Captcha extends React.Component{
 							<div className="right-control-panel col-2 pt-1">
 								<ul className="icons-wrapper pt-4 mr-0">
 									<li></li>
-									<li className="icon"><Link to="/create_captcha"><img src={create_logo}/></Link></li>
+									<li className="icon"><Link data-toggle="modal" data-target="#createCaptcha"><img src={create_logo}/></Link></li>
 								</ul>
 							</div>
 						</div>
@@ -68,9 +71,19 @@ class Captcha extends React.Component{
 							</div>
 						
 						</div>
-						
+						{/*IndividualCaptcha*/}
 						<IndividualCaptcha/>
-					
+						{/*IndividualCaptcha*/}
+
+						{/*CreateCaptchaModal*/}
+							<div className="modal fade" id="createCaptcha" tabindex="-1" aria-labelledby="createCaptchaLabel" aria-hidden="true">
+								<div className= "modal-dialog">
+									<div className="modal-content">
+										<CreateCaptcha/>
+									</div>
+								</div>
+							</div>
+						{/*CreateCaptchaModal*/}
 					</div>
 
 				

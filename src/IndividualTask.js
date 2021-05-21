@@ -7,6 +7,8 @@ import table_edit from "./assets/icons/table_edit.png";
 import table_delete from "./assets/icons/table_delete.png";
 import table_play from "./assets/icons/table_play.png";
 import table_stop from "./assets/icons/table_stop.png";
+import EditCaptcha from './EditCaptcha.js';
+import CaptchaHarvester from './CaptchaHarvester.js';
 
 class IndividualTask extends React.Component{
 	constructor(){
@@ -43,30 +45,29 @@ class IndividualTask extends React.Component{
 						<React.Fragment>
 							<div className="individual-task-wrapper mx-auto">
 								<div className="individual-task row">
-									<div className="col-1">
-										<div className="row ml-5 ">
-											<p className="headings text-center">{e.site}</p>
-										</div>
+									<div className="col-2">
+										<p className="headings text-center">{e.site}</p>
+										<h3 className="headings-status text-center">{e.mode}</h3>
 									</div>
 
-									<div className="col-1 ml-5 ">
+									<div className="col-1">
 										<p className="headings-other text-center">{e.size}</p>
 									</div>
 
-									<div className="col-2 ml-2">
-										<p className="headings-other text-center">{e.positiveKey}<span>{e.negativeKey}</span></p>
+									<div className="col-2">
+										<p className="headings-other text-center">{e.positiveKey}<span style={{ color: '#C4C4C4' }}>{e.negativeKey}</span><span style={{ color: '#C4C4C4' }}>{e.sku}</span><span style={{ color: '#C4C4C4' }}>{e.directLink}</span></p>
 									</div>
-									<div className="col-1">
+									<div className="col-2">
 										<p className="headings-other text-center">{e.id}</p>
 									</div>
 									<div className="col-1 ">
 										<p className="headings-other text-center">{e.proxyGroup}</p>
 									</div> 
-									<div className="col-2 ml-5 ">
+									<div className="col-2 ">
 										<p className="headings-other text-center"><span style={{color: '#FA0606'}}>Waiting for Restocks</span></p>
 									</div>
-									<div className="col-2 ml-4">
-										<ul className="icons-wrapper pt-2">
+									<div className="col-2">
+										<ul className="icons-wrapper ml-1 pt-2">
 											<li className="icon"><Link><img src={table_play} /></Link></li>
 											<li className="icon"><Link><img src={table_stop} /></Link></li>
 											<li className="icon"><Link to ="/edit_task"><img src={table_edit} /></Link></li>
@@ -77,6 +78,7 @@ class IndividualTask extends React.Component{
 								</div>
 							</div>
 							<div className="row pt-2"></div>
+							
 						</React.Fragment>
 					)
 				})

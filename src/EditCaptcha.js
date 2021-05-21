@@ -72,10 +72,10 @@ class EditCaptcha extends React.Component{
 					<div className="col-3"></div>
 
 					<div className="col-2 ml-4 pt-1">
-						<Link to = "/captcha" className="routing" style={{ textDecoration: 'none' }}>Close</Link>
+						<Link data-dismiss="modal" className="routing" style={{ textDecoration: 'none' }}>Close</Link>
 					</div>
 					<div className="col-2 pt-1">
-						<Link to = "/captcha" className="routing" style={{ textDecoration: 'none' }}>Create</Link>
+						<Link data-dismiss="modal" className="routing" style={{ textDecoration: 'none' }}>Create</Link>
 					</div>
 				</div>
 

@@ -1,9 +1,14 @@
 .inside-wrapper{
 	width: 976px;
-	height: 85.72px;
 	background: #1D1130;
 	border-radius: 15px;
 	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.inside-wrapper .order-item-image {
+	height: 100px;
+	max-width: 120px;
+	object-fit: cover;
 }
 
 .inside-wrapper h2{
