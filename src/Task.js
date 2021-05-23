@@ -29,40 +29,15 @@ class Task extends React.Component{
    constructor(){
     super()
     this.state = {
-        profileId: [],
-        proxyId: [],
+        
     }
 
   }
 
   componentDidMount(){
-    this.getProfileId()
-    this.getProxyId()
+    
   }
 
-  getProfileId = () =>{
-        axios.get('http://exath.io/api/profiles/')
-        .then(response => {
-            this.setState({
-                profileId : response.data.id
-            })
-        },
-        error=>{
-
-        })
-  }
-
-  getProxyId = () =>{
-        axios.get('http://exath.io/api/proxies')
-        .then(response => {
-            this.setState({
-                proxyId : response.data.id
-            })
-        },
-        error=>{
-
-        })
-  }
 
   render(){
 	return(

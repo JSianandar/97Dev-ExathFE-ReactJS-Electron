@@ -14,16 +14,17 @@ class IndividualTask extends React.Component{
 	constructor(){
 		super()
 		this.state = {
-			tasks: [],
+			tasks: []
 		}
 	}
 
-	componentDidMount(){
-		this.getTasks()
+	async componentDidMount(){
+		await this.getTasks();
+		await this.mapProfileIdToProfileName();
 	}
 
-	getTasks = () =>{
-		axios.get('http://exath.io/api/tasks')
+	getTasks = async () =>{
+		await axios.get('http://exath.io/api/tasks')
 		.then(response => {
 			this.setState({
 				tasks : response.data
@@ -34,11 +35,23 @@ class IndividualTask extends React.Component{
 		})
 	}
 
+	mapProfileIdToProfileName = () => {
+		this.state.tasks.forEach(async e => {
+			await axios.get('http://exath.io/api/profiles/' + e.profile)
+			.then(response => {
+				e.profileName = response.data.name;
+			},
+			error=>{
+			
+			})
+		});
+	};
+
 	render(){
 		return(
 			<div className="IndividualTask">
 			{
-				this.state.tasks.map( (e, index) =>{
+				this.state.tasks.map((e, index) => {
 					if(index < 11)
 
 					return(
@@ -55,10 +68,10 @@ class IndividualTask extends React.Component{
 									</div>
 
 									<div className="col-2">
-										<p className="headings-other text-center">{e.positiveKey}<span style={{ color: '#C4C4C4' }}>{e.negativeKey}</span><span style={{ color: '#C4C4C4' }}>{e.sku}</span><span style={{ color: '#C4C4C4' }}>{e.directLink}</span></p>
+										<p className="headings-other text-center">{e.positiveKey}<span style={{ color: '#C4C4C4' }}>{ e.negativeKey}</span><span style={{ color: '#C4C4C4' }}>{e.sku}</span><span style={{ color: '#C4C4C4' }}>{e.directLink}</span></p>
 									</div>
 									<div className="col-2">
-										<p className="headings-other text-center">{e.id}</p>
+										<p className="headings-other text-center">{e.profileName}</p>
 									</div>
 									<div className="col-1 ">
 										<p className="headings-other text-center">{e.proxyGroup}</p>
@@ -78,7 +91,7 @@ class IndividualTask extends React.Component{
 								</div>
 							</div>
 							<div className="row pt-2"></div>
-							{/*EditAllTaskModal*/}
+							{/*EditTaskModal*/}
 							<div className="modal fade" id="editTask" tabIndex="-1" aria-labelledby="editTaskLabel" aria-hidden="true">
 								<EditTask/>
 								<div className= "modal-dialog modal-dialog-centered">
@@ -86,14 +99,13 @@ class IndividualTask extends React.Component{
 									</div>
 								</div>
 							</div>
-						{/*EditAllTaskModal*/}
+						{/*EditTaskModal*/}
 							
 						</React.Fragment>
 					)
 				})
 			}
 			</div>
-			
 		);
 	}
 }

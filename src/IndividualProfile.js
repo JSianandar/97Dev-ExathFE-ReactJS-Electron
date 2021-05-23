@@ -6,6 +6,10 @@ import {Link} from 'react-router-dom';
 import table_edit from "./assets/icons/table_edit.png";
 import table_delete from "./assets/icons/table_delete.png";
 
+import EditProfileShipping from './EditProfileShipping.js';
+import EditProfileBilling from './EditProfileBilling.js';
+import EditProfileCard from './EditProfileCard.js';
+
 class IndividualProfile extends React.Component{
 	constructor(){
 		super()
@@ -55,11 +59,41 @@ class IndividualProfile extends React.Component{
 								</div>
 								<div className="col-2 ml-0">
 									<ul className="icons-wrapper">
-										<li className="icon"><Link to="/edit_profile_shipping"><img src={table_edit} /></Link></li>
+										<li className="icon"><Link data-toggle="modal" data-target="#editProfileShipping"><img src={table_edit} /></Link></li>
 										<li className="icon"><Link><img src={table_delete} /></Link></li>
 									</ul>
 								</div>
 							</div>
+
+						{/*EditProfileShippingModal*/}
+							<div className="modal fade" id="editProfileShipping" tabIndex="-1" aria-labelledby="createProfileShippingLabel" aria-hidden="true">
+								<EditProfileShipping/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
+									</div>
+								</div>
+							</div>
+						{/*EditProfileShippingModal*/}
+
+						{/*EditProfileBillingModal*/}
+							<div className="modal fade" id="editProfileBilling" tabIndex="-1" aria-labelledby="editProfileBillingLabel" aria-hidden="true">
+								<EditProfileBilling/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
+									</div>
+								</div>
+							</div>
+						{/*EditProfileBillingModal*/}
+
+						{/*EditProfileCardModal*/}
+							<div className="modal fade" id="editProfileCard" tabIndex="-1" aria-labelledby="editProfileCardLabel" aria-hidden="true">
+								<EditProfileCard/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
+									</div>
+								</div>
+							</div>
+						{/*EditProfileCardModal*/}
 							
 						</React.Fragment>
 					)

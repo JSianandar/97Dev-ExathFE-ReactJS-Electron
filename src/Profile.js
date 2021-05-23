@@ -11,6 +11,10 @@ import table_edit from "./assets/icons/table_edit.png";
 import table_delete from "./assets/icons/table_delete.png";
 import TitleBar from './TitleBar.js';
 
+import CreateProfileShipping from './CreateProfileShipping.js';
+import CreateProfileBilling from './CreateProfileBilling.js';
+import CreateProfileCard from './CreateProfileCard.js';
+
 
 class Profile extends React.Component{
 	constructor(){
@@ -40,7 +44,7 @@ class Profile extends React.Component{
 							<div className="col-8"></div>
 							<div className="right-control-panel col-2 pt-1">
 								<ul className="icons-wrapper pt-4 mr-0">
-									<li className="icon"><Link to="/create_profile_shipping"><img src={create_logo}/></Link></li>
+									<li className="icon"><Link data-toggle="modal" data-target="#createProfileShipping"><img src={create_logo}/></Link></li>
 								</ul>
 							</div>
 						</div>
@@ -67,6 +71,39 @@ class Profile extends React.Component{
 						{/*individual Profile*/}
 						<IndividualProfile />
 						{/*individual Profile*/}
+
+						{/*CreateProfileShippingModal*/}
+							<div className="modal fade" id="createProfileShipping" tabIndex="-1" aria-labelledby="createProfileShippingLabel" aria-hidden="true">
+								<CreateProfileShipping/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
+									</div>
+								</div>
+							</div>
+						{/*CreateProfileShippingModal*/}
+
+						{/*CreateProfileBillingModal*/}
+							<div className="modal fade" id="createProfileBilling" tabIndex="-1" aria-labelledby="createProfileBillingLabel" aria-hidden="true">
+								<CreateProfileBilling/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
+									</div>
+								</div>
+							</div>
+						{/*CreateProfileBillingModal*/}
+
+						{/*CreateProfileCardModal*/}
+							<div className="modal fade" id="createProfileCard" tabIndex="-1" aria-labelledby="createProfileCardLabel" aria-hidden="true">
+								<CreateProfileCard/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
+									</div>
+								</div>
+							</div>
+						{/*CreateProfileCardModal*/}
+
+						
+
 					</div>
 				</div>
 			</div>

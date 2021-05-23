@@ -24,11 +24,11 @@ class EditProfileCard extends React.Component{
 						<h1>Edit Profile</h1>
 					</div>
 					<div className="col-2"></div>
-					<Link to="/edit_profile_shipping"className=" button2 col-2 " style={{ textDecoration: 'none' }}>	
+					<Link data-toggle="modal" data-target="#editProfileShipping" className=" button2 col-2 " style={{ textDecoration: 'none' }}>	
 						<h2 className="text-center pt-1">Shipping</h2>
 					</Link>
 
-					<Link to="/edit_profile_billing" className=" button2 col-2 ml-2 " style={{ textDecoration: 'none' }}>
+					<Link data-toggle="modal" data-target="#editProfileBilling" className=" button2 col-2 ml-2 " style={{ textDecoration: 'none' }}>
 						<h2 className="my-auto text-center pt-1">Billing</h2>
 					</Link>
 
@@ -88,10 +88,10 @@ class EditProfileCard extends React.Component{
 				<div className="row pt-4">
 					<div className="col-8"></div>
 					<div className="col-1 ml-5">
-						<Link to="/profile" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
+						<Link data-dismiss="modal" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
 					</div>
 					<div className="col-2 ml-4">
-						<Link to="/profile" className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
+						<Link data-dismiss="modal" className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
 					</div>
 					
 
