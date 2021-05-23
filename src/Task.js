@@ -4,6 +4,7 @@ import App from './App.js';
 import {Link} from 'react-router-dom';
 import {useState} from 'react';
 import IndividualTask from './IndividualTask.js';
+import axios from 'axios';
 
 import play_button from "./assets/icons/start_all_logo.png";
 import stop_button from "./assets/icons/stop_task_logo.png";
@@ -19,16 +20,48 @@ import table_edit from "./assets/icons/table_edit.png";
 import table_delete from "./assets/icons/table_delete.png";
 
 import TitleBar from './TitleBar.js';
+import EditAllTask from './EditAllTask';
+import DelayTask from './DelayTask';
+import QuickTask from './QuickTask';
+import CreateTask from './CreateTask';
 
 class Task extends React.Component{
    constructor(){
     super()
     this.state = {
+        profileId: [],
+        proxyId: [],
     }
+
   }
 
   componentDidMount(){
+    this.getProfileId()
+    this.getProxyId()
+  }
 
+  getProfileId = () =>{
+        axios.get('http://exath.io/api/profiles/')
+        .then(response => {
+            this.setState({
+                profileId : response.data.id
+            })
+        },
+        error=>{
+
+        })
+  }
+
+  getProxyId = () =>{
+        axios.get('http://exath.io/api/proxies')
+        .then(response => {
+            this.setState({
+                proxyId : response.data.id
+            })
+        },
+        error=>{
+
+        })
   }
 
   render(){
@@ -51,11 +84,11 @@ class Task extends React.Component{
                         <ul className="icons-wrapper ml-5">
                             <li className="icon"><Link><img src={play_button} /></Link></li>
                             <li className="icon"><Link><img src={stop_button} /></Link></li>
-                            <li className="icon"><Link to="/edit_all_task"><img src={edit_button} /></Link></li>
-                            <li className="icon"><Link to="/delay_task"><img src={delay_button} /></Link></li>
-                            <li className="icon"><Link to="/quick_task"><img src={quick_task_button} /></Link></li>
+                            <li className="icon"><Link data-toggle="modal" data-target="#editAllTask"><img src={edit_button} /></Link></li>
+                            <li className="icon"><Link data-toggle="modal" data-target="#delayTask"><img src={delay_button} /></Link></li>
+                            <li className="icon"><Link data-toggle="modal" data-target="#quickTask"><img src={quick_task_button} /></Link></li>
                             <li className="icon"><Link><img src={delete_button} /></Link></li>
-                            <li className="icon"><Link to ="/create_task"><img src={create_button} /></Link></li>
+                            <li className="icon"><Link data-toggle="modal" data-target="#createTask"><img src={create_button} /></Link></li>
                         </ul>
                     </div> 
                 </div>
@@ -94,6 +127,46 @@ class Task extends React.Component{
                         {/*IndividualTask*/}
                         <IndividualTask/>
                         {/*IndividualTask*/}
+
+                        {/*EditAllTaskModal*/}
+							<div className="modal fade" id="editAllTask" tabIndex="-1" aria-labelledby="editAllTaskLabel" aria-hidden="true">
+								<EditAllTask/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
+									</div>
+								</div>
+							</div>
+						{/*EditAllTaskModal*/}
+
+                        {/*DelayTaskModal*/}
+							<div className="modal fade" id="delayTask" tabIndex="-1" aria-labelledby="delayTaskLabel" aria-hidden="true">
+								<DelayTask/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
+									</div>
+								</div>
+							</div>
+						{/*DelayTaskModal*/}
+
+                        {/*QuickTaskModal*/}
+							<div className="modal fade" id="quickTask" tabIndex="-1" aria-labelledby="quickTaskLabel" aria-hidden="true">
+								<QuickTask/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
+									</div>
+								</div>
+							</div>
+						{/*QuickTaskModal*/}
+
+                        {/*CreateTaskModal*/}
+							<div className="modal fade" id="createTask" tabIndex="-1" aria-labelledby="createTaskLabel" aria-hidden="true">
+								<CreateTask/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
+									</div>
+								</div>
+							</div>
+						{/*CreateTaskModal*/}
                     
                 
                     </div>

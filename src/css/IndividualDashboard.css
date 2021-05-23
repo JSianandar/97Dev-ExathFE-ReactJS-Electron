@@ -1,3 +1,8 @@
+.IndividualDashboard {
+	height: 510px;
+	overflow-y: scroll !important;
+}
+
 .inside-wrapper{
 	width: 976px;
 	background: #1D1130;

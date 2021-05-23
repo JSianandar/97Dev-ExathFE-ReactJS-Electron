@@ -38,10 +38,10 @@ class DelayTask extends React.Component{
             <div className="row pt-4">
 				<div className="col-7"></div>
 				<div className="col-1 ml-4">
-					<Link to="/task" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
+					<Link data-toggle="modal" data-target="#delayTask" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
 				</div> 
 				<div className="col-2 ml-4">
-					<Link to="/task"className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
+					<Link data-toggle="modal" data-target="#delayTask" className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
 				</div>
 			</div>
             

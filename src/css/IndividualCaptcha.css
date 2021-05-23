@@ -1,3 +1,8 @@
+.IndividualCaptcha {
+	height: 510px;
+	overflow-y: scroll !important;
+}
+
 .individual-captcha{
 	width: 995px !important; 
 	height: 41px;

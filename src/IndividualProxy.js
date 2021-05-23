@@ -5,6 +5,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import table_edit from "./assets/icons/table_edit.png";
 import table_delete from "./assets/icons/table_delete.png";
+import EditProxy from './EditProxy.js';
 
 class IndividualProxy extends React.Component{
 	constructor(){
@@ -53,11 +54,20 @@ class IndividualProxy extends React.Component{
 
 								<div className="col-2 ml-0">
 									<ul className="icons-wrapper">
-										<li className="icon"><Link to="/edit_proxy"><img src={table_edit} /></Link></li>
+										<li className="icon"><Link data-toggle="modal" data-target="#editProxy"><img src={table_edit} /></Link></li>
 										<li className="icon"><Link><img src={table_delete} /></Link></li>
 									</ul>
 								</div>
 							</div>
+							{/*CreateProxyModal*/}
+								<div className="modal fade" id="editProxy" tabIndex="-1" aria-labelledby="editProxyLabel" aria-hidden="true">
+									<EditProxy/>
+									<div className= "modal-dialog modal-dialog-centered">
+										<div className="modal-content">		
+										</div>
+									</div>
+								</div>
+							{/*CreateProxyModal*/}	
 							
 						</React.Fragment>
 					)

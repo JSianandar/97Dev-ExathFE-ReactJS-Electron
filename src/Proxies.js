@@ -11,6 +11,7 @@ import table_edit from "./assets/icons/table_edit.png";
 import table_delete from "./assets/icons/table_delete.png";
 
 import TitleBar from './TitleBar.js';
+import CreateProxy from './CreateProxy.js';
 
 class Proxies extends React.Component{
 	constructor(){
@@ -41,7 +42,7 @@ class Proxies extends React.Component{
 							<div className="right-control-panel col-2 pt-1">
 								<ul className="icons-wrapper pt-4 mr-0">
 									<li></li>
-									<li className="icon"><Link to ="create_proxy"><img src={create_logo}/></Link></li>
+									<li className="icon"><Link data-toggle="modal" data-target="#createProxy"><img src={create_logo}/></Link></li>
 								</ul>
 							</div>
 						</div>
@@ -68,6 +69,17 @@ class Proxies extends React.Component{
 						{/*Individual Proxy*/}
 						<IndividualProxy/>
 						{/*Individual Proxy*/}
+
+						
+						{/*CreateProxyModal*/}
+							<div className="modal fade" id="createProxy" tabIndex="-1" aria-labelledby="createProxyLabel" aria-hidden="true">
+								<CreateProxy/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
+									</div>
+								</div>
+							</div>
+						{/*CreateProxyModal*/}
 					</div>
 				</div>
 			</div>

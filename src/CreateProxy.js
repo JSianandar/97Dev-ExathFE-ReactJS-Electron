@@ -52,10 +52,10 @@ class CreateProxy extends React.Component{
 					</div>
 					<div className="col-4"></div>
 					<div className="col-2 ml-3 pt-3">
-						<Link to = "/proxies" className="routing" style={{ textDecoration: 'none' }}>Close</Link>
+						<Link data-toggle="modal" data-target="#createProxy" className="routing" style={{ textDecoration: 'none' }}>Close</Link>
 					</div>
 					<div className="col-1 pt-3">
-						<Link to = "/proxies" className="routing" style={{ textDecoration: 'none' }}>Create</Link>
+						<Link data-toggle="modal" data-target="#createProxy" className="routing" style={{ textDecoration: 'none' }}>Create</Link>
 					</div>
 				</div>
 			</div>

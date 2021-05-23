@@ -1,3 +1,8 @@
+.IndividualProfile {
+	height: 510px;
+	overflow-y: scroll !important;
+}
+
 .individual-profile{
 	width: 995px;
 	height: 41px;

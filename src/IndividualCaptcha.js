@@ -63,17 +63,18 @@ class IndividualCaptcha extends React.Component{
 
 								<div className="col-2 ml-2">
 									<ul className="icons-wrapper">
-										<li className="icon"><Link data-toggle="modal" data-target="#editCaptcha"><img src= {harvester_logo}/></Link></li>
-										<li className="icon"><Link data-toggle="modal" data-target="#captchaHarvester"><img src={table_edit} /></Link></li>
+										<li className="icon"><Link data-toggle="modal" data-target="#captchaHarvester"><img src= {harvester_logo}/></Link></li>
+										<li className="icon"><Link data-toggle="modal" data-target="#editCaptcha"><img src={table_edit} /></Link></li>
 										<li className="icon"><Link><img src={table_delete} /></Link></li>
 									</ul>
 								</div>
 							</div>
 							{/*EditCaptchaModal*/}
 								<div className="modal fade" id="editCaptcha" tabIndex="-1" aria-labelledby="editCaptchaLabel" aria-hidden="true">
+									<EditCaptcha/>
 									<div className= "modal-dialog">
 										<div className="modal-content">
-											<EditCaptcha/>
+											
 										</div>
 									</div>
 								</div>
@@ -81,8 +82,9 @@ class IndividualCaptcha extends React.Component{
 							{/*CaptchaHarvesterModal*/}
 								<div className="modal fade" id="captchaHarvester" tabIndex="-1" aria-labelledby="captchaHarvesterLabel" aria-hidden="true">
 									<div className= "modal-dialog">
+										<CaptchaHarvester/>
 										<div className="modal-content">
-											<CaptchaHarvester/>
+											
 										</div>
 									</div>
 								</div>

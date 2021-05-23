@@ -76,10 +76,10 @@ class Captcha extends React.Component{
 						{/*IndividualCaptcha*/}
 
 						{/*CreateCaptchaModal*/}
-							<div className="modal fade" id="createCaptcha" tabindex="-1" aria-labelledby="createCaptchaLabel" aria-hidden="true">
-								<div className= "modal-dialog">
-									<div className="modal-content">
-										<CreateCaptcha/>
+							<div className="modal fade" id="createCaptcha" tabIndex="-1" aria-labelledby="createCaptchaLabel" aria-hidden="true">
+								<CreateCaptcha/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
 									</div>
 								</div>
 							</div>

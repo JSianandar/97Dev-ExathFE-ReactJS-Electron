@@ -38,10 +38,10 @@ class QuickTask extends React.Component{
 				<div className="row pt-4">
 					<div className="col-8"></div>
 					<div className="col-2">
-						<Link to="/task" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
+						<Link data-toggle="modal" data-target="#quickTask" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
 					</div> 
 					<div className="col-2 ">
-						<Link to="/task"className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
+						<Link data-toggle="modal" data-target="#quickTask" className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
 					</div>
 				</div>
             </div>

@@ -52,10 +52,10 @@ class EditProxy extends React.Component{
 					</div>
 					<div className="col-4"></div>
 					<div className="col-2 ml-3 pt-3">
-						<Link to = "/proxies" className="routing" style={{ textDecoration: 'none' }}>Close</Link>
+						<Link data-toggle="modal" data-target="#editProxy" className="routing" style={{ textDecoration: 'none' }}>Close</Link>
 					</div>
 					<div className="col-1 pt-3">
-						<Link to = "/proxies" className="routing" style={{ textDecoration: 'none' }}>Save</Link>
+						<Link data-toggle="modal" data-target="#editProxy" className="routing" style={{ textDecoration: 'none' }}>Save</Link>
 					</div>
 				</div>
 			</div>

@@ -1,14 +1,14 @@
 import React from 'react';
 import './css/IndividualTask.css';
 import axios from 'axios';
+import Task from './Task.js';
 
 import {Link} from 'react-router-dom';
 import table_edit from "./assets/icons/table_edit.png";
 import table_delete from "./assets/icons/table_delete.png";
 import table_play from "./assets/icons/table_play.png";
 import table_stop from "./assets/icons/table_stop.png";
-import EditCaptcha from './EditCaptcha.js';
-import CaptchaHarvester from './CaptchaHarvester.js';
+import EditTask from "./EditTask.js";
 
 class IndividualTask extends React.Component{
 	constructor(){
@@ -45,7 +45,7 @@ class IndividualTask extends React.Component{
 						<React.Fragment>
 							<div className="individual-task-wrapper mx-auto">
 								<div className="individual-task row">
-									<div className="col-2">
+									<div className="col-2 pt-2">
 										<p className="headings text-center">{e.site}</p>
 										<h3 className="headings-status text-center">{e.mode}</h3>
 									</div>
@@ -70,7 +70,7 @@ class IndividualTask extends React.Component{
 										<ul className="icons-wrapper ml-1 pt-2">
 											<li className="icon"><Link><img src={table_play} /></Link></li>
 											<li className="icon"><Link><img src={table_stop} /></Link></li>
-											<li className="icon"><Link to ="/edit_task"><img src={table_edit} /></Link></li>
+											<li className="icon"><Link data-toggle="modal" data-target="#editTask"><img src={table_edit} /></Link></li>
 											<li className="icon"><Link><img src={table_delete} /></Link></li>
 										</ul>
 									</div>
@@ -78,6 +78,15 @@ class IndividualTask extends React.Component{
 								</div>
 							</div>
 							<div className="row pt-2"></div>
+							{/*EditAllTaskModal*/}
+							<div className="modal fade" id="editTask" tabIndex="-1" aria-labelledby="editTaskLabel" aria-hidden="true">
+								<EditTask/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
+									</div>
+								</div>
+							</div>
+						{/*EditAllTaskModal*/}
 							
 						</React.Fragment>
 					)
