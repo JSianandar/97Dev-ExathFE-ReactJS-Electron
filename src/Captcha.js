@@ -15,6 +15,7 @@ import CreateCaptcha from './CreateCaptcha.js';
 import EditCaptcha from './EditCaptcha.js';
 import CaptchaHarvester from './CaptchaHarvester.js';
 
+
 class Captcha extends React.Component{
 	constructor(){
 		super()

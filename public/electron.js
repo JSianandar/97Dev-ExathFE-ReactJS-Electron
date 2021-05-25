@@ -6,6 +6,10 @@ const path = require("path");
 const isDev = require("electron-is-dev");
 const ipc = ipcMain ;
 let mainWindow;
+const path = require("path");
+const fs = require("fs");
+
+
 
 function createWindow() {
     mainWindow = new BrowserWindow(
@@ -15,7 +19,9 @@ function createWindow() {
             resizable: false,
             frame: false,
             webPreferences: {
-                contextIsolation: false
+                contextIsolation: false,
+                enableRemoteModule: false,
+                nodeIntegration: false
             }
         }
     );
@@ -38,6 +44,11 @@ function createWindow() {
         console.log('clicked on minimzie btn')
         mainWindow.minimize();
     });
+
+    //Open Harvester
+    ipc.on('harvesterOpen', ()=>{
+        console.log('clicked on harvester open button')
+    })
     
 }
 

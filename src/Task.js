@@ -135,9 +135,9 @@ class Task extends React.Component{
 
                         {/*CreateTaskModal*/}
 							<div className="modal fade" id="createTask" tabIndex="-1" aria-labelledby="createTaskLabel" aria-hidden="true">
-								<CreateTask/>
+								<CreateTask/>	
 								<div className= "modal-dialog modal-dialog-centered">
-									<div className="modal-content">		
+									<div className="modal-content">	    
 									</div>
 								</div>
 							</div>

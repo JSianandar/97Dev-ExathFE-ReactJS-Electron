@@ -27,17 +27,21 @@ class CreateProxy extends React.Component{
 				<div className="row pt-3">
 					<div className="text-area mx-auto">
 						<div className="row ml-4 pt-3">
-							<p>Enter Your Proxy Here</p>
+							<p>Paste Your Proxy Here</p>
 						</div>
 						<div className="row ml-4">
 							<p>Format = ipadress:port:user:password</p>
 						</div>
 						<div className="row ml-4">
-							<Form>
-								<Form.Group controlId="formProxy">
-									<Form.Control type="text" placeholder="Enter your proxy" />
-								</Form.Group>
-							</Form>
+							<form>
+                                <input 
+                                type="text"
+                                required
+                                placeholder = "Enter Your Proxy"
+                                className="background-color"
+                                />
+                  
+							</form>
 						</div>
 					</div>
 				</div>

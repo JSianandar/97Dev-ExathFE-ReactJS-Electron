@@ -62,3 +62,9 @@
 
 	color: #C4C4C4;
 }
+
+.edit-proxy-container .background-color{
+	width: 700px;
+	background: #291C43;
+	border: none;
+}
