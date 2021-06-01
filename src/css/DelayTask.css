@@ -1,6 +1,8 @@
 .delay-task-container{
 	width: 550px;
 	height: 200px;
+	transform: translateY(100%);
+	z-index: 99;
 
 	background: #201636;
 	border-radius: 15px;

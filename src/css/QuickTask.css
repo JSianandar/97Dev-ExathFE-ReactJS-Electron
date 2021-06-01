@@ -5,6 +5,8 @@
 	background: #201636;
 	border-radius: 15px;
 	margin: auto;
+	transform: translateY(100%);
+	z-index: 99;
 }
 
 .quick-task-container h1{
@@ -35,6 +37,9 @@
 	border-radius: 10px;
 	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
 	border:0;
+	outline: none;
+	color: #C4C4C4;
+	padding-left: 10px;
 	
 }
 

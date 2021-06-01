@@ -1,9 +1,11 @@
 .activation-container{
 	width: 1080px;
 	height: 360px;
-
+	transform: translateY(45%);
+	z-index: 99;
 	background: #180F29;
 	margin: auto;
+	border-radius: 10px;
 
 }
 
@@ -22,7 +24,9 @@
 	width: 920px;
 	height: 50px;
 	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
-
+	outline: none;
+	color: #C4C4C4;
+	padding-left: 10px;
 	background: #25193E;
 	border-radius: 20px;
 	margin-left: 75px;

@@ -48,6 +48,7 @@ class EditProfileShipping extends React.Component{
 								type="text"
 								placeholder="First Name"
 								className="text-area-left"
+								required
 							/>
 						</form>
 						
@@ -59,6 +60,7 @@ class EditProfileShipping extends React.Component{
 								type="text"
 								placeholder="City"
 								className="text-area-right"
+								required
 							/>
 						</form>
 					</div>
@@ -74,6 +76,7 @@ class EditProfileShipping extends React.Component{
 								type="text"
 								placeholder="Last Name"
 								className="text-area-left"
+								required
 							/>
 						</form>
 						
@@ -85,6 +88,7 @@ class EditProfileShipping extends React.Component{
 								type="text"
 								placeholder="Postal Code"
 								className="text-area-right"
+								required
 							/>
 						</form>
 					</div>
@@ -100,6 +104,7 @@ class EditProfileShipping extends React.Component{
 								type="text"
 								placeholder="Email Address"
 								className="text-area-left"
+								required
 							/>
 						</form>
 						
@@ -111,6 +116,7 @@ class EditProfileShipping extends React.Component{
 								type="text"
 								placeholder="Phone Number"
 								className="text-area-right"
+								required
 							/>
 						</form>
 					</div>
@@ -126,6 +132,7 @@ class EditProfileShipping extends React.Component{
 								type="text"
 								placeholder="Address 1"
 								className="text-area-left"
+								required
 							/>
 						</form>
 						
@@ -136,6 +143,7 @@ class EditProfileShipping extends React.Component{
 							<input
 								type="text"
 								placeholder="Country"
+								required
 								className="text-area-right"
 							/>
 						</form>
@@ -152,6 +160,7 @@ class EditProfileShipping extends React.Component{
 								type="text"
 								placeholder="Address 2"
 								className="text-area-left"
+								required
 							/>
 						</form>
 						
@@ -163,6 +172,7 @@ class EditProfileShipping extends React.Component{
 								type="text"
 								placeholder="Province"
 								className="text-area-right"
+								required
 							/>
 						</form>
 					</div>
@@ -177,6 +187,7 @@ class EditProfileShipping extends React.Component{
 								type="text"
 								placeholder="Profile Name"
 								className="text-area-right"
+								required
 							/>
 						</form>
 					</div>

@@ -49,6 +49,7 @@ class CreateProfileCard extends React.Component{
 									type="text"
 									placeholder="Card Holder"
 									className="text-area-right"
+									required
 								/>
 							</form>
 						</div>
@@ -58,6 +59,7 @@ class CreateProfileCard extends React.Component{
 									type="text"
 									placeholder="Card Number"
 									className="text-area-right"
+									required
 								/>
 							</form>
 						</div>
@@ -67,6 +69,7 @@ class CreateProfileCard extends React.Component{
 									type="text"
 									placeholder="MM/YY"
 									className="text-area-right"
+									required
 								/>
 							</form>
 						</div>
@@ -76,6 +79,7 @@ class CreateProfileCard extends React.Component{
 									type="text"
 									placeholder="CVV"
 									className="text-area-right"
+									required
 								/>
 							</form>
 						</div>

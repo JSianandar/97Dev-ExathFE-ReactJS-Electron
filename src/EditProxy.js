@@ -50,7 +50,7 @@ class EditProxy extends React.Component{
 					<div className="col-4 ml-3">
 						<Form>
 							<Form.Group controlId="formProxy">
-								<Form.Control type="text" placeholder="Group Name" className="group-name"/>
+								<Form.Control type="text" placeholder="Group Name" className="group-name" required/>
 							</Form.Group>
 						</Form>
 					</div>

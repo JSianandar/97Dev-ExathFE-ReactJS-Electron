@@ -30,6 +30,7 @@ class QuickTask extends React.Component{
 								type="text"
 								placeholder="Enter Link"
 								className="button"
+								required
 							/>
 						</form>
 					</div>

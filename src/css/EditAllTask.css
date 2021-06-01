@@ -4,6 +4,8 @@
 	background: #201636;
 	border-radius: 15px;
 	margin:auto;
+	transform: translateY(35%);
+	z-index: 99;
 }
 
 .edit-all-task-container h1{
@@ -63,4 +65,6 @@
 .edit-all-task-container .background-color{
 	background: #291C43;
 	border: 0;
+	outline: none;
+	color: #C4C4C4;
 }

@@ -2,10 +2,12 @@
 	width: 432px;
 	height: 720px;
 	top: 50%;
-
+	transform: translateY(2%);
+	z-index: 99;
 	background: #201636;
 	margin: auto;
 	padding: 10px;
+	border-radius: 10px;
 }
 .captcha-harvester-container h1{
 	font-family: MADE TOMMY;
@@ -39,8 +41,11 @@
 	background: #291C43;
 	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
 	border-radius: 10px;
+
 }
 .captcha-harvester-container .background-color{
 	background: #291C43;
 	border: 0;
+	color: #C4C4C4;
+	outline: none;
 }

@@ -83,12 +83,12 @@ class EditTask extends React.Component{
 				<div className="row pt-4">
 					<form className="text-area-left col-5 ml-5">
 						<img src={account_icon}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Account"/>
+						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Account" required/>
 					</form>
 					<div className=""></div>
 					<form className="text-area-left col-5 ml-5">
 						<img src={password_icon}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Password"/>
+						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Password" required/>
 					</form>
 				</div>
 

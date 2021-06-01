@@ -1,12 +1,18 @@
+.create-proxy{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .create-proxy-container{
 	width: 858px;
 	height: 442px;
-
+	margin: auto;
 	background: #201636;
 	border-radius: 15px;
-	margin: auto;
+	transform: translateY(35%);
+	z-index: 99;
 	padding: 10px;
-	top: 50%;
 }
 
 .create-proxy-container h1{
@@ -47,6 +53,8 @@
 	position: absolute;
 	width: 180px;
 	height: 30px;
+	outline: none;
+	color: #C4C4C4;
 
 	background: #291C43;
 	border-radius: 10px;
@@ -67,4 +75,6 @@
 	width: 700px;
 	background: #291C43;
 	border: none;
+	outline: none;
+	color: #C4C4C4;
 }

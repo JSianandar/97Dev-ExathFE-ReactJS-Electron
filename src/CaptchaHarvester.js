@@ -42,14 +42,14 @@ class CaptchaHarvester extends React.Component{
 				<div className="row pt-1 ml-3">
 					<form className="textarea pt-1">
 						<img className=" ml-3" src={email_logo} />
-						<input type="text" className="background-color ml-3" style={{outline: 'none'}} placeholder = "Email"/>
+						<input type="text" className="background-color ml-3" style={{outline: 'none'}} placeholder = "Email" required/>
 					</form>
 				</div>
 
 				<div className="row pt-2 ml-3">
 					<form className="textarea pt-1">
 						<img className=" ml-3" src={proxy_logo} />
-						<input type="text" className="background-color ml-3" style={{outline: 'none'}} placeholder = "Proxy"/>
+						<input type="text" className="background-color ml-3" style={{outline: 'none'}} placeholder = "Proxy" required/>
 					</form>
 				</div>
 				
