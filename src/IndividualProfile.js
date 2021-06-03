@@ -10,6 +10,8 @@ import EditProfileShipping from './EditProfileShipping.js';
 import EditProfileBilling from './EditProfileBilling.js';
 import EditProfileCard from './EditProfileCard.js';
 
+import EditProfile from './EditProfile.js';
+
 class IndividualProfile extends React.Component{
 	constructor(){
 		super()
@@ -59,41 +61,21 @@ class IndividualProfile extends React.Component{
 								</div>
 								<div className="col-2 ml-0">
 									<ul className="icons-wrapper">
-										<li className="icon"><Link data-toggle="modal" data-target="#editProfileShipping"><img src={table_edit} /></Link></li>
+										<li className="icon"><Link data-toggle="modal" data-target="#editProfile"><img src={table_edit} /></Link></li>
 										<li className="icon"><Link><img src={table_delete} /></Link></li>
 									</ul>
 								</div>
 							</div>
 
-						{/*EditProfileShippingModal*/}
-							<div className="modal fade" id="editProfileShipping" tabIndex="-1" aria-labelledby="createProfileShippingLabel" aria-hidden="true">
-								<EditProfileShipping/>
+						{/*EditProfileModal*/}
+							<div className="modal fade" id="editProfile" tabIndex="-1" aria-labelledby="editProfileLabel" aria-hidden="true">
+								<EditProfile/>
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		
 									</div>
 								</div>
 							</div>
-						{/*EditProfileShippingModal*/}
-
-						{/*EditProfileBillingModal*/}
-							<div className="modal fade" id="editProfileBilling" tabIndex="-1" aria-labelledby="editProfileBillingLabel" aria-hidden="true">
-								<EditProfileBilling/>
-								<div className= "modal-dialog modal-dialog-centered">
-									<div className="modal-content">		
-									</div>
-								</div>
-							</div>
-						{/*EditProfileBillingModal*/}
-
-						{/*EditProfileCardModal*/}
-							<div className="modal fade" id="editProfileCard" tabIndex="-1" aria-labelledby="editProfileCardLabel" aria-hidden="true">
-								<EditProfileCard/>
-								<div className= "modal-dialog modal-dialog-centered">
-									<div className="modal-content">		
-									</div>
-								</div>
-							</div>
-						{/*EditProfileCardModal*/}
+						{/*EditProfileModal*/}
 							
 						</React.Fragment>
 					)

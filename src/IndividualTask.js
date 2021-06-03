@@ -113,34 +113,53 @@ class IndividualTask extends React.Component{
 							break;
 						}
 					}
+
+					var posKey = e.positiveKey[0].split(',')
+					var negKey = e.negativeKey[0].split(',')
+
+					var newPosKey = ''
+					for(var i=0; i<posKey.length; i++) {
+						if (i == posKey.length-1)
+						newPosKey = newPosKey.concat('+'.concat(posKey[i]))
+						else
+						newPosKey = newPosKey.concat('+'.concat(posKey[i]+','))
+					}
+
+					var newNegKey = ''
+					for(var i=0; i<negKey.length; i++) {
+						if (i == negKey.length-1)
+						newNegKey = newNegKey.concat('-'.concat(negKey[i]))
+						else
+						newNegKey = newNegKey.concat('-'.concat(negKey[i]+','))
+					}
 					
 					return(
 						<React.Fragment>
 							<div className="individual-task-wrapper mx-auto">
 								<div className="individual-task row">
-									<div className="col-2 pt-2">
+									<div className="col pt-2">
 										<p className="headings text-center">{e.site}</p>
 										<h3 className="headings-status text-center">{e.mode}</h3>
 									</div>
 
-									<div className="col-1">
+									<div className="col">
 										<p className="headings-other text-center">{e.size}</p>
 									</div>
 
-									<div className="col-2">
-										<p className="headings-other text-center">{e.positiveKey}<span style={{ color: '#C4C4C4' }}>{ e.negativeKey}</span><span style={{ color: '#C4C4C4' }}>{e.sku}</span><span style={{ color: '#C4C4C4' }}>{e.directLink}</span></p>
+									<div className="col-3">
+										<p className="headings-other text-center" style={{marginLeft: '-20px'}}>{e.positiveKey[0] !== '' && newPosKey+','}<span style={{ color: '#C4C4C4' }}>{ e.negativeKey[0] !== '' && newNegKey+','}</span><span style={{ color: '#C4C4C4' }}>{e.sku}</span><span style={{ color: '#C4C4C4' }}>{e.directLink}</span></p>
 									</div>
-									<div className="col-2">
-										<p className="headings-other text-center">{profile}</p>
+									<div className="col">
+										<p className="headings-other text-center" style={{marginLeft: '-30px'}}>{profile}</p>
 									</div>
-									<div className="col-1 ">
-										<p className="headings-other text-center">{proxy}</p>
+									<div className="col ">
+										<p className="headings-other text-center" style={{marginLeft: '-30px'}}>{proxy}</p>
 									</div> 
-									<div className="col-2 ">
-										<p className="headings-other text-center"><span style={{color: '#FA0606'}}>Waiting for Restocks</span></p>
+									<div className="col-3 ">
+										<p className="headings-other text-center" style={{marginLeft: '-30px'}}><span style={{color: '#FA0606'}}>Waiting for Restocks</span></p>
 									</div>
-									<div className="col-2">
-										<ul className="icons-wrapper ml-1 pt-2">
+									<div className="col">
+										<ul className="icons-wrapper pt-2" style={{marginLeft: '-30px'}}>
 											<li className="icon"><Link><img src={table_play} /></Link></li>
 											<li className="icon"><Link><img src={table_stop} /></Link></li>
 											<li className="icon"><Link data-toggle="modal" data-target="#editTask"><img src={table_edit} /></Link></li>

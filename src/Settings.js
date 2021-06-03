@@ -13,17 +13,52 @@ import password_logo from './assets/icons/password_logo.svg';
 import profile_logo from './assets/icons/profile_logo.svg';
 import ruler_logo from './assets/icons/ruler_logo.svg';
 
+import axios from 'axios';
+
 
 class Settings extends React.Component{
 	constructor(){
 		super()
 		this.state = {
-
+			profiles: [],
+			sizes: []
 		}
 	}
 
-	componentDidMount(){
+	async componentDidMount(){
 
+		
+	}
+
+	async componentDidMount(){
+		await this.getProfiles();
+		await this.getSizes();
+	}
+
+	getProfiles = async () =>{
+		await axios.get('http://exath.io/api/profiles')
+		.then(response => {
+		
+			this.setState({
+				profiles : response.data
+			})
+		},
+		error=>{
+		
+		})
+	}
+
+	getSizes = async () =>{
+		await axios.get('http://exath.io/api/sizes')
+		.then(response => {
+		
+			this.setState({
+				sizes : response.data
+			})
+		},
+		error=>{
+		
+		})
 	}
 
 	render(){
@@ -60,18 +95,38 @@ class Settings extends React.Component{
 								<h1 className="quick-task" style={{fontWeight: "bold"}}>Quick Task</h1>
 							</div>
 						</div>
-						<div className="row mx-auto pt-2">
-							<Button variant="outline-none" className="setup-button-wrapper col-6 pt-1 d-flex ml-3">
+						<div className="row mx-auto pt-2">	
+						<Dropdown>
+							<Dropdown.Toggle variant="outline-none" className="setup-button-wrapper  pt-1 d-flex ml-3">
 								<img className="icon" src={profile_logo} />
 								<p className="heading my-auto ml-2">Choose Profile</p>
-							</Button>
+							</Dropdown.Toggle>
+
+							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
+								{this.state.profiles.map((e, index) => {
+									
+									return(<Dropdown.Item href="#/action-1">{e.name}</Dropdown.Item>)
+									
+								})}
+							</Dropdown.Menu>
+						</Dropdown>
 						</div>
 
 						<div className="row mx-auto pt-3">
-							<Button variant="outline-none" className="setup-button-wrapper col-6 pt-1 d-flex ml-3">
-								<img className="icon" src={ruler_logo} />
-								<p className="heading my-auto ml-2" >Preferred Size</p>
-							</Button>
+							<Dropdown>
+								<Dropdown.Toggle variant="outline-none" className="setup-button-wrapper col pt-1 d-flex ml-3">
+									<img className="icon" src={ruler_logo} />
+									<p className="heading my-auto ml-2" >Preferred Size</p>
+								</Dropdown.Toggle>
+
+								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
+								{this.state.sizes.map((e, index) => {
+									
+									return(<Dropdown.Item href="#/action-1">{e}</Dropdown.Item>)
+									
+								})}
+								 </Dropdown.Menu>
+							</Dropdown>
 						</div>
 						<div className="row mx-auto pt-3">
 							<form className="col-4 quick-task-button-wrapper ml-3">

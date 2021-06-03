@@ -71,31 +71,31 @@ class Task extends React.Component{
                 <div className="table-heading row mx-auto pt-2">
                     <div className="table-heading-wrapper">
                         <div className="table row">
-                            <div className="col-2 pt-2">
+                            <div className="col pt-2">
                                 <h1 className="headings text-center">Site</h1>
                             </div>
 
-                            <div className="col-1 pt-2">
+                            <div className="col pt-2">
                                 <h1 className="headings text-center">Size</h1>
                             </div>
 
-                            <div className="col-2  pt-2">
+                            <div className="col-3  pt-2">
                                 <h1 className="headings text-center">Product</h1>
                             </div>
 
-                            <div className="col-2 pt-2">
+                            <div className="col pt-2">
                                 <h1 className="headings text-center">Profile</h1>
                             </div>
 
-                            <div className="col-1 pt-2">
+                            <div className="col pt-2">
                                 <h1 className="headings text-center">Proxies</h1>
                             </div>
 
-                            <div className="col-2 pt-2">
+                            <div className="col-3 pt-2">
                                 <h1 className="headings text-center">Status </h1>
                             </div>
 
-                            <div className="col-2 pt-2">
+                            <div className="col pt-2">
                                 <h1 className="headings text-center">Actions</h1>
                             </div>
                         </div>

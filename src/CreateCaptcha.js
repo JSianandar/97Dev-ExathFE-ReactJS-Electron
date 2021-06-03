@@ -3,13 +3,35 @@ import './css/CreateCaptcha.css';
 import {Link} from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
+import axios from 'axios';
 
 class CreateCaptcha extends React.Component{
 	constructor(){
 		super()
 		this.state = {
-
+			email: '',
+			proxy: '',
+			name: ''
 		}
+	}
+
+	handleChange = event => {
+		this.setState({ [event.target.name]: event.target.value });
+	}
+
+	handleSubmit = event =>{
+		event.preventDefault();
+
+
+		axios.post('http://exath.io/api/captcha/create', {
+			"email": this.state.email,
+			"proxy": this.state.proxy,
+			"name": this.state.name
+		})
+		.then(res => {
+			console.log(res);
+			console.log(res.data);
+		})
 	}
 
 	componentDidMount(){
@@ -30,9 +52,11 @@ class CreateCaptcha extends React.Component{
 											<div className="row ml-2 pt-1">
 												<div className="col-8">
 													<div className="textarea">
-														<form>
+														<form >
 															<input 
 															type="text"
+															name= "email"
+															onChange={this.handleChange}
 															required
 															placeholder = "Email"
 															className="textarea"
@@ -49,6 +73,8 @@ class CreateCaptcha extends React.Component{
 															<input 
 															type="text"
 															required
+															name= "proxy"
+															onChange={this.handleChange}
 															placeholder = "Proxy"
 															className="textarea"
 															/>
@@ -64,7 +90,9 @@ class CreateCaptcha extends React.Component{
 															<input 
 															type="text"
 															required
+															name= "name"
 															placeholder = "Harvester Name"
+															onChange={this.handleChange}
 															className="textarea-hn"
 															/>
 														</form>
@@ -77,7 +105,7 @@ class CreateCaptcha extends React.Component{
 													<Link data-dismiss="modal" className="routing" style={{ textDecoration: 'none' }}>Close</Link>
 												</div>
 												<div className="col-2 pt-1">
-													<Link data-dismiss="modal" className="routing" style={{ textDecoration: 'none' }}>Create</Link>
+													<Link data-dismiss="modal" className="routing" style={{ textDecoration: 'none' }} onClick= {this.handleSubmit}>Create</Link>
 												</div>
 											</div>
 										</div>

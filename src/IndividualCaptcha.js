@@ -41,7 +41,6 @@ class IndividualCaptcha extends React.Component{
 			<div className="IndividualCaptcha">
 			{
 				this.state.captcha.reverse().map( (e, index) =>{
-					if(index < 5)
 
 					return(
 						<React.Fragment>

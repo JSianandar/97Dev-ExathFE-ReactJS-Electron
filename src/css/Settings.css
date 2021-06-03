@@ -152,3 +152,7 @@
 	background: #25193E;
 	border: 0;
 }
+
+.settings-container .dropdown-special{
+	overflow-y: scroll !important;
+}
