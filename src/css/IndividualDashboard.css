@@ -11,8 +11,8 @@
 }
 
 .inside-wrapper .order-item-image {
-	height: 100px;
-	max-width: 120px;
+	max-height: 100px;
+	max-width: 200px;
 	object-fit: cover;
 }
 

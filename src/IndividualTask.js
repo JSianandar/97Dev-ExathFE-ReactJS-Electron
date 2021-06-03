@@ -137,23 +137,23 @@ class IndividualTask extends React.Component{
 						<React.Fragment>
 							<div className="individual-task-wrapper mx-auto">
 								<div className="individual-task row">
-									<div className="col pt-2">
+									<div className="col ml-2 pt-2">
 										<p className="headings text-center">{e.site}</p>
 										<h3 className="headings-status text-center">{e.mode}</h3>
 									</div>
 
 									<div className="col">
-										<p className="headings-other text-center">{e.size}</p>
+										<p className="headings-other text-center" style={{marginLeft: '-10px'}}>{e.size}</p>
 									</div>
 
 									<div className="col-3">
 										<p className="headings-other text-center" style={{marginLeft: '-20px'}}>{e.positiveKey[0] !== '' && newPosKey+','}<span style={{ color: '#C4C4C4' }}>{ e.negativeKey[0] !== '' && newNegKey+','}</span><span style={{ color: '#C4C4C4' }}>{e.sku}</span><span style={{ color: '#C4C4C4' }}>{e.directLink}</span></p>
 									</div>
 									<div className="col">
-										<p className="headings-other text-center" style={{marginLeft: '-30px'}}>{profile}</p>
+										<p className="headings-other text-center" style={{marginLeft: '-35px'}}>{profile}</p>
 									</div>
 									<div className="col ">
-										<p className="headings-other text-center" style={{marginLeft: '-30px'}}>{proxy}</p>
+										<p className="headings-other text-center" style={{marginLeft: '-35px'}}>{proxy}</p>
 									</div> 
 									<div className="col-3 ">
 										<p className="headings-other text-center" style={{marginLeft: '-30px'}}><span style={{color: '#FA0606'}}>Waiting for Restocks</span></p>

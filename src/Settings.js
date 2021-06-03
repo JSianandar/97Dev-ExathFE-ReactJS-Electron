@@ -26,11 +26,6 @@ class Settings extends React.Component{
 	}
 
 	async componentDidMount(){
-
-		
-	}
-
-	async componentDidMount(){
 		await this.getProfiles();
 		await this.getSizes();
 	}

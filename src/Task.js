@@ -71,7 +71,7 @@ class Task extends React.Component{
                 <div className="table-heading row mx-auto pt-2">
                     <div className="table-heading-wrapper">
                         <div className="table row">
-                            <div className="col pt-2">
+                            <div className="col ml-2 pt-2">
                                 <h1 className="headings text-center">Site</h1>
                             </div>
 
