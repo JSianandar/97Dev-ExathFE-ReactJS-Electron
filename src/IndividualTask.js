@@ -156,7 +156,7 @@ class IndividualTask extends React.Component{
 										<p className="headings-other text-center" style={{marginLeft: '-35px'}}>{proxy}</p>
 									</div> 
 									<div className="col-3 ">
-										<p className="headings-other text-center" style={{marginLeft: '-30px'}}><span style={{color: '#FA0606'}}>Waiting for Restocks</span></p>
+										<p className="headings-other text-center" style={{marginLeft: '-30px'}}><span style={{color: '#FA0606', marginLeft: '-10px'}}>Waiting for Restocks</span></p>
 									</div>
 									<div className="col">
 										<ul className="icons-wrapper pt-2" style={{marginLeft: '-30px'}}>

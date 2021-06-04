@@ -33,6 +33,7 @@
 	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
 	border-radius: 15px;
 	border: none;
+	color: #C4C4C4
 }
 
 .captcha-harvester-container .textarea{

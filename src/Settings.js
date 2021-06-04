@@ -126,12 +126,12 @@ class Settings extends React.Component{
 						<div className="row mx-auto pt-3">
 							<form className="col-4 quick-task-button-wrapper ml-3">
 								<img className="discord_icon" src={user_logo} />
-								<input type="text" className="background-color ml-3" style={{outline: 'none'}} placeholder = "Account"/>
+								<input type="text" className="background-color ml-3"  placeholder = "Account" required/>
 							</form>
 							<div className="col-1"></div>
 							<form className="col-4 quick-task-button-wrapper">
 								<img className="discord_icon" src={password_logo} />
-								<input type="text" className="background-color ml-3" placeholder = "Password"/>
+								<input type="text" className="background-color ml-3" placeholder = "Password" required/>
 							</form>
 						</div>
 						<div className="updates-wrapper row pt-4">

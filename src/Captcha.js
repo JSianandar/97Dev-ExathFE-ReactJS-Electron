@@ -36,13 +36,9 @@ class Captcha extends React.Component{
 					<div className="page-wrapper mx-auto">
 						<div className="profile-icons-wrapper row">
 							<div className="left-control-panel col-2 pt-1">
-								<ul className="icons-wrapper pt-4 mr-0">
-									<li className="icon"><Link><img src={export_logo}/></Link></li>
-									<li className="icon"><Link><img src={import_logo}/></Link></li>
-								</ul>
 							</div>
 							<div className="col-8"></div>
-							<div className="right-control-panel col-2 pt-1">
+							<div className="right-control-panel col pt-1" style={{marginLeft: '30px'}}>
 								<ul className="icons-wrapper pt-4 mr-0">
 									<li></li>
 									<li className="icon"><Link data-toggle="modal" data-target="#createCaptcha"><img src={create_logo}/></Link></li>

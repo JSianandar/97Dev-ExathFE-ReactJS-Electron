@@ -43,7 +43,7 @@ class Profile extends React.Component{
 								</ul>
 							</div>
 							<div className="col-8"></div>
-							<div className="right-control-panel col-2 pt-1">
+							<div className="right-control-panel col pt-1" style={{marginLeft: '30px'}}>
 								<ul className="icons-wrapper pt-4 mr-0">
 									<li className="icon"><Link data-toggle="modal" data-target="#createProfile"><img src={create_logo}/></Link></li>
 								</ul>
@@ -53,7 +53,7 @@ class Profile extends React.Component{
 					
 
 						<div className="table-heading mx-auto row">
-							<div className="col-4">
+							<div className="col">
 								<h1 className="profile-name text-center">Profile Name</h1>
 							</div>
 							<div className="col-2">

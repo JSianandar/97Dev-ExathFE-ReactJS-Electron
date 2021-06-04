@@ -22,6 +22,7 @@
 .left-control-panel .icons-wrapper .icon {
 	display: inline;
 	padding-right: 10px;
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.7));
 }
 
 .right-control-panel .icons-wrapper {
@@ -31,6 +32,7 @@
 .right-control-panel .icons-wrapper .icon {
 	display: inline;
 	padding-right: 10px;
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.7));
 }
 
 .profile-container .table-heading{

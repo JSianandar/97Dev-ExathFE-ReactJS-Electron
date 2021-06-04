@@ -47,22 +47,22 @@ class IndividualCaptcha extends React.Component{
 							<div className="row pt-2"></div>
 							<div className="individual-captcha mx-auto row">
 								<div className="col-2 mr-3 pt-1">
-									<h1 className="headings text-center">{e.name}</h1>
+									<h1 className="headings text-center" style={{marginLeft:'-10px'}}>{e.name}</h1>
 								</div>
 
 								<div className="col-2 ml-5 pt-1">
-									<h1 className="headings text-center">{e.email}</h1>
+									<h1 className="headings text-center" style={{marginLeft:'-30px'}}>{e.email}</h1>
 								</div>
 
 								<div className="col-2 ml-4 pt-1">
-									<h1 className="headings text-center">{e.proxy}</h1>
+									<h1 className="headings text-center" style={{marginLeft:'-20px'}}>{e.proxy}</h1>
 								</div>
 
 						
 								<div className="col-2 mr-5"></div>
 
 								<div className="col-2 ml-2">
-									<ul className="icons-wrapper">
+									<ul className="icons-wrapper "style={{marginLeft:'5px'}}>
 										<li className="icon"><Link data-toggle="modal" data-target="#captchaHarvester"><img src= {harvester_logo}/></Link></li>
 										<li className="icon"><Link data-toggle="modal" data-target="#editCaptcha"><img src={table_edit} /></Link></li>
 										<li className="icon"><Link><img src={table_delete} /></Link></li>

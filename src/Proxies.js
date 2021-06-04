@@ -39,7 +39,7 @@ class Proxies extends React.Component{
 								</ul>
 							</div>
 							<div className="col-8"></div>
-							<div className="right-control-panel col-2 pt-1">
+							<div className="right-control-panel col pt-1" style={{marginLeft: '30px'}}>
 								<ul className="icons-wrapper pt-4 mr-0">
 									<li></li>
 									<li className="icon"><Link data-toggle="modal" data-target="#createProxy"><img src={create_logo}/></Link></li>

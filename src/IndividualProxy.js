@@ -53,7 +53,7 @@ class IndividualProxy extends React.Component{
 								<div className="col-6"></div>
 
 								<div className="col-2 ml-0">
-									<ul className="icons-wrapper">
+									<ul className="icons-wrapper" style={{marginLeft:'10px'}}>
 										<li className="icon"><Link data-toggle="modal" data-target="#editProxy"><img src={table_edit} /></Link></li>
 										<li className="icon"><Link><img src={table_delete} /></Link></li>
 									</ul>

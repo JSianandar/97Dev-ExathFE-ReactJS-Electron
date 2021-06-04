@@ -51,16 +51,16 @@ class IndividualProfile extends React.Component{
 									<p className="headings text-center">{e.name}</p>
 								</div>
 								<div className="col-2 pt-1">
-									<h1 className="headings text-center">{e.email}</h1>
+									<h1 className="headings text-center" style={{marginLeft:'-1px'}}>{e.email}</h1>
 								</div>
 								<div className="col-2 pt-1">
-									<h1 className="headings text-center">{e.cardNumber}</h1>
+									<h1 className="headings text-center" style={{marginLeft:'10px'}}>{e.cardNumber}</h1>
 								</div>
 								<div className="col-2 pt-1">
 									<h1 className="headings text-center">{e.shippingFirstName}</h1>
 								</div>
 								<div className="col-2 ml-0">
-									<ul className="icons-wrapper">
+									<ul className="icons-wrapper" style={{marginLeft:'10px'}}>
 										<li className="icon"><Link data-toggle="modal" data-target="#editProfile"><img src={table_edit} /></Link></li>
 										<li className="icon"><Link><img src={table_delete} /></Link></li>
 									</ul>

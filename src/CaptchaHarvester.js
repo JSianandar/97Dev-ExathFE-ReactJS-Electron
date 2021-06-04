@@ -23,18 +23,18 @@ class CaptchaHarvester extends React.Component{
 			<div className="captcha-harvester-container">
 				<div className="row pt-1">
 					<div className="col-9">
-						<h1>Captcha Harvester</h1>
+						<h1 style={{marginLeft: '15px'}} >Captcha Harvester</h1>
 					</div>
 
 					<div className="col-3 pt-1">
-						<Link data-dismiss="modal"><img src={exit_logo} /></Link>
+						<Link data-dismiss="modal" style={{marginLeft: '40px'}}><img src={exit_logo} /></Link>
 					</div>
 				</div>
 
 				<div className="row pt-1 ml-1 mr-1">
 					<Form mx-auto>
 						<Form.Group controlId="Form.Textarea">
-							<Form.Control as="textarea" rows={3} className="text-area ml-2"/>
+							<Form.Control as="textarea" rows={3} className="text-area ml-2" style={{resize: 'none'}}/>
 						</Form.Group>
 					</Form>
 				</div>
