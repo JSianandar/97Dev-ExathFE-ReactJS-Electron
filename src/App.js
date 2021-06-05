@@ -12,26 +12,6 @@ import Captcha from './Captcha.js';
 import Dashboard from './Dashboard.js';
 import Settings from './Settings.js';
 
-import CreateTask from './CreateTask.js';
-import QuickTask from './QuickTask.js';
-import DelayTask from './DelayTask.js';
-import EditTask from './EditTask.js';
-import EditAllTask from './EditAllTask.js';
-
-
-import CreateProfileShipping from './CreateProfileShipping';
-import CreateProfileBilling from './CreateProfileBilling';
-import CreateProfileCard from './CreateProfileCard';
-import EditProfileShipping from './EditProfileShipping';
-import EditProfileBilling from './EditProfileBilling';
-import EditProfileCard from './EditProfileCard';
-
-import CreateProxy from './CreateProxy';
-import EditProxy from './EditProxy';
-
-import CreateCaptcha from './CreateCaptcha';
-import EditCaptcha from './EditCaptcha';
-import CaptchaHarvester from './CaptchaHarvester';
 
 import{ BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Redirect } from "react-router-dom";
@@ -99,75 +79,6 @@ function App() {
             </div>
           </Route>
 
-          {/*Task Related Pages*/}
-          <Route exact path="/quick_task">
-            <QuickTask />
-          </Route>
-
-          <Route exact path="/delay_task">
-            <DelayTask />
-          </Route>
-
-          <Route exact path="/create_task">
-            <CreateTask />
-          </Route>
-
-          <Route exact path="/edit_task">
-            <EditTask />
-          </Route>
-
-          <Route exact path="/edit_all_task">
-            <EditAllTask />
-          </Route>
-
-
-          {/*Profile Related Pages*/}
-          <Route exact path="/create_profile_shipping">
-            <CreateProfileShipping />
-          </Route>
-
-          <Route exact path="/create_profile_billing">
-            <CreateProfileBilling />
-          </Route>
-
-          <Route exact path="/create_profile_card">
-            <CreateProfileCard />
-          </Route>
-
-          <Route exact path="/edit_profile_shipping">
-            <EditProfileShipping />
-          </Route>
-
-          <Route exact path="/edit_profile_billing">
-            <EditProfileBilling />
-          </Route>
-
-          <Route exact path="/edit_profile_card">
-            <EditProfileCard />
-          </Route>
-
-          {/*Captcha Related Pages*/}
-          <Route exact path="/create_captcha">
-            <CreateCaptcha />
-          </Route>
-
-          <Route exact path="/edit_captcha">
-            <EditCaptcha />
-          </Route>
-
-          <Route exact path="/captcha_harvester">
-            <CaptchaHarvester />
-          </Route>
-
-          {/*Proxy Related Pages*/}
-          <Route exact path="/create_proxy">
-            <CreateProxy />
-          </Route>
-
-          <Route exact path="/edit_proxy">
-            <EditProxy />
-          </Route>
-          
       </Switch>
     </Router>
   );

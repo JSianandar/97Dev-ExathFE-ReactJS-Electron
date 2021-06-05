@@ -59,15 +59,15 @@ class IndividualProxy extends React.Component{
 									</ul>
 								</div>
 							</div>
-							{/*CreateProxyModal*/}
-								<div className="modal fade" id="editProxy" tabIndex="-1" aria-labelledby="editProxyLabel" aria-hidden="true">
+							{/*EditProxyModal*/}
+								<div className="modal fade" id="editProxy" tabIndex="-1" aria-labelledby="editProxyLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
 									<EditProxy/>
 									<div className= "modal-dialog modal-dialog-centered">
 										<div className="modal-content">		
 										</div>
 									</div>
 								</div>
-							{/*CreateProxyModal*/}	
+							{/*EditProxyModal*/}	
 							
 						</React.Fragment>
 					)

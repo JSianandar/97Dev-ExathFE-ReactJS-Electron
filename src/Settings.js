@@ -75,11 +75,11 @@ class Settings extends React.Component{
 						</div>
 
 						<div className="row mx-auto">
-							<Button variant="outline-none" className="setup-button-wrapper col-6 d-flex pt-1 ml-3" >
+							<Button variant="outline-none" className="setup-button-wrapper d-flex pt-1 ml-3" >
 								<img className="discord_icon pt-1" src={discord_logo} />
 								<p className="heading ml-2">Discord Webhook</p>
 							</Button>
-							<div className="col-1"></div>
+							<div className="col-2"></div>
 							<Button variant="outline-none" className="test-button-wrapper col-1">
 								<p className="heading my-auto text-center">Test</p>
 							</Button>

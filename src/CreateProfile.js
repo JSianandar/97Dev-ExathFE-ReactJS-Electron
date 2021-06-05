@@ -37,7 +37,7 @@ class CreateProfile extends React.Component{
 			cvv: '',
 			monthExp: '',
 			yearExp: '',
-			sameAsShipping: 'false'
+			sameAsShipping: false
 			
 
 			
@@ -307,7 +307,7 @@ class CreateProfile extends React.Component{
 							</div>
 							<div className="col-1"></div>
 							<div className="col-3 pt-1">
-								<input type="checkbox" class="form-check-input" id="exampleCheck1"/>
+								<input type="checkbox" class="form-check-input" id="exampleCheck1" name="sameAsShipping" />
 								<label class="form-check-label" for="exampleCheck1" style={{color: '#C4C4C4'}}>Use for Billing</label>
 							</div>
 							<div className="col-2"></div>

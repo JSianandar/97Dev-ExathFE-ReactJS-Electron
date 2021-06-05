@@ -104,7 +104,7 @@ class Task extends React.Component{
                         {/*IndividualTask*/}
 
                         {/*EditAllTaskModal*/}
-							<div className="modal fade" id="editAllTask" tabIndex="-1" aria-labelledby="editAllTaskLabel" aria-hidden="true">
+							<div className="modal fade" id="editAllTask" tabIndex="-1" aria-labelledby="editAllTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
 								<EditAllTask/>
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		
@@ -114,7 +114,7 @@ class Task extends React.Component{
 						{/*EditAllTaskModal*/}
 
                         {/*DelayTaskModal*/}
-							<div className="modal fade" id="delayTask" tabIndex="-1" aria-labelledby="delayTaskLabel" aria-hidden="true">
+							<div className="modal fade" id="delayTask" tabIndex="-1" aria-labelledby="delayTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
 								<DelayTask/>
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		
@@ -124,7 +124,7 @@ class Task extends React.Component{
 						{/*DelayTaskModal*/}
 
                         {/*QuickTaskModal*/}
-							<div className="modal fade" id="quickTask" tabIndex="-1" aria-labelledby="quickTaskLabel" aria-hidden="true">
+							<div className="modal fade" id="quickTask" tabIndex="-1" aria-labelledby="quickTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
 								<QuickTask/>
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		
@@ -134,7 +134,7 @@ class Task extends React.Component{
 						{/*QuickTaskModal*/}
 
                         {/*CreateTaskModal*/}
-							<div className="modal fade" id="createTask" tabIndex="-1" aria-labelledby="createTaskLabel" aria-hidden="true">
+							<div className="modal fade" id="createTask" tabIndex="-1" aria-labelledby="createTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
 								<CreateTask/>	
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">	    

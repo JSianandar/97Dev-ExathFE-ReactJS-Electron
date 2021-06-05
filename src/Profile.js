@@ -75,7 +75,7 @@ class Profile extends React.Component{
 							
 
 						{/*CreateProfileModal*/}
-							<div className="modal fade" id="createProfile" tabIndex="-1" aria-labelledby="createProfileLabel" aria-hidden="true">
+							<div className="modal fade" id="createProfile" tabIndex="-1" aria-labelledby="createProfileLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
 								<CreateProfile/>
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		

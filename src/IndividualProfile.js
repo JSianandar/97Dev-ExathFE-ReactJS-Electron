@@ -68,7 +68,7 @@ class IndividualProfile extends React.Component{
 							</div>
 
 						{/*EditProfileModal*/}
-							<div className="modal fade" id="editProfile" tabIndex="-1" aria-labelledby="editProfileLabel" aria-hidden="true">
+							<div className="modal fade" id="editProfile" tabIndex="-1" aria-labelledby="editProfileLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
 								<EditProfile/>
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		

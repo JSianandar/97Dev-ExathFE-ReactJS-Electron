@@ -100,38 +100,61 @@ class IndividualTask extends React.Component{
 							profile = this.state.profiles[i].name;
 							break;
 						}
+						if (e.profiles==""){
+							profile = e.profiles;
+							break;
+						}
 					}
 
 					var proxy = ''
 					for(var i=0; i<this.state.proxies.length; i++) {
 						if(e.proxyGroup == "Leaf"||e.proxyGroup == "LocalHost"){
-							proxy = e.proxyGroup
+							proxy = e.proxyGroup;
 							break;
 						}
 						if(this.state.proxies[i].id == e.proxyGroup) {
 							proxy = this.state.proxies[i].group;
 							break;
 						}
+						if(e.proxyGroup == ""){
+							proxy = e.proxyGroup;
+							break;
+						}
 					}
 
-					var posKey = e.positiveKey[0].split(',')
+					var newPosKey= ''
+
+					if(e.positiveKey.length >0) {
+						var posKey = e.positiveKey[0].split(',')
+						for(var i=0; i<posKey.length; i++) {
+							if (i == posKey.length-1){
+								newPosKey = newPosKey.concat('+'.concat(posKey[i]))
+							}
+							if (e.posKey==""){
+								newPosKey= e.posKey;
+							}
+							else
+							newPosKey = newPosKey.concat('+'.concat(posKey[i]+','))
+						}
+					}
+					
+					var newNegKey =  ''
+					
+					if(e.negativeKey.length >0){ 
 					var negKey = e.negativeKey[0].split(',')
-
-					var newPosKey = ''
-					for(var i=0; i<posKey.length; i++) {
-						if (i == posKey.length-1)
-						newPosKey = newPosKey.concat('+'.concat(posKey[i]))
-						else
-						newPosKey = newPosKey.concat('+'.concat(posKey[i]+','))
+						for(var i=0; i<negKey.length; i++) {
+							if (i == negKey.length-1){
+								newNegKey = newNegKey.concat('-'.concat(negKey[i]))
+							}
+							if (e.negKey==""){
+								newNegKey = e.negKey;
+							}
+							else
+							newNegKey = newNegKey.concat('-'.concat(negKey[i]+','))
+						}
 					}
 
-					var newNegKey = ''
-					for(var i=0; i<negKey.length; i++) {
-						if (i == negKey.length-1)
-						newNegKey = newNegKey.concat('-'.concat(negKey[i]))
-						else
-						newNegKey = newNegKey.concat('-'.concat(negKey[i]+','))
-					}
+					
 					
 					return(
 						<React.Fragment>
@@ -171,14 +194,14 @@ class IndividualTask extends React.Component{
 							</div>
 							<div className="row pt-2"></div>
 							{/*EditTaskModal*/}
-							<div className="modal fade" id="editTask" tabIndex="-1" aria-labelledby="editTaskLabel" aria-hidden="true">
+							<div className="modal fade" id="editTask" tabIndex="-1" aria-labelledby="editTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
 								<EditTask/>
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		
 									</div>
 								</div>
 							</div>
-						{/*EditTaskModal*/}
+							{/*EditTaskModal*/}
 							
 						</React.Fragment>
 					)

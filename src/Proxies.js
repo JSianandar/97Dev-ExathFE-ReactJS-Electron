@@ -72,7 +72,7 @@ class Proxies extends React.Component{
 
 						
 						{/*CreateProxyModal*/}
-							<div className="modal fade" id="createProxy" tabIndex="-1" aria-labelledby="createProxyLabel" aria-hidden="true">
+							<div className="modal fade" id="createProxy" tabIndex="-1" aria-labelledby="createProxyLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
 								<CreateProxy/>
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		

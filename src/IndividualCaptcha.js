@@ -70,7 +70,7 @@ class IndividualCaptcha extends React.Component{
 								</div>
 							</div>
 							{/*EditCaptchaModal*/}
-								<div className="modal fade" id="editCaptcha" tabIndex="-1" aria-labelledby="editCaptchaLabel" aria-hidden="true">
+								<div className="modal fade" id="editCaptcha" tabIndex="-1" aria-labelledby="editCaptchaLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
 									<EditCaptcha/>
 									<div className= "modal-dialog">
 										<div className="modal-content">
@@ -80,7 +80,7 @@ class IndividualCaptcha extends React.Component{
 								</div>
 							{/*EditCaptchaModal*/}
 							{/*CaptchaHarvesterModal*/}
-								<div className="modal fade" id="captchaHarvester" tabIndex="-1" aria-labelledby="captchaHarvesterLabel" aria-hidden="true">
+								<div className="modal fade" id="captchaHarvester" tabIndex="-1" aria-labelledby="captchaHarvesterLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
 									<CaptchaHarvester/>
 									<div className= "modal-dialog">	
 										<div className="modal-content">
