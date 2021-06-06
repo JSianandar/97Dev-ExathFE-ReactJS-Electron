@@ -21,7 +21,12 @@ class EditTask extends React.Component{
 			profiles: [],
 			sizes: [],
 			sites: [],
-			proxies: []
+			proxies: [],
+			selectSite: 'Select Site',
+			selectSize: 'Size',
+			selectProfile: 'Profile',
+			selectProxies: 'Proxies',
+			selectMode: 'Select Mode'
 		}
 	}
 
@@ -30,6 +35,28 @@ class EditTask extends React.Component{
 		await this.getSizes();
 		await this.getSites();
 		await this.getProxies();
+	}
+
+	handleClickSite = (event) => {
+		this.setState({ selectSite: event })
+		console.log(event)
+	}
+
+	handleClickSize = (event) => {
+		this.setState({ selectSize: event })
+	}
+
+	handleClickProfile = (event) => {
+		this.setState({ selectProfile: event })
+	}
+
+	handleClickProxies = (event) => {
+		this.setState({ selectProxies: event })
+	}
+
+	handleClickMode = (event) => {
+		this.setState({ selectMode: event })
+		console.log(event)
 	}
 
 	getProfiles = async () =>{
@@ -95,16 +122,16 @@ class EditTask extends React.Component{
 				</div>
 
 				<div className="row pt-4">
-					<Dropdown>
+					<Dropdown name="site" onChange={this.handleChange} onSelect = {this.handleClickSite}>
 						<Dropdown.Toggle variant="outline-none" className="text-area-left ml-5 d-flex">
 							<img className="pt-0" src={select_site_icon}/>
-							<h2 className="ml-2">Select Site</h2>
+							<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.selectSite}</h2>
 						</Dropdown.Toggle>
 
 						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 							{this.state.sites.map((e, index) => {
 									
-								return(<Dropdown.Item href="#/action-1">{e.identifier}</Dropdown.Item>)
+								return(<Dropdown.Item href="#/action-1" eventKey= {e.identifier} >{e.identifier}</Dropdown.Item>)
 									
 							})}
 						</Dropdown.Menu>
@@ -112,35 +139,35 @@ class EditTask extends React.Component{
 
 					</Dropdown>
 
-					<Dropdown>
-						<Dropdown.Toggle variant="outline-none"className="text-area-right d-flex" style={{marginLeft: '40px'}}>
-							<h2 className="">Select Mode</h2>
+					<Dropdown name="mode" onChange={this.handleChange} onSelect= {this.handleClickMode}>
+						<Dropdown.Toggle variant="outline-none"className="text-area-right  d-flex" style={{marginLeft: '40px'}}>
+							<h2 className="" style={{marginTop: '-3px'}}>{this.state.selectMode}</h2>
 						</Dropdown.Toggle>
 
 						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-							<Dropdown.Item href="#/action-1">Safe Preload</Dropdown.Item>
-							<Dropdown.Item href="#/action-1">Safe</Dropdown.Item>
-							<Dropdown.Item href="#/action-1">Request</Dropdown.Item>
-							<Dropdown.Item href="#/action-1">Requests</Dropdown.Item>
+							<Dropdown.Item href="#/action-1" eventKey= "SafePreload" >Safe Preload</Dropdown.Item>
+							<Dropdown.Item href="#/action-1" eventKey= "Safe">Safe</Dropdown.Item>
+							<Dropdown.Item href="#/action-1" eventKey= "Request">Request</Dropdown.Item>
+							<Dropdown.Item href="#/action-1" eventKey= "Requests">Requests</Dropdown.Item>
 						</Dropdown.Menu>
 					</Dropdown>
 				</div>
 
 				<div className="row pt-4">
-					<form variant="outline-none" className="text-area-left ml-5 d-flex">
-						<img src={keyword_icon} style={{width: '18.66px', marginLeft:'12px'}}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Keywords/URL/SKU" required/>
+					<form variant="outline-none" className="text-area-left  ml-5 d-flex">
+						<img src={keyword_icon} style={{width: '18.66px', marginLeft: '12px'}}/>
+						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Keywords/URL/SKU" required name="positiveKey" onChange={this.handleChange}/>
 					</form>
-					<Dropdown>
-						<Dropdown.Toggle variant="outline-none" className="text-area-right col d-flex" style={{marginLeft: '40px'}}>
+					<Dropdown name="size" onChange={this.handleChange} onSelect= {this.handleClickSize}>
+						<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" style={{marginLeft: '40px'}}>
 							<img src={ruler_icon}/>
-							<h2 className="ml-2">Size</h2>
+							<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.selectSize}</h2>
 						</Dropdown.Toggle>
 
-						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
+						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
 							{this.state.sizes.map((e, index) => {
 									
-								return(<Dropdown.Item href="#/action-1">{e}</Dropdown.Item>)
+								return(<Dropdown.Item href="#/action-1" eventKey= {e} >{e}</Dropdown.Item>)
 									
 							})}
 						</Dropdown.Menu>
@@ -149,40 +176,40 @@ class EditTask extends React.Component{
 				</div>
 
 				<div className="row pt-4">
-					<Dropdown>
+					<Dropdown name="profile" onChange={this.handleChange} onSelect={this.handleClickProfile}>
 						<Dropdown.Toggle variant="outline-none" className="text-area-left col ml-5 d-flex">
 							<img src={profile_icon}/>
-							<h2 className="ml-2">Profile</h2>
+							<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.selectProfile}</h2>
 						</Dropdown.Toggle>
 
-						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
+						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
 							{this.state.profiles.map((e, index) => {
 									
-								return(<Dropdown.Item href="#/action-1">{e.name}</Dropdown.Item>)
+								return(<Dropdown.Item href="#/action-1" eventKey={e.name}>{e.name}</Dropdown.Item>)
 									
 							})}
 						</Dropdown.Menu>
 					</Dropdown>
 					<div className="col-1"></div>
-					<form variant="outline-none" className="text-area-right  d-flex" style={{marginLeft: '-33px'}}>
+					<form variant="outline-none" className="text-area-right d-flex" style={{marginLeft: '-33px'}}>
 						<img src={number_of_task_icon} style={{width: '20.73px', marginLeft: '13px'}}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Number of Tasks" required/>
+						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Number of Tasks" required name="quantity" onChange={this.handleChange}/>
 					</form>
 
 				</div>
 
 				<div className="row pt-4">
-					<Dropdown>
+					<Dropdown name="proxyGroup" onChange={this.handleChange} onSelect={this.handleClickProxies}>
 						<Dropdown.Toggle variant="outline-none" className="text-area-left col ml-5 d-flex">
 							<img src={proxy_icon}/>
-							<h2 className="ml-2">Proxies</h2>
+							<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.selectProxies}</h2>
 						</Dropdown.Toggle>
 					
 					
-						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
+						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
 							{this.state.proxies.map((e, index) => {
 									
-								return(<Dropdown.Item href="#/action-1">{e.group}</Dropdown.Item>)
+								return(<Dropdown.Item href="#/action-1" eventKey= {e.group} >{e.group}</Dropdown.Item>)
 									
 							})}
 						</Dropdown.Menu>
@@ -192,12 +219,12 @@ class EditTask extends React.Component{
 				<div className="row pt-4">
 					<form className="text-area-left col-5 ml-5">
 						<img src={account_icon}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Account" required/>
+						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Account" required name="accountEmail" onChange={this.handleChange}/>
 					</form>
-					<div className=""></div>
+					
 					<form className="text-area-left col-5 ml-5">
 						<img src={password_icon}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Password" required/>
+						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Password" required name="accountPassword onChange={this.handleChange}"/>
 					</form>
 				</div>
 

@@ -73,9 +73,6 @@ class IndividualCaptcha extends React.Component{
 								<div className="modal fade" id="editCaptcha" tabIndex="-1" aria-labelledby="editCaptchaLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
 									<EditCaptcha/>
 									<div className= "modal-dialog">
-										<div className="modal-content">
-											
-										</div>
 									</div>
 								</div>
 							{/*EditCaptchaModal*/}

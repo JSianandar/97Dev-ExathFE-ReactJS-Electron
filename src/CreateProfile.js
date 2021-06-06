@@ -45,6 +45,7 @@ class CreateProfile extends React.Component{
 		this.toBilling = this.toBilling.bind(this)
 		this.toCard = this.toCard.bind(this)
 		this.toShipping = this.toShipping.bind(this)
+		this.sameAsShippingTrue = this.sameAsShippingTrue.bind(this)
 	}
 
 	handleChange = event => {
@@ -103,6 +104,11 @@ class CreateProfile extends React.Component{
 
 	toShipping(){
 		this.setState({mode: 'shipping' })
+	}
+
+	sameAsShippingTrue(e){
+		this.setState({sameAsShipping : e.target.checked})
+		console.log('test', e.target.checked)
 	}
 
 	render(){
@@ -307,15 +313,15 @@ class CreateProfile extends React.Component{
 							</div>
 							<div className="col-1"></div>
 							<div className="col-3 pt-1">
-								<input type="checkbox" class="form-check-input" id="exampleCheck1" name="sameAsShipping" />
-								<label class="form-check-label" for="exampleCheck1" style={{color: '#C4C4C4'}}>Use for Billing</label>
+								<input type="checkbox" className="form-check-input" id="exampleCheck1" name="sameAsShipping" onClick={this.sameAsShippingTrue}/>
+								<label className="form-check-label" for="exampleCheck1" style={{color: '#C4C4C4'}}>Use for Billing</label>
 							</div>
 							<div className="col-2"></div>
 							<div className="col-1 ml-4">
 								<Link data-dismiss="modal" onClick={this.toShipping} className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
 							</div>
 							<div className="col-2 ml-4">
-								<Link onClick= {this.toBilling} className="button-text" style={{ textDecoration: 'none' }}>Create</Link>
+								<Link onClick= {this.state.sameAsShipping?this.toCard: this.toBilling} className="button-text" style={{ textDecoration: 'none' }}>Create</Link>
 							</div>
 					
 

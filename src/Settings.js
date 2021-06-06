@@ -21,9 +21,20 @@ class Settings extends React.Component{
 		super()
 		this.state = {
 			profiles: [],
-			sizes: []
+			sizes: [],
+			size: 'Preferred Size',
+			profile: 'Choose Profile'
 		}
 	}
+
+	handleClick = (event) => {
+		this.setState({ size: event });
+	}
+
+	handleClickProfile = (event) => {
+		this.setState({ profile: event })
+	}
+
 
 	async componentDidMount(){
 		await this.getProfiles();
@@ -91,16 +102,16 @@ class Settings extends React.Component{
 							</div>
 						</div>
 						<div className="row mx-auto pt-2">	
-						<Dropdown>
+						<Dropdown onSelect = {this.handleClickProfile}>
 							<Dropdown.Toggle variant="outline-none" className="setup-button-wrapper  pt-1 d-flex ml-3">
 								<img className="icon" src={profile_logo} />
-								<p className="heading my-auto ml-2">Choose Profile</p>
+								<p className="heading my-auto ml-2">{this.state.profile}</p>
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 								{this.state.profiles.map((e, index) => {
 									
-									return(<Dropdown.Item href="#/action-1">{e.name}</Dropdown.Item>)
+									return(<Dropdown.Item href="#/action-1" eventKey = {e.name} >{e.name}</Dropdown.Item>)
 									
 								})}
 							</Dropdown.Menu>
@@ -108,16 +119,16 @@ class Settings extends React.Component{
 						</div>
 
 						<div className="row mx-auto pt-3">
-							<Dropdown>
+							<Dropdown onSelect = {this.handleClick}>
 								<Dropdown.Toggle variant="outline-none" className="setup-button-wrapper col pt-1 d-flex ml-3">
 									<img className="icon" src={ruler_logo} />
-									<p className="heading my-auto ml-2" >Preferred Size</p>
+									<p className="heading my-auto ml-2" >{this.state.size}</p>
 								</Dropdown.Toggle>
 
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 								{this.state.sizes.map((e, index) => {
 									
-									return(<Dropdown.Item href="#/action-1">{e}</Dropdown.Item>)
+									return(<Dropdown.Item href="#/action-1"  eventKey = {e} >{e}</Dropdown.Item>)
 									
 								})}
 								 </Dropdown.Menu>

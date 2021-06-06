@@ -122,6 +122,28 @@ class IndividualTask extends React.Component{
 						}
 					}
 
+					var posKey = e.positiveKey[0].split(',')
+					var negKey = e.negativeKey[0].split(',')
+
+					var newPosKey = ''
+					for(var i=0; i<posKey.length; i++) {
+						if (i == posKey.length-1)
+						newPosKey = newPosKey.concat('+'.concat(posKey[i]))
+						else
+						newPosKey = newPosKey.concat('+'.concat(posKey[i]+','))
+					}
+
+					var newNegKey = ''
+					for(var i=0; i<negKey.length; i++) {
+						if (i == negKey.length-1)
+						newNegKey = newNegKey.concat('-'.concat(negKey[i]))
+						else
+						newNegKey = newNegKey.concat('-'.concat(negKey[i]+','))
+					}
+					
+
+
+{/*
 					var newPosKey= ''
 
 					if(e.positiveKey.length >0) {
@@ -154,7 +176,7 @@ class IndividualTask extends React.Component{
 						}
 					}
 
-					
+*/}	
 					
 					return(
 						<React.Fragment>

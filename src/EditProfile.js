@@ -16,6 +16,7 @@ class EditProfile extends React.Component{
 		this.toBilling = this.toBilling.bind(this)
 		this.toCard = this.toCard.bind(this)
 		this.toShipping = this.toShipping.bind(this)
+		this.sameAsShippingTrue = this.sameAsShippingTrue.bind(this)
 	}
 
 	componentDidMount(){
@@ -32,6 +33,11 @@ class EditProfile extends React.Component{
 
 	toShipping(){
 		this.setState({mode: 'shipping' })
+	}
+
+	sameAsShippingTrue(e){
+		this.setState({sameAsShipping : e.target.checked})
+		console.log('test', e.target.checked)
 	}
 
 	render(){
@@ -214,8 +220,8 @@ class EditProfile extends React.Component{
 							</div>
 							<div className="col-1"></div>
 							<div className="col-3 pt-1">
-								<input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-								<label class="form-check-label" for="exampleCheck1" style={{color: '#C4C4C4'}}>Use for Billing</label>
+								<input type="checkbox" className="form-check-input" id="exampleCheck1" name="sameAsShipping" onClick={this.sameAsShippingTrue}/>
+								<label className="form-check-label" for="exampleCheck1" style={{color: '#C4C4C4'}}>Use for Billing</label>
 							</div>
 							<div className="col-2"></div>
 							<div className="col-1 ml-4">

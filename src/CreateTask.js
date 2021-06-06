@@ -36,10 +36,39 @@ class CreateTask extends React.Component{
 			proxyGroup: '',
 			accountEmail: '',
 			accountPassword: '',
-			quantity: ''
+			quantity: '',
+			selectSite: 'Select Site',
+			selectSize: 'Size',
+			selectProfile: 'Profile',
+			selectProxies: 'Proxies',
+			selectMode: 'Select Mode'
 
 		}
 	}
+
+	handleClickSite = (event) => {
+		this.setState({ selectSite: event })
+		console.log(event)
+	}
+
+	handleClickSize = (event) => {
+		this.setState({ selectSize: event })
+	}
+
+	handleClickProfile = (event) => {
+		this.setState({ selectProfile: event })
+	}
+
+	handleClickProxies = (event) => {
+		this.setState({ selectProxies: event })
+	}
+
+	handleClickMode = (event) => {
+		this.setState({ selectMode: event })
+		console.log(event)
+	}
+
+
 	
 	handleChange = event => {
 		this.setState({ [event.target.name]: event.target.value });
@@ -139,16 +168,16 @@ class CreateTask extends React.Component{
 				</div>
 
 				<div className="row pt-4">
-					<Dropdown>
+					<Dropdown name="site" onChange={this.handleChange} onSelect = {this.handleClickSite}>
 						<Dropdown.Toggle variant="outline-none" className="text-area-left ml-5 d-flex">
 							<img className="pt-0" src={select_site_icon}/>
-							<h2 className="ml-2">Select Site</h2>
+							<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.selectSite}</h2>
 						</Dropdown.Toggle>
 
 						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 							{this.state.sites.map((e, index) => {
 									
-								return(<Dropdown.Item href="#/action-1"  name="site" onChange={this.handleChange}>{e.identifier}</Dropdown.Item>)
+								return(<Dropdown.Item href="#/action-1" eventKey= {e.identifier} >{e.identifier}</Dropdown.Item>)
 									
 							})}
 						</Dropdown.Menu>
@@ -156,16 +185,16 @@ class CreateTask extends React.Component{
 
 					</Dropdown>
 
-					<Dropdown>
+					<Dropdown name="mode" onChange={this.handleChange} onSelect= {this.handleClickMode}>
 						<Dropdown.Toggle variant="outline-none"className="text-area-right  d-flex" style={{marginLeft: '40px'}}>
-							<h2 className="">Select Mode</h2>
+							<h2 className="" style={{marginTop: '-3px'}}>{this.state.selectMode}</h2>
 						</Dropdown.Toggle>
 
 						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-							<Dropdown.Item href="#/action-1" name="mode" onChange={this.handleChange}>Safe Preload</Dropdown.Item>
-							<Dropdown.Item href="#/action-1" name="mode" onChange={this.handleChange}>Safe</Dropdown.Item>
-							<Dropdown.Item href="#/action-1" name="mode" onChange={this.handleChange}>Request</Dropdown.Item>
-							<Dropdown.Item href="#/action-1" name="mode" onChange={this.handleChange}>Requests</Dropdown.Item>
+							<Dropdown.Item href="#/action-1" eventKey= "SafePreload" >Safe Preload</Dropdown.Item>
+							<Dropdown.Item href="#/action-1" eventKey= "Safe">Safe</Dropdown.Item>
+							<Dropdown.Item href="#/action-1" eventKey= "Request">Request</Dropdown.Item>
+							<Dropdown.Item href="#/action-1" eventKey= "Requests">Requests</Dropdown.Item>
 						</Dropdown.Menu>
 					</Dropdown>
 				</div>
@@ -175,16 +204,16 @@ class CreateTask extends React.Component{
 						<img src={keyword_icon} style={{width: '18.66px', marginLeft: '12px'}}/>
 						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Keywords/URL/SKU" required name="positiveKey" onChange={this.handleChange}/>
 					</form>
-					<Dropdown>
+					<Dropdown name="size" onChange={this.handleChange} onSelect= {this.handleClickSize}>
 						<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" style={{marginLeft: '40px'}}>
 							<img src={ruler_icon}/>
-							<h2 className="ml-2">Size</h2>
+							<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.selectSize}</h2>
 						</Dropdown.Toggle>
 
 						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
 							{this.state.sizes.map((e, index) => {
 									
-								return(<Dropdown.Item href="#/action-1" name="size" onChange={this.handleChange}>{e}</Dropdown.Item>)
+								return(<Dropdown.Item href="#/action-1" eventKey= {e} >{e}</Dropdown.Item>)
 									
 							})}
 						</Dropdown.Menu>
@@ -193,16 +222,16 @@ class CreateTask extends React.Component{
 				</div>
 
 				<div className="row pt-4">
-					<Dropdown>
+					<Dropdown name="profile" onChange={this.handleChange} onSelect={this.handleClickProfile}>
 						<Dropdown.Toggle variant="outline-none" className="text-area-left col ml-5 d-flex">
 							<img src={profile_icon}/>
-							<h2 className="ml-2">Profile</h2>
+							<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.selectProfile}</h2>
 						</Dropdown.Toggle>
 
 						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
 							{this.state.profiles.map((e, index) => {
 									
-								return(<Dropdown.Item href="#/action-1" name="profile" onChange={this.handleChange}>{e.name}</Dropdown.Item>)
+								return(<Dropdown.Item href="#/action-1" eventKey={e.name}>{e.name}</Dropdown.Item>)
 									
 							})}
 						</Dropdown.Menu>
@@ -216,17 +245,17 @@ class CreateTask extends React.Component{
 				</div>
 
 				<div className="row pt-4">
-					<Dropdown>
+					<Dropdown name="proxyGroup" onChange={this.handleChange} onSelect={this.handleClickProxies}>
 						<Dropdown.Toggle variant="outline-none" className="text-area-left col ml-5 d-flex">
 							<img src={proxy_icon}/>
-							<h2 className="ml-2">Proxies</h2>
+							<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.selectProxies}</h2>
 						</Dropdown.Toggle>
 					
 					
 						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
 							{this.state.proxies.map((e, index) => {
 									
-								return(<Dropdown.Item href="#/action-1" name="proxyGroup" onChange={this.handleChange}>{e.group}</Dropdown.Item>)
+								return(<Dropdown.Item href="#/action-1" eventKey= {e.group} >{e.group}</Dropdown.Item>)
 									
 							})}
 						</Dropdown.Menu>
