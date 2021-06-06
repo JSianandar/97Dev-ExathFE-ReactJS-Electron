@@ -10,7 +10,8 @@ class EditProfile extends React.Component{
 	constructor(){
 		super()
 		this.state = {
-			mode: 'shipping'
+			mode: 'shipping',
+			sameAsShipping: false
 			
 		}
 		this.toBilling = this.toBilling.bind(this)
@@ -228,7 +229,7 @@ class EditProfile extends React.Component{
 								<Link data-dismiss="modal" className="button-text" onClick={this.toShipping} style={{ textDecoration: 'none' }}>Close</Link>
 							</div>
 							<div className="col-2 ml-4">
-								<Link onClick= {this.toBilling} className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
+								<Link onClick= {this.state.sameAsShipping?this.toCard: this.toBilling} className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
 							</div>
 					
 

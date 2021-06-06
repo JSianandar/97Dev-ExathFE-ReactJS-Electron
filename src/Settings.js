@@ -86,7 +86,7 @@ class Settings extends React.Component{
 						</div>
 
 						<div className="row mx-auto">
-							<Button variant="outline-none" className="setup-button-wrapper d-flex pt-1 ml-3" >
+							<Button variant="outline-none" className="setup-button-wrapper d-flex pt-1 ml-3" onClick = {()=> window.open("https://discord.com/api/webhooks/791366221815349258/ZaLjC5d_aNBbn-aWryS03Q09QgttE8g6md7bnG3eGf1r23i7eE5-4_wpeZ2IHnqw-l3n", "_blank")}>
 								<img className="discord_icon pt-1" src={discord_logo} />
 								<p className="heading ml-2">Discord Webhook</p>
 							</Button>
