@@ -93,7 +93,7 @@ class IndividualTask extends React.Component{
 			<div className="IndividualTask">
 			{
 				
-				this.state.tasks.map((e, index) => {
+				this.state.tasks.reverse().map((e, index) => {
 					var profile = ''
 					for(var i=0; i<this.state.profiles.length; i++) {
 						if(this.state.profiles[i].id == e.profile) {
@@ -121,24 +121,30 @@ class IndividualTask extends React.Component{
 							break;
 						}
 					}
-
-					var posKey = e.positiveKey[0].split(',')
-					var negKey = e.negativeKey[0].split(',')
-
 					var newPosKey = ''
-					for(var i=0; i<posKey.length; i++) {
-						if (i == posKey.length-1)
-						newPosKey = newPosKey.concat('+'.concat(posKey[i]))
-						else
-						newPosKey = newPosKey.concat('+'.concat(posKey[i]+','))
-					}
-
 					var newNegKey = ''
-					for(var i=0; i<negKey.length; i++) {
-						if (i == negKey.length-1)
-						newNegKey = newNegKey.concat('-'.concat(negKey[i]))
-						else
-						newNegKey = newNegKey.concat('-'.concat(negKey[i]+','))
+
+					try{
+						var posKey = e.positiveKey[0].split(',')
+						var negKey = e.negativeKey[0].split(',')
+
+						
+						for(var i=0; i<posKey.length; i++) {
+							if (i == posKey.length-1)
+							newPosKey = newPosKey.concat('+'.concat(posKey[i]))
+							else
+							newPosKey = newPosKey.concat('+'.concat(posKey[i]+','))
+						}
+
+						
+						for(var i=0; i<negKey.length; i++) {
+							if (i == negKey.length-1)
+							newNegKey = newNegKey.concat('-'.concat(negKey[i]))
+							else
+							newNegKey = newNegKey.concat('-'.concat(negKey[i]+','))
+						}
+					}catch (error) {
+						console.log(e)
 					}
 					
 
@@ -184,7 +190,7 @@ class IndividualTask extends React.Component{
 								<div className="individual-task row">
 									<div className="col ml-2 pt-2">
 										<p className="headings text-center">{e.site}</p>
-										<h3 className="headings-status text-center">{e.mode}</h3>
+										<h3 className="headings-status text-center" style={{marginTop: '-15px'}}>{e.mode}</h3>
 									</div>
 
 									<div className="col">
@@ -192,7 +198,7 @@ class IndividualTask extends React.Component{
 									</div>
 
 									<div className="col-3">
-										<p className="headings-other text-center" style={{marginLeft: '-20px'}}>{e.positiveKey[0] !== '' && newPosKey+','}<span style={{ color: '#C4C4C4' }}>{ e.negativeKey[0] !== '' && newNegKey+','}</span><span style={{ color: '#C4C4C4' }}>{e.sku}</span><span style={{ color: '#C4C4C4' }}>{e.directLink}</span></p>
+										<p className="headings-other text-center" style={{marginLeft: '-20px'}}>{/*e.positiveKey[0] !== '' && newPosKey+','*/ e.positiveKey}<span style={{ color: '#C4C4C4' }}>{ /*e.negativeKey[0] !== '' && newNegKey+','*/ e.negativeKey}</span><span style={{ color: '#C4C4C4' }}>{e.sku}</span><span style={{ color: '#C4C4C4' }}>{e.directLink}</span></p>
 									</div>
 									<div className="col">
 										<p className="headings-other text-center" style={{marginLeft: '-35px'}}>{profile}</p>
