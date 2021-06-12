@@ -48,3 +48,12 @@
 
 	color: #C4C4C4;
 }
+
+.delay-task-container .background-color{
+	background: #291C43;
+	border: 0;
+	outline: none;
+	color: #C4C4C4;
+	padding-top: 10px;
+
+}

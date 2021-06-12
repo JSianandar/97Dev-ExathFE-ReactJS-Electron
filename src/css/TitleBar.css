@@ -3,11 +3,14 @@
 	opacity: 1.0;
 	width: 1050x;
 	height: 35px;
+	-webkit-app-region: drag;
+	
 	
 }
 .title-container .button-wrapper{
 	float: right;
 	background: transparent;
+	
 	
 }
 
@@ -15,6 +18,7 @@
 	margin-left:10px;
 	background: transparent;
 	opacity: 1.0;
+	-webkit-app-region: no-drag;
 
 }
 
@@ -22,6 +26,7 @@
 	
 	background: transparent;
 	opacity: 1.0;
+	-webkit-app-region: no-drag;
 }
 
 .title-container .button-wrapper .close-btn img{
@@ -38,14 +43,17 @@
 	
 	background: #1B1B24;
 	opacity: 1.0;
+	-webkit-app-region: no-drag;
 }
 
 .title-container .button-wrapper .close-btn:hover{
 	
 	background: #1B1B24;
 	opacity: 1.0;
+	-webkit-app-region: no-drag;
 }
 
 .title-container .buttons-active{
 	background: #4F9FEE;
+	-webkit-app-region: no-drag;
 }

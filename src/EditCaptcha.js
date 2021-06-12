@@ -3,6 +3,7 @@ import './css/EditCaptcha.css';
 import {Link} from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
+import IndividualCaptcha from './IndividualCaptcha.js';
 
 class EditCaptcha extends React.Component{
 	constructor(){
@@ -29,6 +30,11 @@ class EditCaptcha extends React.Component{
 					<div className="col-8">
 						<div className="textarea">
 							<form>
+								<input
+								type="hidden"
+								name="captcha_id"
+								id="captcha_id"
+								/>
                                 <input 
                                 type="text"
                                 required

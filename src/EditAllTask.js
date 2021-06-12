@@ -23,34 +23,102 @@ class EditAllTask extends React.Component{
 			sizes: [],
 			sites: [],
 			proxies: [],
+			profile:'',
+			site:'',
+			mode:'',
+			sku:'',
+			positiveKey:'',
+			negativeKey:'',
+			directLink:'',
+			size:'',
+			proxyGroup: '',
+			accountEmail: '',
+			accountPassword: '',
+			quantity: '',
 			selectSite: 'Select Site',
 			selectSize: 'Size',
 			selectProfile: 'Profile',
 			selectProxies: 'Proxies',
-			selectMode: 'Select Mode'
+			selectMode: 'Select Mode',
+			inputKeyword: 'Keywords/URL/SKU',
+			inputAccount: 'Account',
+			inputPassword: 'Password',
+			//refreshPageState: ''
 		}
 	}
 
 	handleClickSite = (event) => {
-		this.setState({ selectSite: event })
+		this.setState({ selectSite: event, site: event })
 		console.log(event)
 	}
 
 	handleClickSize = (event) => {
-		this.setState({ selectSize: event })
+		this.setState({ selectSize: event, size: event })
 	}
 
 	handleClickProfile = (event) => {
-		this.setState({ selectProfile: event })
+		this.setState({ selectProfile: event, profile: event })
 	}
 
 	handleClickProxies = (event) => {
-		this.setState({ selectProxies: event })
+		this.setState({ selectProxies: event, proxyGroup: event })
 	}
 
 	handleClickMode = (event) => {
-		this.setState({ selectMode: event })
+		this.setState({ selectMode: event, mode: event })
 		console.log(event)
+	}
+
+	handleChange = event => {
+		this.setState({ [event.target.name]: event.target.value });
+	}
+
+	handleSubmit = event =>{
+		event.preventDefault();
+
+
+		axios.put('http://exath.io/api/tasks/update/all', {
+			"profile": this.getStateProfileIdByName(this.state.profile),
+			"site": this.state.site,
+			"mode": this.state.mode,
+			"sku": this.state.sku,
+			"positiveKey" : this.state.positiveKey,
+			"negativeKey": this.state.negativeKey,
+			"directLink": this.state.directLink,
+			"size": this.state.size,
+			"proxyGroup": this.getStateProxyIdByGroup(this.state.proxyGroup),
+			"accountEmail": this.state.accountEmail,
+			"accountPassword": this.state.accountPassword,
+			"quantity": this.state.quantity
+		})
+		.then(res => {
+			console.log(res);
+			console.log(res.data);
+			//this.props.refreshPage()
+		})
+	}
+
+	getStateProfileIdByName(name){
+		var profileId = ''
+		for(var i=0; i<this.state.profiles.length; i++) {
+			if(this.state.profiles[i].name == name) {
+				profileId = this.state.profiles[i].id;
+				break;
+			}
+		}
+		return profileId;
+	}
+
+	getStateProxyIdByGroup(group){
+		var proxyId = ''
+		for(var i=0; i<this.state.proxies.length; i++) {
+			if(this.state.proxies[i].group == group) {
+				proxyId = this.state.proxies[i].id;
+				break;
+			}
+		}
+		return proxyId;
+
 	}
 
 	async componentDidMount(){
@@ -59,6 +127,30 @@ class EditAllTask extends React.Component{
 		await this.getSites();
 		await this.getProxies();
 	}
+/*
+	async componentDidUpdate(prevprop){
+		console.log('prevprop', prevprop)
+
+		if(prevprop.refreshPageState != this.props.refreshPageState){
+			document.getElementById('input-keyword').value = ''
+			document.getElementById('input-quantity').value = ''
+			document.getElementById('input-account').value = ''
+			document.getElementById('input-password').value = ''
+			this.setState({
+				selectSite: 'Select Site',
+				selectSize: 'Size',
+				selectProfile: 'Profile',
+				selectProxies: 'Proxies',
+				selectMode: 'Select Mode',
+				inputKeyword: 'Keywords/URL/SKU',
+				inputAccount: 'Account',
+				inputPassword: 'Password',
+				refreshPageState : this.props.refreshPageState
+				
+			})
+		}
+	}
+*/
 
 	getProfiles = async () =>{
 		await axios.get('http://exath.io/api/profiles')
@@ -145,7 +237,7 @@ class EditAllTask extends React.Component{
 						</Dropdown.Toggle>
 
 						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-							<Dropdown.Item href="#/action-1" eventKey= "SafePreload" >Safe Preload</Dropdown.Item>
+							<Dropdown.Item href="#/action-1" eventKey= "Safe Preload" >Safe Preload</Dropdown.Item>
 							<Dropdown.Item href="#/action-1" eventKey= "Safe">Safe</Dropdown.Item>
 							<Dropdown.Item href="#/action-1" eventKey= "Request">Request</Dropdown.Item>
 							<Dropdown.Item href="#/action-1" eventKey= "Requests">Requests</Dropdown.Item>
@@ -156,7 +248,7 @@ class EditAllTask extends React.Component{
 				<div className="row pt-4">
 					<form variant="outline-none" className="text-area-left  ml-5 d-flex">
 						<img src={keyword_icon} style={{width: '18.66px', marginLeft: '12px'}}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Keywords/URL/SKU" required name="positiveKey" onChange={this.handleChange}/>
+						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = {this.state.inputKeyword} id = "input-keyword" required name="sku" onChange={this.handleChange}/>
 					</form>
 					<Dropdown name="size" onChange={this.handleChange} onSelect= {this.handleClickSize}>
 						<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" style={{marginLeft: '40px'}}>
@@ -190,11 +282,6 @@ class EditAllTask extends React.Component{
 							})}
 						</Dropdown.Menu>
 					</Dropdown>
-					<div className="col-1"></div>
-					<form variant="outline-none" className="text-area-right d-flex" style={{marginLeft: '-33px'}}>
-						<img src={number_of_task_icon} style={{width: '20.73px', marginLeft: '13px'}}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Number of Tasks" required name="quantity" onChange={this.handleChange}/>
-					</form>
 
 				</div>
 
@@ -219,22 +306,22 @@ class EditAllTask extends React.Component{
 				<div className="row pt-4">
 					<form className="text-area-left col-5 ml-5">
 						<img src={account_icon}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Account" required name="accountEmail" onChange={this.handleChange}/>
+						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = {this.state.inputAccount} required id = "input-account" name="accountEmail" onChange={this.handleChange}/>
 					</form>
 					
 					<form className="text-area-left col-5 ml-5">
 						<img src={password_icon}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Password" required name="accountPassword onChange={this.handleChange}"/>
+						<input type="password" className="background-color ml-2" style={{outline: 'none'}} placeholder = {this.state.inputPassword} required id = "input-password" name="accountPassword" onChange={this.handleChange}/>
 					</form>
 				</div>
 
 				<div className="row pt-5">
 					<div className="col-8"></div>
 					<div className="col-1 ml-5">
-						<Link data-toggle="modal" data-target="#editAllTask" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
+						<Link data-toggle="modal" data-target="#editAllTask" className="button-text" style={{ textDecoration: 'none' }} >Close</Link>
 					</div>
 					<div className="col-2 ml-4">
-						<Link data-toggle="modal" data-target="#editAllTask" className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
+						<Link data-toggle="modal" data-target="#editAllTask" className="button-text" style={{ textDecoration: 'none' }} onClick= {(e) => {this.handleSubmit(e)}} >Create</Link>
 					</div>
 					
 

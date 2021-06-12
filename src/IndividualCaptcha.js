@@ -64,7 +64,7 @@ class IndividualCaptcha extends React.Component{
 								<div className="col-2 ml-2">
 									<ul className="icons-wrapper "style={{marginLeft:'5px'}}>
 										<li className="icon"><Link data-toggle="modal" data-target="#captchaHarvester"><img src= {harvester_logo}/></Link></li>
-										<li className="icon"><Link data-toggle="modal" data-target="#editCaptcha"><img src={table_edit} /></Link></li>
+										<li className="icon"><Link data-toggle="modal" data-target="#editCaptcha" ><img src={table_edit} /></Link></li>
 										<li className="icon"><Link><img src={table_delete} /></Link></li>
 									</ul>
 								</div>
@@ -85,6 +85,12 @@ class IndividualCaptcha extends React.Component{
 									</div>
 								</div>
 							{/*CaptchaHarvesterModal*/}
+{/*							<script>
+								function passCaptchaId(e.id){
+									document.getElementById("captcha_id").value = e.id
+								}
+							</script>
+*/}
 						</React.Fragment>
 					)
 				})

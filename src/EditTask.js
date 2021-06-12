@@ -156,7 +156,7 @@ class EditTask extends React.Component{
 				<div className="row pt-4">
 					<form variant="outline-none" className="text-area-left  ml-5 d-flex">
 						<img src={keyword_icon} style={{width: '18.66px', marginLeft: '12px'}}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Keywords/URL/SKU" required name="positiveKey" onChange={this.handleChange}/>
+						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Keywords/URL/SKU" id= "input-keyword" required name="positiveKey" onChange={this.handleChange}/>
 					</form>
 					<Dropdown name="size" onChange={this.handleChange} onSelect= {this.handleClickSize}>
 						<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" style={{marginLeft: '40px'}}>
@@ -193,7 +193,7 @@ class EditTask extends React.Component{
 					<div className="col-1"></div>
 					<form variant="outline-none" className="text-area-right d-flex" style={{marginLeft: '-33px'}}>
 						<img src={number_of_task_icon} style={{width: '20.73px', marginLeft: '13px'}}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Number of Tasks" required name="quantity" onChange={this.handleChange}/>
+						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Number of Tasks" id= "input-quantity" required name="quantity" onChange={this.handleChange}/>
 					</form>
 
 				</div>
@@ -219,12 +219,12 @@ class EditTask extends React.Component{
 				<div className="row pt-4">
 					<form className="text-area-left col-5 ml-5">
 						<img src={account_icon}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Account" required name="accountEmail" onChange={this.handleChange}/>
+						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Account" id="input-account" required name="accountEmail" onChange={this.handleChange}/>
 					</form>
 					
 					<form className="text-area-left col-5 ml-5">
 						<img src={password_icon}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Password" required name="accountPassword onChange={this.handleChange}"/>
+						<input type="password" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Password" id="input-password" required name="accountPassword" onChange={this.handleChange}/>
 					</form>
 				</div>
 

@@ -2,6 +2,7 @@ import {useState} from "react";
 import './css/QuickTask.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class QuickTask extends React.Component{
 	constructor(){
@@ -11,8 +12,19 @@ class QuickTask extends React.Component{
 		}
 	}
 
-	componentDidMount(){
+	handleStartQuickTask = async() => {
+        await axios.get('http://exath.io/api/quicktask?qt=https://www.hotsauce.com')
+        .then(response => {
+            console.log(response)
+			console.log(response.data)
+        },
+        error=>{
+        
+        })
+	}
 
+	componentDidMount(){
+		
 	}
 
 	render(){
@@ -42,7 +54,7 @@ class QuickTask extends React.Component{
 						<Link data-toggle="modal" data-target="#quickTask" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
 					</div> 
 					<div className="col-2 ">
-						<Link data-toggle="modal" data-target="#quickTask" className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
+						<Link data-toggle="modal" data-target="#quickTask" className="button-text" style={{ textDecoration: 'none' }} onClick= {this.handleStartQuickTask} >Save</Link>
 					</div>
 				</div>
             </div>

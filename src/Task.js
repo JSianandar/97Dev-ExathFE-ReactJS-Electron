@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import {useState} from 'react';
 import IndividualTask from './IndividualTask.js';
 import axios from 'axios';
+import Toast from 'react-bootstrap/Toast'
 
 import play_button from "./assets/icons/start_all_logo.png";
 import stop_button from "./assets/icons/stop_task_logo.png";
@@ -26,22 +27,85 @@ import QuickTask from './QuickTask';
 import CreateTask from './CreateTask';
 
 class Task extends React.Component{
-   constructor(){
-    super()
+   constructor(props){
+    super(props)
+    var refreshPage =  this.refreshPage.bind(this)
     this.state = {
-        
+        refreshPage: ''
     }
 
   }
 
-  componentDidMount(){
+  refreshPage(){
+    this.setState({
+        refreshPage : Math.floor(Math.random() * 99999)
+    })
+    console.log('page Refreshed')
+  }
+
+  handleStartAllTask = event => {
+        event.preventDefault();
+        axios.get('http://exath.io/api/action?id=all&act=start')
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+            this.refreshPage()
+        },
+        error=>{
+        
+        })
+  }
+
+  handleStopAllTask = event => {
+        event.preventDefault();
+        axios.get('http://exath.io/api/action?id=all&act=stop')
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+            this.refreshPage()
+        },
+        error=>{
+        
+        })
+  }
+
+  handleDeleteAllTask = event => {
+        event.preventDefault();
+        axios.delete('http://exath.io/api/tasks/update/all')
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+            this.refreshPage()
+        },
+        error=>{
+        
+        })
+  }
+
+  updateAllTask = async() => {
+        await axios.put('http://exath.io/api/tasks/update/all')
+        .then(response => {
+            
+        },
+        error=>{
+        
+        })
+  }
+
+
+  async componentDidMount(){
     
+    await this.getStartQuickTask
+    await this.updateAllTask
+    await this.updateChangeDelay
+
   }
 
 
   render(){
 	return(
         <div className="task">
+            
             <TitleBar/>
             <div className="tasks-container pt-0">
                 <div className="control-panel-wrapper row mx-auto">
@@ -57,12 +121,12 @@ class Task extends React.Component{
                     <div className="col-1"></div>
                     <div className="right-control-panel col-5">
                         <ul className="icons-wrapper ml-5">
-                            <li className="icon"><Link><img src={play_button} /></Link></li>
-                            <li className="icon"><Link><img src={stop_button} /></Link></li>
+                            <li className="icon"><Link onClick={this.handleStartAllTask}><img src={play_button} /></Link></li>
+                            <li className="icon"><Link onClick= {this.handleStopAllTask} ><img src={stop_button} /></Link></li>
                             <li className="icon"><Link data-toggle="modal" data-target="#editAllTask"><img src={edit_button} /></Link></li>
                             <li className="icon"><Link data-toggle="modal" data-target="#delayTask"><img src={delay_button} /></Link></li>
                             <li className="icon"><Link data-toggle="modal" data-target="#quickTask"><img src={quick_task_button} /></Link></li>
-                            <li className="icon"><Link><img src={delete_button} /></Link></li>
+                            <li className="icon"><Link onClick= {this.handleDeleteAllTask} ><img src={delete_button} /></Link></li>
                             <li className="icon"><Link data-toggle="modal" data-target="#createTask"><img src={create_button} /></Link></li>
                         </ul>
                     </div> 
@@ -100,7 +164,7 @@ class Task extends React.Component{
                             </div>
                         </div>
                         {/*IndividualTask*/}
-                        <IndividualTask/>
+                        <IndividualTask refreshPage = {this.state.refreshPage}/>
                         {/*IndividualTask*/}
 
                         {/*EditAllTaskModal*/}
@@ -135,7 +199,7 @@ class Task extends React.Component{
 
                         {/*CreateTaskModal*/}
 							<div className="modal fade" id="createTask" tabIndex="-1" aria-labelledby="createTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
-								<CreateTask/>	
+								<CreateTask refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>	
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">	    
 									</div>

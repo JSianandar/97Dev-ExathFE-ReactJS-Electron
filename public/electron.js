@@ -38,7 +38,7 @@ function createWindow() {
         mainWindow.close();
     });
 
-    //Close app
+    //Minimize app
     ipc.on('minimizeApp', ()=>{
         console.log('clicked on minimzie btn')
         mainWindow.minimize();

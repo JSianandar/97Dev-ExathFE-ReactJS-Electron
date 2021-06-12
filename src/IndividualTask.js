@@ -16,15 +16,27 @@ class IndividualTask extends React.Component{
 		this.state = {
 			tasks: [],
 			profiles: [],
-			proxies: []
+			proxies: [],
+			refreshPage: ''
 		}
 	}
 
 	async componentDidMount(){
 		await this.getTasks();
-		//await this.mapProfileIdToProfileName();
 		await this.getProfiles();
 		await this.getProxy();
+		console.log(this.state)
+	}
+
+	async componentDidUpdate(prevprop){
+		if(prevprop.refreshPage != this.props.refreshPage){
+			await this.getTasks();
+			await this.getProfiles();
+			await this.getProxy();
+			this.setState({
+				refreshPage : this.props.refreshPage
+			})
+		}
 	}
 
 	getTasks = async () =>{
@@ -66,25 +78,12 @@ class IndividualTask extends React.Component{
 		})
 	}
 
-	mapProfileIdToProfileName = () => {
-		const newTask = [];
-		this.state.tasks.forEach(async e => {
-			await axios.get('http://exath.io/api/profiles/' + e.profile)
-			.then(response => {
-				console.log("profile", response)
-				e.profileName = response.data.name;
-			},
-			error=>{
-			
-			})
-			newTask.push(e)
-
-		});
-		this.setState({
-			tasks : newTask
-		})
-	};
-
+	InitializeEditTaskModal(task){
+		document.getElementById('input-keyword').value = ''
+		document.getElementById('input-quantity').value = ''
+		document.getElementById('input-account').value = ''
+		document.getElementById('input-password').value = ''
+	}
 
 
 	render(){
