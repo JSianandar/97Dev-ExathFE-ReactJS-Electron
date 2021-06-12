@@ -43,7 +43,7 @@ class EditAllTask extends React.Component{
 			inputKeyword: 'Keywords/URL/SKU',
 			inputAccount: 'Account',
 			inputPassword: 'Password',
-			//refreshPageState: ''
+			refreshPageState: ''
 		}
 	}
 
@@ -94,7 +94,7 @@ class EditAllTask extends React.Component{
 		.then(res => {
 			console.log(res);
 			console.log(res.data);
-			//this.props.refreshPage()
+			this.props.refreshPage()
 		})
 	}
 
@@ -127,7 +127,7 @@ class EditAllTask extends React.Component{
 		await this.getSites();
 		await this.getProxies();
 	}
-/*
+
 	async componentDidUpdate(prevprop){
 		console.log('prevprop', prevprop)
 
@@ -150,7 +150,6 @@ class EditAllTask extends React.Component{
 			})
 		}
 	}
-*/
 
 	getProfiles = async () =>{
 		await axios.get('http://exath.io/api/profiles')

@@ -18,11 +18,19 @@ import CreateProfile from './CreateProfile.js';
 
 
 class Profile extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
+		var refreshPage =  this.refreshPage.bind(this)
 		this.state = {
-
+			refreshPage: ''
 		}
+	}
+
+	refreshPage(){
+		this.setState({
+			refreshPage : Math.floor(Math.random() * 99999)
+		})
+		console.log('page Refreshed')
 	}
 
 	componentDidMount(){
@@ -70,13 +78,13 @@ class Profile extends React.Component{
 							</div>
 						</div>
 						{/*individual Profile*/}
-						<IndividualProfile />
+						<IndividualProfile refreshPage = {this.state.refreshPage}/>
 						{/*individual Profile*/}
 							
 
 						{/*CreateProfileModal*/}
 							<div className="modal fade" id="createProfile" tabIndex="-1" aria-labelledby="createProfileLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
-								<CreateProfile/>
+								<CreateProfile refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		
 									</div>

@@ -37,10 +37,8 @@ class CreateProfile extends React.Component{
 			cvv: '',
 			monthExp: '',
 			yearExp: '',
-			sameAsShipping: false
-			
-
-			
+			sameAsShipping: false,
+			refreshPageState: ''
 		}
 		this.toBilling = this.toBilling.bind(this)
 		this.toCard = this.toCard.bind(this)
@@ -87,11 +85,46 @@ class CreateProfile extends React.Component{
 		.then(res => {
 			console.log(res);
 			console.log(res.data);
+			this.props.refreshPage()
 		})
 	}
 
 	componentDidMount(){
 
+	}
+
+	componentDidUpdate(prevprop){
+		if(prevprop.refreshPageState != this.props.refreshPageState){
+			document.getElementById('input-name').value = ''
+			document.getElementById('input-shippingFirstName').value = ''
+			document.getElementById('input-shippingLastName').value = ''
+			document.getElementById('input-shippingAddress1').value = ''
+			document.getElementById('input-shippingAddress2').value = ''
+			document.getElementById('input-shippingCity').value = ''
+			document.getElementById('input-shippingProvince').value = ''
+			document.getElementById('input-shippingCountry').value = ''
+			document.getElementById('input-shippingZip').value = ''
+			document.getElementById('input-shippingPhone').value = ''
+			document.getElementById('input-billingFirstName').value = ''
+			document.getElementById('input-billingLastName').value = ''
+			document.getElementById('input-email').value = ''
+			document.getElementById('input-billingAddress1').value = ''
+			document.getElementById('input-billingAddress2').value = ''
+			document.getElementById('input-billingCity').value = ''
+			document.getElementById('input-billingProvince').value = ''
+			document.getElementById('input-billingCountry').value = ''
+			document.getElementById('input-billingZip').value = ''
+			document.getElementById('input-billingPhone').value = ''
+			document.getElementById('input-cardHolder').value = ''
+			document.getElementById('input-cardNumber').value = ''
+			document.getElementById('input-cvv').value = ''
+			document.getElementById('input-yearExp').value = ''
+
+			this.setState({
+				sameAsShipping: false,
+				refreshPageState : this.props.refreshPageState
+			})
+		}
 	}
 
 	toBilling(){
@@ -125,11 +158,11 @@ class CreateProfile extends React.Component{
 								<h2 className="text-center pt-1" >Shipping</h2>
 							</Link>
 
-							<Link onClick = {this.toBilling} className=" button2 col-2 ml-2 " style={{ textDecoration: 'none' }}>
+							<Link  className=" button2 col-2 ml-2 " style={{ textDecoration: 'none' }}>
 								<h2 className="my-auto text-center pt-1 ">Billing</h2>
 							</Link>
 
-							<Link onClick = {this.toCard} className="button2 col-2 ml-2  " style={{ textDecoration: 'none' }}>
+							<Link  className="button2 col-2 ml-2  " style={{ textDecoration: 'none' }}>
 								<h2 className="my-auto text-center pt-1 ">Card</h2>
 							</Link>
 						</div>
@@ -145,6 +178,7 @@ class CreateProfile extends React.Component{
 									<input
 										type="text"
 										name= "shippingFirstName"
+										id = "input-shippingFirstName"
 										onChange={this.handleChange}
 										placeholder="First Name"
 										className="text-area-left"
@@ -159,6 +193,7 @@ class CreateProfile extends React.Component{
 									<input
 										type="text"
 										name="shippingCity"
+										id = "input-shippingCity"
 										onChange={this.handleChange}
 										placeholder="City"
 										className="text-area-right"
@@ -177,6 +212,7 @@ class CreateProfile extends React.Component{
 									<input
 										type="text"
 										name="shippingLastName"
+										id= "input-shippingLastName"
 										onChange={this.handleChange}
 										placeholder="Last Name"
 										className="text-area-left"
@@ -191,6 +227,7 @@ class CreateProfile extends React.Component{
 									<input
 										type="text"
 										name="shippingZip"
+										id= "input-shippingZip"
 										onChange={this.handleChange}
 										placeholder="Postal Code"
 										className="text-area-right"
@@ -210,6 +247,7 @@ class CreateProfile extends React.Component{
 										type="text"
 										name="email"
 										onChange={this.handleChange}
+										id= "input-email"
 										placeholder="Email Address"
 										className="text-area-left"
 										required
@@ -223,6 +261,7 @@ class CreateProfile extends React.Component{
 									<input
 										type="text"
 										name="shippingPhone"
+										id= "input-shippingPhone"
 										onChange={this.handleChange}
 										placeholder="Phone Number"
 										className="text-area-right"
@@ -241,6 +280,7 @@ class CreateProfile extends React.Component{
 									<input
 										type="text"
 										name="shippingAddress1"
+										id = "input-shippingAddress1"
 										onChange={this.handleChange}
 										placeholder="Address 1"
 										className="text-area-left"
@@ -255,6 +295,7 @@ class CreateProfile extends React.Component{
 									<input
 										type="text"
 										name="shippingCountry"
+										id= "input-shippingCountry"
 										onChange={this.handleChange}
 										placeholder="Country"
 										className="text-area-right"
@@ -273,6 +314,7 @@ class CreateProfile extends React.Component{
 									<input
 										type="text"
 										name="shippingAddress2"
+										id= "input-shippingAddress2"
 										onChange={this.handleChange}
 										placeholder="Address 2"
 										className="text-area-left"
@@ -287,6 +329,7 @@ class CreateProfile extends React.Component{
 									<input
 										type="text"
 										name="shippingProvince"
+										id= "input-shippingProvince"
 										onChange={this.handleChange}
 										placeholder="Province"
 										className="text-area-right"
@@ -304,6 +347,7 @@ class CreateProfile extends React.Component{
 									<input
 										type="text"
 										placeholder="Profile Name"
+										id= "input-name"
 										name="name"
 										onChange={this.handleChange}
 										className="text-area-right"
@@ -321,7 +365,7 @@ class CreateProfile extends React.Component{
 								<Link data-dismiss="modal" onClick={this.toShipping} className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
 							</div>
 							<div className="col-2 ml-4">
-								<Link onClick= {this.state.sameAsShipping?this.toCard: this.toBilling} className="button-text" style={{ textDecoration: 'none' }}>Create</Link>
+								<Link onClick= {this.state.sameAsShipping?this.toCard: this.toBilling} className="button-text" style={{ textDecoration: 'none' }}>Next</Link>
 							</div>
 					
 
@@ -336,7 +380,7 @@ class CreateProfile extends React.Component{
 						<h1>Create Profile</h1>
 					</div>
 					<div className="col-2"></div>
-					<Link onClick = {this.toShipping} className=" button2 col-2  "style={{ textDecoration: 'none' }}>	
+					<Link  className=" button2 col-2  "style={{ textDecoration: 'none' }}>	
 						<h2 className="text-center pt-1">Shipping</h2>
 					</Link>
 
@@ -344,7 +388,7 @@ class CreateProfile extends React.Component{
 						<h2 className="my-auto text-center pt-1">Billing</h2>
 					</Link>
 
-					<Link onClick= {this.toCard} className="button2 col-2 ml-2  "style={{ textDecoration: 'none' }}>
+					<Link  className="button2 col-2 ml-2  "style={{ textDecoration: 'none' }}>
 						<h2 className="my-auto text-center pt-1">Card</h2>
 					</Link>
 				</div>
@@ -360,6 +404,7 @@ class CreateProfile extends React.Component{
 							<input
 								type="text"
 								name="billingFirstName"
+								id= "input-billingFirstName"
 								onChange={this.handleChange}
 								placeholder="First Name"
 								className="text-area-left"
@@ -374,6 +419,7 @@ class CreateProfile extends React.Component{
 							<input
 								type="text"
 								name="billingCity"
+								id= "input-billingCity"
 								onChange={this.handleChange}
 								placeholder="City"
 								className="text-area-right"
@@ -392,6 +438,7 @@ class CreateProfile extends React.Component{
 							<input
 								type="text"
 								name="billingLastName"
+								id = "input-billingLastName"
 								onChange={this.handleChange}
 								placeholder="Last Name"
 								className="text-area-left"
@@ -406,6 +453,7 @@ class CreateProfile extends React.Component{
 							<input
 								type="text"
 								name="billingZip"
+								id= "input-billingZip"
 								onChange={this.handleChange}
 								placeholder="Postal Code"
 								className="text-area-right"
@@ -423,6 +471,7 @@ class CreateProfile extends React.Component{
 						<form>
 							<input
 								type="text"
+								id= "input-email"
 								placeholder="Email Address"
 								className="text-area-left"
 								required
@@ -436,6 +485,7 @@ class CreateProfile extends React.Component{
 							<input
 								type="text"
 								name="billingPhone"
+								id= "input-billingPhone"
 								onChange={this.handleChange}
 								placeholder="Phone Number"
 								className="text-area-right"
@@ -454,6 +504,7 @@ class CreateProfile extends React.Component{
 							<input
 								type="text"
 								placeholder="Address 1"
+								id= "input-billingAddress1"
 								name="billingAddress1"
 								onChange={this.handleChange}
 								className="text-area-left"
@@ -468,6 +519,7 @@ class CreateProfile extends React.Component{
 							<input
 								type="text"
 								placeholder="Country"
+								id= "input-billingCountry"
 								name="billingCountry"
 								onChange={this.handleChange}
 								className="text-area-right"
@@ -486,6 +538,7 @@ class CreateProfile extends React.Component{
 							<input
 								type="text"
 								placeholder="Address 2"
+								id= "input-billingAddress2"
 								name="billingAddress2"
 								onChange={this.handleChange}
 								className="text-area-left"
@@ -500,6 +553,7 @@ class CreateProfile extends React.Component{
 							<input
 								type="text"
 								placeholder="Province"
+								id= "input-billingProvince"
 								name="billingProvince"
 								onChange={this.handleChange}
 								className="text-area-right"
@@ -517,7 +571,7 @@ class CreateProfile extends React.Component{
 						<Link data-dismiss="modal" onClick={this.toShipping} className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
 					</div>
 					<div className="col-2 ml-4">
-						<Link onClick= {this.toCard} className="button-text" style={{ textDecoration: 'none' }}>Create</Link>
+						<Link onClick= {this.toCard} className="button-text" style={{ textDecoration: 'none' }}>Next</Link>
 					</div>
 					
 
@@ -532,11 +586,11 @@ class CreateProfile extends React.Component{
 						<h1>Create Profile</h1>
 					</div>
 					<div className="col-2"></div>
-					<Link onClick= {this.toShipping} className=" button2 col-2 "style={{ textDecoration: 'none' }}>	
+					<Link  className=" button2 col-2 "style={{ textDecoration: 'none' }}>	
 						<h2 className="text-center pt-1">Shipping</h2>
 					</Link>
 
-					<Link onClick= {this.toBilling} className=" button2 col-2 ml-2 "style={{ textDecoration: 'none' }}>
+					<Link className=" button2 col-2 ml-2 "style={{ textDecoration: 'none' }}>
 						<h2 className="my-auto text-center pt-1">Billing</h2>
 					</Link>
 
@@ -556,6 +610,7 @@ class CreateProfile extends React.Component{
 								<input
 									type="text"
 									name="cardHolder"
+									id="input-cardHolder"
 									onChange={this.handleChange}
 									placeholder="Card Holder"
 									className="text-area-right"
@@ -570,6 +625,7 @@ class CreateProfile extends React.Component{
 									name="cardNumber"
 									onChange={this.handleChange}
 									placeholder="Card Number"
+									id="input-cardNumber"
 									className="text-area-right"
 									required
 								/>
@@ -581,6 +637,7 @@ class CreateProfile extends React.Component{
 									type="text"
 									placeholder="MM/YY"
 									name="yearExp"
+									id="input-yearExp"
 									onChange={this.handleChange}
 									className="text-area-right"
 									required
@@ -593,6 +650,7 @@ class CreateProfile extends React.Component{
 									type="text"
 									placeholder="CVV"
 									name="cvv"
+									id="input-cvv"
 									onChange={this.handleChange}
 									className="text-area-right"
 									required

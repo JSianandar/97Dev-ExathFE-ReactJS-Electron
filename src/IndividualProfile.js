@@ -17,11 +17,21 @@ class IndividualProfile extends React.Component{
 		super()
 		this.state = {
 			profiles: [],
+			refreshPage: ''
 		}
 	}
 
 	componentDidMount(){
 		this.getProfiles()
+	}
+
+	componentDidUpdate(prevprop){
+		if(prevprop.refreshPage != this.props.refreshPage){
+			this.getProfiles()
+			this.setState({
+				refreshPage : this.props.refreshPage
+			})
+		}
 	}
 
 	getProfiles = () =>{
@@ -41,8 +51,6 @@ class IndividualProfile extends React.Component{
 			<div className="IndividualProfile">
 			{
 				this.state.profiles.reverse().map( (e, index) =>{
-					if(index < 5)
-
 					return(
 						<React.Fragment>
 							<div className="row pt-2"></div>
@@ -51,7 +59,7 @@ class IndividualProfile extends React.Component{
 									<p className="headings text-center">{e.name}</p>
 								</div>
 								<div className="col-2 pt-1">
-									<h1 className="headings text-center" style={{marginLeft:'-1px'}}>{e.email}</h1>
+									<h1 className="headings text-center" style={{marginLeft:'-5px'}}>{e.email}</h1>
 								</div>
 								<div className="col-2 pt-1">
 									<h1 className="headings text-center" style={{marginLeft:'10px'}}>{e.cardNumber}</h1>

@@ -11,7 +11,8 @@ class CreateCaptcha extends React.Component{
 		this.state = {
 			email: '',
 			proxy: '',
-			name: ''
+			name: '',
+			refreshPageState: ''
 		}
 	}
 
@@ -31,11 +32,23 @@ class CreateCaptcha extends React.Component{
 		.then(res => {
 			console.log(res);
 			console.log(res.data);
+			this.props.refreshPage()
 		})
 	}
 
 	componentDidMount(){
 
+	}
+
+	componentDidUpdate(prevprop){
+		if(prevprop.refreshPageState != this.props.refreshPageState){
+			document.getElementById('input-email').value = ''
+			document.getElementById('input-proxy').value = ''
+			document.getElementById('input-name').value = ''
+			this.setState({
+				refreshPageState : this.props.refreshPageState
+			})
+		}
 	}
 
 
@@ -58,6 +71,7 @@ class CreateCaptcha extends React.Component{
 															name= "email"
 															onChange={this.handleChange}
 															required
+															id = "input-email"
 															placeholder = "Email"
 															className="textarea"
 															/>
@@ -74,6 +88,7 @@ class CreateCaptcha extends React.Component{
 															type="text"
 															required
 															name= "proxy"
+															id = "input-proxy"
 															onChange={this.handleChange}
 															placeholder = "Proxy"
 															className="textarea"
@@ -91,6 +106,7 @@ class CreateCaptcha extends React.Component{
 															type="text"
 															required
 															name= "name"
+															id = "input-name"
 															placeholder = "Harvester Name"
 															onChange={this.handleChange}
 															className="textarea-hn"

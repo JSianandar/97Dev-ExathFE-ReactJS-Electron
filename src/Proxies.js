@@ -14,11 +14,19 @@ import TitleBar from './TitleBar.js';
 import CreateProxy from './CreateProxy.js';
 
 class Proxies extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
+		var refreshPage =  this.refreshPage.bind(this)
 		this.state = {
-
+			refreshPage: ''
 		}
+	}
+
+	refreshPage(){
+		this.setState({
+			refreshPage : Math.floor(Math.random() * 99999)
+		})
+		console.log('page Refreshed')
 	}
 
 	componentDidMount(){
@@ -67,13 +75,13 @@ class Proxies extends React.Component{
 						
 						</div>
 						{/*Individual Proxy*/}
-						<IndividualProxy/>
+						<IndividualProxy refreshPage = {this.state.refreshPage}/>
 						{/*Individual Proxy*/}
 
 						
 						{/*CreateProxyModal*/}
 							<div className="modal fade" id="createProxy" tabIndex="-1" aria-labelledby="createProxyLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
-								<CreateProxy/>
+								<CreateProxy refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage} />
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		
 									</div>

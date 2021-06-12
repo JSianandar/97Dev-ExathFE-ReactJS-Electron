@@ -3,16 +3,50 @@ import './css/CreateProxy.css';
 import {Link} from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 
+import axios from 'axios';
+
 class CreateProxy extends React.Component{
 	constructor(){
 		super()
 		this.state = {
-
+			refreshPageState: '',
+			proxyList: [],
+			group: ''
 		}
+	}
+
+	handleChange = event => {
+		this.setState({ [event.target.name]: event.target.value });
+	}
+
+	handleSubmit = event =>{
+		event.preventDefault();
+
+		axios.post('http://exath.io/api/proxies/create', {
+			"proxyList": this.state.proxyList,
+			"group": this.state.group
+		})
+		.then(res=>{
+			console.log(res);
+			console.log(res.data);
+			this.props.refreshPage()
+		})
 	}
 
 	componentDidMount(){
 
+	}
+
+	componentDidUpdate(prevprop){
+		console.log('prevprop', prevprop)
+
+		if(prevprop.refreshPageState != this.props.refreshPageState){
+			document.getElementById('input-group').value = ''
+			document.getElementById('input-proxyList').value = ''
+			this.setState({
+				refreshPageState : this.props.refreshPageState
+			})
+		}
 	}
 
 	render(){
@@ -35,12 +69,17 @@ class CreateProxy extends React.Component{
 							</div>
 							<div className="row ml-4">
 								<form>
-									<input 
-									type="text"
+									<textarea 
 									required
 									placeholder = "Enter Your Proxy"
 									className="background-color"
-									/>
+									name="proxyList"
+									onChange = {this.handleChange}
+									rows={8}
+									style={{resize: 'none'}}
+									id = "input-proxyList"
+									>
+									</textarea>
                   
 								</form>
 							</div>
@@ -51,7 +90,7 @@ class CreateProxy extends React.Component{
 						<div className="col-4 ml-3">
 							<Form>
 								<Form.Group controlId="formProxy">
-									<Form.Control type="text" placeholder="Group Name" className="group-name" required/>
+									<Form.Control id = "input-group" type="text" placeholder="Group Name" name="group" onChange = {this.handleChange} className="group-name" required/>
 								</Form.Group>
 							</Form>
 						</div>
@@ -60,7 +99,7 @@ class CreateProxy extends React.Component{
 							<Link data-toggle="modal" data-target="#createProxy" className="routing" style={{ textDecoration: 'none' }}>Close</Link>
 						</div>
 						<div className="col-1 pt-3">
-							<Link data-toggle="modal" data-target="#createProxy" className="routing" style={{ textDecoration: 'none' }}>Create</Link>
+							<Link data-toggle="modal" data-target="#createProxy" className="routing" style={{ textDecoration: 'none' }} onClick = {this.handleSubmit}>Create</Link>
 						</div>
 					</div>
 				</div>

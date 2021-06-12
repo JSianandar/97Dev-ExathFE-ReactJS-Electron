@@ -82,22 +82,11 @@ class Task extends React.Component{
         })
   }
 
-  updateAllTask = async() => {
-        await axios.put('http://exath.io/api/tasks/update/all')
-        .then(response => {
-            
-        },
-        error=>{
-        
-        })
-  }
+ 
 
 
-  async componentDidMount(){
+  componentDidMount(){
     
-    await this.getStartQuickTask
-    await this.updateAllTask
-    await this.updateChangeDelay
 
   }
 
@@ -169,7 +158,7 @@ class Task extends React.Component{
 
                         {/*EditAllTaskModal*/}
 							<div className="modal fade" id="editAllTask" tabIndex="-1" aria-labelledby="editAllTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
-								<EditAllTask/>
+								<EditAllTask refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		
 									</div>

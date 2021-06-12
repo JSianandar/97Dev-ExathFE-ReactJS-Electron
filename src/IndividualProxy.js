@@ -12,11 +12,21 @@ class IndividualProxy extends React.Component{
 		super()
 		this.state = {
 			proxies: [],
+			refreshPage: ''
 		}
 	}
 
 	componentDidMount(){
 		this.getProxies()
+	}
+
+	componentDidUpdate(prevprop){
+		if(prevprop.refreshPage != this.props.refreshPage){
+			this.getProxies();
+			this.setState({
+				refreshPage : this.props.refreshPage
+			})
+		}
 	}
 
 	getProxies = () =>{

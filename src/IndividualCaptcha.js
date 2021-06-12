@@ -17,11 +17,22 @@ class IndividualCaptcha extends React.Component{
 		super()
 		this.state = {
 			captcha: [],
+			refreshPage: ''
 		}
 	}
 
 	componentDidMount(){
 		this.getCaptcha()
+	}
+
+	componentDidUpdate(prevprop){
+		if(prevprop.refreshPage != this.props.refreshPage){
+			this.getCaptcha();
+			this.setState({
+				refreshPage : this.props.refreshPage
+			})
+		}
+
 	}
 
 	getCaptcha = () =>{
@@ -55,7 +66,7 @@ class IndividualCaptcha extends React.Component{
 								</div>
 
 								<div className="col-2 ml-4 pt-1">
-									<h1 className="headings text-center" style={{marginLeft:'-20px'}}>{e.proxy}</h1>
+									<h1 className="headings text-center" style={{marginLeft:'-10px'}}>{e.proxy}</h1>
 								</div>
 
 						

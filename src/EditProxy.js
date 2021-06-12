@@ -34,12 +34,14 @@ class EditProxy extends React.Component{
 						</div>
 						<div className="row ml-4">
 							<form>
-                                <input 
-                                type="text"
-                                required
-                                placeholder = "Enter Your Proxy"
-                                className="background-color"
-                                />
+									<textarea 
+									required
+									placeholder = "Enter Your Proxy"
+									className="background-color"
+									rows={8}
+									style={{resize: 'none'}}
+									>
+									</textarea>
                   
 							</form>
 						</div>
