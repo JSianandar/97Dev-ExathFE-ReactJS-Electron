@@ -46,7 +46,6 @@ class IndividualProxy extends React.Component{
 			<div className="IndividualProxy">
 			{
 				this.state.proxies.reverse().map( (e, index) =>{
-					if(index < 5)
 
 					return(
 						<React.Fragment>

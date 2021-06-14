@@ -8,7 +8,7 @@ class QuickTask extends React.Component{
 	constructor(){
 		super()
 		this.state = {
-
+			refreshPageState: ''
 		}
 	}
 
@@ -17,6 +17,7 @@ class QuickTask extends React.Component{
         .then(response => {
             console.log(response)
 			console.log(response.data)
+			this.props.refreshPage()
         },
         error=>{
         
@@ -25,6 +26,16 @@ class QuickTask extends React.Component{
 
 	componentDidMount(){
 		
+	}
+
+	componentDidUpdate(prevprop){
+		console.log('prevprop', prevprop)
+		if(prevprop.refreshPageState != this.props.refreshPageState){
+			this.setState({
+				refreshPageState : this.props.refreshPageState
+			})
+		}
+
 	}
 
 	render(){

@@ -168,7 +168,7 @@ class Task extends React.Component{
 
                         {/*DelayTaskModal*/}
 							<div className="modal fade" id="delayTask" tabIndex="-1" aria-labelledby="delayTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
-								<DelayTask/>
+								<DelayTask refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		
 									</div>
@@ -178,7 +178,7 @@ class Task extends React.Component{
 
                         {/*QuickTaskModal*/}
 							<div className="modal fade" id="quickTask" tabIndex="-1" aria-labelledby="quickTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
-								<QuickTask/>
+								<QuickTask refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		
 									</div>

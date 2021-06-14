@@ -17,13 +17,30 @@ class IndividualCaptcha extends React.Component{
 		super()
 		this.state = {
 			captcha: [],
-			refreshPage: ''
+			refreshPage: '',
+			id: '',
 		}
 	}
 
 	componentDidMount(){
 		this.getCaptcha()
 	}
+
+	handleChange = event => {
+		this.setState({ id: event.target.value });
+	}
+
+	handleSubmit = event => {
+		event.preventDefault();
+
+		axios.delete(`http://exath.io/api/captcha/update/${this.state.id}`)
+		  .then(res => {
+			console.log(res);
+			console.log(res.data);
+		})
+	}
+
+
 
 	componentDidUpdate(prevprop){
 		if(prevprop.refreshPage != this.props.refreshPage){
@@ -45,6 +62,13 @@ class IndividualCaptcha extends React.Component{
 		error=>{
 		
 		})
+	}
+
+	InitializeEditTaskModal(task){
+		document.getElementById('input-keyword').value = ''
+		document.getElementById('input-quantity').value = ''
+		document.getElementById('input-account').value = ''
+		document.getElementById('input-password').value = ''
 	}
 
 	render(){
@@ -76,7 +100,7 @@ class IndividualCaptcha extends React.Component{
 									<ul className="icons-wrapper "style={{marginLeft:'5px'}}>
 										<li className="icon"><Link data-toggle="modal" data-target="#captchaHarvester"><img src= {harvester_logo}/></Link></li>
 										<li className="icon"><Link data-toggle="modal" data-target="#editCaptcha" ><img src={table_edit} /></Link></li>
-										<li className="icon"><Link><img src={table_delete} /></Link></li>
+										<li className="icon"><Link name="id" onClick={this.handleChange , this.handleSubmit}><img src={table_delete} /></Link></li>
 									</ul>
 								</div>
 							</div>
@@ -96,6 +120,8 @@ class IndividualCaptcha extends React.Component{
 									</div>
 								</div>
 							{/*CaptchaHarvesterModal*/}
+
+
 {/*							<script>
 								function passCaptchaId(e.id){
 									document.getElementById("captcha_id").value = e.id

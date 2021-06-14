@@ -94,6 +94,7 @@ class CreateProfile extends React.Component{
 	}
 
 	componentDidUpdate(prevprop){
+		console.log('prevprop', prevprop)
 		if(prevprop.refreshPageState != this.props.refreshPageState){
 			document.getElementById('input-name').value = ''
 			document.getElementById('input-shippingFirstName').value = ''
@@ -119,7 +120,6 @@ class CreateProfile extends React.Component{
 			document.getElementById('input-cardNumber').value = ''
 			document.getElementById('input-cvv').value = ''
 			document.getElementById('input-yearExp').value = ''
-
 			this.setState({
 				sameAsShipping: false,
 				refreshPageState : this.props.refreshPageState

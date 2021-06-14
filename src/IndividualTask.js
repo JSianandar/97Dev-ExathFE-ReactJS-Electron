@@ -131,6 +131,8 @@ class IndividualTask extends React.Component{
 						for(var i=0; i<posKey.length; i++) {
 							if (i == posKey.length-1)
 							newPosKey = newPosKey.concat('+'.concat(posKey[i]))
+							//if (posKey== "")
+							//newPosKey= posKey
 							else
 							newPosKey = newPosKey.concat('+'.concat(posKey[i]+','))
 						}
@@ -139,6 +141,8 @@ class IndividualTask extends React.Component{
 						for(var i=0; i<negKey.length; i++) {
 							if (i == negKey.length-1)
 							newNegKey = newNegKey.concat('-'.concat(negKey[i]))
+							//if (negKey== "")
+							//newNegKey= negKey
 							else
 							newNegKey = newNegKey.concat('-'.concat(negKey[i]+','))
 						}
@@ -146,42 +150,6 @@ class IndividualTask extends React.Component{
 						console.log(e)
 					}
 					
-
-
-{/*
-					var newPosKey= ''
-
-					if(e.positiveKey.length >0) {
-						var posKey = e.positiveKey[0].split(',')
-						for(var i=0; i<posKey.length; i++) {
-							if (i == posKey.length-1){
-								newPosKey = newPosKey.concat('+'.concat(posKey[i]))
-							}
-							if (e.posKey==""){
-								newPosKey= e.posKey;
-							}
-							else
-							newPosKey = newPosKey.concat('+'.concat(posKey[i]+','))
-						}
-					}
-					
-					var newNegKey =  ''
-					
-					if(e.negativeKey.length >0){ 
-					var negKey = e.negativeKey[0].split(',')
-						for(var i=0; i<negKey.length; i++) {
-							if (i == negKey.length-1){
-								newNegKey = newNegKey.concat('-'.concat(negKey[i]))
-							}
-							if (e.negKey==""){
-								newNegKey = e.negKey;
-							}
-							else
-							newNegKey = newNegKey.concat('-'.concat(negKey[i]+','))
-						}
-					}
-
-*/}	
 					
 					return(
 						<React.Fragment>
@@ -197,7 +165,7 @@ class IndividualTask extends React.Component{
 									</div>
 
 									<div className="col-3">
-										<p className="headings-other text-center" style={{marginLeft: '-20px'}}>{/*e.positiveKey[0] !== '' && newPosKey+','*/ e.positiveKey}<span style={{ color: '#C4C4C4' }}>{ /*e.negativeKey[0] !== '' && newNegKey+','*/ e.negativeKey}</span><span style={{ color: '#C4C4C4' }}>{e.sku}</span><span style={{ color: '#C4C4C4' }}>{e.directLink}</span></p>
+										<p className="headings-other text-center" style={{marginLeft: '-20px'}}>{e.positiveKey[0] != '' && newPosKey+','}<span style={{ color: '#C4C4C4' }}>{ e.negativeKey[0] != '' && newNegKey+',' }</span><span style={{ color: '#C4C4C4' }}>{e.sku}</span><span style={{ color: '#C4C4C4' }}>{e.directLink}</span></p>
 									</div>
 									<div className="col">
 										<p className="headings-other text-center" style={{marginLeft: '-35px'}}>{profile}</p>
