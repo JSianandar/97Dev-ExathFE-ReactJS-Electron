@@ -25,6 +25,7 @@ import EditAllTask from './EditAllTask';
 import DelayTask from './DelayTask';
 import QuickTask from './QuickTask';
 import CreateTask from './CreateTask';
+import DeleteAllTask from './DeleteAllTask';
 
 class Task extends React.Component{
    constructor(props){
@@ -69,18 +70,6 @@ class Task extends React.Component{
         })
   }
 
-  handleDeleteAllTask = event => {
-        event.preventDefault();
-        axios.delete('http://exath.io/api/tasks/update/all')
-        .then(res => {
-            console.log(res);
-            console.log(res.data);
-            this.refreshPage()
-        },
-        error=>{
-        
-        })
-  }
 
  
 
@@ -115,7 +104,7 @@ class Task extends React.Component{
                             <li className="icon"><Link data-toggle="modal" data-target="#editAllTask"><img src={edit_button} /></Link></li>
                             <li className="icon"><Link data-toggle="modal" data-target="#delayTask"><img src={delay_button} /></Link></li>
                             <li className="icon"><Link data-toggle="modal" data-target="#quickTask"><img src={quick_task_button} /></Link></li>
-                            <li className="icon"><Link onClick= {this.handleDeleteAllTask} ><img src={delete_button} /></Link></li>
+                            <li className="icon"><Link data-toggle="modal" data-target="#deleteAllTask"><img src={delete_button} /></Link></li>
                             <li className="icon"><Link data-toggle="modal" data-target="#createTask"><img src={create_button} /></Link></li>
                         </ul>
                     </div> 
@@ -195,6 +184,16 @@ class Task extends React.Component{
 								</div>
 							</div>
 						{/*CreateTaskModal*/}
+
+                         {/*DeleteAllTaskModal*/}
+							<div className="modal fade" id="deleteAllTask" tabIndex="-1" aria-labelledby="deleteAllTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
+								<DeleteAllTask refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>	
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">	    
+									</div>
+								</div>
+							</div>
+						{/*DeleteAllTaskModal*/}
                     
                 
                     </div>

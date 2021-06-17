@@ -5,31 +5,29 @@ import './css/Activation.css';
 import TitleBar from './TitleBar.js';
 import Popup from 'react-popup';
 import Alert from 'react-bootstrap/Alert';
+import axios from 'axios';
 
 
 class Activation extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
-        key: '',
+        key: null,
         mode: 'true',
         visible: false,
+        errors: {
+            key: '',
+        }
 
     }
     this.trueKeyActivate = this.trueKeyActivate.bind(this)
     this.wrongKeyActivate = this.wrongKeyActivate.bind(this)
   }
 
-   onShowAlert = ()=>{
-    this.setState({visible:true},()=>{
-      window.setTimeout(()=>{
-        this.setState({visible:false})
-      },2000)
-    });
-  }
-
   handleChange = event => {
-	this.setState({ [event.target.name]: event.target.value });
+    event.preventDefault();
+	const {name, value} = event.target;
+    let errors = this.state.errors;
   }
 
   trueKeyActivate(){
@@ -40,6 +38,17 @@ class Activation extends React.Component {
         this.setState({mode: 'false'})
         console.log('false')
 
+  }
+
+  getActivationKey = () =>{
+    axios.get('http://exath.io/api/authenticate?key=1N0M-INKM-Y7NC-5052')
+    .then(res => {
+        this.setState({
+            key: res.data
+        })
+        console.log(res);
+        console.log(res.data);
+    })
   }
 
 
@@ -94,7 +103,8 @@ class Activation extends React.Component {
                                     <input 
                                     type="text"
                                     required
-                                    placeholder = "Enter your key"
+                                    placeholder = "INVALID KEY.        Enter The Right Key"
+
                                     className="key_input"
                                     />
                                 </form>
@@ -111,13 +121,13 @@ class Activation extends React.Component {
                                 <h1 className="text-center">Close</h1>
                             </Link>
                 
-                            <Link to="/task"className="col-2 ml-5 button" style={{ textDecoration: 'none' }}>
+                            <Link to="/task" className="col-2 ml-5 button" style={{ textDecoration: 'none' }}>
                                 <h1 className="text-center">Activate</h1>
                             </Link>
                             <div className="col-3"></div>
                         </div>
                         
-                        <div className="row pt-3">
+{/*                        <div className="row pt-3">
                             <div className="col-6"></div>
                             <div className="col-4 ml-4">
                                 <Alert variant = 'danger' style={{width: '135px'}}>
@@ -125,10 +135,10 @@ class Activation extends React.Component {
                                 </Alert>
                             </div>
                         </div>
-
+*/}
                     </div>}
                 </div>
-               
+
 	    );
     }
 }
