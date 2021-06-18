@@ -85,7 +85,7 @@ class CreateProfile extends React.Component{
 		.then(res => {
 			console.log(res);
 			console.log(res.data);
-			//this.props.refreshPage()
+			this.props.refreshPage()
 		})
 	}
 
@@ -96,33 +96,10 @@ class CreateProfile extends React.Component{
 	componentDidUpdate(prevprop){
 		console.log('prevprop', prevprop)
 		if(prevprop.refreshPageState != this.props.refreshPageState){
-			document.getElementById('input-profile-name').value = ''
-			document.getElementById('input-shipping-FirstName').value = ''
-			document.getElementById('input-shipping-LastName').value = ''
-			document.getElementById('input-shipping-Address1').value = ''
-			document.getElementById('input-shipping-Address2').value = ''
-			document.getElementById('input-shipping-City').value = ''
-			document.getElementById('input-shipping-Province').value = ''
-			document.getElementById('input-shipping-Country').value = ''
-			document.getElementById('input-shipping-Zip').value = ''
-			document.getElementById('input-shipping-Phone').value = ''
-			document.getElementById('input-billing-FirstName').value = ''
-			document.getElementById('input-billing-LastName').value = ''
-			document.getElementById('input-email').value = ''
-			document.getElementById('input-billing-Address1').value = ''
-			document.getElementById('input-billing-Address2').value = ''
-			document.getElementById('input-billing-City').value = ''
-			document.getElementById('input-billing-Province').value = ''
-			document.getElementById('input-billing-Country').value = ''
-			document.getElementById('input-billing-Zip').value = ''
-			document.getElementById('input-billing-Phone').value = ''
-			document.getElementById('input-card-Holder').value = ''
-			document.getElementById('input-card-Number').value = ''
-			document.getElementById('input-cvv').value = ''
-			document.getElementById('input-year-Exp').value = ''
 			this.setState({
 				sameAsShipping: false,
-				refreshPageState : this.props.refreshPageState
+				refreshPageState : this.props.refreshPageState,
+				mode: 'shipping'
 			})
 		}
 	}

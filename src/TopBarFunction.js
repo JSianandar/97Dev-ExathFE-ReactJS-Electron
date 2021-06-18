@@ -1,12 +1,28 @@
-const { ipcRenderer } = require('electron');
-const ipc = ipcRenderer;
+//const { ipcRenderer } = require('electron');
+//const ipc = ipcRenderer;
 
-//Close App
-closeBtn.addEventListener('click', ()=>{
-	ipc.send('closeApp')
+//import * as electron from 'electron';
+//const ipcRenderer = window.require("electron").ipcRenderer;
+
+class TopBarFunction{
+	closeApp(){
+		//ipc.send('closeApp')
+	}
+
+	minimizeApp(){
+		//ipcRenderer.send('minimizeApp')
+	}
+}
+
+export default TopBarFunction;
+
+{/*//Close App
+document.getElementById('closeBtn').addEventListener('click', ()=>{
+	
 })
 
 //Minimize App
-minimizeBtn.addEventListener('click', ()=>{
+document.getElementById('minimizeBtn').addEventListener('click', ()=>{
 	ipc.send('minimizeApp')
 })
+*/}

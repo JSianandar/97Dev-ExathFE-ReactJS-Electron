@@ -12,12 +12,8 @@ class Activation extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-        key: null,
+        key: '',
         mode: 'true',
-        visible: false,
-        errors: {
-            key: '',
-        }
 
     }
     this.trueKeyActivate = this.trueKeyActivate.bind(this)
@@ -25,9 +21,12 @@ class Activation extends React.Component {
   }
 
   handleChange = event => {
+	this.setState({ [event.target.name]: event.target.value });
+  }
+
+  handleSubmit = event => {
     event.preventDefault();
-	const {name, value} = event.target;
-    let errors = this.state.errors;
+    this.getActivationKey()
   }
 
   trueKeyActivate(){
@@ -41,19 +40,24 @@ class Activation extends React.Component {
   }
 
   getActivationKey = () =>{
-    axios.get('http://exath.io/api/authenticate?key=1N0M-INKM-Y7NC-5052')
+    axios.get(`http://exath.io/api/authenticate?key=${this.state.key}`)
     .then(res => {
         this.setState({
             key: res.data
+
         })
         console.log(res);
         console.log(res.data);
+        window.location.href('/task')
+    },error => {
+        this.setState({
+            mode: 'false'
+        })
     })
   }
 
 
   componentDidMount(){
-    
   }
   
 
@@ -70,6 +74,9 @@ class Activation extends React.Component {
                                     <input 
                                     type="text"
                                     required
+                                    name= "key"
+                                    onChange = {this.handleChange}
+                                    value = {this.state.key}
                                     placeholder = "Enter your key"
                                     className="key_input"
                                     />
@@ -83,7 +90,7 @@ class Activation extends React.Component {
                                 <h1 className="text-center">Close</h1>
                             </Link>
                 
-                            <Link to="/task"className="col-2 ml-5 button" style={{ textDecoration: 'none' }}>
+                            <Link onClick={this.handleSubmit} className="col-2 ml-5 button" style={{ textDecoration: 'none' }}>
                                 <h1 className="text-center">Activate</h1>
                             </Link>
                             <div className="col-3"></div>
@@ -103,7 +110,7 @@ class Activation extends React.Component {
                                     <input 
                                     type="text"
                                     required
-                                    placeholder = "INVALID KEY.        Enter The Right Key"
+                                    placeholder = "INVALID KEY, Forbidden"
 
                                     className="key_input"
                                     />

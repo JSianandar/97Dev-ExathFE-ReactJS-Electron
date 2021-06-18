@@ -77,7 +77,7 @@ class Captcha extends React.Component{
 						
 						</div>
 						{/*IndividualCaptcha*/}
-						<IndividualCaptcha refreshPage = {this.state.refreshPage}/>
+						<IndividualCaptcha refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
 						{/*IndividualCaptcha*/}
 
 						{/*CreateCaptchaModal*/}

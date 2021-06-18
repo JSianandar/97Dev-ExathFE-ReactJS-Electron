@@ -19,7 +19,7 @@ function createWindow() {
             frame: false,
             webPreferences: {
                 contextIsolation: false,
-                enableRemoteModule: false,
+                enableRemoteModule: true,
                 nodeIntegration: false
             }
         }
@@ -31,6 +31,7 @@ function createWindow() {
         : `file://${path.join(__dirname, "../build/index.html")}`
     );
     mainWindow.on("closed", () => (mainWindow = null));
+
 
     //Close app
     ipc.on('closeApp', ()=>{

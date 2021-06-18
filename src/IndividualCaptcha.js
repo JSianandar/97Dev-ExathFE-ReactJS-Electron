@@ -13,8 +13,8 @@ import CaptchaHarvester from './CaptchaHarvester.js';
 
 
 class IndividualCaptcha extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
 			captcha: [],
 			refreshPage: '',
@@ -32,11 +32,11 @@ class IndividualCaptcha extends React.Component{
 
 	handleSubmit = event => {
 		event.preventDefault();
-
-		axios.delete(`http://exath.io/api/captcha/update/${this.state.id}`)
+		axios.delete(`http://exath.io/api/captcha/update/${event.target.name}`)
 		  .then(res => {
 			console.log(res);
 			console.log(res.data);
+			this.props.refreshPage()
 		})
 	}
 
@@ -100,13 +100,13 @@ class IndividualCaptcha extends React.Component{
 									<ul className="icons-wrapper "style={{marginLeft:'5px'}}>
 										<li className="icon"><Link data-toggle="modal" data-target="#captchaHarvester"><img src= {harvester_logo}/></Link></li>
 										<li className="icon"><Link data-toggle="modal" data-target="#editCaptcha" ><img src={table_edit} /></Link></li>
-										<li className="icon"><Link name="id" onClick={this.handleChange , this.handleSubmit}><img src={table_delete} /></Link></li>
+										<li className="icon"><Link  onClick={this.handleSubmit}><img src={table_delete} name = {e.id} /></Link></li>
 									</ul>
 								</div>
 							</div>
 							{/*EditCaptchaModal*/}
 								<div className="modal fade" id="editCaptcha" tabIndex="-1" aria-labelledby="editCaptchaLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
-									<EditCaptcha/>
+									<EditCaptcha name= {e.name} email = {e.email} proxy = {e.proxy} id = {e.id} refreshPageState={this.props.refreshPage}/>
 									<div className= "modal-dialog">
 									</div>
 								</div>

@@ -4,17 +4,43 @@ import {Link} from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import IndividualCaptcha from './IndividualCaptcha.js';
+import axios from 'axios';
 
 class EditCaptcha extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
-
+			email: this.props.email,
+			proxy: this.props.proxy,
+			name: this.props.name,
+			id: this.props.id,
+			refreshPageState: ''
 		}
 	}
 
-	componentDidMount(){
+	handleChange = event => {
+		this.setState({ [event.target.name]: event.target.value });
+	}
 
+	handleSubmit = event =>{
+		event.preventDefault();
+
+
+		axios.put(`http://exath.io/api/captcha/update/${this.state.id}`, {
+			"email": this.state.email,
+			"proxy": this.state.proxy,
+		})
+		.then(res => {
+			console.log(res);
+			console.log(res.data);
+			this.props.refreshPageState()
+		})
+	}
+
+
+
+	componentDidMount(){
+		console.log(this.state)
 	}
 
 	render(){
@@ -30,14 +56,12 @@ class EditCaptcha extends React.Component{
 					<div className="col-8">
 						<div className="textarea">
 							<form>
-								<input
-								type="hidden"
-								name="captcha_id"
-								id="captcha_id"
-								/>
                                 <input 
                                 type="text"
                                 required
+								name= "email"
+								onChange = {this.handleChange}
+								value = {this.state.email}
                                 placeholder = "Email"
                                 className="textarea"
                                 />
@@ -53,6 +77,9 @@ class EditCaptcha extends React.Component{
                                 <input 
                                 type="text"
                                 required
+								name = "proxy"
+								onChange = {this.handleChange}
+								value = {this.state.proxy}
                                 placeholder = "Proxy"
                                 className="textarea"
                                 />
@@ -68,6 +95,8 @@ class EditCaptcha extends React.Component{
                                 <input 
                                 type="text"
                                 required
+								disabled
+								value = {this.state.name}
                                 placeholder = "Harvester Name"
                                 className="textarea-hn"
                                 />
@@ -81,7 +110,7 @@ class EditCaptcha extends React.Component{
 						<Link data-dismiss="modal" className="routing" style={{ textDecoration: 'none' }}>Close</Link>
 					</div>
 					<div className="col-2 pt-1">
-						<Link data-dismiss="modal" className="routing" style={{ textDecoration: 'none' }}>Create</Link>
+						<Link data-dismiss="modal" className="routing" style={{ textDecoration: 'none' }} onClick={this.handleSubmit } >Save</Link>
 					</div>
 				</div>
 

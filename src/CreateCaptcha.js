@@ -6,8 +6,8 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 
 class CreateCaptcha extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
 			email: '',
 			proxy: '',

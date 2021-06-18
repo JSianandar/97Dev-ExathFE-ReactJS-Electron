@@ -10,7 +10,7 @@ class CreateProxy extends React.Component{
 		super()
 		this.state = {
 			refreshPageState: '',
-			proxyList: [],
+			proxyList: '',
 			group: ''
 		}
 	}
@@ -19,11 +19,13 @@ class CreateProxy extends React.Component{
 		this.setState({ [event.target.name]: event.target.value });
 	}
 
+
+
 	handleSubmit = event =>{
 		event.preventDefault();
 
 		axios.post('http://exath.io/api/proxies/create', {
-			"proxyList": this.state.proxyList,
+			"proxyList": this.state.proxyList.split('\n'),
 			"group": this.state.group
 		})
 		.then(res=>{
