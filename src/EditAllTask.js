@@ -16,8 +16,8 @@ import select_site_icon from './assets/icons/createtask/select_site.svg';
 import axios from 'axios';
 
 class EditAllTask extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
 			profiles: [],
 			sizes: [],

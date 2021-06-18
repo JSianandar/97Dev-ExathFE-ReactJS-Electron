@@ -17,9 +17,46 @@ class IndividualTask extends React.Component{
 			tasks: [],
 			profiles: [],
 			proxies: [],
-			refreshPage: ''
+			refreshPage: '',
+			id: '',
 		}
 	}
+
+	handleDelete = event => {
+		event.preventDefault();
+		axios.delete(`http://exath.io/api/tasks/update/${event.target.name}`)
+		  .then(res => {
+			console.log(res);
+			console.log(res.data);
+			this.props.refreshPage()
+		})
+	}
+
+	 handleStartTask = event => {
+        event.preventDefault();
+        axios.get(`http://exath.io/api/action?id=${event.target.name}&act=start`)
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+            this.props.refreshPage()
+        },
+        error=>{
+        
+        })
+  }
+
+  handleStopTask = event => {
+        event.preventDefault();
+        axios.get(`http://exath.io/api/action?id=${event.target.name}&act=stop`)
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+            this.props.refreshPage()
+        },
+        error=>{
+        
+        })
+  }
 
 	async componentDidMount(){
 		await this.getTasks();
@@ -178,10 +215,10 @@ class IndividualTask extends React.Component{
 									</div>
 									<div className="col">
 										<ul className="icons-wrapper pt-2" style={{marginLeft: '-30px'}}>
-											<li className="icon"><Link><img src={table_play} /></Link></li>
-											<li className="icon"><Link><img src={table_stop} /></Link></li>
+											<li className="icon"><Link onClick = {this.handleStartTask} ><img src={table_play} name = {e.id} /></Link></li>
+											<li className="icon"><Link onClick = {this.handleStopTask}> <img src={table_stop} name = {e.id}/></Link></li>
 											<li className="icon"><Link data-toggle="modal" data-target="#editTask"><img src={table_edit} /></Link></li>
-											<li className="icon"><Link><img src={table_delete} /></Link></li>
+											<li className="icon"><Link onClick = {this.handleDelete}><img src={table_delete} name = {e.id} /></Link></li>
 										</ul>
 									</div>
 

@@ -22,11 +22,24 @@ class EditTask extends React.Component{
 			sizes: [],
 			sites: [],
 			proxies: [],
+			profile:'',
+			site:'',
+			mode:'',
+			sku:'',
+			positiveKey:'',
+			negativeKey:'',
+			directLink:'',
+			size:'',
+			proxyGroup: '',
+			accountEmail: '',
+			accountPassword: '',
+			quantity: '',
 			selectSite: 'Select Site',
 			selectSize: 'Size',
 			selectProfile: 'Profile',
 			selectProxies: 'Proxies',
-			selectMode: 'Select Mode'
+			selectMode: 'Select Mode',
+			refreshPageState: '',
 		}
 	}
 
@@ -38,25 +51,29 @@ class EditTask extends React.Component{
 	}
 
 	handleClickSite = (event) => {
-		this.setState({ selectSite: event })
+		this.setState({ selectSite: event, site: event })
 		console.log(event)
 	}
 
 	handleClickSize = (event) => {
-		this.setState({ selectSize: event })
+		this.setState({ selectSize: event, size: event })
 	}
 
 	handleClickProfile = (event) => {
-		this.setState({ selectProfile: event })
+		this.setState({ selectProfile: event, profile: event })
 	}
 
 	handleClickProxies = (event) => {
-		this.setState({ selectProxies: event })
+		this.setState({ selectProxies: event, proxyGroup: event })
 	}
 
 	handleClickMode = (event) => {
-		this.setState({ selectMode: event })
+		this.setState({ selectMode: event, mode: event })
 		console.log(event)
+	}
+
+	handleChange = event => {
+		this.setState({ [event.target.name]: event.target.value });
 	}
 
 	getProfiles = async () =>{
@@ -69,6 +86,31 @@ class EditTask extends React.Component{
 		},
 		error=>{
 		
+		})
+	}
+
+	handleSubmit = event =>{
+		event.preventDefault();
+
+
+		axios.put(`http://exath.io/api/tasks/update/${this.state.id}`, {
+			"profile": this.getStateProfileIdByName(this.state.profile),
+			"site": this.state.site,
+			"mode": this.state.mode,
+			"sku": this.state.sku,
+			"positiveKey" : this.state.positiveKey,
+			"negativeKey": this.state.negativeKey,
+			"directLink": this.state.directLink,
+			"size": this.state.size,
+			"proxyGroup": this.getStateProxyIdByGroup(this.state.proxyGroup),
+			"accountEmail": this.state.accountEmail,
+			"accountPassword": this.state.accountPassword,
+			"quantity": this.state.quantity
+		})
+		.then(res => {
+			console.log(res);
+			console.log(res.data);
+			this.props.refreshPage()
 		})
 	}
 

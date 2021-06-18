@@ -19,8 +19,8 @@ import axios from 'axios';
 
 
 class CreateTask extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
 			profiles: [],
 			sizes: [],
