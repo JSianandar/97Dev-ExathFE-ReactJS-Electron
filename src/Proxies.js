@@ -75,7 +75,7 @@ class Proxies extends React.Component{
 						
 						</div>
 						{/*Individual Proxy*/}
-						<IndividualProxy refreshPage = {this.state.refreshPage}/>
+						<IndividualProxy refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
 						{/*Individual Proxy*/}
 
 						

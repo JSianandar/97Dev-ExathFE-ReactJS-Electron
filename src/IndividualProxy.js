@@ -8,11 +8,12 @@ import table_delete from "./assets/icons/table_delete.png";
 import EditProxy from './EditProxy.js';
 
 class IndividualProxy extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
 			proxies: [],
-			refreshPage: ''
+			refreshPage: '',
+			id: '',
 		}
 	}
 
@@ -27,6 +28,16 @@ class IndividualProxy extends React.Component{
 				refreshPage : this.props.refreshPage
 			})
 		}
+	}
+
+	handleDelete = event => {
+		event.preventDefault();
+		axios.delete(`http://exath.io/api/proxies/update/${event.target.name}`)
+		  .then(res => {
+			console.log(res);
+			console.log(res.data);
+			this.props.refreshPage()
+		})
 	}
 
 	getProxies = () =>{
@@ -63,14 +74,14 @@ class IndividualProxy extends React.Component{
 
 								<div className="col-2 ml-0">
 									<ul className="icons-wrapper" style={{marginLeft:'10px'}}>
-										<li className="icon"><Link data-toggle="modal" data-target="#editProxy"><img src={table_edit} /></Link></li>
-										<li className="icon"><Link><img src={table_delete} /></Link></li>
+										<li className="icon"><Link data-toggle="modal" data-target={`#edit-${e.id}`}><img src={table_edit} /></Link></li>
+										<li className="icon"><Link onClick={this.handleDelete} ><img src={table_delete} name = {e.id} /></Link></li>
 									</ul>
 								</div>
 							</div>
 							{/*EditProxyModal*/}
-								<div className="modal fade" id="editProxy" tabIndex="-1" aria-labelledby="editProxyLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
-									<EditProxy/>
+								<div className="modal fade" id={`edit-${e.id}`} tabIndex="-1" aria-labelledby={`edit-${e.id}`} aria-hidden="true" style={{overflowY: 'hidden'}}>
+									<EditProxy group = {e.group} proxyList = {e.proxyList} id= {e.id}  refreshPageState={this.props.refreshPage}/>
 									<div className= "modal-dialog modal-dialog-centered">
 										<div className="modal-content">		
 										</div>

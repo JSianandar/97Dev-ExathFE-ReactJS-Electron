@@ -78,7 +78,7 @@ class Profile extends React.Component{
 							</div>
 						</div>
 						{/*individual Profile*/}
-						<IndividualProfile refreshPage = {this.state.refreshPage}/>
+						<IndividualProfile refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
 						{/*individual Profile*/}
 							
 

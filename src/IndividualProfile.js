@@ -13,11 +13,12 @@ import EditProfileCard from './EditProfileCard.js';
 import EditProfile from './EditProfile.js';
 
 class IndividualProfile extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
 			profiles: [],
-			refreshPage: ''
+			refreshPage: '',
+			id: '',
 		}
 	}
 
@@ -46,6 +47,16 @@ class IndividualProfile extends React.Component{
 		})
 	}
 
+	handleDelete = event => {
+		event.preventDefault();
+		axios.delete(`http://exath.io/api/profiles/update/${event.target.name}`)
+		  .then(res => {
+			console.log(res);
+			console.log(res.data);
+			this.props.refreshPage()
+		})
+	}
+
 	render(){
 		return(
 			<div className="IndividualProfile">
@@ -69,15 +80,43 @@ class IndividualProfile extends React.Component{
 								</div>
 								<div className="col-2 ml-0">
 									<ul className="icons-wrapper" style={{marginLeft:'10px'}}>
-										<li className="icon"><Link data-toggle="modal" data-target="#editProfile"><img src={table_edit} /></Link></li>
-										<li className="icon"><Link><img src={table_delete} /></Link></li>
+										<li className="icon"><Link data-toggle="modal" data-target={`#edit-${e.id}`}><img src={table_edit} /></Link></li>
+										<li className="icon"><Link onClick= {this.handleDelete}><img src={table_delete} name = {e.id} /></Link></li>
 									</ul>
 								</div>
 							</div>
 
 						{/*EditProfileModal*/}
-							<div className="modal fade" id="editProfile" tabIndex="-1" aria-labelledby="editProfileLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
-								<EditProfile/>
+							<div className="modal fade" id={`edit-${e.id}`} tabIndex="-1" aria-labelledby={`edit-${e.id}`} aria-hidden="true" style={{overflowY: 'hidden'}}>
+								<EditProfile 
+								name = {e.name}
+								shippingFirstName = {e.shippingFirstName}
+								shippingLastName = {e.shippingLastName}
+								shippingAddress1 = {e.shippingAddress1}
+								shippingAddress2 = {e.shippingAddress2}
+								shippingCity = {e.shippingCity}
+								shippingCountry = {e.shippingCountry}
+								shippingProvince = {e.shippingProvince}
+								shippingZip = {e.shippingZip}
+								shippingPhone = {e.shippingPhone}
+								email = {e.email}
+								billingFirstName = {e.billingFirstName}
+								billingLastName = {e.billingLastName}
+								billingAddress1 = {e.billingAddress1}
+								billingAddress2 = {e.billingAddress2}
+								billingCity = {e.billingCity}
+								billingCountry = {e.billingCountry}
+								billingProvince = {e.billingProvince}
+								billingZip = {e.billingZip}
+								billingPhone = {e.billingPhone}
+								cardHolder = {e.cardHolder}
+								cardNumber = {e.cardNumber}
+								cvv = {e.cvv}
+								yearExp = {e.yearExp}
+								
+								id = {e.id} 
+								
+								refreshPageState={this.props.refreshPage}/>
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		
 									</div>

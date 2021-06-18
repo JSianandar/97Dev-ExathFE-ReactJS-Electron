@@ -5,13 +5,40 @@ import './css/EditProfileCard.css';
 import {Link} from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import credit_card_logo from './assets/icons/credit_card_logo.png';
+import axios from 'axios';
 
 class EditProfile extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
 			mode: 'shipping',
-			sameAsShipping: false
+			sameAsShipping: false,
+			name: this.props.name,
+			shippingFirstName: this.props.shippingFirstName,
+			shippingLastName: this.props.shippingLastName,
+			shippingAddress1: this.props.shippingAddress1,
+			shippingAddress2: this.props.shippingAddress2,
+			shippingCity: this.props.shippingCity,
+			shippingCountry: this.props.shippingCountry,
+			shippingProvince: this.props.shippingProvince,
+			shippingZip: this.props.shippingZip,
+			shippingPhone: this.props.shippingPhone,
+			email: this.props.email,
+			billingFirstName: this.props.billingFirstName,
+			billingLastName: this.props.billingLastName,
+			billingAddress1: this.props.billingAddress1,
+			billingAddress2: this.props.billingAddress2,
+			billingCity: this.props.billingCity,
+			billingCountry: this.props.billingCountry,
+			billingProvince: this.props.billingProvince,
+			billingZip: this.props.billingZip,
+			billingPhone: this.props.billingPhone,
+			cardHolder: this.props.cardHolder,
+			cardNumber: this.props.cardNumber,
+			cvv: this.props.cvv,
+			yearExp: this.props.yearExp,
+			id: this.props.id,
+			refreshPageState: '',
 			
 		}
 		this.toBilling = this.toBilling.bind(this)
@@ -20,8 +47,62 @@ class EditProfile extends React.Component{
 		this.sameAsShippingTrue = this.sameAsShippingTrue.bind(this)
 	}
 
+	handleChange = event => {
+		this.setState({ [event.target.name]: event.target.value });
+	}
+
+	handleSubmit = event =>{
+		event.preventDefault();
+
+
+		axios.put(`http://exath.io/api/profiles/update/${this.state.id}`, {
+			"name": this.state.name,
+			"shippingFirstName": this.state.shippingFirstName,
+			"shippingLastName": this.state.shippingLastName,
+			"shippingAddress1": this.state.shippingAddress1,
+			"shippingAddress2": this.state.shippingAddress2,
+			"shippingCity": this.state.shippingCity,
+			"shippingProvince": this.state.shippingProvince,
+			"shippingCountry": this.state.shippingCountry,
+			"shippingZip": this.state.shippingZip,
+			"shippingPhone": this.state.shippingPhone,
+			"bllingFirstName": this.state.billingFirstName,
+			"billingLastName": this.state.billingLastName,
+			"email": this.state.email,
+			"billingAddress1": this.state.billingAddress1,
+			"billingAddress2": this.state.billingAddress2,
+			"billingCity": this.state.billingCity,
+			"billingProvince": this.state.billingProvince,
+			"billingCountry": this.state.billingCountry,
+			"billingZip": this.state.billingZip,
+			"billingPhone": this.state.billingPhone,
+			"cardHolder": this.state.cardHolder,
+			"cardNumber": this.state.cardNumber,
+			"cvv": this.state.cvv,
+			"monthExp": this.state.monthExp,
+			"yearExp": this.state.yearExp,
+			"sameAsShipping": this.state.sameAsShipping
+		})
+		.then(res => {
+			console.log(res);
+			console.log(res.data);
+			this.props.refreshPageState()
+		})
+	}
+
 	componentDidMount(){
 
+	}
+
+	componentDidUpdate(prevprop){
+		console.log('prevprop', prevprop)
+		if(prevprop.refreshPageState != this.props.refreshPageState){
+			this.setState({
+				sameAsShipping: false,
+				refreshPageState : this.props.refreshPageState,
+				mode: 'shipping'
+			})
+		}
 	}
 
 	toBilling(){
@@ -75,6 +156,9 @@ class EditProfile extends React.Component{
 									<input
 										type="text"
 										placeholder="First Name"
+										onChange = {this.handleChange}
+										value = {this.state.shippingFirstName}
+										name = "shippingFirstName"
 										className="text-area-left"
 										required
 									/>
@@ -87,6 +171,9 @@ class EditProfile extends React.Component{
 									<input
 										type="text"
 										placeholder="City"
+										onChange = {this.handleChange}
+										value = {this.state.shippingCity}
+										name= "shippingCity"
 										className="text-area-right"
 										required
 									/>
@@ -103,6 +190,9 @@ class EditProfile extends React.Component{
 									<input
 										type="text"
 										placeholder="Last Name"
+										name = "shippingLastName"
+										onChange = {this.handleChange}
+										value = {this.state.shippingLastName}
 										className="text-area-left"
 										required
 									/>
@@ -114,6 +204,9 @@ class EditProfile extends React.Component{
 								<form>
 									<input
 										type="text"
+										onChange = {this.handleChange}
+										value = {this.state.shippingZip}
+										name = "shippingZip"
 										placeholder="Postal Code"
 										className="text-area-right"
 										required
@@ -131,6 +224,9 @@ class EditProfile extends React.Component{
 									<input
 										type="text"
 										placeholder="Email Address"
+										onChange = {this.handleChange}
+										value = {this.state.email}
+										name = "email"
 										className="text-area-left"
 										required
 									/>
@@ -143,6 +239,9 @@ class EditProfile extends React.Component{
 									<input
 										type="text"
 										placeholder="Phone Number"
+										onChange = {this.handleChange}
+										value = {this.state.shippingPhone}
+										name = "shippingPhone"
 										className="text-area-right"
 										required
 									/>
@@ -159,6 +258,9 @@ class EditProfile extends React.Component{
 									<input
 										type="text"
 										placeholder="Address 1"
+										onChange = {this.handleChange}
+										name = "shippingAddress1"
+										value = {this.state.shippingAddress1}
 										className="text-area-left"
 										required
 									/>
@@ -171,6 +273,9 @@ class EditProfile extends React.Component{
 									<input
 										type="text"
 										placeholder="Country"
+										onChange = {this.handleChange}
+										name = "shippingCountry"
+										value = {this.state.shippingCountry}
 										className="text-area-right"
 										required
 									/>
@@ -187,6 +292,9 @@ class EditProfile extends React.Component{
 									<input
 										type="text"
 										placeholder="Address 2"
+										onChange = {this.handleChange}
+										name = "shippingAddress2"
+										value = {this.state.shippingAddress2}
 										className="text-area-left"
 										required
 									/>
@@ -199,6 +307,9 @@ class EditProfile extends React.Component{
 									<input
 										type="text"
 										placeholder="Province"
+										onChange = {this.handleChange}
+										name = "shippingProvince"
+										value = {this.state.shippingProvince}
 										className="text-area-right"
 										required
 									/>
@@ -213,7 +324,10 @@ class EditProfile extends React.Component{
 								<form>
 									<input
 										type="text"
+										name = "name"
 										placeholder="Profile Name"
+										onChange = {this.handleChange}
+										value = {this.state.name}
 										className="text-area-right"
 										required
 									/>
@@ -268,6 +382,9 @@ class EditProfile extends React.Component{
 							<input
 								type="text"
 								placeholder="First Name"
+								onChange = {this.handleChange}
+								name = "billingFirstName"
+								value = {this.state.billingFirstName}
 								className="text-area-left"
 								required
 							/>
@@ -280,6 +397,9 @@ class EditProfile extends React.Component{
 							<input
 								type="text"
 								placeholder="City"
+								onChange = {this.handleChange}
+								name = "billingCity"
+								value = {this.state.billingCity}
 								className="text-area-right"
 								required
 							/>
@@ -296,6 +416,9 @@ class EditProfile extends React.Component{
 							<input
 								type="text"
 								placeholder="Last Name"
+								onChange = {this.handleChange}
+								name = "billingLastName"
+								value = {this.state.billingLastName}
 								className="text-area-left"
 								required
 							/>
@@ -308,6 +431,9 @@ class EditProfile extends React.Component{
 							<input
 								type="text"
 								placeholder="Postal Code"
+								name = "billingZip"
+								onChange = {this.handleChange}
+								value = {this.state.billingZip}
 								className="text-area-right"
 								required
 							/>
@@ -324,6 +450,9 @@ class EditProfile extends React.Component{
 							<input
 								type="text"
 								placeholder="Email Address"
+								name = "email"
+								onChange = {this.handleChange}
+								value = {this.state.email}
 								className="text-area-left"
 								required
 							/>
@@ -336,6 +465,9 @@ class EditProfile extends React.Component{
 							<input
 								type="text"
 								placeholder="Phone Number"
+								name = "billingPhone"
+								onChange = {this.handleChange}
+								value = {this.state.billingPhone}
 								className="text-area-right"
 								required
 							/>
@@ -352,6 +484,9 @@ class EditProfile extends React.Component{
 							<input
 								type="text"
 								placeholder="Address 1"
+								name = "billingAddress1"
+								onChange = {this.handleChange}
+								value = {this.state.billingAddress1}
 								className="text-area-left"
 								required
 							/>
@@ -364,6 +499,9 @@ class EditProfile extends React.Component{
 							<input
 								type="text"
 								placeholder="Country"
+								onChange = {this.handleChange}
+								name = "billingCountry"
+								value = {this.state.billingCountry}
 								className="text-area-right"
 								required
 							/>
@@ -380,6 +518,9 @@ class EditProfile extends React.Component{
 							<input
 								type="text"
 								placeholder="Address 2"
+								onChange = {this.handleChange}
+								name = "billingAddress2"
+								value = {this.state.billingAddress2}
 								className="text-area-left"
 								required
 							/>
@@ -392,6 +533,9 @@ class EditProfile extends React.Component{
 							<input
 								type="text"
 								placeholder="Province"
+								name = "billingProvince"
+								onChange = {this.handleChange}
+								value = {this.state.billingProvince}
 								className="text-area-right"
 								required
 							/>
@@ -446,6 +590,9 @@ class EditProfile extends React.Component{
 								<input
 									type="text"
 									placeholder="Card Holder"
+									name = "cardHolder"
+									onChange = {this.handleChange}
+									value = {this.state.cardHolder}
 									className="text-area-right"
 									required
 								/>
@@ -456,6 +603,9 @@ class EditProfile extends React.Component{
 								<input
 									type="text"
 									placeholder="Card Number"
+									name = "cardNumber"
+									onChange = {this.handleChange}
+									value = {this.state.cardNumber}
 									className="text-area-right"
 									required
 								/>
@@ -466,6 +616,9 @@ class EditProfile extends React.Component{
 								<input
 									type="text"
 									placeholder="MM/YY"
+									name = "yearExp"
+									onChange = {this.handleChange}t
+									value = {this.state.yearExp}
 									className="text-area-right"
 									required
 								/>
@@ -476,6 +629,9 @@ class EditProfile extends React.Component{
 								<input
 									type="text"
 									placeholder="CVV"
+									name = "cvv"
+									onChange = {this.handleChange}
+									value = {this.state.cvv}
 									className="text-area-right"
 									required
 								/>
@@ -493,7 +649,7 @@ class EditProfile extends React.Component{
 						<Link data-dismiss="modal" onClick={this.toShipping} className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
 					</div>
 					<div className="col-2 ml-4">
-						<Link data-dismiss="modal" onClick={this.toShipping} className="button-text" style={{ textDecoration: 'none' }}>Save</Link>
+						<Link data-dismiss="modal" onClick={this.toShipping} className="button-text" style={{ textDecoration: 'none' }} onClick={this.handleSubmit} >Save</Link>
 					</div>
 					
 

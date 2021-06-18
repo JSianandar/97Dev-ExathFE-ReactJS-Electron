@@ -26,9 +26,6 @@ class IndividualCaptcha extends React.Component{
 		this.getCaptcha()
 	}
 
-	handleChange = event => {
-		this.setState({ id: event.target.value });
-	}
 
 	handleSubmit = event => {
 		event.preventDefault();
@@ -99,13 +96,13 @@ class IndividualCaptcha extends React.Component{
 								<div className="col-2 ml-2">
 									<ul className="icons-wrapper "style={{marginLeft:'5px'}}>
 										<li className="icon"><Link data-toggle="modal" data-target="#captchaHarvester"><img src= {harvester_logo}/></Link></li>
-										<li className="icon"><Link data-toggle="modal" data-target="#editCaptcha" ><img src={table_edit} /></Link></li>
+										<li className="icon"><Link data-toggle="modal" data-target={`#edit-${e.id}`} ><img src={table_edit} /></Link></li>
 										<li className="icon"><Link  onClick={this.handleSubmit}><img src={table_delete} name = {e.id} /></Link></li>
 									</ul>
 								</div>
 							</div>
 							{/*EditCaptchaModal*/}
-								<div className="modal fade" id="editCaptcha" tabIndex="-1" aria-labelledby="editCaptchaLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
+								<div className="modal fade" id={`edit-${e.id}`} tabIndex="-1" aria-labelledby={`edit-${e.id}`} aria-hidden="true" style={{overflowY: 'hidden'}}>
 									<EditCaptcha name= {e.name} email = {e.email} proxy = {e.proxy} id = {e.id} refreshPageState={this.props.refreshPage}/>
 									<div className= "modal-dialog">
 									</div>

@@ -37,6 +37,17 @@ class EditCaptcha extends React.Component{
 		})
 	}
 
+	componentDidUpdate(prevprop){
+		if(prevprop.refreshPageState != this.props.refreshPageState){
+			document.getElementById('input-email').value = this.state.email
+			document.getElementById('input-proxy').value = this.state.proxy
+			document.getElementById('input-name').value = this.state.name
+			this.setState({
+				refreshPageState : this.props.refreshPageState
+			})
+		}
+	}
+
 
 
 	componentDidMount(){

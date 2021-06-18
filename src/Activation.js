@@ -86,7 +86,7 @@ class Activation extends React.Component {
 
                         <div className="row pt-5">
                             <div className="col-3 ml-4"></div>
-                            <Link onClick={this.wrongKeyActivate} className="col-2 ml-5 button" style={{ textDecoration: 'none' }}>
+                            <Link className="col-2 ml-5 button" style={{ textDecoration: 'none' }}>
                                 <h1 className="text-center">Close</h1>
                             </Link>
                 

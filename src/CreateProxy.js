@@ -6,8 +6,8 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 
 class CreateProxy extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
 			refreshPageState: '',
 			proxyList: '',
@@ -25,7 +25,7 @@ class CreateProxy extends React.Component{
 		event.preventDefault();
 
 		axios.post('http://exath.io/api/proxies/create', {
-			"proxyList": this.state.proxyList.split('\n'),
+			"proxyList": this.state.proxyList.split(','),
 			"group": this.state.group
 		})
 		.then(res=>{
@@ -91,7 +91,7 @@ class CreateProxy extends React.Component{
 					<div className="row pt-1">
 						<div className="col-4 ml-3">
 							<Form>
-								<Form.Group controlId="formProxy">
+								<Form.Group>
 									<Form.Control id = "input-group" type="text" placeholder="Group Name" name="group" onChange = {this.handleChange} className="group-name" required/>
 								</Form.Group>
 							</Form>
