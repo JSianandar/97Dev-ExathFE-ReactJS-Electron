@@ -217,7 +217,7 @@ class IndividualTask extends React.Component{
 										<ul className="icons-wrapper pt-2" style={{marginLeft: '-30px'}}>
 											<li className="icon"><Link onClick = {this.handleStartTask} ><img src={table_play} name = {e.id} /></Link></li>
 											<li className="icon"><Link onClick = {this.handleStopTask}> <img src={table_stop} name = {e.id}/></Link></li>
-											<li className="icon"><Link data-toggle="modal" data-target="#editTask"><img src={table_edit} /></Link></li>
+											<li className="icon"><Link data-toggle="modal" data-target={`#edit-${e.id}`}><img src={table_edit} /></Link></li>
 											<li className="icon"><Link onClick = {this.handleDelete}><img src={table_delete} name = {e.id} /></Link></li>
 										</ul>
 									</div>
@@ -226,8 +226,8 @@ class IndividualTask extends React.Component{
 							</div>
 							<div className="row pt-2"></div>
 							{/*EditTaskModal*/}
-							<div className="modal fade" id="editTask" tabIndex="-1" aria-labelledby="editTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
-								<EditTask/>
+							<div className="modal fade" id={`edit-${e.id}`} tabIndex="-1" aria-labelledby={`edit-${e.id}`} aria-hidden="true" style={{overflowY: 'hidden'}}>
+								<EditTask id = {e.id} size = {e.size} site = {e.site}  mode = {e.mode} sku = {e.sku} profile = {e.profile} proxyGroup = {e.proxyGroup} accountEmail = {e.accountEmail} accountPassword = {e.accountPassword}  refreshPageState={this.props.refreshPage}/>
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		
 									</div>

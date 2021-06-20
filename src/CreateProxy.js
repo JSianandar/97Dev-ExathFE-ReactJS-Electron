@@ -25,7 +25,7 @@ class CreateProxy extends React.Component{
 		event.preventDefault();
 
 		axios.post('http://exath.io/api/proxies/create', {
-			"proxyList": this.state.proxyList.split(','),
+			"proxyList": this.state.proxyList.split('\n'),
 			"group": this.state.group
 		})
 		.then(res=>{

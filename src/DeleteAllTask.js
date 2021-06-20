@@ -56,7 +56,7 @@ class DeleteAllTask extends React.Component{
 						<Link data-toggle="modal" data-target="#deleteAllTask" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
 					</div> 
 					<div className="col-4 ml-0">
-						<Link data-toggle="modal" data-target="#deleteAllTask" className="button-text" style={{ textDecoration: 'none' }} onClick={this.handleDeleteAllTask} >Save</Link>
+						<Link data-toggle="modal" data-target="#deleteAllTask" className="button-text" style={{ textDecoration: 'none' }} onClick={this.handleDeleteAllTask} >Confirm</Link>
 					</div>
 				</div>
 

@@ -48,7 +48,7 @@ class Activation extends React.Component {
         })
         console.log(res);
         console.log(res.data);
-        window.location.href('/task')
+        window.location.href = '/task';
     },error => {
         this.setState({
             mode: 'false'

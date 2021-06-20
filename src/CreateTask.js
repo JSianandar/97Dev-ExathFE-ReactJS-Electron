@@ -115,6 +115,10 @@ class CreateTask extends React.Component{
 		console.log('prevprop', prevprop)
 
 		if(prevprop.refreshPageState != this.props.refreshPageState){
+			await this.getProfiles();
+			await this.getSizes();
+			await this.getSites();
+			await this.getProxies();
 			document.getElementById('input-keyword').value = ''
 			document.getElementById('input-quantity').value = ''
 			document.getElementById('input-account').value = ''
