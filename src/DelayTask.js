@@ -68,11 +68,11 @@ class DelayTask extends React.Component{
             <div className="row pt-4">
                 <div className="col-1 ml-4"></div>
                 <form className=" button col-4 pt-1" style={{textDecoration: "none"}}>
-                    <input type="text" className="background-color" style={{outline: 'none'}} placeholder = "Monitor Delay" id= "input-monitordelay" onChange= {this.handleChange} required/>
+                    <input type="text" className="background-color" style={{outline: 'none'}} placeholder = "Monitor Delay" id= "input-monitordelay" name="monitorDelay" onChange= {this.handleChange} required/>
                 </form>
                 <div className="col-1"></div>
                 <form className=" button col-4 pt-1" style={{textDecoration: "none"}}>
-                    <input type="text" className="background-color" style={{outline: 'none'}} placeholder = "Retry Delay" id= "input-retrydelay" onChange= {this.handleChange} required/>
+                    <input type="text" className="background-color" style={{outline: 'none'}} placeholder = "Retry Delay" id= "input-retrydelay" name="retryDelay" onChange= {this.handleChange} required/>
                 </form>
                 <div className="col-1"></div>
             </div>

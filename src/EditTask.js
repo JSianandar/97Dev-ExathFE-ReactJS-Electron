@@ -50,7 +50,6 @@ class EditTask extends React.Component{
 		await this.getSizes();
 		await this.getSites();
 		await this.getProxies();
-		await this.setState({a: "a"})
 	}
 
 	handleClickSite = (event) => {
@@ -178,6 +177,31 @@ class EditTask extends React.Component{
 
 	}
 
+	getStateProfileNameById(id){
+		var profileName = ''
+		for(var i=0; i<this.state.profiles.length; i++) {
+			if(this.state.profiles[i].id == id) {
+				profileName = this.state.profiles[i].name;
+				break;
+			}
+		}
+		return profileName;
+	}
+
+	getStateProxyGroupById(id){
+		var proxyGroupName = ''
+		for(var i=0; i<this.state.proxies.length; i++) {
+			if(this.state.proxies[i].id == id) {
+				proxyGroupName = this.state.proxies[i].group;
+				break;
+			}
+		}
+		return proxyGroupName;
+
+	}
+
+	getStateProfileName
+
 	async componentDidUpdate(prevprop){
 		console.log('prevprop', prevprop)
 
@@ -208,129 +232,131 @@ class EditTask extends React.Component{
 
 	render(){
 		return(
-			<div className="edit-task-container">
-				<div className="row pt-2">
-					<div className="col-4 ml-3">
-						<h1 style={{fontWeight: "bold"}}>Edit Task</h1>
+			<div> 
+				<div className="edit-task-container">
+					<div className="row pt-2">
+						<div className="col-4 ml-3">
+							<h1 style={{fontWeight: "bold"}}>Edit Task</h1>
+						</div>
 					</div>
-				</div>
 
-				<div className="row pt-4">
-					<Dropdown name="site" onChange={this.handleChange} onSelect = {this.handleClickSite}>
-						<Dropdown.Toggle variant="outline-none" className="text-area-left ml-5 d-flex">
-							<img className="pt-0" src={select_site_icon}/>
-							<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.site}</h2>
-						</Dropdown.Toggle>
+					<div className="row pt-4">
+						<Dropdown name="site" onChange={this.handleChange} onSelect = {this.handleClickSite}>
+							<Dropdown.Toggle variant="outline-none" className="text-area-left ml-5 d-flex">
+								<img className="pt-0" src={select_site_icon}/>
+								<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.site}</h2>
+							</Dropdown.Toggle>
 
-						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-							{this.state.sites.map((e, index) => {
+							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
+								{this.state.sites.map((e, index) => {
 									
-								return(<Dropdown.Item href="#/action-1" active = {e.identifier == this.state.site} eventKey= {e.identifier} >{e.identifier}</Dropdown.Item>)
+									return(<Dropdown.Item href="#/action-1" active = {e.identifier == this.state.site} eventKey= {e.identifier} >{e.identifier}</Dropdown.Item>)
 									
-							})}
-						</Dropdown.Menu>
+								})}
+							</Dropdown.Menu>
 
 
-					</Dropdown>
+						</Dropdown>
 
-					<Dropdown name="mode" onChange={this.handleChange} onSelect= {this.handleClickMode}>
-						<Dropdown.Toggle variant="outline-none"className="text-area-right  d-flex" style={{marginLeft: '40px'}}>
-							<h2 className="" style={{marginTop: '-3px'}}>{this.state.mode}</h2>
-						</Dropdown.Toggle>
+						<Dropdown name="mode" onChange={this.handleChange} onSelect= {this.handleClickMode}>
+							<Dropdown.Toggle variant="outline-none"className="text-area-right  d-flex" style={{marginLeft: '40px'}}>
+								<h2 className="" style={{marginTop: '-3px'}}>{this.state.mode}</h2>
+							</Dropdown.Toggle>
 
-						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-							<Dropdown.Item href="#/action-1" active = {"Safe Preload" == this.state.mode} eventKey= "Safe Preload" >Safe Preload</Dropdown.Item>
-							<Dropdown.Item href="#/action-1" active = {"Safe" == this.state.mode} eventKey= "Safe">Safe</Dropdown.Item>
-							<Dropdown.Item href="#/action-1" active = {"Request" == this.state.mode} eventKey= "Request">Request</Dropdown.Item>
-							<Dropdown.Item href="#/action-1" active = {"Requests" == this.state.mode} eventKey= "Requests">Requests</Dropdown.Item>
-						</Dropdown.Menu>
-					</Dropdown>
-				</div>
-
-				<div className="row pt-4">
-					<form variant="outline-none" className="text-area-left  ml-5 d-flex">
-						<img src={keyword_icon} style={{width: '18.66px', marginLeft: '12px'}}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Keywords/URL/SKU" id= "input-keyword" value = {this.state.sku} required name="sku" onChange={this.handleChange}/>
-					</form>
-					<Dropdown name="size" onChange={this.handleChange} onSelect= {this.handleClickSize}>
-						<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" style={{marginLeft: '40px'}}>
-							<img src={ruler_icon}/>
-							<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.size}</h2>
-						</Dropdown.Toggle>
-
-						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
-							{this.state.sizes.map((e, index) => {
-									
-								return(<Dropdown.Item href="#/action-1" active = {e == this.state.size} eventKey= {e} >{e}</Dropdown.Item>)
-									
-							})}
-						</Dropdown.Menu>
-					</Dropdown>
-
-				</div>
-
-				<div className="row pt-4">
-					<Dropdown name="profile" onChange={this.handleChange} onSelect={this.handleClickProfile}>
-						<Dropdown.Toggle variant="outline-none" className="text-area-left col ml-5 d-flex">
-							<img src={profile_icon}/>
-							<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.profile}</h2>
-						</Dropdown.Toggle>
-
-						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
-							{this.state.profiles.map((e, index) => {
-									
-								return(<Dropdown.Item href="#/action-1" active = {e.name == this.state.profile} eventKey={e.name}>{e.name}</Dropdown.Item>)
-									
-							})}
-						</Dropdown.Menu>
-					</Dropdown>
-					<div className="col-1"></div>
-
-				</div>
-
-				<div className="row pt-4">
-					<Dropdown name="proxyGroup" onChange={this.handleChange} onSelect={this.handleClickProxies}>
-						<Dropdown.Toggle variant="outline-none" className="text-area-left col ml-5 d-flex">
-							<img src={proxy_icon}/>
-							<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.proxyGroup}</h2>
-						</Dropdown.Toggle>
-					
-					
-						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
-							{this.state.proxies.map((e, index) => {
-									
-								return(<Dropdown.Item href="#/action-1" active = {e.group == this.state.proxyGroup}eventKey= {e.group} >{e.group}</Dropdown.Item>)
-									
-							})}
-						</Dropdown.Menu>
-					</Dropdown>
-				</div>
-
-				<div className="row pt-4">
-					<form className="text-area-left col-5 ml-5">
-						<img src={account_icon}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} value = {this.state.accountEmail} placeholder = "Account" id="input-account" required name="accountEmail" onChange={this.handleChange}/>
-					</form>
-					
-					<form className="text-area-left col-5 ml-5">
-						<img src={password_icon}/>
-						<input type="password" className="background-color ml-2" style={{outline: 'none'}} value = {this.state.accountPassword} placeholder = "Password" id="input-password" required name="accountPassword" onChange={this.handleChange}/>
-					</form>
-				</div>
-
-				<div className="row pt-5">
-					<div className="col-8"></div>
-					<div className="col-1 ml-5">
-						<Link data-dismiss="modal" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
+							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
+								<Dropdown.Item href="#/action-1" active = {"Safe Preload" == this.state.mode} eventKey= "Safe Preload" >Safe Preload</Dropdown.Item>
+								<Dropdown.Item href="#/action-1" active = {"Safe" == this.state.mode} eventKey= "Safe">Safe</Dropdown.Item>
+								<Dropdown.Item href="#/action-1" active = {"Request" == this.state.mode} eventKey= "Request">Request</Dropdown.Item>
+								<Dropdown.Item href="#/action-1" active = {"Requests" == this.state.mode} eventKey= "Requests">Requests</Dropdown.Item>
+							</Dropdown.Menu>
+						</Dropdown>
 					</div>
-					<div className="col-2 ml-4">
-						<Link data-dismiss="modal" className="button-text" style={{ textDecoration: 'none' }} onClick= {this.handleSubmit}>Save</Link>
+
+					<div className="row pt-4">
+						<form variant="outline-none" className="text-area-left  ml-5 d-flex">
+							<img src={keyword_icon} style={{width: '18.66px', marginLeft: '12px'}}/>
+							<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Keywords/URL/SKU" id= "input-keyword" value = {this.state.sku} required name="sku" onChange={this.handleChange}/>
+						</form>
+						<Dropdown name="size" onChange={this.handleChange} onSelect= {this.handleClickSize}>
+							<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" style={{marginLeft: '40px'}}>
+								<img src={ruler_icon}/>
+								<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.size}</h2>
+							</Dropdown.Toggle>
+
+							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
+								{this.state.sizes.map((e, index) => {
+									
+									return(<Dropdown.Item href="#/action-1" active = {e == this.state.size} eventKey= {e} >{e}</Dropdown.Item>)
+									
+								})}
+							</Dropdown.Menu>
+						</Dropdown>
+
 					</div>
+
+					<div className="row pt-4">
+						<Dropdown name="profile" onChange={this.handleChange} onSelect={this.handleClickProfile}>
+							<Dropdown.Toggle variant="outline-none" className="text-area-left col ml-5 d-flex">
+								<img src={profile_icon}/>
+								<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.profile}</h2>
+							</Dropdown.Toggle>
+
+							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
+								{this.state.profiles.map((e, index) => {
+									
+									return(<Dropdown.Item href="#/action-1" active = {e.name == this.state.profile} eventKey={e.name}>{e.name}</Dropdown.Item>)
+									
+								})}
+							</Dropdown.Menu>
+						</Dropdown>
+						<div className="col-1"></div>
+
+					</div>
+
+					<div className="row pt-4">
+						<Dropdown name="proxyGroup" onChange={this.handleChange} onSelect={this.handleClickProxies}>
+							<Dropdown.Toggle variant="outline-none" className="text-area-left col ml-5 d-flex">
+								<img src={proxy_icon}/>
+								<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.proxyGroup}</h2>
+							</Dropdown.Toggle>
+					
+					
+							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
+								{this.state.proxies.map((e, index) => {
+									
+									return(<Dropdown.Item href="#/action-1" active = {e.group == this.state.proxyGroup}eventKey= {e.group} >{e.group}</Dropdown.Item>)
+									
+								})}
+							</Dropdown.Menu>
+						</Dropdown>
+					</div>
+
+					<div className="row pt-4">
+						<form className="text-area-left col-5 ml-5">
+							<img src={account_icon}/>
+							<input type="text" className="background-color ml-2" style={{outline: 'none'}} value = {this.state.accountEmail} placeholder = "Account" id="input-account" required name="accountEmail" onChange={this.handleChange}/>
+						</form>
+					
+						<form className="text-area-left col-5 ml-5">
+							<img src={password_icon}/>
+							<input type="password" className="background-color ml-2" style={{outline: 'none'}} value = {this.state.accountPassword} placeholder = "Password" id="input-password" required name="accountPassword" onChange={this.handleChange}/>
+						</form>
+					</div>
+
+					<div className="row pt-5">
+						<div className="col-8"></div>
+						<div className="col-1 ml-5">
+							<Link data-dismiss="modal" className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
+						</div>
+						<div className="col-2 ml-4">
+							<Link data-dismiss="modal" className="button-text" style={{ textDecoration: 'none' }} onClick= {this.handleSubmit}>Save</Link>
+						</div>
 					
 
 
-				</div>
+					</div>
 
+				</div>
 			</div>
 		);
 	}
