@@ -1,0 +1,33 @@
+.IndividualCaptcha {
+	height: 510px;
+	overflow-y: scroll !important;
+}
+
+.individual-captcha{
+	width: 995px !important; 
+	height: 41px;
+
+	background: #291C43;
+	border-radius: 15px;
+	padding: 10px;
+}
+.individual-captcha .headings{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 17px;
+	text-align: center;
+	margin-right: 10px;
+
+	color: #C4C4C4;
+
+}
+.individual-captcha .icons-wrapper{
+	list-style-type: none;
+}
+
+.individual-captcha .icons-wrapper .icon{
+	display: inline;
+	padding-right: 10px;
+}

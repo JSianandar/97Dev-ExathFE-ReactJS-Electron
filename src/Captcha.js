@@ -5,17 +5,32 @@ import {Link} from 'react-router-dom';
 import export_logo from "./assets/icons/export_logo.png";
 import import_logo from "./assets/icons/import_logo.png";
 import create_logo from "./assets/icons/create_task_logo.png";
+import harvester_logo from "./assets/icons/harvester_logo.svg";
 
 import table_edit from "./assets/icons/table_edit.png";
 import table_delete from "./assets/icons/table_delete.png";
+import TitleBar from './TitleBar.js';
+import IndividualCaptcha from './IndividualCaptcha.js';
+import CreateCaptcha from './CreateCaptcha.js';
+import EditCaptcha from './EditCaptcha.js';
+import CaptchaHarvester from './CaptchaHarvester.js';
+
 
 class Captcha extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
+		var refreshPage =  this.refreshPage.bind(this)
 		this.state = {
-
+			refreshPage: ''
 		}
 	}
+
+	refreshPage(){
+    this.setState({
+        refreshPage : Math.floor(Math.random() * 99999)
+    })
+    console.log('page Refreshed')
+  }
 
 	componentDidMount(){
 
@@ -23,76 +38,61 @@ class Captcha extends React.Component{
 
 	render(){
 		return(
-			<div className="captcha-container pt-1">
-				<div className="page-wrapper mx-auto">
-					<div className="profile-icons-wrapper row">
-						<div className="left-control-panel col-2 pt-1">
-							<ul className="icons-wrapper pt-4 mr-0">
-								<li className="icon"><img src={export_logo}/></li>
-								<li className="icon"><img src={import_logo}/></li>
-							</ul>
+			<div className="captcha">
+				<TitleBar/>
+				<div className="captcha-container pt-0">
+					<div className="page-wrapper mx-auto">
+						<div className="profile-icons-wrapper row">
+							<div className="left-control-panel col-2 pt-1">
+							</div>
+							<div className="col-8"></div>
+							<div className="right-control-panel col pt-1" style={{marginLeft: '30px'}}>
+								<ul className="icons-wrapper pt-4 mr-0">
+									<li></li>
+									<li className="icon"><Link data-toggle="modal" data-target="#createCaptcha"><img src={create_logo}/></Link></li>
+								</ul>
+							</div>
 						</div>
-						<div className="col-8"></div>
-						<div className="right-control-panel col-2 pt-1">
-							<ul className="icons-wrapper pt-4 mr-0">
-								<li></li>
-								<li className="icon"><Link to="/create_captcha"><img src={create_logo}/></Link></li>
-							</ul>
+
+						<div className="table-heading mx-auto row">
+
+							<div className="col-2 mr-5">
+								<h1 className="headings text-center">Harvester</h1>
+							</div>
+
+							<div className="col-2 mr-5">
+								<h1 className="headings text-center">Email</h1>
+							</div>
+
+							<div className="col-2">
+								<h1 className="headings text-center">Proxy</h1>
+							</div>
+
+						
+							<div className="col-2 mr-5"></div>
+						
+							<div className="col-2 ml-2">
+								<h1 className="headings text-center">Actions</h1>
+							</div>
+						
 						</div>
+						{/*IndividualCaptcha*/}
+						<IndividualCaptcha refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
+						{/*IndividualCaptcha*/}
+
+						{/*CreateCaptchaModal*/}
+							<div className="modal fade" id="createCaptcha" tabIndex="-1" aria-labelledby="createCaptchaLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
+								<CreateCaptcha refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
+									</div>
+								</div>
+							</div>
+						{/*CreateCaptchaModal*/}
 					</div>
-
-					<div className="table-heading mx-auto row">
-
-						<div className="col-2 mr-5">
-							<h1 className="headings text-center">Harvester</h1>
-						</div>
-
-						<div className="col-2 mr-5">
-							<h1 className="headings text-center">Email</h1>
-						</div>
-
-						<div className="col-2">
-							<h1 className="headings text-center">Proxy</h1>
-						</div>
-
-						
-						<div className="col-2 mr-5"></div>
-						
-						<div className="col-2">
-							<h1 className="headings text-center">Actions</h1>
-						</div>
-						
-					</div>
-
-					<div className="individual-captcha mx-auto row">
-						<div className="col-2 mr-3">
-							<h1 className="headings text-center">Captcha1</h1>
-						</div>
-
-						<div className="col-2 mr-5">
-							<h1 className="headings text-center">randomrandom@gmail.com</h1>
-						</div>
-
-						<div className="col-2 mr-5">
-							<h1 className="headings text-center">71.18.73.232:7556:space_fOHrX:hSvquyBeJF</h1>
-						</div>
-
-						
-						<div className="col-2 mr-5"></div>
-
-						<div className="col-2">
-							<ul className="icons-wrapper">
-                                <li className="icon"><Link to="edit_captcha"><img src={table_edit} /></Link></li>
-                                <li className="icon"><img src={table_delete} /></li>
-                            </ul>
-						</div>
-					
-					</div>
-					
-					<Link to ="/captcha_harvester" className="captcha_harvester_button">Captcha Harvester (Testing)</Link>
-				</div>
 
 				
+				</div>
 			</div>
 		);
 	}

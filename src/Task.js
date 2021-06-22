@@ -2,6 +2,10 @@ import React from 'react';
 import './css/Task.css';
 import App from './App.js';
 import {Link} from 'react-router-dom';
+import {useState} from 'react';
+import IndividualTask from './IndividualTask.js';
+import axios from 'axios';
+import Toast from 'react-bootstrap/Toast'
 
 import play_button from "./assets/icons/start_all_logo.png";
 import stop_button from "./assets/icons/stop_task_logo.png";
@@ -16,135 +20,187 @@ import table_stop from "./assets/icons/table_stop.png";
 import table_edit from "./assets/icons/table_edit.png";
 import table_delete from "./assets/icons/table_delete.png";
 
+import TitleBar from './TitleBar.js';
+import EditAllTask from './EditAllTask';
+import DelayTask from './DelayTask';
+import QuickTask from './QuickTask';
+import CreateTask from './CreateTask';
+import DeleteAllTask from './DeleteAllTask';
+
 class Task extends React.Component{
-   constructor(){
-    super()
+   constructor(props){
+    super(props)
+    var refreshPage =  this.refreshPage.bind(this)
     this.state = {
+        refreshPage: ''
     }
+
   }
+
+  refreshPage(){
+    this.setState({
+        refreshPage : Math.floor(Math.random() * 99999)
+    })
+    console.log('page Refreshed')
+  }
+
+  handleStartAllTask = event => {
+        event.preventDefault();
+        axios.get('http://exath.io/api/action?id=all&act=start')
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+            this.refreshPage()
+        },
+        error=>{
+        
+        })
+  }
+
+  handleStopAllTask = event => {
+        event.preventDefault();
+        axios.get('http://exath.io/api/action?id=all&act=stop')
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+            this.refreshPage()
+        },
+        error=>{
+        
+        })
+  }
+
+
+ 
+
 
   componentDidMount(){
+    
 
   }
+
 
   render(){
 	return(
-        <div className="tasks-container pt-1">
-            <div className="control-panel-wrapper row mx-auto">
-                <div className="left-control-panel col-2 pt-3">
-                    <h1 className="text-center">Tasks</h1>
-                    <p className="clock text-center">12:12:59</p>
-                </div>
-                <div className="middle-control-panel col-4 pt-3">
-                    <p className="welcome-message m-0">Welcome, <b>Bluu#1234</b></p>
-                    <p className="m-0">Tasks - <span style={{color: '#F6FB06'}}>10</span></p>
-                    <p className="m-0" >Running Tasks - <span style={{color: '#0DFE5F'}}>9</span></p>
-                </div>
-                <div className="col-1"></div>
-                <div className="right-control-panel col-5">
-                    <ul className="icons-wrapper pt-4 mr-0">
-                        <li className="icon"><img src={play_button} /></li>
-                        <li className="icon"><img src={stop_button} /></li>
-                        <li className="icon"><img src={edit_button} /></li>
-                        <li className="icon"><Link to="/delay_task"><img src={delay_button} /></Link></li>
-                        <li className="icon"><Link to="/quick_task"><img src={quick_task_button} /></Link></li>
-                        <li className="icon"><img src={delete_button} /></li>
-                        <li className="icon"><img src={create_button} /></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div className="table-heading row mx-auto pt-2">
-                <div className="table-heading-wrapper mx-auto">
-                    <div className="table row">
-                        <div className="col-1 pt-2">
-                            <h1 className="headings text-center">Site</h1>
-                        </div>
-
-                        <div className="col-1 pt-2">
-                            <h1 className="headings text-center">Size</h1>
-                        </div>
-
-                        <div className="col-3  pt-2">
-                            <h1 className="headings text-center">Product</h1>
-                        </div>
-
-                        <div className="col-1 pt-2">
-                            <h1 className="headings text-center">Profile</h1>
-                        </div>
-
-                        <div className="col-1 pt-2">
-                            <h1 className="headings text-center">Proxies</h1>
-                        </div>
-
-                        <div className="col-3 pt-2">
-                            <h1 className="headings text-center">Status </h1>
-                        </div>
-
-                        <div className="col-2  pt-2">
-                            <h1 className="headings text-center">Actions</h1>
-                        </div>
+        <div className="task">
+            
+            <TitleBar/>
+            <div className="tasks-container pt-0">
+                <div className="control-panel-wrapper row mx-auto">
+                    <div className="left-control-panel col-2 pt-3">
+                        <h1 className="text-center">Tasks</h1>
+                        <p className="clock text-center">12:12:59</p>
                     </div>
-
-                    <div className="individual-task-wrapper mx-auto">
-                        <div className="individual-task row">
-                            <div className="col-1 ml-2">
-                                <p className="headings text-center">Custom Shopify Safe</p>
-                            </div>
-
-                            <div className="col-1 ">
-                                <p className="headings-other text-center">7W</p>
-                            </div>
-
-                            <div className="col-3 ">
-                                <p className="headings-other text-center">Jordan 1 High OG</p>
-                            </div>
-                            <div className="col-1 ">
-                                <p className="headings-other text-center">ExathBluu</p>
-                            </div>
-                            <div className="col-1 ">
-                                <p className="headings-other text-center">ExathProxies</p>
-                            </div> 
-                            <div className="col-3 ">
-                                <p className="headings-other text-center"><span style={{color: '#FA0606'}}>Waiting for Restocks</span></p>
-                            </div>
-                            <div className="col-2">
-                                <ul className="icons-wrapper  mr-0">
-                                    <li className="icon"><img src={table_play} /></li>
-                                    <li className="icon"><img src={table_stop} /></li>
-                                    <li className="icon"><img src={table_edit} /></li>
-                                    <li className="icon"><img src={table_delete} /></li>
-                                </ul>
-                            </div>
-
-                        </div>
+                    <div className="middle-control-panel col-4 pt-3">
+                        <p className="welcome-message m-0">Welcome, <b>Bluu#1234</b></p>
+                        <p className="m-0">Tasks - <span style={{color: '#F6FB06'}}>10</span></p>
+                        <p className="m-0" >Running Tasks - <span style={{color: '#0DFE5F'}}>9</span></p>
                     </div>
+                    <div className="col-1"></div>
+                    <div className="right-control-panel col-5">
+                        <ul className="icons-wrapper ml-5">
+                            <li className="icon"><Link onClick={this.handleStartAllTask}><img src={play_button} /></Link></li>
+                            <li className="icon"><Link onClick= {this.handleStopAllTask} ><img src={stop_button} /></Link></li>
+                            <li className="icon"><Link data-toggle="modal" data-target="#editAllTask"><img src={edit_button} /></Link></li>
+                            <li className="icon"><Link data-toggle="modal" data-target="#delayTask"><img src={delay_button} /></Link></li>
+                            <li className="icon"><Link data-toggle="modal" data-target="#quickTask"><img src={quick_task_button} /></Link></li>
+                            <li className="icon"><Link data-toggle="modal" data-target="#deleteAllTask"><img src={delete_button} /></Link></li>
+                            <li className="icon"><Link data-toggle="modal" data-target="#createTask"><img src={create_button} /></Link></li>
+                        </ul>
+                    </div> 
+                </div>
+                <div className="row pt-1"></div>
+                <div className="table-heading row mx-auto pt-2">
+                    <div className="table-heading-wrapper">
+                        <div className="table row">
+                            <div className="col ml-2 pt-2">
+                                <h1 className="headings text-center">Site</h1>
+                            </div>
+
+                            <div className="col pt-2">
+                                <h1 className="headings text-center">Size</h1>
+                            </div>
+
+                            <div className="col-3  pt-2">
+                                <h1 className="headings text-center">Product</h1>
+                            </div>
+
+                            <div className="col pt-2">
+                                <h1 className="headings text-center">Profile</h1>
+                            </div>
+
+                            <div className="col pt-2">
+                                <h1 className="headings text-center">Proxies</h1>
+                            </div>
+
+                            <div className="col-3 pt-2">
+                                <h1 className="headings text-center">Status </h1>
+                            </div>
+
+                            <div className="col pt-2">
+                                <h1 className="headings text-center">Actions</h1>
+                            </div>
+                        </div>
+                        {/*IndividualTask*/}
+                        <IndividualTask refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
+                        {/*IndividualTask*/}
+
+                        {/*EditAllTaskModal*/}
+							<div className="modal fade" id="editAllTask" tabIndex="-1" aria-labelledby="editAllTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
+								<EditAllTask refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
+									</div>
+								</div>
+							</div>
+						{/*EditAllTaskModal*/}
+
+                        {/*DelayTaskModal*/}
+							<div className="modal fade" id="delayTask" tabIndex="-1" aria-labelledby="delayTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
+								<DelayTask refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
+									</div>
+								</div>
+							</div>
+						{/*DelayTaskModal*/}
+
+                        {/*QuickTaskModal*/}
+							<div className="modal fade" id="quickTask" tabIndex="-1" aria-labelledby="quickTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
+								<QuickTask refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">		
+									</div>
+								</div>
+							</div>
+						{/*QuickTaskModal*/}
+
+                        {/*CreateTaskModal*/}
+							<div className="modal fade" id="createTask" tabIndex="-1" aria-labelledby="createTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
+								<CreateTask refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>	
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">	    
+									</div>
+								</div>
+							</div>
+						{/*CreateTaskModal*/}
+
+                         {/*DeleteAllTaskModal*/}
+							<div className="modal fade" id="deleteAllTask" tabIndex="-1" aria-labelledby="deleteAllTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
+								<DeleteAllTask refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>	
+								<div className= "modal-dialog modal-dialog-centered">
+									<div className="modal-content">	    
+									</div>
+								</div>
+							</div>
+						{/*DeleteAllTaskModal*/}
                     
                 
+                    </div>
+
+                
                 </div>
-
-                
             </div>
-
-
-
-            {/*
-            
-            <div className="task-table">
-                <h1 className="table-site">Custom Shopify</h1>
-                <p className="table-site-quality">Safe</p>
-                <h1 className="table-size">7W</h1>
-                <h1 className="table-product">Jordan 1 High OG</h1>
-                <h1 className="table-profile">ExathBluu</h1>
-                <h1 className="table-proxies">ExathProxies</h1>
-                <h1 className="table-status">Waiting for Restocks</h1>
-                
-                <div className="table-play"></div>
-                <div className="table-stop"></div>
-                <div className="table-edit"></div>
-                <div className="table-delete"></div>
-
-            </div> */}
         </div>
 	);
 

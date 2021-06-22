@@ -1,0 +1,28 @@
+.IndividualDashboard {
+	height: 510px;
+	overflow-y: scroll !important;
+}
+
+.inside-wrapper{
+	width: 976px;
+	background: #1D1130;
+	border-radius: 15px;
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.inside-wrapper .order-item-image {
+	max-height: 100px;
+	max-width: 200px;
+	object-fit: cover;
+}
+
+.inside-wrapper h2{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 17px;
+	text-align: center;
+
+	color: #C4C4C4;
+}

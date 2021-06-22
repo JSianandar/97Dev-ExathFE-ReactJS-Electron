@@ -1,0 +1,59 @@
+.title-container{
+	background: transparent;
+	opacity: 1.0;
+	width: 1050x;
+	height: 35px;
+	-webkit-app-region: drag;
+	
+	
+}
+.title-container .button-wrapper{
+	float: right;
+	background: transparent;
+	
+	
+}
+
+.title-container .button-wrapper .close-btn{
+	margin-left:10px;
+	background: transparent;
+	opacity: 1.0;
+	-webkit-app-region: no-drag;
+
+}
+
+.title-container .button-wrapper .minimize-btn{
+	
+	background: transparent;
+	opacity: 1.0;
+	-webkit-app-region: no-drag;
+}
+
+.title-container .button-wrapper .close-btn img{
+	filter: invert(92%) sepia(0%) saturate(235%) hue-rotate(141deg) brightness(85%) contrast(95%);
+}
+
+.title-container .button-wrapper .minimize-btn img{
+	filter: invert(92%) sepia(0%) saturate(235%) hue-rotate(141deg) brightness(85%) contrast(95%);
+}
+
+
+
+.title-container .button-wrapper .minimize-btn:hover{
+	
+	background: #1B1B24;
+	opacity: 1.0;
+	-webkit-app-region: no-drag;
+}
+
+.title-container .button-wrapper .close-btn:hover{
+	
+	background: #1B1B24;
+	opacity: 1.0;
+	-webkit-app-region: no-drag;
+}
+
+.title-container .buttons-active{
+	background: #4F9FEE;
+	-webkit-app-region: no-drag;
+}

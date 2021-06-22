@@ -1,0 +1,70 @@
+.edit-task-container{
+	width: 850px;
+	height: 442px;
+	background: #201636;
+	border-radius: 15px;
+	margin:auto;
+	transform: translateY(35%);
+	z-index: 99;
+}
+
+.edit-task-container h1{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 37px;
+	letter-spacing: 0.03em;
+
+	color: #C4C4C4;
+}
+.edit-task-container h2{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 22px;
+
+	color: #C4C4C4;
+
+}
+.edit-task-container .text-area-left{
+	width: 445.7px;
+	height: 31.1px;
+	background: #291C43;
+	border-radius: 10px;
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.edit-task-container .text-area-right{
+	width: 321.32px;
+	height: 31.1px;
+	background: #291C43;
+	border-radius: 10px;
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.edit-task-container .text-area-below{
+	width: 381.51px;
+	height: 31.1px;
+	background: #291C43;
+	border-radius: 10px;
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.edit-task-container .button-text{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 25px;
+
+	color: #C4C4C4;
+}
+
+.edit-task-container .background-color{
+	background: #291C43;
+	border: 0;
+	outline: none;
+	color: #C4C4C4;
+}

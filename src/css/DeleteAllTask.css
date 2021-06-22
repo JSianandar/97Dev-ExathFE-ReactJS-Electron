@@ -1,0 +1,42 @@
+.delete-all-task-container{
+	width: 550px;
+	height: 200px;
+	transform: translateY(100%);
+	z-index: 99;
+
+	background: #201636;
+	border-radius: 15px;
+	margin: auto;
+}
+
+.delete-all-task-container h1{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 37px;
+	letter-spacing: 0.03em;
+
+	color: #C4C4C4;
+}
+
+.delete-all-task-container h2{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 25px;
+	letter-spacing: 0.03em;
+
+	color: #C4C4C4;
+}
+
+.delete-all-task-container .button-text{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 25px;
+
+	color: #C4C4C4;
+}

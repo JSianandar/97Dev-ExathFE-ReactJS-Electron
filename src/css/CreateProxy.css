@@ -1,95 +1,67 @@
-@import url('http://db.onlinewebfonts.com/c/f608cf0f495fc936317f6ba9637d3b7e?family=MADE+TOMMY');
-/* base styles */
-* {
-  margin: 0;
-  font-family: "MADE TOMMY";
-  color: #333;
+.create-proxy{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.rectangle_background1{
-	position: relative;
-	width: 850px;
+.create-proxy-container{
+	width: 858px;
 	height: 442px;
-
-	background: #21232E;
+	margin: auto;
+	background: #201636;
 	border-radius: 15px;
+	transform: translateY(35%);
+	z-index: 99;
+	padding: 10px;
 }
 
-.create_proxy_group{
-position: absolute;
-left: 21px;
-top: 11px;
+.create-proxy-container h1{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 37px;
+	letter-spacing: 0.03em;
 
-font-family: MADE TOMMY;
-font-style: normal;
-font-weight: normal;
-font-size: 30px;
-line-height: 37px;
-letter-spacing: 0.03em;
-
-color: #C4C4C4;
+	color: #C4C4C4;
 }
 
-.text_area{
-	position: absolute;
+.create-proxy-container p{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 19px;
+
+	color: #C4C4C4;
+}
+
+::placeholder{
+	color: #C4C4C4;
+	opacity: 1;
+}
+
+.create-proxy-container .text-area{
 	width: 810px;
 	height: 296px;
-	left: 21px;
-	top: 68px;
 
-	background: #3D4158;
+	background: #291C43;
 	border-radius: 20px;
 }
 
-.paste_proxy_group{
-	position: absolute;
-	left: 41px;
-	top: 28px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 15px;
-	line-height: 19px;
-
-	color: #C4C4C4;
-
-}
-
-.input_proxy_group{
-	position: absolute;
-	width: 200px;
-	left: 41px;
-	top: 58px;
-
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 15px;
-	line-height: 19px;
-
-	color: #C4C4C4;
-
-}
-
-.proxy_group_name{
+.create-proxy-container .group-name{
 	position: absolute;
 	width: 180px;
 	height: 30px;
-	left: 21px;
-	top: 382px;
+	outline: none;
+	color: #C4C4C4;
 
-	background: #3D4158;
+	background: #291C43;
 	border-radius: 10px;
+	border: 0;
 }
 
-.exit_cp{
-	position: absolute;
-	width: 55px;
-	height: 26px;
-	left: 656px;
-	top: 387px;
-
+.create-proxy-container .routing{
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
@@ -98,18 +70,11 @@ color: #C4C4C4;
 
 	color: #C4C4C4;
 }
-.create_cp{
-	position: absolute;
-	width: 65px;
-	height: 26px;
-	left: 751px;
-	top: 387px;
 
-	font-family: MADE TOMMY;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 25px;
-
+.create-proxy-container .background-color{
+	width: 700px;
+	background: #291C43;
+	border: none;
+	outline: none;
 	color: #C4C4C4;
 }

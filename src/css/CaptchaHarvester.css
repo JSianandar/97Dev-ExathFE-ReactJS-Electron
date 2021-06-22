@@ -2,10 +2,12 @@
 	width: 432px;
 	height: 720px;
 	top: 50%;
-
-	background: #21232E;
+	transform: translateY(2%);
+	z-index: 99;
+	background: #201636;
 	margin: auto;
 	padding: 10px;
+	border-radius: 10px;
 }
 .captcha-harvester-container h1{
 	font-family: MADE TOMMY;
@@ -27,15 +29,24 @@
 .captcha-harvester-container .text-area{
 	width: 392px;
 	height: 484px;
-	background: #3D4158;
+	background: #291C43;
 	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
 	border-radius: 15px;
+	border: none;
+	color: #C4C4C4
 }
 
 .captcha-harvester-container .textarea{
 	width: 388px;
 	height: 36px;
-	background: #3D4158;
+	background: #291C43;
 	box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.45);
 	border-radius: 10px;
+
+}
+.captcha-harvester-container .background-color{
+	background: #291C43;
+	border: 0;
+	color: #C4C4C4;
+	outline: none;
 }

@@ -10,41 +10,4 @@
     display: none;
 }
 
-.exath-activation{
-	position: absolute;
-	width: 91.94px;
-	height: 90px;
-	left: 494px;
-	top: 27px;
-	background: url(./assets/icons/exath_activation.png);
-}
-.key_input{
-	position: absolute;
-	width: 920px;
-	height: 50px;
-	left: 80px;
-	top: 141px;
-	fter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
 
-	background: #3D4158;
-	border-radius: 20px;
-}
-.activate_button{
-	position: absolute;
-	width: 160px;
-	height: 60px;
-	left: 565px;
-	top: 240px;
-	background: url(./assets/icons/Activate.png);
-	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
-
-}
-.close_button{
-	position: absolute;
-	width: 160px;
-	height: 60px;
-	left: 355px;
-	top: 240px;
-	background: url(./assets/icons/Close.png);
-	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
-}

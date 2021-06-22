@@ -1,146 +1,89 @@
-@import url('http://db.onlinewebfonts.com/c/f608cf0f495fc936317f6ba9637d3b7e?family=MADE+TOMMY');
-/* base styles */
-* {
-  margin: 0;
-  font-family: "MADE TOMMY";
-  color: #333;
-}
-
-.rectangle_background9{
-	position: relative;
+.edit-profile-card-container{
 	width: 850px;
 	height: 442px;
-	left: 205px;
-	top: 115px;
-	background: #21232E;
+	transform: translateY(35%);
+	z-index: 99;
+	background: #201636;
 	border-radius: 15px;
+	margin: auto;
 }
-.edit_profile_card
-{
-	position: absolute;
-	left: 21px;
-	top: 11px;
-
+.edit-profile-card-container h1{
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 30px;
+	font-size: 28px;
 	line-height: 37px;
+	letter-spacing: 0.03em;
+
+	color: #C4C4C4;
+	font-weight: bold;
+}
+
+.edit-profile-card-container .card-address{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 19px;
+	line-height: 26px;
 	letter-spacing: 0.03em;
 
 	color: #C4C4C4;
 }
 
-.shipping_logo{
-	position: absolute;
-	width: 130px;
-	height: 35px;
-	left: 419px;
-	top: 12px;
-
-	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
-	background: url(../assets/icons/shipping_logo.png)
-}
-
-.billing_logo{
-	position: absolute;
-	width: 130px;
-	height: 35px;
-	left: 559px;
-	top: 12px;
-
-	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
-	background: url(../assets/icons/billing_logo.png)
-}
-
-.card_logo{
-	position: absolute;
-	width: 130px;
-	height: 35px;
-	left: 699px;
-	top: 12px;
-
-	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
-	background: url(../assets/icons/card_logo.png)
-}
-.credit_card_mockup{
-	position: absolute;
-	width: 400px;
-	height: 249.5px;
-	left: 90px;
-	top: 96px;
-
-	background: url(../assets/icons/credit_card_logo.png)
-
-}
-
-.card_holder{
-	position: absolute;
-	width: 250px;
-	height: 30px;
-	left: 511px;
-	top: 139px;
-
-	background: #3D4158;
-	border-radius: 10px;
-}
-
-.card_number_user{
-	position: absolute;
-	width: 250px;
-	height: 30px;
-	left: 511px;
-	top: 184px;
-
-	background: #3D4158;
-	border-radius: 10px;
-}
-
-.exp_date{
-	position: absolute;
-	width: 250px;
-	height: 30px;
-	left: 511px;
-	top: 229px;
-
-	background: #3D4158;
-	border-radius: 10px;
-}
-
-.cvv{
-	position: absolute;
-	width: 250px;
-	height: 30px;
-	left: 511px;
-	top: 274px;
-
-	background: #3D4158;
-	border-radius: 10px;
-}
-
-.close_epc{
-	position: absolute;
-	width: 55px;
-	height: 26px;
-	left: 659px;
-	top: 384px;
-
+.edit-profile-card-container h2{
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 20px;
 	line-height: 25px;
+	/* identical to box height */
+
+	letter-spacing: 0.03em;
 
 	color: #C4C4C4;
 }
-.create_epc
-{
-	position: absolute;
-	width: 65px;
-	height: 26px;
-	left: 764px;
-	top: 384px;
 
+
+.edit-profile-card-container .button{
+	width: 130px;
+	height: 35px;
+	background: #291C43;
+	border-radius: 10px;
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45))
+}
+
+.edit-profile-card-container .button2{
+	width: 130px;
+	height: 35px;
+	background: #291C43;
+	border-radius: 10px;
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
+	opacity: 0.4;
+}
+
+.edit-profile-card-container .text-area-left{
+	width: 410px;
+	height: 30px;
+	background: #291C43;
+	border-radius: 10px;
+	outline: none;
+	color: #C4C4C4;
+	padding-left: 10px;
+	border:0;
+}
+
+.edit-profile-card-container .text-area-right{
+	width: 250px;
+	height: 30px;
+	background: #291C43;
+	border-radius: 10px;
+	outline: none;
+	color: #C4C4C4;
+	padding-left: 10px;
+	border:0;
+}
+
+.edit-profile-card-container .button-text{
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;

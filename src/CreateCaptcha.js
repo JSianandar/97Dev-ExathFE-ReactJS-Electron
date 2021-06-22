@@ -3,85 +3,128 @@ import './css/CreateCaptcha.css';
 import {Link} from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
+import axios from 'axios';
 
 class CreateCaptcha extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
-
+			email: '',
+			proxy: '',
+			name: '',
+			refreshPageState: ''
 		}
+	}
+
+	handleChange = event => {
+		this.setState({ [event.target.name]: event.target.value });
+	}
+
+	handleSubmit = event =>{
+		event.preventDefault();
+
+
+		axios.post('http://exath.io/api/captcha/create', {
+			"email": this.state.email,
+			"proxy": this.state.proxy,
+			"name": this.state.name
+		})
+		.then(res => {
+			console.log(res);
+			console.log(res.data);
+			this.props.refreshPage()
+		})
 	}
 
 	componentDidMount(){
 
 	}
 
+	componentDidUpdate(prevprop){
+		if(prevprop.refreshPageState != this.props.refreshPageState){
+			document.getElementById('input-email').value = ''
+			document.getElementById('input-proxy').value = ''
+			document.getElementById('input-name').value = ''
+			this.setState({
+				refreshPageState : this.props.refreshPageState
+			})
+		}
+	}
+
 
 	render(){
 		return(
 			<div className="create-captcha-container">
-				<div className="row ml-2 pt-1">
-					<div className="col-9">
-						<h1 className="cch">Create Captcha Harvester</h1> 
-					</div>
+											<div className="row ml-2 pt-1">
+												<div className="col-9">
+													<h1 className="cch" style={{fontWeight: "bold"}}>Create Captcha Harvester</h1> 
+												</div>
 					
-				</div>
+											</div>
 
-				<div className="row ml-2 pt-1">
-					<div className="col-8">
-						<div className="textarea">
-							{/*
-							<Form>
-								<Form.Group controlId="formEmail">
-									<Form.Control type="text" className="text" placeholder="Email"/>
-								</Form.Group>
-							</Form>
-							*/}
-						</div>
-					</div>
-				</div>
+											<div className="row ml-2 pt-1">
+												<div className="col-8">
+													<div className="textarea">
+														<form >
+															<input 
+															type="text"
+															name= "email"
+															onChange={this.handleChange}
+															required
+															id = "input-email"
+															placeholder = "Email"
+															className="textarea"
+															/>
+														</form>
+													</div>
+												</div>
+											</div>
 
-				<div className="row ml-2 pt-5">
-					<div className="col-8">
-						<div className="textarea">
-							{/*
-							<Form>
-								<Form.Group controlId="formEmail">
-									<Form.Control type="text" className="text" placeholder="Proxy"/>
-								</Form.Group>
-							</Form>
-							*/}
-						</div>
-					</div>
-				</div>
+											<div className="row ml-2 pt-5">
+												<div className="col-8">
+													<div className="textarea">
+														<form>
+															<input 
+															type="text"
+															required
+															name= "proxy"
+															id = "input-proxy"
+															onChange={this.handleChange}
+															placeholder = "Proxy"
+															className="textarea"
+															/>
+														</form>
+													</div>
+												</div>
+											</div>
 
-				<div className="row ml-2 pt-5">
-					<div className="col-4">
-						<div className="textarea-hn">
-							{/*
-							<Form>
-								<Form.Group controlId="formEmail">
-									<Form.Control type="text" className="text" placeholder=""/>
-								</Form.Group>
-							</Form>
-							*/}
-						</div>
-					</div>
+											<div className="row ml-2 pt-5">
+												<div className="col-4">
+													<div className="textarea-hn">
+														<form>
+															<input 
+															type="text"
+															required
+															name= "name"
+															id = "input-name"
+															placeholder = "Harvester Name"
+															onChange={this.handleChange}
+															className="textarea-hn"
+															/>
+														</form>
+													</div>
+												</div>
 
-					<div className="col-3"></div>
+												<div className="col-3"></div>
 
-					<div className="col-2 ml-4">
-						<Link to = "/captcha" className="routing">Close</Link>
-					</div>
-					<div className="col-2">
-						<Link to = "/captcha" className="routing">Create</Link>
-					</div>
-				</div>
-
-
-				
-				
-			</div>
+												<div className="col-2 ml-4 pt-1">
+													<Link data-dismiss="modal" className="routing" style={{ textDecoration: 'none' }}>Close</Link>
+												</div>
+												<div className="col-2 pt-1">
+													<Link data-dismiss="modal" className="routing" style={{ textDecoration: 'none' }} onClick= {this.handleSubmit}>Create</Link>
+												</div>
+											</div>
+										</div>
 
 		);
 
