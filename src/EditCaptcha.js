@@ -14,7 +14,7 @@ class EditCaptcha extends React.Component{
 			proxy: this.props.proxy,
 			name: this.props.name,
 			id: this.props.id,
-			refreshPageState: ''
+			refreshPageState: '',
 		}
 	}
 
@@ -121,7 +121,7 @@ class EditCaptcha extends React.Component{
 						<Link data-dismiss="modal" className="routing" style={{ textDecoration: 'none' }}>Close</Link>
 					</div>
 					<div className="col-2 pt-1">
-						<Link data-dismiss="modal" className="routing" style={{ textDecoration: 'none' }} onClick={this.handleSubmit } >Save</Link>
+						<Link data-dismiss="modal" className="routing" style={{ textDecoration: 'none' }} onClick={this.handleSubmit}>Save</Link>
 					</div>
 				</div>
 

@@ -39,7 +39,7 @@ class TitleBar extends React.Component{
 		return(
 			<div className="title-container">
 				<div className="button-wrapper">
-					<Button variant="outline-none" size="sm" id="minimizeBtn" onClick = {this.topBarFunction.minimizeApp} className="minimize-btn" style={{marginLeft: '51px'}}><img src={minimize_logo}/></Button>
+					<Button variant="outline-none" size="sm" id="minimizeBtn" /*onClick = {this.topBarFunction.minimizeApp}*/ className="minimize-btn" style={{marginLeft: '51px'}}><img src={minimize_logo}/></Button>
 					<Button variant="outline-none" size="sm" id="closeBtn" /*onClick = {this.closeApp}*/  className="close-btn"><img src={close_logo}/></Button>
 				</div>
 			</div>
