@@ -61,13 +61,6 @@ class IndividualCaptcha extends React.Component{
 		})
 	}
 
-	InitializeEditTaskModal(task){
-		document.getElementById('input-keyword').value = ''
-		document.getElementById('input-quantity').value = ''
-		document.getElementById('input-account').value = ''
-		document.getElementById('input-password').value = ''
-	}
-
 	render(){
 		return(
 			<div className="IndividualCaptcha">

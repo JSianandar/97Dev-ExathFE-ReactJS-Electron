@@ -33,7 +33,7 @@ class EditTask extends React.Component{
 			negativeKey:'',
 			directLink:'',
 			size: this.props.size,
-			proxy: this.props.proxy,
+			proxyGroup: this.props.proxyGroup,
 			selectSite: 'Select Site',
 			selectSize: 'Size',
 			selectProfile: 'Profile',
@@ -317,14 +317,14 @@ class EditTask extends React.Component{
 						<Dropdown name="proxyGroup" onChange={this.handleChange} onSelect={this.handleClickProxies}>
 							<Dropdown.Toggle variant="outline-none" className="text-area-left col ml-5 d-flex">
 								<img src={proxy_icon}/>
-								<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.proxy}</h2>
+								<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.proxyGroup}</h2>
 							</Dropdown.Toggle>
 					
 					
 							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
 								{this.state.proxies.map((e, index) => {
 									
-									return(<Dropdown.Item href="#/action-1" active = {e.group == this.state.proxy}eventKey= {e.group} >{e.group}</Dropdown.Item>)
+									return(<Dropdown.Item href="#/action-1" active = {e.group == this.state.proxyGroup}eventKey= {e.group} >{e.group}</Dropdown.Item>)
 									
 								})}
 							</Dropdown.Menu>
