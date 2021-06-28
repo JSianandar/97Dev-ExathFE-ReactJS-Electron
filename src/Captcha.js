@@ -39,8 +39,8 @@ class Captcha extends React.Component{
 	render(){
 		return(
 			<div className="captcha">
-				<TitleBar/>
-				<div className="captcha-container pt-0">
+				{/*<TitleBar/>*/}
+				<div className="captcha-container pt-2">
 					<div className="page-wrapper mx-auto">
 						<div className="profile-icons-wrapper row">
 							<div className="left-control-panel col-2 pt-1">

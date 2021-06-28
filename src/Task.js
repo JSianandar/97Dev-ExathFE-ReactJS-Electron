@@ -84,8 +84,8 @@ class Task extends React.Component{
 	return(
         <div className="task">
             
-            <TitleBar/>
-            <div className="tasks-container pt-0">
+            {/*<TitleBar/>*/}
+            <div className="tasks-container pt-2">
                 <div className="control-panel-wrapper row mx-auto">
                     <div className="left-control-panel col-2 pt-3">
                         <h1 className="text-center">Tasks</h1>

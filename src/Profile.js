@@ -40,8 +40,8 @@ class Profile extends React.Component{
 	render(){
 		return(
 			<div className="profile">
-				<TitleBar/>
-				<div className="profile-container pt-0">
+				{/*<TitleBar/>*/}
+				<div className="profile-container pt-2">
 					<div className="page-wrapper mx-auto">
 						<div className="profile-icons-wrapper row">
 							<div className="left-control-panel col-2 pt-1">

@@ -36,8 +36,8 @@ class Proxies extends React.Component{
 	render(){
 		return(
 			<div className="proxies">
-				<TitleBar/>
-				<div className="proxies-container pt-0">
+				{/*<TitleBar/>*/}
+				<div className="proxies-container pt-2">
 					<div className="page-wrapper mx-auto">
 						<div className="profile-icons-wrapper row">
 							<div className="left-control-panel col-2 pt-1">

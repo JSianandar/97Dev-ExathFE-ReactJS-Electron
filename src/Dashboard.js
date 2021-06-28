@@ -21,8 +21,8 @@ class Dashboard extends React.Component{
 	render(){
 		return(
 			<div className="dashboard">
-				<TitleBar/>
-				<div className="dashboard-container pt-0">
+				{/*<TitleBar/>*/}
+				<div className="dashboard-container pt-2">
 					<div className="dashboard-wrapper mx-auto">
 						<div className="row pt-2"></div>
 						<div className="row heading-wrapper pt-1 ml-4">
