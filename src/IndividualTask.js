@@ -161,8 +161,8 @@ class IndividualTask extends React.Component{
 					var newNegKey = ''
 
 					try{
-						var posKey = e.positiveKey[0].split(',')
-						var negKey = e.negativeKey[0].split(',')
+						var posKey = e.positiveKey
+						var negKey = e.negativeKey
 
 						
 						for(var i=0; i<posKey.length; i++) {
@@ -227,7 +227,7 @@ class IndividualTask extends React.Component{
 							<div className="row pt-2"></div>
 							{/*EditTaskModal*/}
 							<div className="modal fade" id={`edit-${e.id}`} tabIndex="-1" aria-labelledby={`edit-${e.id}`} aria-hidden="true" style={{overflowY: 'hidden'}}>
-								<EditTask id = {e.id} size = {e.size} site = {e.site}  mode = {e.mode} sku = {e.sku} profile = {e.profile} proxyGroup = {e.proxyGroup} accountEmail = {e.accountEmail} accountPassword = {e.accountPassword}  refreshPageState={this.props.refreshPage}/>
+								<EditTask id = {e.id} size = {e.size} site = {e.site}  mode = {e.mode} sku = {(e.positiveKey[0] != '' ?  newPosKey + ',' : '') + (e.negativeKey[0] != '' ? newNegKey + ',' : '') + (e.sku != '' ?  '&' + e.sku + ',' : '') + (e.directLink!= '' ? '#' + e.directLink : '')} profile = {e.profile} proxyGroup = {e.proxyGroup} accountEmail = {e.accountEmail} accountPassword = {e.accountPassword}  refreshPageState={this.props.refreshPage}/>
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		
 									</div>

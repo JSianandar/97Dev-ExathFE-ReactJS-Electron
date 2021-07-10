@@ -78,8 +78,8 @@ class CreateProfile extends React.Component{
 			"cardHolder": this.state.cardHolder,
 			"cardNumber": this.state.cardNumber,
 			"cvv": this.state.cvv,
-			"monthExp": this.state.monthExp,
-			"yearExp": this.state.yearExp,
+			"monthExp": this.state.yearExp.split('/')[0],
+			"yearExp": this.state.yearExp.split('/')[1],
 			"sameAsShipping": this.state.sameAsShipping
 		})
 		.then(res => {

@@ -80,15 +80,36 @@ class CreateTask extends React.Component{
 	handleSubmit = event =>{
 		event.preventDefault();
 
+		let skuArray = this.state.sku.split(',')
+		let positiveKey = []
+		let negativeKey = []
+		let directLink = ''
+		let sku = ''
+
+
+		for(let i=0; i<skuArray.length; i++) {
+			if(skuArray[i][0] == '+'){
+				positiveKey.push(skuArray[i].substring(1))
+			}
+			else if(skuArray[i][0] == '-'){
+				negativeKey.push(skuArray[i].substring(1))
+			}
+			else if(skuArray[i][0] == '#'){
+				directLink = skuArray[i].substring(1)
+			}
+			else if(skuArray[i][0] == '&'){
+				sku = skuArray[i].substring(1)
+			}
+		}
 
 		axios.post('http://exath.io/api/tasks/create', {
 			"profile": this.getStateProfileIdByName(this.state.profile),
 			"site": this.state.site,
 			"mode": this.state.mode,
-			"sku": this.state.sku,
-			"positiveKey" : this.state.positiveKey,
-			"negativeKey": this.state.negativeKey,
-			"directLink": this.state.directLink,
+			"sku": sku,
+			"positiveKey" : positiveKey,
+			"negativeKey": negativeKey,
+			"directLink": directLink,
 			"size": this.state.size,
 			"proxyGroup": this.getStateProxyIdByGroup(this.state.proxyGroup),
 			"accountEmail": this.state.accountEmail,

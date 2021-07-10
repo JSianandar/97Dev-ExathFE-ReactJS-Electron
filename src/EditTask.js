@@ -40,6 +40,8 @@ class EditTask extends React.Component{
 			selectProxies: 'Proxies',
 			selectMode: 'Select Mode',
 			refreshPageState: '',
+			selectedProfileName: '',
+			selectedProxyGroup: '',
 
 		}
 		console.log(this.state)
@@ -50,6 +52,14 @@ class EditTask extends React.Component{
 		await this.getSizes();
 		await this.getSites();
 		await this.getProxies();
+		this.state.profiles.map((e, index) => {						
+			if(e.id == this.state.profile)
+				this.setState({selectedProfileName : e.name})
+		})
+		this.state.proxies.map((e, index) => {						
+			if(e.id == this.state.proxyGroup)
+				this.setState({selectedProxyGroup : e.group})
+		})
 	}
 
 	handleClickSite = (event) => {
@@ -61,12 +71,22 @@ class EditTask extends React.Component{
 		this.setState({ selectSize: event, size: event })
 	}
 
-	handleClickProfile = (event) => {
-		this.setState({ selectProfile: event, profile: event })
+	handleClickProfile = async (event) => {
+		await this.setState({ selectProfile: event, profile: event })
+		await this.state.profiles.map((e, index) => {						
+			if(e.id == this.state.profile)
+				this.setState({selectedProfileName : e.name})
+		})
+		console.log('lalala', event)
 	}
 
-	handleClickProxies = (event) => {
-		this.setState({ selectProxies: event, proxyGroup: event })
+	handleClickProxies = async (event) => {
+		await this.setState({ selectProxies: event, proxyGroup: event })
+		await this.state.proxies.map((e, index) => {						
+			if(e.id == this.state.proxyGroup)
+				this.setState({selectedProxyGroup : e.group})
+		})
+		console.log('lalala2', event)
 	}
 
 	handleClickMode = (event) => {
@@ -94,17 +114,39 @@ class EditTask extends React.Component{
 	handleSubmit = event =>{
 		event.preventDefault();
 
+		let skuArray = this.state.sku.split(',')
+		let positiveKey = []
+		let negativeKey = []
+		let directLink = ''
+		let sku = ''
+
+
+		for(let i=0; i<skuArray.length; i++) {
+			if(skuArray[i][0] == '+'){
+				positiveKey.push(skuArray[i].substring(1))
+			}
+			else if(skuArray[i][0] == '-'){
+				negativeKey.push(skuArray[i].substring(1))
+			}
+			else if(skuArray[i][0] == '#'){
+				directLink = skuArray[i].substring(1)
+			}
+			else if(skuArray[i][0] == '&'){
+				sku = skuArray[i].substring(1)
+			}
+		}
+
 
 		axios.put(`http://exath.io/api/tasks/update/${this.state.id}`, {
-			"profile": this.getStateProfileIdByName(this.state.profile),
+			"profile": this.state.profile,
 			"site": this.state.site,
 			"mode": this.state.mode,
-			"sku": this.state.sku,
-			"positiveKey" : this.state.positiveKey,
-			"negativeKey": this.state.negativeKey,
-			"directLink": this.state.directLink,
+			"sku": sku,
+			"positiveKey" : positiveKey,
+			"negativeKey": negativeKey,
+			"directLink": directLink,
 			"size": this.state.size,
-			"proxyGroup": this.getStateProxyIdByGroup(this.state.proxyGroup),
+			"proxyGroup": this.state.proxyGroup,
 			"accountEmail": this.state.accountEmail,
 			"accountPassword": this.state.accountPassword,
 		})
@@ -298,13 +340,12 @@ class EditTask extends React.Component{
 						<Dropdown name="profile" onChange={this.handleChange} onSelect={this.handleClickProfile}>
 							<Dropdown.Toggle variant="outline-none" className="text-area-left col ml-5 d-flex">
 								<img src={profile_icon}/>
-								<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.profile}</h2>
+								<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.selectedProfileName}</h2>
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
 								{this.state.profiles.map((e, index) => {
-									
-									return(<Dropdown.Item href="#/action-1" active = {e.name == this.state.profile} eventKey={e.name}>{e.name}</Dropdown.Item>)
+									return(<Dropdown.Item href="#/action-1" active = {e.id == this.state.profile} eventKey={e.id}>{e.name}</Dropdown.Item>)
 									
 								})}
 							</Dropdown.Menu>
@@ -317,14 +358,14 @@ class EditTask extends React.Component{
 						<Dropdown name="proxyGroup" onChange={this.handleChange} onSelect={this.handleClickProxies}>
 							<Dropdown.Toggle variant="outline-none" className="text-area-left col ml-5 d-flex">
 								<img src={proxy_icon}/>
-								<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.proxyGroup}</h2>
+								<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.selectedProxyGroup}</h2>
 							</Dropdown.Toggle>
 					
 					
 							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
 								{this.state.proxies.map((e, index) => {
 									
-									return(<Dropdown.Item href="#/action-1" active = {e.group == this.state.proxyGroup}eventKey= {e.group} >{e.group}</Dropdown.Item>)
+									return(<Dropdown.Item href="#/action-1" active = {e.id == this.state.proxyGroup} eventKey= {e.id} >{e.group}</Dropdown.Item>)
 									
 								})}
 							</Dropdown.Menu>
