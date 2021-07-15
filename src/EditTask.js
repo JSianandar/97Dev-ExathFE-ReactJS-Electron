@@ -317,7 +317,7 @@ class EditTask extends React.Component{
 					<div className="row pt-4">
 						<form variant="outline-none" className="text-area-left  ml-5 d-flex">
 							<img src={keyword_icon} style={{width: '18.66px', marginLeft: '12px'}}/>
-							<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Keywords/URL/SKU" id= "input-keyword" value = {this.state.sku} required name="sku" onChange={this.handleChange}/>
+							<input type="text" className="background-color ml-2" style={{outline: 'none', width: '400px'}} placeholder = "Keywords/URL/SKU" id= "input-keyword" value = {this.state.sku} required name="sku" onChange={this.handleChange}/>
 						</form>
 						<Dropdown name="size" onChange={this.handleChange} onSelect= {this.handleClickSize}>
 							<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" style={{marginLeft: '40px'}}>
