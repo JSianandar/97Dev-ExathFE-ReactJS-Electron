@@ -3,8 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './css/Activation.css';
 import TitleBar from './TitleBar.js';
-import Popup from 'react-popup';
-import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
 
 

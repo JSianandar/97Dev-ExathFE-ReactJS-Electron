@@ -17,7 +17,7 @@ class IndividualCaptcha extends React.Component{
 		super(props)
 		this.state = {
 			captcha: [],
-			refreshPage: '',
+			refreshPageState: '',
 			id: '',
 		}
 	}
@@ -26,31 +26,25 @@ class IndividualCaptcha extends React.Component{
 		this.getCaptcha()
 	}
 
-
 	handleSubmit = event => {
 		event.preventDefault();
 		axios.delete(`http://exath.io/api/captcha/update/${event.target.name}`)
-		  .then(res => {
-			console.log(res);
-			console.log(res.data);
+		.then(res => {
 			this.props.refreshPage()
 		})
 	}
 
-
-
-	componentDidUpdate(prevprop){
-		if(prevprop.refreshPage != this.props.refreshPage){
-			this.getCaptcha();
+	async componentDidUpdate(prevprop){
+		if(prevprop.refreshPageState != this.props.refreshPageState){
+			await this.getCaptcha()
 			this.setState({
-				refreshPage : this.props.refreshPage
+				refreshPageState : this.props.refreshPageState
 			})
 		}
-
 	}
 
-	getCaptcha = () =>{
-		axios.get('http://exath.io/api/captcha')
+	getCaptcha = async () =>{
+		await axios.get('http://exath.io/api/captcha')
 		.then(response => {
 			this.setState({
 				captcha : response.data
@@ -66,7 +60,6 @@ class IndividualCaptcha extends React.Component{
 			<div className="IndividualCaptcha">
 			{
 				this.state.captcha.reverse().map( (e, index) =>{
-
 					return(
 						<React.Fragment>
 							<div className="row pt-2"></div>
@@ -94,13 +87,14 @@ class IndividualCaptcha extends React.Component{
 									</ul>
 								</div>
 							</div>
-							{/*EditCaptchaModal*/}
-								<div className="modal fade" id={`edit-${e.id}`} tabIndex="-1" aria-labelledby={`edit-${e.id}`} aria-hidden="true" style={{overflowY: 'hidden'}}>
-									<EditCaptcha name= {e.name} email = {e.email} proxy = {e.proxy} id = {e.id} refreshPageState={this.props.refreshPage}/>
-									<div className= "modal-dialog">
-									</div>
-								</div>
-							{/*EditCaptchaModal*/}
+							<EditCaptcha 
+								name= {e.name}
+								email = {e.email}
+								proxy = {e.proxy}
+								id = {e.id}
+								refreshPageState={this.state.refreshPageState}
+								refreshPage={this.props.refreshPage.bind(this)}
+							/>
 							{/*CaptchaHarvesterModal*/}
 								<div className="modal fade" id="captchaHarvester" tabIndex="-1" aria-labelledby="captchaHarvesterLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
 									<CaptchaHarvester/>
