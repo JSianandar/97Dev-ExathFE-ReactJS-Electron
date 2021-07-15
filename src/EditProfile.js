@@ -86,7 +86,7 @@ class EditProfile extends React.Component{
 		.then(res => {
 			console.log(res);
 			console.log(res.data);
-			this.props.refreshPageState()
+			this.props.refreshPage()
 		})
 	}
 
@@ -124,7 +124,7 @@ class EditProfile extends React.Component{
 
 	render(){
 		return(
-			<div>
+			<div className="modal fade" id={`edit-${this.state.id}`} tabIndex="-1" aria-labelledby={`edit-${this.state.id}`} aria-hidden="true" style={{overflowY: 'hidden'}}>
 				{this.state.mode == 'shipping' && 
 					<div className="edit-profile-shipping-container ">
 						<div className="row pt-2">
@@ -658,6 +658,7 @@ class EditProfile extends React.Component{
 
 				
 			</div>}
+			<div className="modal-dialog"></div>
 			</div>
 		);
 

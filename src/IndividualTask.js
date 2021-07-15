@@ -11,13 +11,13 @@ import table_stop from "./assets/icons/table_stop.png";
 import EditTask from "./EditTask.js";
 
 class IndividualTask extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
 			tasks: [],
 			profiles: [],
 			proxies: [],
-			refreshPage: '',
+			refreshPageState: '',
 			id: '',
 		}
 	}
@@ -66,12 +66,12 @@ class IndividualTask extends React.Component{
 	}
 
 	async componentDidUpdate(prevprop){
-		if(prevprop.refreshPage != this.props.refreshPage){
+		if(prevprop.refreshPageState != this.props.refreshPageState){
 			await this.getTasks();
 			await this.getProfiles();
 			await this.getProxy();
 			this.setState({
-				refreshPage : this.props.refreshPage
+				refreshPageState : this.props.refreshPageState
 			})
 		}
 	}
@@ -113,13 +113,6 @@ class IndividualTask extends React.Component{
 		error=>{
 
 		})
-	}
-
-	InitializeEditTaskModal(task){
-		document.getElementById('input-keyword').value = ''
-		document.getElementById('input-quantity').value = ''
-		document.getElementById('input-account').value = ''
-		document.getElementById('input-password').value = ''
 	}
 
 
@@ -226,13 +219,12 @@ class IndividualTask extends React.Component{
 							</div>
 							<div className="row pt-2"></div>
 							{/*EditTaskModal*/}
-							<div className="modal fade" id={`edit-${e.id}`} tabIndex="-1" aria-labelledby={`edit-${e.id}`} aria-hidden="true" style={{overflowY: 'hidden'}}>
-								<EditTask id = {e.id} size = {e.size} site = {e.site}  mode = {e.mode} sku = {(e.positiveKey[0] != '' ?  newPosKey + ',' : '') + (e.negativeKey[0] != '' ? newNegKey + ',' : '') + (e.sku != '' ?  '&' + e.sku + ',' : '') + (e.directLink!= '' ? '#' + e.directLink : '')} profile = {e.profile} proxyGroup = {e.proxyGroup} accountEmail = {e.accountEmail} accountPassword = {e.accountPassword}  refreshPageState={this.props.refreshPage}/>
-								<div className= "modal-dialog modal-dialog-centered">
-									<div className="modal-content">		
-									</div>
-								</div>
-							</div>
+							
+								<EditTask id = {e.id} size = {e.size} site = {e.site}  mode = {e.mode} sku = {(e.positiveKey[0] != '' ?  newPosKey + ',' : '') + (e.negativeKey[0] != '' ? newNegKey + ',' : '') + (e.sku != '' ?  '&' + e.sku + ',' : '') + ',' + (e.directLink!= '' ? '#' + e.directLink : '')} profile = {e.profile} proxyGroup = {e.proxyGroup} accountEmail = {e.accountEmail} accountPassword = {e.accountPassword}  refreshPageState={this.props.refreshPage}
+								refreshPageState={this.state.refreshPageState}
+								refreshPage={this.props.refreshPage.bind(this)}
+								/>
+								
 							{/*EditTaskModal*/}
 							
 						</React.Fragment>

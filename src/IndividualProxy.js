@@ -12,7 +12,7 @@ class IndividualProxy extends React.Component{
 		super(props)
 		this.state = {
 			proxies: [],
-			refreshPage: '',
+			refreshPageState: '',
 			id: '',
 		}
 	}
@@ -21,11 +21,11 @@ class IndividualProxy extends React.Component{
 		this.getProxies()
 	}
 
-	componentDidUpdate(prevprop){
-		if(prevprop.refreshPage != this.props.refreshPage){
-			this.getProxies();
+	async componentDidUpdate(prevprop){
+		if(prevprop.refreshPageState != this.props.refreshPageState){
+			await this.getProxies();
 			this.setState({
-				refreshPage : this.props.refreshPage
+				refreshPageState : this.props.refreshPageState
 			})
 		}
 	}
@@ -34,14 +34,12 @@ class IndividualProxy extends React.Component{
 		event.preventDefault();
 		axios.delete(`http://exath.io/api/proxies/update/${event.target.name}`)
 		  .then(res => {
-			console.log(res);
-			console.log(res.data);
 			this.props.refreshPage()
 		})
 	}
 
-	getProxies = () =>{
-		axios.get('http://exath.io/api/proxies')
+	getProxies = async () =>{
+		await axios.get('http://exath.io/api/proxies')
 		.then(response => {
 			this.setState({
 				proxies : response.data
@@ -80,13 +78,7 @@ class IndividualProxy extends React.Component{
 								</div>
 							</div>
 							{/*EditProxyModal*/}
-								<div className="modal fade" id={`edit-${e.id}`} tabIndex="-1" aria-labelledby={`edit-${e.id}`} aria-hidden="true" style={{overflowY: 'hidden'}}>
-									<EditProxy group = {e.group} proxyList = {e.proxyList} id= {e.id}  refreshPageState={this.props.refreshPage}/>
-									<div className= "modal-dialog modal-dialog-centered">
-										<div className="modal-content">		
-										</div>
-									</div>
-								</div>
+								<EditProxy group = {e.group} proxyList = {e.proxyList} id= {e.id}  refreshPageState={this.state.refreshPageState} refreshPage={this.props.refreshPage.bind(this)}/>
 							{/*EditProxyModal*/}	
 							
 						</React.Fragment>

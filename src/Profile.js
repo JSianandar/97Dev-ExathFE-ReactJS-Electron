@@ -30,7 +30,6 @@ class Profile extends React.Component{
 		this.setState({
 			refreshPage : Math.floor(Math.random() * 99999)
 		})
-		console.log('page Refreshed')
 	}
 
 	componentDidMount(){

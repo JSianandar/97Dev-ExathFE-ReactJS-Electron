@@ -17,7 +17,7 @@ class IndividualProfile extends React.Component{
 		super(props)
 		this.state = {
 			profiles: [],
-			refreshPage: '',
+			refreshPageState: '',
 			id: '',
 		}
 	}
@@ -26,17 +26,17 @@ class IndividualProfile extends React.Component{
 		this.getProfiles()
 	}
 
-	componentDidUpdate(prevprop){
-		if(prevprop.refreshPage != this.props.refreshPage){
-			this.getProfiles()
+	async componentDidUpdate(prevprop){
+		if(prevprop.refreshPageState != this.props.refreshPageState){
+			await this.getProfiles()
 			this.setState({
-				refreshPage : this.props.refreshPage
+				refreshPageState : this.props.refreshPage
 			})
 		}
 	}
 
-	getProfiles = () =>{
-		axios.get('http://exath.io/api/profiles')
+	getProfiles = async () =>{
+		await axios.get('http://exath.io/api/profiles')
 		.then(response => {
 			this.setState({
 				profiles : response.data
@@ -51,8 +51,6 @@ class IndividualProfile extends React.Component{
 		event.preventDefault();
 		axios.delete(`http://exath.io/api/profiles/update/${event.target.name}`)
 		  .then(res => {
-			console.log(res);
-			console.log(res.data);
 			this.props.refreshPage()
 		})
 	}
@@ -87,7 +85,6 @@ class IndividualProfile extends React.Component{
 							</div>
 
 						{/*EditProfileModal*/}
-							<div className="modal fade" id={`edit-${e.id}`} tabIndex="-1" aria-labelledby={`edit-${e.id}`} aria-hidden="true" style={{overflowY: 'hidden'}}>
 								<EditProfile 
 								name = {e.name}
 								shippingFirstName = {e.shippingFirstName}
@@ -112,16 +109,12 @@ class IndividualProfile extends React.Component{
 								cardHolder = {e.cardHolder}
 								cardNumber = {e.cardNumber}
 								cvv = {e.cvv}
-								yearExp = {e.yearExp}
+								yearExp = {(e.monthExp: '') + '/' + (e.yearExp: '' )}
 								
 								id = {e.id} 
-								
-								refreshPageState={this.props.refreshPage}/>
-								<div className= "modal-dialog modal-dialog-centered">
-									<div className="modal-content">		
-									</div>
-								</div>
-							</div>
+								refreshPageState={this.state.refreshPageState}
+								refreshPage={this.props.refreshPage.bind(this)}
+								/>
 						{/*EditProfileModal*/}
 							
 						</React.Fragment>

@@ -153,7 +153,7 @@ class EditTask extends React.Component{
 		.then(res => {
 			console.log(res);
 			console.log(res.data);
-			this.props.refreshPageState()
+			this.props.refreshPage()
 		})
 	}
 
@@ -245,17 +245,11 @@ class EditTask extends React.Component{
 	getStateProfileName
 
 	async componentDidUpdate(prevprop){
-		console.log('prevprop', prevprop)
-
 		if(prevprop.refreshPageState != this.props.refreshPageState){
 			await this.getProfiles();
 			await this.getSizes();
 			await this.getSites();
 			await this.getProxies();
-			document.getElementById('input-keyword').value = ''
-			document.getElementById('input-quantity').value = ''
-			document.getElementById('input-account').value = ''
-			document.getElementById('input-password').value = ''
 			this.setState({
 				selectSite: 'Select Site',
 				selectSize: 'Size',
@@ -274,7 +268,7 @@ class EditTask extends React.Component{
 
 	render(){
 		return(
-			<div> 
+			<div className="modal fade" id={`edit-${this.state.id}`} tabIndex="-1" aria-labelledby={`edit-${this.state.id}`} aria-hidden="true" style={{overflowY: 'hidden'}}> 
 				<div className="edit-task-container">
 					<div className="row pt-2">
 						<div className="col-4 ml-3">
@@ -398,6 +392,7 @@ class EditTask extends React.Component{
 					</div>
 
 				</div>
+			<div className="modal-dialog"></div>
 			</div>
 		);
 	}
