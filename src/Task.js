@@ -32,7 +32,7 @@ class Task extends React.Component{
     super(props)
     var refreshPage =  this.refreshPage.bind(this)
     this.state = {
-        refreshPage: ''
+        refreshPage: '',
     }
 
   }
@@ -71,11 +71,20 @@ class Task extends React.Component{
 
 
  
-
+  getCurrentTime(){
+        var today = new Date()
+        return today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+  }
 
   componentDidMount(){
-    
+      this.interval = setInterval(() => this.setState({
+        time: this.getCurrentTime()
+      }), 1000);
 
+  }
+
+  componentWillUnmount() {
+      clearInterval(this.interval);
   }
 
 
@@ -88,7 +97,7 @@ class Task extends React.Component{
                 <div className="control-panel-wrapper row mx-auto">
                     <div className="left-control-panel col-2 pt-3">
                         <h1 className="text-center">Tasks</h1>
-                        <p className="clock text-center">12:12:59</p>
+                        <p className="clock text-center">{ this.state.time }</p>
                     </div>
                     <div className="middle-control-panel col-4 pt-3">
                         <p className="welcome-message m-0">Welcome, <b>Bluu#1234</b></p>
