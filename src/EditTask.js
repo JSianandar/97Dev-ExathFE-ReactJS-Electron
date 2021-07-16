@@ -251,14 +251,15 @@ class EditTask extends React.Component{
 			await this.getSites();
 			await this.getProxies();
 			this.setState({
-				selectSite: 'Select Site',
-				selectSize: 'Size',
-				selectProfile: 'Profile',
-				selectProxies: 'Proxies',
-				selectMode: 'Select Mode',
-				inputKeyword: 'Keywords/URL/SKU',
-				inputAccount: 'Account',
-				inputPassword: 'Password',
+				profile: this.props.profile,
+				site: this.props.site,
+				mode: this.props.mode,
+				sku: this.props.sku,
+				id: this.props.id,
+				accountEmail: this.props.accountEmail,
+				accountPassword: this.props.accountPassword,
+				size: this.props.size,
+				proxyGroup: this.props.proxyGroup,
 				refreshPageState : this.props.refreshPageState
 				
 			})
