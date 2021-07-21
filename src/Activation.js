@@ -19,7 +19,8 @@ class Activation extends React.Component {
     }
 
     handleSubmit = event => {
-        event.preventDefault();
+        event.preventDefault()
+        document.getElementById('appKeyInput').value = 'loading...'
         this.getActivationKey()
     }
 
@@ -27,12 +28,12 @@ class Activation extends React.Component {
         axios.get(`http://exath.io/api/authenticate?key=${this.state.key}`)
         .then(res => {
             window.location.href = '/task';
-        }, error => {
-            // If key is invalid or something went wrong, change the input text value.
-            document.getElementById('appKeyInput').value = 'INVALID KEY, Forbidden'
+        }).catch(error => {
+            // If key is invalid or something went wrong, show error message from API.
+            document.getElementById('appKeyInput').value = error.response.data.Message
         })
     }
-    
+
     componentDidMount(){}
 
     render(){
