@@ -42,9 +42,7 @@ class EditTask extends React.Component{
 			refreshPageState: '',
 			selectedProfileName: '',
 			selectedProxyGroup: '',
-
 		}
-		console.log(this.state)
 	}
 
 	async componentDidMount(){
@@ -64,7 +62,6 @@ class EditTask extends React.Component{
 
 	handleClickSite = (event) => {
 		this.setState({ selectSite: event, site: event })
-		console.log(event)
 	}
 
 	handleClickSize = (event) => {
@@ -77,7 +74,6 @@ class EditTask extends React.Component{
 			if(e.id == this.state.profile)
 				this.setState({selectedProfileName : e.name})
 		})
-		console.log('lalala', event)
 	}
 
 	handleClickProxies = async (event) => {
@@ -86,12 +82,10 @@ class EditTask extends React.Component{
 			if(e.id == this.state.proxyGroup)
 				this.setState({selectedProxyGroup : e.group})
 		})
-		console.log('lalala2', event)
 	}
 
 	handleClickMode = (event) => {
 		this.setState({ selectMode: event, mode: event })
-		console.log(event)
 	}
 
 	handleChange = event => {
@@ -151,8 +145,6 @@ class EditTask extends React.Component{
 			"accountPassword": this.state.accountPassword,
 		})
 		.then(res => {
-			console.log(res);
-			console.log(res.data);
 			this.props.refreshPage()
 		})
 	}
@@ -265,7 +257,6 @@ class EditTask extends React.Component{
 			})
 		}
 	}
-
 
 	render(){
 		return(

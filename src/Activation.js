@@ -1,6 +1,6 @@
-import {useState} from "react";
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import './css/Activation.css';
 import TitleBar from './TitleBar.js';
 import axios from 'axios';
@@ -24,11 +24,14 @@ class Activation extends React.Component {
         this.getActivationKey()
     }
 
-    getActivationKey = () =>{
+    getActivationKey = () => {
         axios.get(`http://exath.io/api/authenticate?key=${this.state.key}`)
         .then(res => {
-            window.location.href = '/task';
+            this.props.setUser(res.data.user[0].user)
+            this.props.setAppKey(res.data.user[0].key)
+            this.props.history.push('/task')
         }).catch(error => {
+            console.log(error)
             // If key is invalid or something went wrong, show error message from API.
             document.getElementById('appKeyInput').value = error.response.data.Message
         })
@@ -77,7 +80,4 @@ class Activation extends React.Component {
     }
 }
 
-	
-
-
-export default Activation;
+export default withRouter(Activation);
