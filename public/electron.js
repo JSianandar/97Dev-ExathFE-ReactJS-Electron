@@ -3,12 +3,9 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const ipcMain = electron.ipcMain;
 const isDev = require("electron-is-dev");
-const ipc = ipcMain ;
 let mainWindow;
 const path = require("path");
 const fs = require("fs");
-
-
 
 function createWindow() {
     mainWindow = new BrowserWindow(
@@ -34,19 +31,17 @@ function createWindow() {
 
 
     //Close app
-    ipc.on('closeApp', ()=>{
-        
+    ipcMain.on('closeApp', ()=> {
         mainWindow.close();
     });
 
     //Minimize app
-    ipc.on('minimizeApp', ()=>{
-        
+    ipcMain.on('minimizeApp', ()=> {
         mainWindow.minimize();
     });
 
     //Open Harvester
-    ipc.on('harvesterOpen', ()=>{
+    ipcMain.on('harvesterOpen', ()=> {
         
     })
     

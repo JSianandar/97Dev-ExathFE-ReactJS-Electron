@@ -2,7 +2,6 @@ import './App.css';
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import AppContext from './AppContext.js';
 import TitleBar from './TitleBar.js';
 import NavBar from './Navbar.js';
 import Activation from'./Activation.js';
@@ -15,7 +14,6 @@ import Settings from './Settings.js';
 
 import{ BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Redirect } from "react-router-dom";
-import { Link } from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
