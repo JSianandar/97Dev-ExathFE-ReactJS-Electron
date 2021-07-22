@@ -27,11 +27,10 @@ class Activation extends React.Component {
     getActivationKey = () => {
         axios.get(`http://exath.io/api/authenticate?key=${this.state.key}`)
         .then(res => {
-            this.props.setUser(res.data.user[0].user)
-            this.props.setAppKey(res.data.user[0].key)
+            this.props.setSessionStorageValue('user', res.data.user[0].user)
+            this.props.setSessionStorageValue('appKey', res.data.user[0].key)
             this.props.history.push('/task')
         }).catch(error => {
-            console.log(error)
             // If key is invalid or something went wrong, show error message from API.
             document.getElementById('appKeyInput').value = error.response.data.Message
         })

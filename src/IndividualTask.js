@@ -56,7 +56,6 @@ class IndividualTask extends React.Component{
 		await this.getTasks();
 		await this.getProfiles();
 		await this.getProxy();
-		
 	}
 
 	async componentDidUpdate(prevprop){
@@ -73,10 +72,10 @@ class IndividualTask extends React.Component{
 	getTasks = async () =>{
 		await axios.get('http://exath.io/api/tasks')
 		.then(response => {
-		
 			this.setState({
 				tasks : response.data
 			})
+			this.props.updateTaskStateValue('totalTasksCount', response.data.length)
 		},
 		error=>{
 		
@@ -112,7 +111,6 @@ class IndividualTask extends React.Component{
 
 	render(){
 		return(
-			
 			<div className="IndividualTask">
 			{
 				

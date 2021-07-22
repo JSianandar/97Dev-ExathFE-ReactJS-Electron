@@ -27,11 +27,17 @@ import DeleteAllTask from './DeleteAllTask';
 class Task extends React.Component{
     constructor(props){
         super(props)
+        var updateTaskStateValue =  this.updateTaskStateValue.bind(this)
         var refreshPage =  this.refreshPage.bind(this)
         this.state = {
             refreshPage: '',
+            totalTasksCount: 0,
             user: this.props.user
         }
+    }
+
+    updateTaskStateValue(key, value) {
+        this.setState({[key]: value})
     }
 
     refreshPage(){
@@ -98,8 +104,8 @@ class Task extends React.Component{
                         </div>
                         <div className="middle-control-panel col-4 pt-3">
                             <p className="welcome-message m-0">Welcome, <b>{this.state.user}</b></p>
-                            <p className="m-0">Tasks - <span style={{color: '#F6FB06'}}>10</span></p>
-                            <p className="m-0" >Running Tasks - <span style={{color: '#0DFE5F'}}>9</span></p>
+                            <p className="m-0">Tasks - <span style={{color: '#F6FB06'}}>{this.state.totalTasksCount}</span></p>
+                            <p className="m-0" >Running Tasks - <span style={{color: '#0DFE5F'}}>-</span></p>
                         </div>
                         <div className="col-1"></div>
                         <div className="right-control-panel col-5">
@@ -116,7 +122,7 @@ class Task extends React.Component{
                     </div>
 
                     <div className="row pt-1"></div>
-                    
+
                     <div className="table-heading row mx-auto pt-2">
                         <div className="table-heading-wrapper">
                             <div className="table row">
@@ -149,7 +155,7 @@ class Task extends React.Component{
                                 </div>
                             </div>
                             {/*IndividualTask*/}
-                            <IndividualTask refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
+                            <IndividualTask updateTaskStateValue={this.updateTaskStateValue.bind(this)} refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
                             {/*IndividualTask*/}
 
                             {/*EditAllTaskModal*/}
