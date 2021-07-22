@@ -29,8 +29,6 @@ class CreateProxy extends React.Component{
 			"group": this.state.group
 		})
 		.then(res=>{
-			console.log(res);
-			console.log(res.data);
 			this.props.refreshPage()
 		})
 	}
@@ -40,7 +38,6 @@ class CreateProxy extends React.Component{
 	}
 
 	componentDidUpdate(prevprop){
-		console.log('prevprop', prevprop)
 
 		if(prevprop.refreshPageState != this.props.refreshPageState){
 			document.getElementById('input-group').value = ''

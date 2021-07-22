@@ -15,8 +15,6 @@ class QuickTask extends React.Component{
 	handleStartQuickTask = async() => {
         await axios.get('http://exath.io/api/quicktask?qt=https://www.hotsauce.com')
         .then(response => {
-            console.log(response)
-			console.log(response.data)
 			this.props.refreshPage()
         },
         error=>{
@@ -29,7 +27,6 @@ class QuickTask extends React.Component{
 	}
 
 	componentDidUpdate(prevprop){
-		console.log('prevprop', prevprop)
 		if(prevprop.refreshPageState != this.props.refreshPageState){
 			this.setState({
 				refreshPageState : this.props.refreshPageState

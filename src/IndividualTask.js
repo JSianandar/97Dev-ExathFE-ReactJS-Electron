@@ -26,8 +26,6 @@ class IndividualTask extends React.Component{
 		event.preventDefault();
 		axios.delete(`http://exath.io/api/tasks/update/${event.target.name}`)
 		  .then(res => {
-			console.log(res);
-			console.log(res.data);
 			this.props.refreshPage()
 		})
 	}
@@ -36,8 +34,6 @@ class IndividualTask extends React.Component{
         event.preventDefault();
         axios.get(`http://exath.io/api/action?id=${event.target.name}&act=start`)
         .then(res => {
-            console.log(res);
-            console.log(res.data);
             this.props.refreshPage()
         },
         error=>{
@@ -49,8 +45,6 @@ class IndividualTask extends React.Component{
         event.preventDefault();
         axios.get(`http://exath.io/api/action?id=${event.target.name}&act=stop`)
         .then(res => {
-            console.log(res);
-            console.log(res.data);
             this.props.refreshPage()
         },
         error=>{
@@ -62,7 +56,7 @@ class IndividualTask extends React.Component{
 		await this.getTasks();
 		await this.getProfiles();
 		await this.getProxy();
-		console.log(this.state)
+		
 	}
 
 	async componentDidUpdate(prevprop){
@@ -177,7 +171,6 @@ class IndividualTask extends React.Component{
 							newNegKey = newNegKey.concat('-'.concat(negKey[i]+','))
 						}
 					}catch (error) {
-						console.log(e)
 					}
 					
 					

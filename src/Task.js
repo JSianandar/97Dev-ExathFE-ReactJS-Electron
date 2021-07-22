@@ -47,8 +47,6 @@ class Task extends React.Component{
         event.preventDefault();
         axios.get('http://exath.io/api/action?id=all&act=start')
         .then(res => {
-            console.log(res);
-            console.log(res.data);
             this.refreshPage()
         },
         error=>{
@@ -60,8 +58,6 @@ class Task extends React.Component{
         event.preventDefault();
         axios.get('http://exath.io/api/action?id=all&act=stop')
         .then(res => {
-            console.log(res);
-            console.log(res.data);
             this.refreshPage()
         },
         error=>{

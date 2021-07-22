@@ -21,7 +21,6 @@ class IndividualDashboard extends React.Component{
 	getDashboards = async () => {
 		await axios.get('https://exath.io/api/dashboard')
 		.then(async (response) => {
-			console.log('test', response.data.orders)
 			this.setState({
 				dashboard_orders : response.data.orders,
 				dashboard_success : response.data.success,
