@@ -25,8 +25,6 @@ class DelayTask extends React.Component{
             "retryDelay": this.state.retryDelay
         })
         .then(response => {
-           console.log(response)
-           console.log(response.data)
            this.props.refreshPage()
         },
            error=>{
@@ -44,7 +42,6 @@ class DelayTask extends React.Component{
   }
 
   componentDidUpdate(prevprop){
-    console.log('prevprop', prevprop)
     if(prevprop.refreshPageState != this.props.refreshPageState){
     document.getElementById('input-monitordelay').value = ''
 	document.getElementById('input-retrydelay').value = ''

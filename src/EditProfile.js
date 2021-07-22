@@ -84,8 +84,6 @@ class EditProfile extends React.Component{
 			"sameAsShipping": this.state.sameAsShipping
 		})
 		.then(res => {
-			console.log(res);
-			console.log(res.data);
 			this.props.refreshPage()
 		})
 	}
@@ -95,7 +93,6 @@ class EditProfile extends React.Component{
 	}
 
 	componentDidUpdate(prevprop){
-		console.log('prevprop', prevprop)
 		if(prevprop.refreshPageState != this.props.refreshPageState){
 			this.setState({
 				sameAsShipping: false,
@@ -144,7 +141,6 @@ class EditProfile extends React.Component{
 
 	sameAsShippingTrue(e){
 		this.setState({sameAsShipping : e.target.checked})
-		console.log('test', e.target.checked)
 	}
 
 	render(){

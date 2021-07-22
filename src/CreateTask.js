@@ -117,8 +117,6 @@ class CreateTask extends React.Component{
 			"quantity": this.state.quantity
 		})
 		.then(res => {
-			console.log(res);
-			console.log(res.data);
 			this.props.refreshPage()
 		})
 		
@@ -133,7 +131,6 @@ class CreateTask extends React.Component{
 	}
 
 	async componentDidUpdate(prevprop){
-		console.log('prevprop', prevprop)
 
 		if(prevprop.refreshPageState != this.props.refreshPageState){
 			await this.getProfiles();

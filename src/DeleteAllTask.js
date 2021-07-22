@@ -15,8 +15,6 @@ class DeleteAllTask extends React.Component{
         event.preventDefault();
         axios.delete('http://exath.io/api/tasks/update/all')
         .then(res => {
-            console.log(res);
-            console.log(res.data);
             this.props.refreshPage()
         },
         error=>{
@@ -29,7 +27,6 @@ class DeleteAllTask extends React.Component{
 	}
 
 	componentDidUpdate(prevprop){
-		console.log('prevprop', prevprop)
 		if(prevprop.refreshPageState != this.props.refreshPageState){
 			this.setState({
 				refreshPageState : this.props.refreshPageState

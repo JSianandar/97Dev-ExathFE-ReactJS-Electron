@@ -30,8 +30,6 @@ class EditProxy extends React.Component{
 			"proxyList": this.state.proxyListArray.split(','),
 		})
 		.then(res=>{
-			console.log(res);
-			console.log(res.data);
 			this.props.refreshPage()
 		})
 	}

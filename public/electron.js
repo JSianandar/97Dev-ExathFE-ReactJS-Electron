@@ -35,19 +35,19 @@ function createWindow() {
 
     //Close app
     ipc.on('closeApp', ()=>{
-        console.log('clicked on close btn')
+        
         mainWindow.close();
     });
 
     //Minimize app
     ipc.on('minimizeApp', ()=>{
-        console.log('clicked on minimzie btn')
+        
         mainWindow.minimize();
     });
 
     //Open Harvester
     ipc.on('harvesterOpen', ()=>{
-        console.log('clicked on harvester open button')
+        
     })
     
 }
