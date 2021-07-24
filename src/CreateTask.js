@@ -51,6 +51,37 @@ class CreateTask extends React.Component{
 		}
 	}
 
+	initializeState = async () => {
+		await this.setState({
+			profiles: [],
+			sizes: [],
+			sites: [],
+			proxies: [],
+			profile:'',
+			site:'',
+			mode:'',
+			sku:'',
+			positiveKey:'',
+			negativeKey:'',
+			directLink:'',
+			size:'',
+			proxyGroup: '',
+			accountEmail: '',
+			accountPassword: '',
+			quantity: '',
+			selectSite: 'Select Site',
+			selectSize: 'Size',
+			selectProfile: 'Profile',
+			selectProxies: 'Proxies',
+			selectMode: 'Select Mode',
+			inputKeyword: 'Keywords/URL/SKU',
+			inputAccount: 'Account',
+			inputPassword: 'Password',
+			inputQuantity: 'Number of Tasks',
+			refreshPageState: ''
+		})
+	}
+
 	handleClickSite = (event) => {
 		this.setState({ selectSite: event, site: event})
 	}
@@ -71,8 +102,6 @@ class CreateTask extends React.Component{
 		this.setState({ selectMode: event, mode: event })
 	}
 
-
-	
 	handleChange = event => {
 		this.setState({ [event.target.name]: event.target.value });
 	}
@@ -85,7 +114,6 @@ class CreateTask extends React.Component{
 		let negativeKey = []
 		let directLink = ''
 		let sku = ''
-
 
 		for(let i=0; i<skuArray.length; i++) {
 			if(skuArray[i][0] == '+'){
@@ -115,9 +143,15 @@ class CreateTask extends React.Component{
 			"accountEmail": this.state.accountEmail,
 			"accountPassword": this.state.accountPassword,
 			"quantity": this.state.quantity
-		})
-		.then(res => {
-			this.props.refreshPage()
+		}).then(res => {
+			try {
+				document.getElementById('CreateTaskForm-KeywordInput').value = ''
+				document.getElementById('CreateTaskForm-QuantityInput').value = ''
+				document.getElementById('CreateTaskForm-AccountInput').value = ''
+				document.getElementById('CreateTaskForm-PasswordInput').value = ''
+			} finally {
+				this.props.refreshPage()
+			}
 		})
 		
 	}
@@ -131,28 +165,14 @@ class CreateTask extends React.Component{
 	}
 
 	async componentDidUpdate(prevprop){
-
 		if(prevprop.refreshPageState != this.props.refreshPageState){
+			await this.initializeState();
 			await this.getProfiles();
 			await this.getSizes();
 			await this.getSites();
 			await this.getProxies();
-			document.getElementById('input-keyword').value = ''
-			document.getElementById('input-quantity').value = ''
-			document.getElementById('input-account').value = ''
-			document.getElementById('input-password').value = ''
 			this.setState({
-				selectSite: 'Select Site',
-				selectSize: 'Size',
-				selectProfile: 'Profile',
-				selectProxies: 'Proxies',
-				selectMode: 'Select Mode',
-				inputKeyword: 'Keywords/URL/SKU',
-				inputAccount: 'Account',
-				inputPassword: 'Password',
-				inputQuantity: 'Number of Tasks',
 				refreshPageState : this.props.refreshPageState
-				
 			})
 		}
 	}
@@ -160,7 +180,6 @@ class CreateTask extends React.Component{
 	getProfiles = async () =>{
 		await axios.get('http://exath.io/api/profiles')
 		.then(response => {
-		
 			this.setState({
 				profiles : response.data
 			})
@@ -173,7 +192,6 @@ class CreateTask extends React.Component{
 	getSizes = async () =>{
 		await axios.get('http://exath.io/api/sizes')
 		.then(response => {
-		
 			this.setState({
 				sizes : response.data
 			})
@@ -186,7 +204,6 @@ class CreateTask extends React.Component{
 	getProxies = async () =>{
 		await axios.get('http://exath.io/api/proxies')
 		.then(response => {
-		
 			this.setState({
 				proxies : response.data
 			})
@@ -199,7 +216,6 @@ class CreateTask extends React.Component{
 	getSites = async () =>{
 		await axios.get('http://exath.io/api/sitelist')
 		.then(response => {
-		
 			this.setState({
 				sites : response.data
 			})
@@ -229,7 +245,6 @@ class CreateTask extends React.Component{
 			}
 		}
 		return proxyId;
-
 	}
 
 
@@ -277,7 +292,7 @@ class CreateTask extends React.Component{
 				<div className="row pt-4">
 					<form variant="outline-none" className="text-area-left  ml-5 d-flex">
 						<img src={keyword_icon} style={{width: '18.66px', marginLeft: '12px'}}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none', width: '400px'}} placeholder = {this.state.inputKeyword} id = "input-keyword" required name="sku" onChange={this.handleChange}/>
+						<input id="CreateTaskForm-KeywordInput" type="text" className="background-color ml-2" style={{outline: 'none', width: '400px'}} placeholder={this.state.inputKeyword} required name="sku" onChange={this.handleChange}/>
 					</form>
 					<Dropdown name="size" onChange={this.handleChange} onSelect= {this.handleClickSize}>
 						<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" style={{marginLeft: '40px'}}>
@@ -314,7 +329,7 @@ class CreateTask extends React.Component{
 					<div className="col-1"></div>
 					<form variant="outline-none" className="text-area-right d-flex" style={{marginLeft: '-33px'}}>
 						<img src={number_of_task_icon} style={{width: '20.73px', marginLeft: '13px'}}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = {this.state.inputQuantity} id = "input-quantity" required name="quantity" onChange={this.handleChange}/>
+						<input id="CreateTaskForm-QuantityInput" type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = {this.state.inputQuantity} required name="quantity" onChange={this.handleChange}/>
 					</form>
 
 				</div>
@@ -325,7 +340,6 @@ class CreateTask extends React.Component{
 							<img src={proxy_icon}/>
 							<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.selectProxies}</h2>
 						</Dropdown.Toggle>
-					
 					
 						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
 							{this.state.proxies.map((e, index) => {
@@ -340,12 +354,12 @@ class CreateTask extends React.Component{
 				<div className="row pt-4">
 					<form className="text-area-left col-5 ml-5">
 						<img src={account_icon}/>
-						<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = {this.state.inputAccount} required id = "input-account" name="accountEmail" onChange={this.handleChange}/>
+						<input id="CreateTaskForm-AccountInput" type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder={this.state.inputAccount} required name="accountEmail" onChange={this.handleChange}/>
 					</form>
 					
 					<form className="text-area-left col-5 ml-5">
 						<img src={password_icon}/>
-						<input type="password" className="background-color ml-2" style={{outline: 'none'}} placeholder = {this.state.inputPassword} required id = "input-password" name="accountPassword" onChange={this.handleChange}/>
+						<input id="CreateTaskForm-PasswordInput" type="password" className="background-color ml-2" style={{outline: 'none'}} placeholder = {this.state.inputPassword} required name="accountPassword" onChange={this.handleChange}/>
 					</form>
 				</div>
 
