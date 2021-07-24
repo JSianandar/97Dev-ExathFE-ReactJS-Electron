@@ -1,0 +1,56 @@
+.discord-webhook-container{
+	width: 550px;
+	height: 342px;
+	background: #201636;
+	border-radius: 15px;
+	margin:auto;
+	transform: translateY(35%);
+	z-index: 99;
+}
+
+.discord-webhook-container h1{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 37px;
+	letter-spacing: 0.03em;
+
+	color: #C4C4C4;
+}
+.discord-webhook-container h2{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 22px;
+
+	color: #C4C4C4;
+
+}
+
+.discord-webhook-container .text-area{
+	width: 381.51px;
+	height: 201.1px;
+	background: #291C43;
+	border-radius: 10px;
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.discord-webhook-container .button-text{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 25px;
+
+	color: #C4C4C4;
+}
+
+.discord-webhook-container .background-color{
+	width: 350px;
+	background: #291C43;
+	border: 0;
+	outline: none;
+	color: #C4C4C4;
+}

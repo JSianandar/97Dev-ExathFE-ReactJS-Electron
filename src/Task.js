@@ -28,7 +28,7 @@ class Task extends React.Component{
     constructor(props){
         super(props)
         var updateTaskStateValue =  this.updateTaskStateValue.bind(this)
-        var refreshPage =  this.refreshPage.bind(this)
+        var refreshPage = this.refreshPage.bind(this)
         this.state = {
             refreshPage: '',
             totalTasksCount: 0,

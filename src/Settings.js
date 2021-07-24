@@ -6,6 +6,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import TitleBar from './TitleBar.js';
+import DiscordWebhook from './DiscordWebhook.js';
 
 import discord_logo from './assets/icons/discord_logo.svg';
 import user_logo from './assets/icons/account_logo.svg';
@@ -17,15 +18,27 @@ import axios from 'axios';
 
 
 class Settings extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
+		var refreshPage =  this.refreshPage.bind(this)
 		this.state = {
 			profiles: [],
 			sizes: [],
 			size: 'Preferred Size',
-			profile: 'Choose Profile'
+			profile: 'Choose Profile',
+			refreshPage: '',
+			qtProfile: '',
+			preferredSize: '',
+			account: '',
+			password: '',
 		}
 	}
+
+	refreshPage() {
+        this.setState({
+            refreshPage : Math.floor(Math.random() * 99999)
+        })
+    }
 
 	handleClick = (event) => {
 		this.setState({ size: event });
@@ -35,10 +48,27 @@ class Settings extends React.Component{
 		this.setState({ profile: event })
 	}
 
+	handleChange = event => {
+		this.setState({ [event.target.name]: event.target.value });
+	}
+
+/*	handleSubmit = event =>{
+		event.preventDefault();
+
+		axios.put('')
+*/
 
 	async componentDidMount(){
 		await this.getProfiles();
 		await this.getSizes();
+	}
+
+	componentDidUpdate(prevprop){
+		if(prevprop != this.props){
+			this.setState({
+				
+			})
+		}
 	}
 
 	getProfiles = async () =>{
@@ -86,12 +116,12 @@ class Settings extends React.Component{
 						</div>
 
 						<div className="row mx-auto">
-							<Button variant="outline-none" className="setup-button-wrapper d-flex pt-1 ml-3" onClick = {()=> window.open("https://discord.com/api/webhooks/791366221815349258/ZaLjC5d_aNBbn-aWryS03Q09QgttE8g6md7bnG3eGf1r23i7eE5-4_wpeZ2IHnqw-l3n", "_blank")}>
+							<Button variant="outline-none" className="setup-button-wrapper d-flex pt-1 ml-3" data-toggle="modal" data-target="#discordWebhook">
 								<img className="discord_icon pt-1" src={discord_logo} />
 								<p className="heading ml-2">Discord Webhook</p>
 							</Button>
 							<div className="col-2"></div>
-							<Button variant="outline-none" className="test-button-wrapper col-1">
+							<Button variant="outline-none" className="test-button-wrapper col-1" onClick = {()=> window.open("https://discord.com/api/webhooks/791366221815349258/ZaLjC5d_aNBbn-aWryS03Q09QgttE8g6md7bnG3eGf1r23i7eE5-4_wpeZ2IHnqw-l3n", "_blank")}>
 								<p className="heading my-auto text-center">Test</p>
 							</Button>
 						</div>
@@ -156,6 +186,24 @@ class Settings extends React.Component{
 								<p className="heading text-center">Check for Updates</p>
 							</Button>
 						</div>
+
+						<div className="row pt-5" style = {{marginLeft: '565px'}}>
+							<Button variant="outline-none" className="cfu-button-wrapper pt-1 ml-3">
+								<p className="heading text-center">Update Profile</p>
+							</Button>
+						</div>
+
+						{/*DiscordWebhookModal*/}
+						<div className="modal fade" id="discordWebhook" tabIndex="-1" aria-labelledby="discordWebhookLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
+                           <DiscordWebhook refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
+                              <div className= "modal-dialog modal-dialog-centered">
+                                  <div className="modal-content">		
+                              </div>
+                           </div>
+                        </div>
+
+
+
 					</div>
 				</div>
 			</div>
