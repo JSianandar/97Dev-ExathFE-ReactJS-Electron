@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import {withRouter} from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './css/Activation.css';
 import TitleBar from './TitleBar.js';
 import axios from 'axios';

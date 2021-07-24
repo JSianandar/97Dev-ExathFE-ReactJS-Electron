@@ -1,6 +1,6 @@
 import React from 'react';
 import './css/Task.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import IndividualTask from './IndividualTask.js';
 import axios from 'axios';
 
@@ -40,17 +40,28 @@ class Task extends React.Component{
         this.setState({[key]: value})
     }
 
-    refreshPage(){
+    refreshPage() {
         this.setState({
             refreshPage : Math.floor(Math.random() * 99999)
         })
+    }
+
+    reloadPage() {
+        window.location.reload();
     }
 
     handleStartAllTask = event => {
         event.preventDefault();
         axios.get('http://exath.io/api/action?id=all&act=start')
         .then(res => {
-            this.refreshPage()
+            /* Since task's status is not available yet, we will call reload page instead refreshing it.
+            *  - This will hard reload the page (sort of like pressing ctrl + r), the reason is because
+            *    refreshing the page by updating the state will only re-render the component if THERES a
+            *    change in the state's data being called in the render() function hence why using the
+            *    refreshPage() function will only re-render the page once task's status is implemented. 
+            */
+            // this.refreshPage()
+            this.reloadPage()
         },
         error=>{
         
@@ -61,7 +72,14 @@ class Task extends React.Component{
         event.preventDefault();
         axios.get('http://exath.io/api/action?id=all&act=stop')
         .then(res => {
-            this.refreshPage()
+            /* Since task's status is not available yet, we will call reload page instead refreshing it.
+            *  - This will hard reload the page (sort of like pressing ctrl + r), the reason is because
+            *    refreshing the page by updating the state will only re-render the component if THERES a
+            *    change in the state's data being called in the render() function hence why using the
+            *    refreshPage() function will only re-render the page once task's status is implemented. 
+            */
+            // this.refreshPage()
+            this.reloadPage()
         },
         error=>{
         
@@ -105,7 +123,8 @@ class Task extends React.Component{
                         <div className="middle-control-panel col-4 pt-3">
                             <p className="welcome-message m-0">Welcome, <b>{this.state.user}</b></p>
                             <p className="m-0">Tasks - <span style={{color: '#F6FB06'}}>{this.state.totalTasksCount}</span></p>
-                            <p className="m-0" >Running Tasks - <span style={{color: '#0DFE5F'}}>-</span></p>
+                            {/* <p className="m-0" >Running Tasks - <span style={{color: '#0DFE5F'}}>-</span></p> */}
+                            <p className="m-0" >Running Tasks - <span style={{color: 'grey'}}>Not Available</span></p>
                         </div>
                         <div className="col-1"></div>
                         <div className="right-control-panel col-5">
@@ -217,5 +236,3 @@ class Task extends React.Component{
 }
 
 export default Task;
-
-
