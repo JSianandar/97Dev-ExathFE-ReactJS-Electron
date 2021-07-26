@@ -1,26 +1,23 @@
-const electron = require("electron");
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
-const ipcMain = electron.ipcMain;
+const { app, BrowserWindow, ipcMain } = require("electron");
 const isDev = require("electron-is-dev");
-let mainWindow;
 const path = require("path");
 const fs = require("fs");
 
+let mainWindow;
+
 function createWindow() {
-    mainWindow = new BrowserWindow(
-        { 
-            width: 1250, 
-            height: 750,
-            resizable: false,
-            frame: true,
-            webPreferences: {
-                contextIsolation: false,
-                enableRemoteModule: true,
-                nodeIntegration: false
-            }
+    mainWindow = new BrowserWindow({ 
+        width: 1250, 
+        height: 750,
+        resizable: false,
+        frame: false,
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false,
+            enableRemoteModule: true
         }
-    );
+    });
+
     mainWindow.setMenuBarVisibility(false);
     mainWindow.loadURL(
         isDev

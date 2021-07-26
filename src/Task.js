@@ -12,11 +12,6 @@ import quick_task_button from "./assets/icons/quick_task_logo.png";
 import delete_button from "./assets/icons/delete_task.png";
 import create_button from "./assets/icons/create_task_logo.png";
 
-import table_play from "./assets/icons/table_play.png";
-import table_stop from "./assets/icons/table_stop.png";
-import table_edit from "./assets/icons/table_edit.png";
-import table_delete from "./assets/icons/table_delete.png";
-
 import TitleBar from './TitleBar.js';
 import EditAllTask from './EditAllTask';
 import DelayTask from './DelayTask';
@@ -27,11 +22,13 @@ import DeleteAllTask from './DeleteAllTask';
 class Task extends React.Component{
     constructor(props){
         super(props)
-        var updateTaskStateValue =  this.updateTaskStateValue.bind(this)
+        var updateTaskStateValue = this.updateTaskStateValue.bind(this)
         var refreshPage = this.refreshPage.bind(this)
         this.state = {
             refreshPage: '',
             totalTasksCount: 0,
+            monitorDelay: 0,
+            retryDelay: 0,
             user: this.props.user
         }
     }
@@ -112,8 +109,7 @@ class Task extends React.Component{
     render(){
         return(
             <div className="task">
-                
-                {/*<TitleBar/>*/}
+                <TitleBar/>
                 <div className="tasks-container pt-2">
                     <div className="control-panel-wrapper row mx-auto">
                         <div className="left-control-panel col-2 pt-3">
@@ -181,7 +177,7 @@ class Task extends React.Component{
                             <div className="modal fade" id="editAllTask" tabIndex="-1" aria-labelledby="editAllTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
                                 <EditAllTask refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
                                 <div className= "modal-dialog modal-dialog-centered">
-                                    <div className="modal-content">		
+                                    <div className="modal-content">
                                     </div>
                                 </div>
                             </div>
@@ -189,7 +185,11 @@ class Task extends React.Component{
 
                             {/*DelayTaskModal*/}
                             <div className="modal fade" id="delayTask" tabIndex="-1" aria-labelledby="delayTaskLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
-                                <DelayTask refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
+                                <DelayTask
+                                    monitorDelay={this.state.monitorDelay}
+                                    retryDelay={this.state.retryDelay}
+                                    refreshPage={this.refreshPage.bind(this)}
+                                    refreshPageState={this.state.refreshPage}/>
                                 <div className= "modal-dialog modal-dialog-centered">
                                     <div className="modal-content">		
                                     </div>

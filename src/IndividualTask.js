@@ -1,9 +1,9 @@
 import React from 'react';
 import './css/IndividualTask.css';
 import axios from 'axios';
-import Task from './Task.js';
 
 import {Link} from 'react-router-dom';
+
 import table_edit from "./assets/icons/table_edit.png";
 import table_delete from "./assets/icons/table_delete.png";
 import table_play from "./assets/icons/table_play.png";
@@ -25,12 +25,12 @@ class IndividualTask extends React.Component{
 	handleDelete = event => {
 		event.preventDefault();
 		axios.delete(`http://exath.io/api/tasks/update/${event.target.name}`)
-		  .then(res => {
+		.then(res => {
 			this.props.refreshPage()
 		})
 	}
 
-	 handleStartTask = event => {
+	handleStartTask = event => {
         event.preventDefault();
         axios.get(`http://exath.io/api/action?id=${event.target.name}&act=start`)
         .then(res => {
@@ -38,10 +38,10 @@ class IndividualTask extends React.Component{
         },
         error=>{
         
-        })
-  }
+		})
+	}
 
-  handleStopTask = event => {
+	handleStopTask = event => {
         event.preventDefault();
         axios.get(`http://exath.io/api/action?id=${event.target.name}&act=stop`)
         .then(res => {
@@ -49,13 +49,14 @@ class IndividualTask extends React.Component{
         },
         error=>{
         
-        })
-  }
+		})
+	}
 
 	async componentDidMount(){
-		await this.getTasks();
-		await this.getProfiles();
-		await this.getProxy();
+		await this.getTasks()
+		await this.getProfiles()
+		await this.getProxy()
+		this.props.refreshPage()
 	}
 
 	async componentDidUpdate(prevprop){
@@ -76,6 +77,10 @@ class IndividualTask extends React.Component{
 				tasks : response.data
 			})
 			this.props.updateTaskStateValue('totalTasksCount', response.data.length)
+			if (response.data.length > 0) {
+				this.props.updateTaskStateValue('monitorDelay', response.data[0].monitorDelay)
+				this.props.updateTaskStateValue('retryDelay', response.data[0].retryDelay)
+			}
 		},
 		error=>{
 		
@@ -108,12 +113,10 @@ class IndividualTask extends React.Component{
 		})
 	}
 
-
 	render(){
 		return(
 			<div className="IndividualTask">
 			{
-				
 				this.state.tasks.reverse().map((e, index) => {
 					var profile = ''
 					for(var i=0; i<this.state.profiles.length; i++) {
@@ -129,11 +132,11 @@ class IndividualTask extends React.Component{
 
 					var proxy = ''
 					for(var i=0; i<this.state.proxies.length; i++) {
-						if(e.proxyGroup == "Leaf"||e.proxyGroup == "LocalHost"){
+						if (e.proxyGroup == "Leaf" || e.proxyGroup == "LocalHost"){
 							proxy = e.proxyGroup;
 							break;
 						}
-						if(this.state.proxies[i].id == e.proxyGroup) {
+						if (this.state.proxies[i].id == e.proxyGroup) {
 							proxy = this.state.proxies[i].group;
 							break;
 						}
@@ -148,7 +151,6 @@ class IndividualTask extends React.Component{
 					try{
 						var posKey = e.positiveKey
 						var negKey = e.negativeKey
-
 						
 						for(var i=0; i<posKey.length; i++) {
 							if (i == posKey.length-1)
@@ -158,7 +160,6 @@ class IndividualTask extends React.Component{
 							else
 							newPosKey = newPosKey.concat('+'.concat(posKey[i]+','))
 						}
-
 						
 						for(var i=0; i<negKey.length; i++) {
 							if (i == negKey.length-1)
@@ -168,9 +169,9 @@ class IndividualTask extends React.Component{
 							else
 							newNegKey = newNegKey.concat('-'.concat(negKey[i]+','))
 						}
-					}catch (error) {
+					} catch (error) {
+
 					}
-					
 					
 					return(
 						<React.Fragment>
@@ -210,12 +211,19 @@ class IndividualTask extends React.Component{
 							</div>
 							<div className="row pt-2"></div>
 							{/*EditTaskModal*/}
-							
-								<EditTask id = {e.id} size = {e.size} site = {e.site}  mode = {e.mode} sku = {(e.positiveKey[0] != '' ?  newPosKey + ',' : '') + (e.negativeKey[0] != '' ? newNegKey + ',' : '') + (e.sku != '' ?  '&' + e.sku + ',' : '') + ',' + (e.directLink!= '' ? '#' + e.directLink : '')} profile = {e.profile} proxyGroup = {e.proxyGroup} accountEmail = {e.accountEmail} accountPassword = {e.accountPassword}  refreshPageState={this.props.refreshPage}
+							<EditTask 
+								id={e.id}
+								size={e.size}
+								site={e.site}
+								mode={e.mode}
+								sku={(e.positiveKey[0] != '' ?  newPosKey + ',' : '') + (e.negativeKey[0] != '' ? newNegKey + ',' : '') + (e.sku != '' ?  '&' + e.sku + ',' : '') + ',' + (e.directLink!= '' ? '#' + e.directLink : '')}
+								profile={e.profile}
+								proxyGroup={e.proxyGroup}
+								accountEmail={e.accountEmail}
+								accountPassword={e.accountPassword}
 								refreshPageState={this.state.refreshPageState}
 								refreshPage={this.props.refreshPage.bind(this)}
-								/>
-								
+							/>
 							{/*EditTaskModal*/}
 							
 						</React.Fragment>

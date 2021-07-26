@@ -40,6 +40,7 @@ class Activation extends React.Component {
     render(){
         return(
             <div>
+                <TitleBar />
                 <div className="activation-container">
                     <div className="row pt-4">
                         <div className="exath-activation mx-auto"></div>   
