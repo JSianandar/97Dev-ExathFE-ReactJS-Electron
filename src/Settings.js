@@ -66,7 +66,6 @@ class Settings extends React.Component{
 	componentDidUpdate(prevprop){
 		if(prevprop != this.props){
 			this.setState({
-				
 			})
 		}
 	}
@@ -100,8 +99,8 @@ class Settings extends React.Component{
 	render(){
 		return(
 			<div className="settings">
-				{/*<TitleBar/>*/}
-				<div className="settings-container pt-2">
+				<TitleBar/>
+				<div className="settings-container pt-0">
 					<div className="page-wrapper mx-auto">
 						<div className="title-wrapper row">
 							<div className="col-2 pt-3 ml-1">
