@@ -1,6 +1,7 @@
 .IndividualProxy {
 	height: 510px;
 	overflow-y: scroll !important;
+	overflow-x: hidden !important;
 }
 
 .individual-proxy{

@@ -3,6 +3,11 @@ import { Link, withRouter } from 'react-router-dom';
 import './css/Activation.css';
 import TitleBar from './TitleBar.js';
 import axios from 'axios';
+const ipcRenderer = window.require('electron').ipcRenderer
+
+const closeApp = () =>{
+        ipcRenderer.send('closeApp')
+    }
 
 
 class Activation extends React.Component {
@@ -35,6 +40,7 @@ class Activation extends React.Component {
         })
     }
 
+    
     componentDidMount(){}
 
     render(){
@@ -64,7 +70,7 @@ class Activation extends React.Component {
 
                     <div className="row pt-5">
                         <div className="col-3 ml-4"></div>
-                        <Link className="col-2 ml-5 button" style={{ textDecoration: 'none' }}>
+                        <Link className="col-2 ml-5 button" id="closeBtn" onClick={closeApp}style={{ textDecoration: 'none' }}>
                             <h1 className="text-center">Close</h1>
                         </Link>
             

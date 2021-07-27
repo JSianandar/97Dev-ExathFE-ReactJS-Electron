@@ -40,7 +40,7 @@ function createWindow() {
     //Open Harvester
     ipcMain.on('harvesterOpen', ()=> {
         
-    })
+    });
     
 }
 

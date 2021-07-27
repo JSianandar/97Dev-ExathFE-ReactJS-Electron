@@ -1,6 +1,7 @@
 .IndividualTask {
 	height: 510px;
 	overflow-y: scroll !important;
+	overflow-x: hidden !important;
 }
 .individual-task-wrapper{
 	width: 100%;

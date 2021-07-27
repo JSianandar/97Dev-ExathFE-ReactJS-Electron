@@ -27,7 +27,7 @@ class EditProxy extends React.Component{
 		event.preventDefault();
 
 		axios.put(`http://exath.io/api/proxies/update/${this.state.id}`, {
-			"proxyList": this.state.proxyListArray.split(','),
+			"proxyList": this.state.proxyListArray.split('\n'),
 		})
 		.then(res=>{
 			this.props.refreshPage()
