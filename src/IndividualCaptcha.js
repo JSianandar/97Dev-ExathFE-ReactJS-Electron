@@ -82,8 +82,8 @@ class IndividualCaptcha extends React.Component{
 								<div className="col-2 ml-2">
 									<ul className="icons-wrapper "style={{marginLeft:'5px'}}>
 										<li className="icon"><Link data-toggle="modal" data-target="#captchaHarvester"><img src= {harvester_logo}/></Link></li>
-										<li className="icon"><Link data-toggle="modal" data-target={`#edit-${e.id}`} ><img src={table_edit} /></Link></li>
-										<li className="icon"><Link  onClick={this.handleSubmit}><img className= "icon-delete" src={table_delete} name = {e.id} /></Link></li>
+										<li className="icon"><Link data-toggle="modal" data-target={`#edit-${e.id}`} ><img className="icon-edit" src={table_edit} /></Link></li>
+										<li className="icon"><Link  onClick={this.handleSubmit}><img  className="icon-delete" src={table_delete} name = {e.id} /></Link></li>
 									</ul>
 								</div>
 							</div>

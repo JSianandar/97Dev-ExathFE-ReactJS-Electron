@@ -200,10 +200,10 @@ class IndividualTask extends React.Component{
 									</div>
 									<div className="col">
 										<ul className="icons-wrapper pt-2" style={{marginLeft: '-30px'}}>
-											<li className="icon"><Link onClick = {this.handleStartTask} ><img src={table_play} name = {e.id} /></Link></li>
-											<li className="icon"><Link onClick = {this.handleStopTask}> <img src={table_stop} name = {e.id}/></Link></li>
-											<li className="icon"><Link data-toggle="modal" data-target={`#edit-${e.id}`}><img src={table_edit} /></Link></li>
-											<li className="icon"><Link onClick = {this.handleDelete}><img src={table_delete} name = {e.id} /></Link></li>
+											<li className="icon"><Link onClick = {this.handleStartTask} ><img className= "icon-play" src={table_play} name = {e.id} /></Link></li>
+											<li className="icon"><Link style={{ textDecoration: 'none' }} onClick = {this.handleStopTask}> <img src={table_stop} className= "icon-stop" name = {e.id}/></Link></li>
+											<li className="icon"><Link data-toggle="modal" data-target={`#edit-${e.id}`}><img className= "icon-edit" src={table_edit} /></Link></li>
+											<li className="icon"><Link onClick = {this.handleDelete}><img src={table_delete} className= "icon-delete" name = {e.id} /></Link></li>
 										</ul>
 									</div>
 

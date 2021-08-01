@@ -72,8 +72,8 @@ class IndividualProxy extends React.Component{
 
 								<div className="col-2 ml-0">
 									<ul className="icons-wrapper" style={{marginLeft:'10px'}}>
-										<li className="icon"><Link data-toggle="modal" data-target={`#edit-${e.id}`}><img src={table_edit} /></Link></li>
-										<li className="icon"><Link onClick={this.handleDelete} ><img src={table_delete} name = {e.id} /></Link></li>
+										<li className="icon"><Link data-toggle="modal" data-target={`#edit-${e.id}`}><img className= "icon-edit" src={table_edit} /></Link></li>
+										<li className="icon"><Link onClick={this.handleDelete} ><img src={table_delete} className= "icon-delete" name = {e.id} /></Link></li>
 									</ul>
 								</div>
 							</div>

@@ -58,3 +58,19 @@
 	display: inline;
 	padding-right: 5px;
 }
+
+.individual-task .icons-wrapper .icon .icon-delete{
+	filter: invert(58%) sepia(94%) saturate(828%) hue-rotate(334deg) brightness(91%) contrast(81%);
+}
+
+.individual-task .icons-wrapper .icon .icon-edit{
+	filter: invert(74%) sepia(11%) saturate(5266%) hue-rotate(186deg) brightness(97%) contrast(93%);
+}
+
+.individual-task .icons-wrapper .icon .icon-play{
+	filter: invert(64%) sepia(17%) saturate(1487%) hue-rotate(75deg) brightness(85%) contrast(90%);
+}
+
+.individual-task .icons-wrapper .icon .icon-stop{
+	filter: invert(68%) sepia(16%) saturate(1025%) hue-rotate(314deg) brightness(95%) contrast(84%);
+}
