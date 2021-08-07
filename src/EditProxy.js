@@ -8,12 +8,15 @@ import axios from 'axios';
 class EditProxy extends React.Component{
 	constructor(props){
 		super(props)
+		var temp = '';
+		this.props.proxyList.forEach(proxy => temp += proxy + "\n");
 		this.state = {
 			group: this.props.group,
-			proxyList: this.props.proxyList,
+			proxyList: temp,
 			id: this.props.id,
 			proxyListArray: '',
-			refreshPageState: ''
+			refreshPageState: '',
+			
 		}
 	}
 
@@ -35,6 +38,7 @@ class EditProxy extends React.Component{
 	}
 
 	componentDidMount(){
+		
 	}
 
 	componentDidUpdate(prevprop){
