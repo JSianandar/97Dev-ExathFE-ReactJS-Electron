@@ -33,7 +33,7 @@ class IndividualProxy extends React.Component{
 	handleDelete = event => {
 		event.preventDefault();
 		axios.delete(`http://exath.io/api/proxies/update/${event.target.name}`)
-		  .then(res => {
+		.then(res => {
 			this.props.refreshPage()
 		})
 	}

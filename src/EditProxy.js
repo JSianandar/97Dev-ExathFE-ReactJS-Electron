@@ -8,29 +8,29 @@ import axios from 'axios';
 class EditProxy extends React.Component{
 	constructor(props){
 		super(props)
-		var temp = '';
-		this.props.proxyList.forEach(proxy => temp += proxy + "\n");
+
 		this.state = {
 			group: this.props.group,
-			proxyList: temp,
+			proxyList: this.convertProxyListToString(this.props.proxyList),
 			id: this.props.id,
-			proxyListArray: '',
 			refreshPageState: '',
-			
 		}
+	}
+
+	convertProxyListToString = (proxyList) => {
+		var temp = ''
+		proxyList.forEach(proxy => temp += proxy + "\n")
+		return temp.slice(0, -1)
 	}
 
 	handleChange = event => {
 		this.setState({ [event.target.name]: event.target.value });
 	}
 
-
-
 	handleSubmit = event =>{
-		event.preventDefault();
-
+		event.preventDefault()
 		axios.put(`http://exath.io/api/proxies/update/${this.state.id}`, {
-			"proxyList": this.state.proxyListArray.split('\n'),
+			"proxyList": this.state.proxyList.split('\n')
 		})
 		.then(res=>{
 			this.props.refreshPage()
@@ -45,7 +45,7 @@ class EditProxy extends React.Component{
 		if(prevprop.refreshPageState != this.props.refreshPageState){
 			this.setState({
 				group: this.props.group,
-				proxyList: this.props.proxyList,
+				proxyList: this.convertProxyListToString(this.props.proxyList),
 				id: this.props.id,
 				refreshPageState : this.props.refreshPageState
 			})
@@ -73,17 +73,16 @@ class EditProxy extends React.Component{
 							<div className="row ml-4">
 								<form>
 										<textarea 
-										required
-										name = "proxyList"
-										placeholder = "Enter Your Proxy"
-										onChange = {this.handleChange}
-										className="background-color"
-										rows={8}
-										value = {this.state.proxyList}
-										style={{resize: 'none'}}
+											required
+											name = "proxyList"
+											placeholder = "Enter Your Proxy"
+											onChange = {this.handleChange}
+											className="background-color"
+											rows={8}
+											value = {this.state.proxyList}
+											style={{resize: 'none'}}
 										>
 										</textarea>
-                  
 								</form>
 							</div>
 						</div>

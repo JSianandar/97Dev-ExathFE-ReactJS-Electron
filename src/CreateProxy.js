@@ -19,11 +19,8 @@ class CreateProxy extends React.Component{
 		this.setState({ [event.target.name]: event.target.value });
 	}
 
-
-
 	handleSubmit = event =>{
-		event.preventDefault();
-
+		event.preventDefault()
 		axios.post('http://exath.io/api/proxies/create', {
 			"proxyList": this.state.proxyList.split('\n'),
 			"group": this.state.group
@@ -33,12 +30,9 @@ class CreateProxy extends React.Component{
 		})
 	}
 
-	componentDidMount(){
-
-	}
+	componentDidMount(){}
 
 	componentDidUpdate(prevprop){
-
 		if(prevprop.refreshPageState != this.props.refreshPageState){
 			document.getElementById('input-group').value = ''
 			document.getElementById('input-proxyList').value = ''
@@ -79,7 +73,6 @@ class CreateProxy extends React.Component{
 									id = "input-proxyList"
 									>
 									</textarea>
-                  
 								</form>
 							</div>
 						</div>
