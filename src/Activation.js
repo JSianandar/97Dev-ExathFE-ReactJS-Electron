@@ -32,7 +32,7 @@ class Activation extends React.Component {
         axios.get(`http://exath.io/api/authenticate?key=${this.state.key}`)
         .then(res => {
             this.props.setSessionStorageValue('user', res.data.user[0].user)
-            this.props.setSessionStorageValue('appKey', res.data.user[0].key)
+            this.props.setLocalStorageValue('appKey', res.data.user[0].key)
             this.props.history.push('/task')
         }).catch(error => {
             // If key is invalid or something went wrong, show error message from API.
@@ -41,7 +41,9 @@ class Activation extends React.Component {
     }
 
     
-    componentDidMount(){}
+    componentDidMount(){
+        this.setState({key: this.props.appKey})
+    }
 
     render(){
         return(

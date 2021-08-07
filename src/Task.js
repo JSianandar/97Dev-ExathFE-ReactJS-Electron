@@ -86,7 +86,7 @@ class Task extends React.Component{
     getCurrentTime(){
         var today = new Date()
         return today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
-    }
+}
 
     componentDidMount() {
         this.interval = setInterval(() => this.setState({

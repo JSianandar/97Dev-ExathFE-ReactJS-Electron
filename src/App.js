@@ -18,6 +18,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
 
+    this.setLocalStorageValue = this.setLocalStorageValue.bind(this)
     this.setSessionStorageValue = this.setSessionStorageValue.bind(this)
     this.updateStateValue = this.updateStateValue.bind(this)
     this.checkAndValidateSession = this.checkAndValidateSession.bind(this)
@@ -26,12 +27,13 @@ class App extends React.Component {
       isLoading: false,
       isAuthenticated: false,
       user: '',
-      appKey: ''
+      appKey: window.localStorage.getItem('appKey')
     }
   }
 
   componentDidMount() {
-    this.checkAndValidateSession()
+    if (this.isAppKeyExistsInLocalStorage())
+      this.setState({appKey: window.localStorage.getItem('appKey')})
   }
 
   componentDidUpdate() {
@@ -39,13 +41,13 @@ class App extends React.Component {
   }
 
   checkAndValidateSession() {
-    if (this.isUserAndAppKeyExistsInSessionStorage()) {
+    if (this.isUserExistsInSessionStorage()) {
       if (this.state.user !== window.sessionStorage.getItem('user') || 
-      this.state.appKey !== window.sessionStorage.getItem('appKey') || 
+      this.state.appKey !== window.localStorage.getItem('appKey') || 
       !this.state.isAuthenticated) {
         this.setState({
           user: window.sessionStorage.getItem('user'),
-          appKey: window.sessionStorage.getItem('appKey'),
+          appKey: window.localStorage.getItem('appKey'),
           isAuthenticated: true
         })
       }
@@ -53,8 +55,17 @@ class App extends React.Component {
       this.setState({isAuthenticated: false})
   }
 
-  isUserAndAppKeyExistsInSessionStorage() {
-    return (window.sessionStorage.getItem('user') !== null && window.sessionStorage.getItem('appKey') !== null)
+  isAppKeyExistsInLocalStorage() {
+    return window.localStorage.getItem('appKey') !== null
+  }
+
+  isUserExistsInSessionStorage() {
+    return window.sessionStorage.getItem('user') !== null
+  }
+
+  setLocalStorageValue(key, value) {
+    window.localStorage.setItem(key, value)
+    this.updateStateValue(key, value)
   }
 
   setSessionStorageValue(key, value) {
@@ -78,7 +89,11 @@ class App extends React.Component {
               { this.state.isAuthenticated
                 ? <Redirect to="/task" />
                 : <div style={{height:"100vh"}}>
-                    <Activation setSessionStorageValue={this.setSessionStorageValue} />
+                    <Activation
+                      setLocalStorageValue={this.setLocalStorageValue}
+                      setSessionStorageValue={this.setSessionStorageValue}
+                      appKey={this.state.appKey}
+                    />
                   </div>
               }
             </Route>
