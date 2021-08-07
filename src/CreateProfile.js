@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import credit_card_logo from './assets/icons/credit_card_logo.png';
 import axios from 'axios';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 class CreateProfile extends React.Component{
 	constructor(props){
@@ -38,7 +39,12 @@ class CreateProfile extends React.Component{
 			monthExp: '',
 			yearExp: '',
 			sameAsShipping: false,
-			refreshPageState: ''
+			refreshPageState: '',
+			selectShippingCountry: 'Country',
+			selectShippingProvince: 'Province',
+			selectBillingCountry: 'Country',
+			selectBillingProvince: 'Province',
+
 		}
 		this.toBilling = this.toBilling.bind(this)
 		this.toCard = this.toCard.bind(this)
@@ -49,6 +55,23 @@ class CreateProfile extends React.Component{
 	handleChange = event => {
 		this.setState({ [event.target.name]: event.target.value });
 	}
+
+	handleClickShippingCountry = (event) => {
+		this.setState({ selectShippingCountry: event, shippingCountry: event });
+	}
+
+	handleClickShippingProvince = (event) => {
+		this.setState({ selectShippingProvince: event, shippingProvince: event })
+	}
+
+	handleClickBillingCountry = (event) => {
+		this.setState({ selectBillingCountry: event, billingCountry: event });
+	}
+
+	handleClickBillingProvince = (event) => {
+		this.setState({ selectBillingProvince: event, billingProvince: event })
+	}
+
 
 	handleSubmit = event =>{
 		event.preventDefault();
@@ -264,17 +287,18 @@ class CreateProfile extends React.Component{
 							</div>
 							<div className="col-1"></div>
 							<div className="col-4">
-								<form>
-									<input
-										type="text"
-										name="shippingCountry"
-										id= "input-shipping-Country"
-										onChange={this.handleChange}
-										placeholder="Country"
-										className="text-area-right"
-										required
-									/>
-								</form>
+									<Dropdown name="shippingCountry" onChange={this.handleChange} onSelect= {this.handleClickShippingCountry}>
+										<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" >
+											<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectShippingCountry}</h3>
+										</Dropdown.Toggle>
+
+										<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
+											<Dropdown.Item href="#/action-1" eventKey="Indonesia">Indonesia</Dropdown.Item>
+											<Dropdown.Item href="#/action-1" eventKey="UK">UK</Dropdown.Item>
+											<Dropdown.Item href="#/action-1" eventKey="USA">USA</Dropdown.Item>
+											<Dropdown.Item href="#/action-1" eventKey="Australia">Australia</Dropdown.Item>
+										</Dropdown.Menu>
+									</Dropdown>
 							</div>
 
 
@@ -298,17 +322,18 @@ class CreateProfile extends React.Component{
 							</div>
 							<div className="col-1"></div>
 							<div className="col-4">
-								<form>
-									<input
-										type="text"
-										name="shippingProvince"
-										id= "input-shipping-Province"
-										onChange={this.handleChange}
-										placeholder="Province"
-										className="text-area-right"
-										required
-									/>
-								</form>
+								<Dropdown name="shippingProvince" onChange={this.handleChange} onSelect= {this.handleClickShippingProvince}>
+									<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex">
+										<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectShippingProvince}</h3>
+									</Dropdown.Toggle>
+
+									<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
+										<Dropdown.Item href="#/action-1" eventKey="DKI Jakarta">DKI Jakarta</Dropdown.Item>
+										<Dropdown.Item href="#/action-1" eventKey="London">London</Dropdown.Item>
+										<Dropdown.Item href="#/action-1" eventKey="California">California</Dropdown.Item>
+										<Dropdown.Item href="#/action-1" eventKey="Melbourne">Melboune</Dropdown.Item>
+									</Dropdown.Menu>
+								</Dropdown>
 							</div>
 
 
@@ -488,17 +513,18 @@ class CreateProfile extends React.Component{
 					</div>
 					<div className="col-1"></div>
 					<div className="col-4">
-						<form>
-							<input
-								type="text"
-								placeholder="Country"
-								id= "input-billing-Country"
-								name="billingCountry"
-								onChange={this.handleChange}
-								className="text-area-right"
-								required
-							/>
-						</form>
+						<Dropdown name= "billingCountry" onChange={this.handleChange} onSelect= {this.handleClickBillingCountry}>
+							<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" >
+								<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectBillingCountry}</h3>
+							</Dropdown.Toggle>
+
+							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
+								<Dropdown.Item href="#/action-1" eventKey="Indonesia">Indonesia</Dropdown.Item>
+								<Dropdown.Item href="#/action-1" eventKey="UK">UK</Dropdown.Item>
+								<Dropdown.Item href="#/action-1" eventKey="USA">USA</Dropdown.Item>
+								<Dropdown.Item href="#/action-1" eventKey="Australia">Australia</Dropdown.Item>
+							</Dropdown.Menu>
+						</Dropdown>
 					</div>
 
 
@@ -522,17 +548,18 @@ class CreateProfile extends React.Component{
 					</div>
 					<div className="col-1"></div>
 					<div className="col-4">
-						<form>
-							<input
-								type="text"
-								placeholder="Province"
-								id= "input-billing-Province"
-								name="billingProvince"
-								onChange={this.handleChange}
-								className="text-area-right"
-								required
-							/>
-						</form>
+						<Dropdown name="billingProvince" onChange={this.handleChange} onSelect= {this.handleClickBillingProvince}>
+							<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex">
+								<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectBillingProvince}</h3>
+							</Dropdown.Toggle>
+
+							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
+								<Dropdown.Item href="#/action-1" eventKey="DKI Jakarta">DKI Jakarta</Dropdown.Item>
+								<Dropdown.Item href="#/action-1" eventKey="London">London</Dropdown.Item>
+								<Dropdown.Item href="#/action-1" eventKey="California">California</Dropdown.Item>
+								<Dropdown.Item href="#/action-1" eventKey="Melbourne">Melboune</Dropdown.Item>
+							</Dropdown.Menu>
+						</Dropdown>
 					</div>
 
 

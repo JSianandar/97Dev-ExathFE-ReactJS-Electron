@@ -43,6 +43,19 @@
 	color: #C4C4C4;
 }
 
+.edit-profile-shipping-container h3{
+	font-family: MADE TOMMY;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 25px;
+	/* identical to box height */
+
+	letter-spacing: 0.03em;
+
+	color: #C4C4C4;
+}
+
 
 .edit-profile-shipping-container .button{
 	width: 130px;
