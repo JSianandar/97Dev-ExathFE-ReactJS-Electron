@@ -51,6 +51,7 @@ class IndividualProxy extends React.Component{
 	}
 
 	render(){
+		console.log(this.state.proxies)
 		return(
 			<div className="IndividualProxy">
 			{
@@ -65,7 +66,7 @@ class IndividualProxy extends React.Component{
 								</div>
 
 								<div className="col-2 pt-1">
-									<h1 className="headings text-center">999</h1>
+									<h1 className="headings text-center">{e.proxyList.length}</h1>
 								</div>
 
 								<div className="col-6"></div>

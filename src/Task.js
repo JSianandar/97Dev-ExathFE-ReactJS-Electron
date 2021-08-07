@@ -85,7 +85,7 @@ class Task extends React.Component{
 
     getCurrentTime(){
         var today = new Date()
-        return today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+        return today.toLocaleTimeString([], { hour12: false });
 }
 
     componentDidMount() {
@@ -114,7 +114,7 @@ class Task extends React.Component{
                     <div className="control-panel-wrapper row mx-auto">
                         <div className="left-control-panel col-2 pt-3">
                             <h1 className="text-center">Tasks</h1>
-                            <p className="clock text-center">{ this.state.time }</p>
+                            <p className="clock text-center">{this.state.time}</p>
                         </div>
                         <div className="middle-control-panel col-4 pt-3">
                             <p className="welcome-message m-0">Welcome, <b>{this.state.user}</b></p>
