@@ -78,8 +78,16 @@ class IndividualTask extends React.Component{
 			})
 			this.props.updateTaskStateValue('totalTasksCount', response.data.length)
 			if (response.data.length > 0) {
-				this.props.updateTaskStateValue('monitorDelay', response.data[0].monitorDelay)
-				this.props.updateTaskStateValue('retryDelay', response.data[0].retryDelay)
+				var shouldRefreshPage = false
+				if (this.props.monitorDelay != response.data[0].monitorDelay) {
+					this.props.updateTaskStateValue('monitorDelay', response.data[0].monitorDelay)
+					shouldRefreshPage = true
+				}
+				if (this.props.retryDelay != response.data[0].retryDelay) {
+					this.props.updateTaskStateValue('retryDelay', response.data[0].retryDelay)
+					shouldRefreshPage = true
+				}
+				if (shouldRefreshPage) this.props.refreshPage();
 			}
 		},
 		error=>{

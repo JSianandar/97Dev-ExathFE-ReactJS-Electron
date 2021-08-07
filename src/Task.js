@@ -170,7 +170,13 @@ class Task extends React.Component{
                                 </div>
                             </div>
                             {/*IndividualTask*/}
-                            <IndividualTask updateTaskStateValue={this.updateTaskStateValue.bind(this)} refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
+                            <IndividualTask
+                                retryDelay={this.state.retryDelay}
+                                monitorDelay={this.state.monitorDelay}
+                                updateTaskStateValue={this.updateTaskStateValue.bind(this)}
+                                refreshPage={this.refreshPage.bind(this)}
+                                refreshPageState={this.state.refreshPage}
+                            />
                             {/*IndividualTask*/}
 
                             {/*EditAllTaskModal*/}

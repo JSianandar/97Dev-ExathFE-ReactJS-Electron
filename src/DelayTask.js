@@ -58,7 +58,6 @@ class DelayTask extends React.Component{
     }
 
     render(){
-        console.log(this.state)
         return(
             <div className="delay-task-container">
                 <div className="row pt-2">
