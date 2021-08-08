@@ -51,7 +51,6 @@ class IndividualProxy extends React.Component{
 	}
 
 	render(){
-		console.log(this.state.proxies)
 		return(
 			<div className="IndividualProxy">
 			{

@@ -16,7 +16,7 @@ class IndividualProfile extends React.Component{
 	constructor(props){
 		super(props)
 		this.state = {
-			profiles: [],
+			profiles: null,
 			refreshPageState: '',
 			id: '',
 		}
@@ -50,7 +50,7 @@ class IndividualProfile extends React.Component{
 	handleDelete = event => {
 		event.preventDefault();
 		axios.delete(`http://exath.io/api/profiles/update/${event.target.name}`)
-		  .then(res => {
+		.then(res => {
 			this.props.refreshPage()
 		})
 	}
@@ -59,7 +59,7 @@ class IndividualProfile extends React.Component{
 		return(
 			<div className="IndividualProfile">
 			{
-				this.state.profiles.reverse().map( (e, index) =>{
+				this.state.profiles && this.state.profiles.reverse().map( (e, index) =>{
 					return(
 						<React.Fragment>
 							<div className="row pt-2"></div>
