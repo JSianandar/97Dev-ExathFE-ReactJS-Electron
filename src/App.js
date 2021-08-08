@@ -13,11 +13,13 @@ import Settings from './Settings.js';
 
 import{ BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Redirect } from "react-router-dom";
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
     super(props)
 
+    this.fetchCountriesData = this.fetchCountriesData.bind(this)
     this.setLocalStorageValue = this.setLocalStorageValue.bind(this)
     this.setSessionStorageValue = this.setSessionStorageValue.bind(this)
     this.updateStateValue = this.updateStateValue.bind(this)
@@ -27,18 +29,28 @@ class App extends React.Component {
       isLoading: false,
       isAuthenticated: false,
       user: '',
-      appKey: window.localStorage.getItem('appKey')
+      appKey: window.localStorage.getItem('appKey'),
+      countriesData: null
     }
   }
 
   componentDidMount() {
     if (this.isAppKeyExistsInLocalStorage())
       this.setState({appKey: window.localStorage.getItem('appKey')})
+    if (!this.state.countriesData)
+      this.fetchCountriesData()
   }
 
   componentDidUpdate() {
     this.checkAndValidateSession()
   }
+
+  fetchCountriesData = () => {
+		return axios.get('http://exath.io/api/countries')
+			.then(res => {
+				this.setState({countriesData: res.data})
+			}, err => {})
+	}
 
   checkAndValidateSession() {
     if (this.isUserExistsInSessionStorage()) {
@@ -112,7 +124,7 @@ class App extends React.Component {
               { this.state.isAuthenticated
                 ? <div className="d-flex">
                     <NavBar checkAndValidateSession={this.checkAndValidateSession} />
-                    <Profile />
+                    <Profile countriesData={this.state.countriesData} />
                   </div>
                 : <Redirect to="/activation" />
               }

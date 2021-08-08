@@ -44,7 +44,7 @@ class Task extends React.Component{
     }
 
     reloadPage() {
-        window.location.reload();
+        window.location.reload()
     }
 
     handleStartAllTask = event => {

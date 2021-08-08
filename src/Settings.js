@@ -120,7 +120,7 @@ class Settings extends React.Component{
 								<p className="heading ml-2">Discord Webhook</p>
 							</Button>
 							<div className="col-2"></div>
-							<Button variant="outline-none" className="test-button-wrapper col-1" onClick = {()=> window.open("https://discord.com/api/webhooks/791366221815349258/ZaLjC5d_aNBbn-aWryS03Q09QgttE8g6md7bnG3eGf1r23i7eE5-4_wpeZ2IHnqw-l3n", "_blank")}>
+							<Button variant="outline-none" className="test-button-wrapper col-1" onClick={()=> window.open("https://discord.com/api/webhooks/791366221815349258/ZaLjC5d_aNBbn-aWryS03Q09QgttE8g6md7bnG3eGf1r23i7eE5-4_wpeZ2IHnqw-l3n", "_blank")}>
 								<p className="heading my-auto text-center">Test</p>
 							</Button>
 						</div>
@@ -139,9 +139,7 @@ class Settings extends React.Component{
 
 							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 								{this.state.profiles.map((e, index) => {
-									
 									return(<Dropdown.Item href="#/action-1" eventKey = {e.name} >{e.name}</Dropdown.Item>)
-									
 								})}
 							</Dropdown.Menu>
 						</Dropdown>
@@ -156,11 +154,9 @@ class Settings extends React.Component{
 
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 								{this.state.sizes.map((e, index) => {
-									
 									return(<Dropdown.Item href="#/action-1"  eventKey = {e} >{e}</Dropdown.Item>)
-									
 								})}
-								 </Dropdown.Menu>
+								</Dropdown.Menu>
 							</Dropdown>
 						</div>
 						<div className="row mx-auto pt-3">
@@ -188,20 +184,18 @@ class Settings extends React.Component{
 
 						<div className="row pt-5" style = {{marginLeft: '565px'}}>
 							<Button variant="outline-none" className="cfu-button-wrapper pt-1 ml-3">
-								<p className="heading text-center">Update Profile</p>
+								<p className="heading text-center">Update Settings</p>
 							</Button>
 						</div>
 
 						{/*DiscordWebhookModal*/}
 						<div className="modal fade" id="discordWebhook" tabIndex="-1" aria-labelledby="discordWebhookLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
-                           <DiscordWebhook refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
-                              <div className= "modal-dialog modal-dialog-centered">
-                                  <div className="modal-content">		
-                              </div>
-                           </div>
+							<DiscordWebhook refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
+							<div className= "modal-dialog modal-dialog-centered">
+                                <div className="modal-content">
+								</div>
+							</div>
                         </div>
-
-
 
 					</div>
 				</div>

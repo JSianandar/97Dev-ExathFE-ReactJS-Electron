@@ -11,7 +11,15 @@ import Dropdown from 'react-bootstrap/Dropdown';
 class CreateProfile extends React.Component{
 	constructor(props){
 		super(props)
-		this.state = {
+		this.state = this.getInitialState()
+		this.toBilling = this.toBilling.bind(this)
+		this.toCard = this.toCard.bind(this)
+		this.toShipping = this.toShipping.bind(this)
+		this.sameAsShippingTrue = this.sameAsShippingTrue.bind(this)
+	}
+
+	getInitialState = () => {
+		return {
 			mode: 'shipping',
 			name: '',
 			shippingFirstName: '',
@@ -44,12 +52,14 @@ class CreateProfile extends React.Component{
 			selectShippingProvince: 'Province',
 			selectBillingCountry: 'Country',
 			selectBillingProvince: 'Province',
-
+			countriesData: this.props.countriesData,
+			shippingProvincesOptions: null,
+			billingProvincesOptions: null
 		}
-		this.toBilling = this.toBilling.bind(this)
-		this.toCard = this.toCard.bind(this)
-		this.toShipping = this.toShipping.bind(this)
-		this.sameAsShippingTrue = this.sameAsShippingTrue.bind(this)
+	}
+
+	resetModal = () => {
+		this.setState(this.getInitialState())
 	}
 
 	handleChange = event => {
@@ -57,7 +67,13 @@ class CreateProfile extends React.Component{
 	}
 
 	handleClickShippingCountry = (event) => {
-		this.setState({ selectShippingCountry: event, shippingCountry: event });
+		this.setState({
+			selectShippingCountry: event,
+			shippingCountry: event,
+			shippingProvincesOptions: this.state.countriesData[event]["provinces"]
+		});
+		document.getElementById('shippingProvinceDropdownToggle').disabled =
+			this.state.countriesData[event]["provinces"] ? false : true
 	}
 
 	handleClickShippingProvince = (event) => {
@@ -65,17 +81,21 @@ class CreateProfile extends React.Component{
 	}
 
 	handleClickBillingCountry = (event) => {
-		this.setState({ selectBillingCountry: event, billingCountry: event });
+		this.setState({
+			selectBillingCountry: event,
+			billingCountry: event,
+			billingProvincesOptions: this.state.countriesData[event]["provinces"]
+		});
+		document.getElementById('billingProvinceDropdownToggle').disabled =
+			this.state.countriesData[event]["provinces"] ? false : true
 	}
 
 	handleClickBillingProvince = (event) => {
 		this.setState({ selectBillingProvince: event, billingProvince: event })
 	}
 
-
 	handleSubmit = event =>{
 		event.preventDefault();
-
 
 		axios.post('http://exath.io/api/profiles/create', {
 			"name": this.state.name,
@@ -110,16 +130,15 @@ class CreateProfile extends React.Component{
 		})
 	}
 
-	componentDidMount(){
-
-	}
+	componentDidMount(){}
 
 	componentDidUpdate(prevprop){
 		if(prevprop.refreshPageState != this.props.refreshPageState){
 			this.setState({
 				sameAsShipping: false,
 				refreshPageState : this.props.refreshPageState,
-				mode: 'shipping'
+				mode: 'shipping',
+				countriesData: this.props.countriesData
 			})
 		}
 	}
@@ -175,13 +194,13 @@ class CreateProfile extends React.Component{
 										type="text"
 										name= "shippingFirstName"
 										id = "input-shipping-FirstName"
+										className="text-area-left"
 										onChange={this.handleChange}
 										placeholder="First Name"
-										className="text-area-left"
+										value={this.state.shippingFirstName}
 										required
 									/>
 								</form>
-						
 							</div>
 							<div className="col-1"></div>
 							<div className="col-4">
@@ -190,15 +209,14 @@ class CreateProfile extends React.Component{
 										type="text"
 										name="shippingCity"
 										id = "input-shipping-City"
+										className="text-area-right"
 										onChange={this.handleChange}
 										placeholder="City"
-										className="text-area-right"
+										value={this.state.shippingCity}
 										required
 									/>
 								</form>
 							</div>
-
-
 						</div>
 
 						<div className="row pt-3">
@@ -209,13 +227,13 @@ class CreateProfile extends React.Component{
 										type="text"
 										name="shippingLastName"
 										id= "input-shipping-LastName"
+										className="text-area-left"
 										onChange={this.handleChange}
 										placeholder="Last Name"
-										className="text-area-left"
+										value={this.state.shippingLastName}
 										required
 									/>
 								</form>
-						
 							</div>
 							<div className="col-1"></div>
 							<div className="col-4">
@@ -224,15 +242,14 @@ class CreateProfile extends React.Component{
 										type="text"
 										name="shippingZip"
 										id= "input-shipping-Zip"
+										className="text-area-right"
 										onChange={this.handleChange}
 										placeholder="Postal Code"
-										className="text-area-right"
+										value={this.state.shippingZip}
 										required
 									/>
 								</form>
 							</div>
-
-
 						</div>
 
 						<div className="row pt-3">
@@ -242,14 +259,14 @@ class CreateProfile extends React.Component{
 									<input
 										type="text"
 										name="email"
-										onChange={this.handleChange}
 										id= "input-email"
-										placeholder="Email Address"
 										className="text-area-left"
+										onChange={this.handleChange}
+										placeholder="Email Address"
+										value={this.state.email}
 										required
 									/>
 								</form>
-						
 							</div>
 							<div className="col-1"></div>
 							<div className="col-4">
@@ -257,16 +274,15 @@ class CreateProfile extends React.Component{
 									<input
 										type="text"
 										name="shippingPhone"
-										id= "input-shipping-Phone"
+										id="input-shipping-Phone"
 										onChange={this.handleChange}
 										placeholder="Phone Number"
 										className="text-area-right"
+										value={this.state.shippingPhone}
 										required
 									/>
 								</form>
 							</div>
-
-
 						</div>
 
 						<div className="row pt-3">
@@ -280,28 +296,24 @@ class CreateProfile extends React.Component{
 										onChange={this.handleChange}
 										placeholder="Address 1"
 										className="text-area-left"
+										value={this.state.shippingAddress1}
 										required
 									/>
 								</form>
-						
 							</div>
 							<div className="col-1"></div>
 							<div className="col-4">
-									<Dropdown name="shippingCountry" onChange={this.handleChange} onSelect= {this.handleClickShippingCountry}>
-										<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" >
-											<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectShippingCountry}</h3>
-										</Dropdown.Toggle>
-
-										<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-											<Dropdown.Item href="#/action-1" eventKey="Indonesia">Indonesia</Dropdown.Item>
-											<Dropdown.Item href="#/action-1" eventKey="UK">UK</Dropdown.Item>
-											<Dropdown.Item href="#/action-1" eventKey="USA">USA</Dropdown.Item>
-											<Dropdown.Item href="#/action-1" eventKey="Australia">Australia</Dropdown.Item>
-										</Dropdown.Menu>
-									</Dropdown>
+								<Dropdown name="shippingCountry" onSelect={this.handleClickShippingCountry}>
+									<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" >
+										<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectShippingCountry}</h3>
+									</Dropdown.Toggle>
+									<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
+										{this.state.countriesData ? Object.keys(this.state.countriesData).map((countryName, i) => {
+											return (<Dropdown.Item href="#/action-1" eventKey={countryName}>{countryName}</Dropdown.Item>)
+										}) : null}
+									</Dropdown.Menu>
+								</Dropdown>
 							</div>
-
-
 						</div>
 
 						<div className="row pt-3">
@@ -315,28 +327,24 @@ class CreateProfile extends React.Component{
 										onChange={this.handleChange}
 										placeholder="Address 2"
 										className="text-area-left"
+										value={this.state.shippingAddress2}
 										required
 									/>
 								</form>
-						
 							</div>
 							<div className="col-1"></div>
 							<div className="col-4">
-								<Dropdown name="shippingProvince" onChange={this.handleChange} onSelect= {this.handleClickShippingProvince}>
-									<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex">
+								<Dropdown name="shippingProvince" onChange={this.handleChange} onSelect={this.handleClickShippingProvince}>
+									<Dropdown.Toggle id="shippingProvinceDropdownToggle" variant="outline-none" className="text-area-right d-flex">
 										<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectShippingProvince}</h3>
 									</Dropdown.Toggle>
-
 									<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-										<Dropdown.Item href="#/action-1" eventKey="DKI Jakarta">DKI Jakarta</Dropdown.Item>
-										<Dropdown.Item href="#/action-1" eventKey="London">London</Dropdown.Item>
-										<Dropdown.Item href="#/action-1" eventKey="California">California</Dropdown.Item>
-										<Dropdown.Item href="#/action-1" eventKey="Melbourne">Melboune</Dropdown.Item>
+										{this.state.shippingProvincesOptions ? this.state.shippingProvincesOptions.map((provinceName, index) => {
+											return (<Dropdown.Item href="#/action-1" eventKey={provinceName}>{provinceName}</Dropdown.Item>)
+										}) : null}
 									</Dropdown.Menu>
 								</Dropdown>
 							</div>
-
-
 						</div>
 
 						<div className="row pt-5">
@@ -349,340 +357,317 @@ class CreateProfile extends React.Component{
 										name="name"
 										onChange={this.handleChange}
 										className="text-area-right"
+										value={this.state.name}
 										required
 									/>
 								</form>
 							</div>
 							<div className="col-1"></div>
 							<div className="col-3 pt-1">
-								<input type="checkbox" className="form-check-input" id="exampleCheck1" name="sameAsShipping" onClick={this.sameAsShippingTrue}/>
+								<input type="checkbox" className="form-check-input" id="exampleCheck1" name="sameAsShipping" onClick={this.sameAsShippingTrue} checked={this.state.sameAsShipping ? true : false}/>
 								<label className="form-check-label" for="exampleCheck1" style={{color: '#C4C4C4'}}>Use for Billing</label>
 							</div>
 							<div className="col-2"></div>
 							<div className="col-1 ml-4">
-								<Link data-dismiss="modal" onClick={this.toShipping} className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
+								<Link data-dismiss="modal" onClick={this.resetModal} className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
 							</div>
 							<div className="col-2 ml-4">
-								<Link onClick= {this.state.sameAsShipping?this.toCard: this.toBilling} className="button-text" style={{ textDecoration: 'none' }}>Next</Link>
+								<Link onClick={this.state.sameAsShipping ? this.toCard: this.toBilling} className="button-text" style={{ textDecoration: 'none' }}>Next</Link>
 							</div>
-					
-
-
 						</div>
-
 				</div>}
+
 				{this.state.mode == 'billing' && 
 				<div className="create-profile-billing-container ">
-				<div className="row pt-2">
-					<div className="col-3 ml-4">
-						<h1>Create Profile</h1>
-					</div>
-					<div className="col-2"></div>
-					<Link  className=" button2 col-2  "style={{ textDecoration: 'none' }}>	
-						<h2 className="text-center pt-1">Shipping</h2>
-					</Link>
+					<div className="row pt-2">
+						<div className="col-3 ml-4">
+							<h1>Create Profile</h1>
+						</div>
+						<div className="col-2"></div>
+						<Link  className=" button2 col-2  "style={{ textDecoration: 'none' }}>	
+							<h2 className="text-center pt-1">Shipping</h2>
+						</Link>
 
-					<Link className=" button col-2 ml-2 "style={{ textDecoration: 'none' }}>
-						<h2 className="my-auto text-center pt-1">Billing</h2>
-					</Link>
+						<Link className=" button col-2 ml-2 "style={{ textDecoration: 'none' }}>
+							<h2 className="my-auto text-center pt-1">Billing</h2>
+						</Link>
 
-					<Link  className="button2 col-2 ml-2  "style={{ textDecoration: 'none' }}>
-						<h2 className="my-auto text-center pt-1">Card</h2>
-					</Link>
-				</div>
-
-				<div className="row pt-3">
-					<h1 className="billing-address mx-auto">Billing Address</h1>
-				</div>
-
-				<div className="row pt-3">
-					<div className="col-1"></div>
-					<div className="col-6">
-						<form>
-							<input
-								type="text"
-								name="billingFirstName"
-								id= "input-billing-FirstName"
-								onChange={this.handleChange}
-								placeholder="First Name"
-								className="text-area-left"
-								required
-							/>
-						</form>
-						
-					</div>
-					<div className="col-1"></div>
-					<div className="col-4">
-						<form>
-							<input
-								type="text"
-								name="billingCity"
-								id= "input-billing-City"
-								onChange={this.handleChange}
-								placeholder="City"
-								className="text-area-right"
-								required
-							/>
-						</form>
+						<Link  className="button2 col-2 ml-2  "style={{ textDecoration: 'none' }}>
+							<h2 className="my-auto text-center pt-1">Card</h2>
+						</Link>
 					</div>
 
-
-				</div>
-
-				<div className="row pt-3">
-					<div className="col-1"></div>
-					<div className="col-6">
-						<form>
-							<input
-								type="text"
-								name="billingLastName"
-								id = "input-billing-LastName"
-								onChange={this.handleChange}
-								placeholder="Last Name"
-								className="text-area-left"
-								required
-							/>
-						</form>
-						
-					</div>
-					<div className="col-1"></div>
-					<div className="col-4">
-						<form>
-							<input
-								type="text"
-								name="billingZip"
-								id= "input-billing-Zip"
-								onChange={this.handleChange}
-								placeholder="Postal Code"
-								className="text-area-right"
-								required
-							/>
-						</form>
+					<div className="row pt-3">
+						<h1 className="billing-address mx-auto">Billing Address</h1>
 					</div>
 
-
-				</div>
-
-				<div className="row pt-3">
-					<div className="col-1"></div>
-					<div className="col-6">
-						<form>
-							<input
-								type="text"
-								id= "input-email"
-								placeholder="Email Address"
-								className="text-area-left"
-								required
-							/>
-						</form>
-						
-					</div>
-					<div className="col-1"></div>
-					<div className="col-4">
-						<form>
-							<input
-								type="text"
-								name="billingPhone"
-								id= "input-billing-Phone"
-								onChange={this.handleChange}
-								placeholder="Phone Number"
-								className="text-area-right"
-								required
-							/>
-						</form>
-					</div>
-
-
-				</div>
-
-				<div className="row pt-3">
-					<div className="col-1"></div>
-					<div className="col-6">
-						<form>
-							<input
-								type="text"
-								placeholder="Address 1"
-								id= "input-billing-Address1"
-								name="billingAddress1"
-								onChange={this.handleChange}
-								className="text-area-left"
-								required
-							/>
-						</form>
-						
-					</div>
-					<div className="col-1"></div>
-					<div className="col-4">
-						<Dropdown name= "billingCountry" onChange={this.handleChange} onSelect= {this.handleClickBillingCountry}>
-							<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" >
-								<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectBillingCountry}</h3>
-							</Dropdown.Toggle>
-
-							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-								<Dropdown.Item href="#/action-1" eventKey="Indonesia">Indonesia</Dropdown.Item>
-								<Dropdown.Item href="#/action-1" eventKey="UK">UK</Dropdown.Item>
-								<Dropdown.Item href="#/action-1" eventKey="USA">USA</Dropdown.Item>
-								<Dropdown.Item href="#/action-1" eventKey="Australia">Australia</Dropdown.Item>
-							</Dropdown.Menu>
-						</Dropdown>
+					<div className="row pt-3">
+						<div className="col-1"></div>
+						<div className="col-6">
+							<form>
+								<input
+									type="text"
+									name="billingFirstName"
+									id= "input-billing-FirstName"
+									onChange={this.handleChange}
+									placeholder="First Name"
+									className="text-area-left"
+									value={this.state.billingFirstName}
+									required
+								/>
+							</form>
+							
+						</div>
+						<div className="col-1"></div>
+						<div className="col-4">
+							<form>
+								<input
+									type="text"
+									name="billingCity"
+									id= "input-billing-City"
+									onChange={this.handleChange}
+									placeholder="City"
+									className="text-area-right"
+									value={this.state.billingCity}
+									required
+								/>
+							</form>
+						</div>
 					</div>
 
-
-				</div>
-
-				<div className="row pt-3">
-					<div className="col-1"></div>
-					<div className="col-6">
-						<form>
-							<input
-								type="text"
-								placeholder="Address 2"
-								id= "input-billing-Address2"
-								name="billingAddress2"
-								onChange={this.handleChange}
-								className="text-area-left"
-								required
-							/>
-						</form>
-						
-					</div>
-					<div className="col-1"></div>
-					<div className="col-4">
-						<Dropdown name="billingProvince" onChange={this.handleChange} onSelect= {this.handleClickBillingProvince}>
-							<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex">
-								<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectBillingProvince}</h3>
-							</Dropdown.Toggle>
-
-							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-								<Dropdown.Item href="#/action-1" eventKey="DKI Jakarta">DKI Jakarta</Dropdown.Item>
-								<Dropdown.Item href="#/action-1" eventKey="London">London</Dropdown.Item>
-								<Dropdown.Item href="#/action-1" eventKey="California">California</Dropdown.Item>
-								<Dropdown.Item href="#/action-1" eventKey="Melbourne">Melboune</Dropdown.Item>
-							</Dropdown.Menu>
-						</Dropdown>
+					<div className="row pt-3">
+						<div className="col-1"></div>
+						<div className="col-6">
+							<form>
+								<input
+									type="text"
+									name="billingLastName"
+									id = "input-billing-LastName"
+									onChange={this.handleChange}
+									placeholder="Last Name"
+									className="text-area-left"
+									value={this.state.billingLastName}
+									required
+								/>
+							</form>
+						</div>
+						<div className="col-1"></div>
+						<div className="col-4">
+							<form>
+								<input
+									type="text"
+									name="billingZip"
+									id= "input-billing-Zip"
+									onChange={this.handleChange}
+									placeholder="Postal Code"
+									className="text-area-right"
+									value={this.state.billingZip}
+									required
+								/>
+							</form>
+						</div>
 					</div>
 
-
-				</div>
-
-				<div className="row pt-5">
-					<div className="col-8"></div>
-					<div className="col-1 ml-5">
-						<Link data-dismiss="modal" onClick={this.toShipping} className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
+					<div className="row pt-3">
+						<div className="col-1"></div>
+						<div className="col-6">
+							<form>
+								<input
+									type="text"
+									id= "input-email"
+									placeholder="Email Address"
+									className="text-area-left"
+									value={this.state.email}
+									required
+								/>
+							</form>
+						</div>
+						<div className="col-1"></div>
+						<div className="col-4">
+							<form>
+								<input
+									type="text"
+									name="billingPhone"
+									id= "input-billing-Phone"
+									onChange={this.handleChange}
+									placeholder="Phone Number"
+									className="text-area-right"
+									value={this.state.billingPhone}
+									required
+								/>
+							</form>
+						</div>
 					</div>
-					<div className="col-2 ml-4">
-						<Link onClick= {this.toCard} className="button-text" style={{ textDecoration: 'none' }}>Next</Link>
+
+					<div className="row pt-3">
+						<div className="col-1"></div>
+						<div className="col-6">
+							<form>
+								<input
+									type="text"
+									placeholder="Address 1"
+									id= "input-billing-Address1"
+									name="billingAddress1"
+									onChange={this.handleChange}
+									className="text-area-left"
+									value={this.state.billingAddress1}
+									required
+								/>
+							</form>
+						</div>
+						<div className="col-1"></div>
+						<div className="col-4">
+							<Dropdown name= "billingCountry" onChange={this.handleChange} onSelect= {this.handleClickBillingCountry}>
+								<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" >
+									<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectBillingCountry}</h3>
+								</Dropdown.Toggle>
+								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
+									{this.state.countriesData ? Object.keys(this.state.countriesData).map((countryName, i) => {
+										return (<Dropdown.Item href="#/action-1" eventKey={countryName}>{countryName}</Dropdown.Item>)
+									}) : null}
+								</Dropdown.Menu>
+							</Dropdown>
+						</div>
 					</div>
-					
 
+					<div className="row pt-3">
+						<div className="col-1"></div>
+						<div className="col-6">
+							<form>
+								<input
+									type="text"
+									placeholder="Address 2"
+									id= "input-billing-Address2"
+									name="billingAddress2"
+									onChange={this.handleChange}
+									className="text-area-left"
+									value={this.state.billingAddress2}
+									required
+								/>
+							</form>
+						</div>
+						<div className="col-1"></div>
+						<div className="col-4">
+							<Dropdown name="billingProvince" onChange={this.handleChange} onSelect= {this.handleClickBillingProvince}>
+								<Dropdown.Toggle id="billingProvinceDropdownToggle" variant="outline-none" className="text-area-right  d-flex">
+									<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectBillingProvince}</h3>
+								</Dropdown.Toggle>
+								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
+									{this.state.billingProvincesOptions ? this.state.billingProvincesOptions.map((provinceName, index) => {
+										return (<Dropdown.Item href="#/action-1" eventKey={provinceName}>{provinceName}</Dropdown.Item>)
+									}) : null}
+								</Dropdown.Menu>
+							</Dropdown>
+						</div>
+					</div>
 
-				</div>
+					<div className="row pt-5">
+						<div className="col-8"></div>
+						<div className="col-1 ml-5">
+							<Link onClick={this.toShipping} className="button-text" style={{textDecoration: 'none'}}>Back</Link>
+						</div>
+						<div className="col-2 ml-4">
+							<Link onClick= {this.toCard} className="button-text" style={{ textDecoration: 'none' }}>Next</Link>
+						</div>
+					</div>
+				</div>}
 
-			</div>}
 				{this.state.mode == 'card' && 
 				<div className="create-profile-card-container">
-				<div className="row pt-2">
-					<div className="col-3 ml-4">
-						<h1>Create Profile</h1>
+					<div className="row pt-2">
+						<div className="col-3 ml-4">
+							<h1>Create Profile</h1>
+						</div>
+						<div className="col-2"></div>
+						<Link  className=" button2 col-2 "style={{ textDecoration: 'none' }}>	
+							<h2 className="text-center pt-1">Shipping</h2>
+						</Link>
+						<Link className=" button2 col-2 ml-2 "style={{ textDecoration: 'none' }}>
+							<h2 className="my-auto text-center pt-1">Billing</h2>
+						</Link>
+						<Link className="button col-2 ml-2  "style={{ textDecoration: 'none' }}>
+							<h2 className="my-auto text-center pt-1">Card</h2>
+						</Link>
 					</div>
-					<div className="col-2"></div>
-					<Link  className=" button2 col-2 "style={{ textDecoration: 'none' }}>	
-						<h2 className="text-center pt-1">Shipping</h2>
-					</Link>
 
-					<Link className=" button2 col-2 ml-2 "style={{ textDecoration: 'none' }}>
-						<h2 className="my-auto text-center pt-1">Billing</h2>
-					</Link>
-
-					<Link className="button col-2 ml-2  "style={{ textDecoration: 'none' }}>
-						<h2 className="my-auto text-center pt-1">Card</h2>
-					</Link>
-				</div>
-
-				<div className="row pt-5 ml-4">
-					<div className="col-6 ml-5">
-						<img src={credit_card_logo} / >
+					<div className="row pt-5 ml-4">
+						<div className="col-6 ml-5">
+							<img src={credit_card_logo} / >
+						</div>
+						<div className="col-4 pt-4 ml-2">
+							<div className="row">
+								<form>
+									<input
+										type="text"
+										name="cardHolder"
+										id="input-card-Holder"
+										onChange={this.handleChange}
+										placeholder="Card Holder"
+										className="text-area-right"
+										value={this.state.cardHolder}
+										required
+									/>
+								</form>
+							</div>
+							<div className="row pt-3">
+								<form>
+									<input
+										type="text"
+										name="cardNumber"
+										onChange={this.handleChange}
+										placeholder="Card Number"
+										id="input-card-Number"
+										className="text-area-right"
+										value={this.state.cardNumber}
+										required
+									/>
+								</form>
+							</div>
+							<div className="row pt-3">
+								<form>
+									<input
+										type="text"
+										placeholder="MM/YY"
+										name="yearExp"
+										id="input-year-Exp"
+										onChange={this.handleChange}
+										className="text-area-right"
+										value={this.state.yearExp}
+										required
+									/>
+								</form>
+							</div>
+							<div className="row pt-3">
+								<form>
+									<input
+										type="text"
+										placeholder="CVV"
+										name="cvv"
+										id="input-cvv"
+										onChange={this.handleChange}
+										className="text-area-right"
+										value={this.state.cvv}
+										required
+									/>
+								</form>
+							</div>
+						</div>
 					</div>
 					
-					<div className="col-4 pt-4 ml-2">
-						<div className="row">
-							<form>
-								<input
-									type="text"
-									name="cardHolder"
-									id="input-card-Holder"
-									onChange={this.handleChange}
-									placeholder="Card Holder"
-									className="text-area-right"
-									required
-								/>
-							</form>
+					<div className="row pt-4">
+						<div className="col-8"></div>
+						<div className="col-1 ml-5">
+							<Link onClick={this.state.sameAsShipping ? this.toShipping : this.toBilling} className="button-text" style={{ textDecoration: 'none' }}>Back</Link>
 						</div>
-						<div className="row pt-3">
-							<form>
-								<input
-									type="text"
-									name="cardNumber"
-									onChange={this.handleChange}
-									placeholder="Card Number"
-									id="input-card-Number"
-									className="text-area-right"
-									required
-								/>
-							</form>
-						</div>
-						<div className="row pt-3">
-							<form>
-								<input
-									type="text"
-									placeholder="MM/YY"
-									name="yearExp"
-									id="input-year-Exp"
-									onChange={this.handleChange}
-									className="text-area-right"
-									required
-								/>
-							</form>
-						</div>
-						<div className="row pt-3">
-							<form>
-								<input
-									type="text"
-									placeholder="CVV"
-									name="cvv"
-									id="input-cvv"
-									onChange={this.handleChange}
-									className="text-area-right"
-									required
-								/>
-							</form>
+						<div className="col-2 ml-4">
+							<Link data-dismiss="modal" onClick={this.toShipping} className="button-text" style={{ textDecoration: 'none' }} onClick= {this.handleSubmit}>Create</Link>
 						</div>
 					</div>
-
-
-
-				</div>
-				
-				<div className="row pt-4">
-					<div className="col-8"></div>
-					<div className="col-1 ml-5">
-						<Link data-dismiss="modal" onClick={this.toShipping} className="button-text" style={{ textDecoration: 'none' }}>Close</Link>
-					</div>
-					<div className="col-2 ml-4">
-						<Link data-dismiss="modal" onClick={this.toShipping} className="button-text" style={{ textDecoration: 'none' }} onClick= {this.handleSubmit}>Create</Link>
-					</div>
-					
-
-
-				</div>
-
-				
-			</div>}
+				</div>}
 			</div>
-		);
+		)
 
 	}
-
 }
-	
+
 export default CreateProfile;
