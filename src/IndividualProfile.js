@@ -19,6 +19,7 @@ class IndividualProfile extends React.Component{
 			profiles: null,
 			refreshPageState: '',
 			id: '',
+			countriesData: this.props.countriesData
 		}
 	}
 
@@ -30,7 +31,8 @@ class IndividualProfile extends React.Component{
 		if(prevprop.refreshPageState != this.props.refreshPageState){
 			await this.getProfiles()
 			this.setState({
-				refreshPageState : this.props.refreshPage
+				refreshPageState : this.props.refreshPage,
+				countriesData: this.props.countriesData
 			})
 		}
 	}
@@ -84,8 +86,10 @@ class IndividualProfile extends React.Component{
 								</div>
 							</div>
 
-						{/*EditProfileModal*/}
-								<EditProfile 
+							{/*EditProfileModal*/}
+							<EditProfile
+								countriesData = {this.state.countriesData}
+								sameAsShipping = {e.sameAsShipping}
 								name = {e.name}
 								shippingFirstName = {e.shippingFirstName}
 								shippingLastName = {e.shippingLastName}
@@ -109,13 +113,12 @@ class IndividualProfile extends React.Component{
 								cardHolder = {e.cardHolder}
 								cardNumber = {e.cardNumber}
 								cvv = {e.cvv}
-								yearExp = {(e.monthExp: '') + '/' + (e.yearExp: '' )}
-								
-								id = {e.id} 
+								yearExp = {(e.monthExp) + '/' + (e.yearExp)}
+								id = {e.id}
 								refreshPageState={this.state.refreshPageState}
 								refreshPage={this.props.refreshPage.bind(this)}
-								/>
-						{/*EditProfileModal*/}
+							/>
+							{/*EditProfileModal*/}
 							
 						</React.Fragment>
 					)

@@ -56,7 +56,6 @@ class Settings extends React.Component{
 		event.preventDefault();
 		axios.post('https://discord.com/api/webhooks/791366221815349258/ZaLjC5d_aNBbn-aWryS03Q09QgttE8g6md7bnG3eGf1r23i7eE5-4_wpeZ2IHnqw-l3n')
 		.then(res=> {
-			console.log(res.data)
 			this.refreshPage()
 		},
 		error=>{

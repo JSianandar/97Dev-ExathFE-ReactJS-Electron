@@ -60,6 +60,12 @@ class CreateProfile extends React.Component{
 
 	resetModal = () => {
 		this.setState(this.getInitialState())
+		try {
+			document.getElementById('shippingProvinceDropdownToggle').disabled = false
+			document.getElementById('billingProvinceDropdownToggle').disabled = false
+		} catch (err) {
+			// ignores error
+		}
 	}
 
 	handleChange = event => {
