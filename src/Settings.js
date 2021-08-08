@@ -24,13 +24,15 @@ class Settings extends React.Component{
 		this.state = {
 			profiles: [],
 			sizes: [],
-			size: 'Preferred Size',
-			profile: 'Choose Profile',
+			selectSize: 'Preferred Size',
+			selectProfile: 'Choose Profile',
 			refreshPage: '',
 			qtProfile: '',
 			preferredSize: '',
 			account: '',
 			password: '',
+			webhook: '',
+			discord: ''
 		}
 	}
 
@@ -40,12 +42,12 @@ class Settings extends React.Component{
         })
     }
 
-	handleClick = (event) => {
-		this.setState({ size: event });
+	handleClickSize = (event) => {
+		this.setState({ selectSize: event, preferredSize: event })
 	}
 
 	handleClickProfile = (event) => {
-		this.setState({ profile: event })
+		this.setState({ selectProfile: event, qtProfile: event })
 	}
 
 	handleChange = event => {
@@ -63,14 +65,33 @@ class Settings extends React.Component{
 		})
 	}
 
+	handleSubmitUpdateSettings = event =>{
+		event.preventDefault();
+
+		axios.put('http://exath.io/api/settings/update/', {
+			"qtProfile": this.state.qtProfile,
+			"preferredSize": this.state.preferredSize,
+			"account": this.state.account,
+			"password": this.state.password,
+		})
+		.then(res => {
+			console.log('data', res)
+			this.refreshPage();
+		})
+	}
+
+
 	async componentDidMount(){
 		await this.getProfiles();
 		await this.getSizes();
 	}
 
-	componentDidUpdate(prevprop){
+	async componentDidUpdate(prevprop){
 		if(prevprop != this.props){
+			await this.getProfiles();
+			await this.getSizes();
 			this.setState({
+				refreshPage: this.refreshPage
 			})
 		}
 	}
@@ -95,6 +116,15 @@ class Settings extends React.Component{
 			this.setState({
 				sizes : response.data
 			})
+		},
+		error=>{
+		
+		})
+	}
+
+	getSettings = async () =>{
+		await axios.get('http://exath.io/api/settings')
+		.then(response => {
 		},
 		error=>{
 		
@@ -137,10 +167,10 @@ class Settings extends React.Component{
 							</div>
 						</div>
 						<div className="row mx-auto pt-2">	
-							<Dropdown onSelect = {this.handleClickProfile}>
+							<Dropdown onSelect = {this.handleClickProfile} name="qtProfile" onChange={this.handleChange}>
 								<Dropdown.Toggle variant="outline-none" className="setup-button-wrapper  pt-1 d-flex ml-3">
 									<img className="icon" src={profile_logo} />
-									<p className="heading my-auto ml-2">{this.state.profile}</p>
+									<p className="heading my-auto ml-2">{this.state.selectProfile}</p>
 								</Dropdown.Toggle>
 
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
@@ -152,10 +182,10 @@ class Settings extends React.Component{
 						</div>
 
 						<div className="row mx-auto pt-3">
-							<Dropdown onSelect = {this.handleClick}>
+							<Dropdown onSelect = {this.handleClickSize} name="preferredSize" onChange={this.handleChange}>
 								<Dropdown.Toggle variant="outline-none" className="setup-button-wrapper col pt-1 d-flex ml-3">
 									<img className="icon" src={ruler_logo} />
-									<p className="heading my-auto ml-2" >{this.state.size}</p>
+									<p className="heading my-auto ml-2" >{this.state.selectSize}</p>
 								</Dropdown.Toggle>
 
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
@@ -168,12 +198,12 @@ class Settings extends React.Component{
 						<div className="row mx-auto pt-3">
 							<form className="col-4 quick-task-button-wrapper ml-3">
 								<img className="discord_icon" src={user_logo} />
-								<input type="text" className="background-color ml-3"  placeholder = "Account" required/>
+								<input type="text" className="background-color ml-3" onChange={this.handleChange}  placeholder = "Account" required name="account"/>
 							</form>
 							<div className="col-1"></div>
 							<form className="col-4 quick-task-button-wrapper">
 								<img className="discord_icon" src={password_logo} />
-								<input type="text" className="background-color ml-3" placeholder = "Password" required/>
+								<input type="password" className="background-color ml-3" onChange={this.handleChange} placeholder = "Password" required name="password"/>
 							</form>
 						</div>
 						<div className="updates-wrapper row pt-4">
@@ -189,7 +219,7 @@ class Settings extends React.Component{
 						</div>
 
 						<div className="row pt-5" style = {{marginLeft: '565px'}}>
-							<Button variant="outline-none" className="cfu-button-wrapper pt-1 ml-3">
+							<Button variant="outline-none" className="cfu-button-wrapper pt-1 ml-3" onClick = {this.handleSubmitUpdateSettings}>
 								<p className="heading text-center">Update Settings</p>
 							</Button>
 						</div>
