@@ -75,7 +75,6 @@ class Settings extends React.Component{
 			"password": this.state.password,
 		})
 		.then(res => {
-			console.log('data', res)
 			this.refreshPage();
 		})
 	}
@@ -150,10 +149,10 @@ class Settings extends React.Component{
 						</div>
 
 						<div className="row mx-auto">
-							<Button variant="outline-none" className="setup-button-wrapper d-flex pt-1 ml-3" data-toggle="modal" data-target="#discordWebhook">
+							<form variant="outline-none" className="setup-button-wrapper d-flex pt-1 ml-3">
 								<img className="discord_icon pt-1" src={discord_logo} />
-								<p className="heading ml-2">Discord Webhook</p>
-							</Button>
+								<input type="text" className="background-color ml-2" style={{outline: 'none', width: '400px'}} placeholder = "Discord Webhook" required name="discord" onChange={this.handleChange}/>
+							</form>
 							<div className="col-2"></div>
 
 							<Button variant="outline-none" className="test-button-wrapper col-1" onClick = {this.handleSubmitDiscordTest}>
@@ -223,15 +222,6 @@ class Settings extends React.Component{
 								<p className="heading text-center">Update Settings</p>
 							</Button>
 						</div>
-
-						{/*DiscordWebhookModal*/}
-						<div className="modal fade" id="discordWebhook" tabIndex="-1" aria-labelledby="discordWebhookLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
-							<DiscordWebhook refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
-							<div className= "modal-dialog modal-dialog-centered">
-                                <div className="modal-content">
-								</div>
-							</div>
-                        </div>
 
 					</div>
 				</div>

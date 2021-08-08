@@ -66,6 +66,13 @@
 
 }
 
+.settings-container .page-wrapper .setup-button-wrapper .background-color{
+	background: #291C43;
+	border: 0;
+	outline: none;
+	color: #C4C4C4;
+}
+
 .settings-container .page-wrapper .test-button-wrapper{
 	width: 62px;
 	height: 31px;
