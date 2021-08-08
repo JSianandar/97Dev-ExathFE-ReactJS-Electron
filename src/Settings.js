@@ -6,7 +6,8 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import TitleBar from './TitleBar.js';
-import DiscordWebhook from './DiscordWebhook.js';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import discord_logo from './assets/icons/discord_logo.svg';
 import user_logo from './assets/icons/account_logo.svg';
@@ -16,6 +17,23 @@ import ruler_logo from './assets/icons/ruler_logo.svg';
 
 import axios from 'axios';
 
+const notify = (text, delay) => toast.dark(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifySuccess = (text, delay) => toast.success(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifyError = (text, delay) => toast.error(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
 
 class Settings extends React.Component{
 	constructor(props){
@@ -65,7 +83,7 @@ class Settings extends React.Component{
 		})
 	}
 
-	handleSubmitUpdateSettings = event =>{
+	handleSubmitUpdateSettings = async (event) =>{
 		event.preventDefault();
 
 		axios.put('http://exath.io/api/settings/update/', {
@@ -75,8 +93,10 @@ class Settings extends React.Component{
 			"password": this.state.password,
 			"discord": this.state.discord,
 		})
-		.then(res => {
-			this.refreshPage();
+		.then(async res => {
+			notifySuccess('Successfully Updated Settings', 3000)
+            await new Promise(r => setTimeout(r, 1000))
+			await this.refreshPage();
 		})
 	}
 
@@ -226,6 +246,7 @@ class Settings extends React.Component{
 
 					</div>
 				</div>
+				<ToastContainer newestOnTop />
 			</div>
 		);
 	}

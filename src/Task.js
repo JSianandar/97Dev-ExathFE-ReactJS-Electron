@@ -3,6 +3,8 @@ import './css/Task.css';
 import { Link } from 'react-router-dom';
 import IndividualTask from './IndividualTask.js';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import play_button from "./assets/icons/start_all_logo.png";
 import stop_button from "./assets/icons/stop_task_logo.png";
@@ -18,6 +20,24 @@ import DelayTask from './DelayTask';
 import QuickTask from './QuickTask';
 import CreateTask from './CreateTask';
 import DeleteAllTask from './DeleteAllTask';
+
+const notify = (text, delay) => toast.dark(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifySuccess = (text, delay) => toast.success(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifyError = (text, delay) => toast.error(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
 
 class Task extends React.Component{
     constructor(props){
@@ -47,10 +67,10 @@ class Task extends React.Component{
         window.location.reload()
     }
 
-    handleStartAllTask = event => {
+    handleStartAllTask = async (event) => {
         event.preventDefault();
         axios.get('http://exath.io/api/action?id=all&act=start')
-        .then(res => {
+        .then(async res => {
             /* Since task's status is not available yet, we will call reload page instead refreshing it.
             *  - This will hard reload the page (sort of like pressing ctrl + r), the reason is because
             *    refreshing the page by updating the state will only re-render the component if THERES a
@@ -58,17 +78,19 @@ class Task extends React.Component{
             *    refreshPage() function will only re-render the page once task's status is implemented. 
             */
             // this.refreshPage()
-            this.reloadPage()
+            notifySuccess('Successfully started all tasks', 2000)
+            await new Promise(r => setTimeout(r, 1000))
+            await this.reloadPage()
         },
         error=>{
         
         })
     }
 
-    handleStopAllTask = event => {
+    handleStopAllTask = async (event) => {
         event.preventDefault();
         axios.get('http://exath.io/api/action?id=all&act=stop')
-        .then(res => {
+        .then(async res => {
             /* Since task's status is not available yet, we will call reload page instead refreshing it.
             *  - This will hard reload the page (sort of like pressing ctrl + r), the reason is because
             *    refreshing the page by updating the state will only re-render the component if THERES a
@@ -76,7 +98,9 @@ class Task extends React.Component{
             *    refreshPage() function will only re-render the page once task's status is implemented. 
             */
             // this.refreshPage()
-            this.reloadPage()
+            notifySuccess('Successfully stopped all tasks', 2000)
+            await new Promise(r => setTimeout(r, 1000))
+            await this.reloadPage()
         },
         error=>{
         
@@ -236,6 +260,7 @@ class Task extends React.Component{
                         </div>
                     </div>
                 </div>
+                <ToastContainer newestOnTop />
             </div>
         );
     }
