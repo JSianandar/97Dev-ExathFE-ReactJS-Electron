@@ -52,11 +52,17 @@ class Settings extends React.Component{
 		this.setState({ [event.target.name]: event.target.value });
 	}
 
-/*	handleSubmit = event =>{
+	handleSubmitDiscordTest = event =>{
 		event.preventDefault();
+		axios.post('https://discord.com/api/webhooks/791366221815349258/ZaLjC5d_aNBbn-aWryS03Q09QgttE8g6md7bnG3eGf1r23i7eE5-4_wpeZ2IHnqw-l3n')
+		.then(res=> {
+			console.log(res.data)
+			this.refreshPage()
+		},
+		error=>{
 
-		axios.put('')
-*/
+		})
+	}
 
 	async componentDidMount(){
 		await this.getProfiles();
@@ -120,7 +126,7 @@ class Settings extends React.Component{
 								<p className="heading ml-2">Discord Webhook</p>
 							</Button>
 							<div className="col-2"></div>
-							<Button variant="outline-none" className="test-button-wrapper col-1" onClick = {()=> window.open("https://discord.com/api/webhooks/791366221815349258/ZaLjC5d_aNBbn-aWryS03Q09QgttE8g6md7bnG3eGf1r23i7eE5-4_wpeZ2IHnqw-l3n", "_blank")}>
+							<Button variant="outline-none" className="test-button-wrapper col-1" onClick = {this.handleSubmitDiscordTest}>
 								<p className="heading my-auto text-center">Test</p>
 							</Button>
 						</div>
