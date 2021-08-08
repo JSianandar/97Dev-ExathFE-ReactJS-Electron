@@ -73,6 +73,7 @@ class Settings extends React.Component{
 			"preferredSize": this.state.preferredSize,
 			"account": this.state.account,
 			"password": this.state.password,
+			"discord": this.state.discord,
 		})
 		.then(res => {
 			this.refreshPage();
