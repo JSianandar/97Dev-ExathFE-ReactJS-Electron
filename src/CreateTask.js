@@ -16,6 +16,26 @@ import select_site_icon from './assets/icons/createtask/select_site.svg';
 import Task from './Task.js';
 
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const notify = (text, delay) => toast.dark(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifySuccess = (text, delay) => toast.success(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifyError = (text, delay) => toast.error(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
 
 
 class CreateTask extends React.Component{
@@ -106,7 +126,7 @@ class CreateTask extends React.Component{
 		this.setState({ [event.target.name]: event.target.value });
 	}
 
-	handleSubmit = event =>{
+	handleSubmit = async (event) =>{
 		event.preventDefault();
 
 		let skuArray = this.state.sku.split(',')
@@ -143,14 +163,16 @@ class CreateTask extends React.Component{
 			"accountEmail": this.state.accountEmail,
 			"accountPassword": this.state.accountPassword,
 			"quantity": this.state.quantity
-		}).then(res => {
+		}).then( async res => {
 			try {
 				document.getElementById('CreateTaskForm-KeywordInput').value = ''
 				document.getElementById('CreateTaskForm-QuantityInput').value = ''
 				document.getElementById('CreateTaskForm-AccountInput').value = ''
 				document.getElementById('CreateTaskForm-PasswordInput').value = ''
 			} finally {
-				this.props.refreshPage()
+				notifySuccess('Successfully created task(s)', 3000)
+				await new Promise(r => setTimeout(r, 1000))
+				await this.props.refreshPage()
 			}
 		})
 		

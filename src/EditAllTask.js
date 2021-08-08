@@ -12,6 +12,26 @@ import ruler_icon from './assets/icons/createtask/ruler.svg';
 import select_site_icon from './assets/icons/createtask/select_site.svg';
 
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const notify = (text, delay) => toast.dark(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifySuccess = (text, delay) => toast.success(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifyError = (text, delay) => toast.error(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
 
 class EditAllTask extends React.Component{
 	constructor(props){
@@ -101,7 +121,7 @@ class EditAllTask extends React.Component{
 		this.setState({ [event.target.name]: event.target.value });
 	}
 
-	handleSubmit = event => {
+	handleSubmit = async(event) => {
 		event.preventDefault();
 
 		let skuArray = this.state.sku.split(',')
@@ -137,13 +157,15 @@ class EditAllTask extends React.Component{
 			"proxyGroup": this.getStateProxyIdByGroup(this.state.proxyGroup),
 			"accountEmail": this.state.accountEmail,
 			"accountPassword": this.state.accountPassword
-		}).then(res => {
+		}).then(async res => {
 			try {
 				document.getElementById('EditAllTask-KeywordInput').value = ''
 				document.getElementById('EditAllTask-AccountInput').value = ''
 				document.getElementById('EditAllTask-PasswordInput').value = ''
 			} finally {
-				this.props.refreshPage()
+				 notifySuccess('Successfully updated all tasks', 3000)
+				await new Promise(r => setTimeout(r, 1000))
+				await this.props.refreshPage()
 			}
 		})
 	}

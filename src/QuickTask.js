@@ -4,6 +4,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const notify = (text, delay) => toast.dark(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifySuccess = (text, delay) => toast.success(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifyError = (text, delay) => toast.error(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
 class QuickTask extends React.Component{
 	constructor(props){
 		super(props)
@@ -13,9 +35,11 @@ class QuickTask extends React.Component{
 	}
 
 	handleStartQuickTask = async() => {
-        await axios.get('http://exath.io/api/quicktask?qt=https://www.hotsauce.com')
-        .then(response => {
-			this.props.refreshPage()
+        axios.get('http://exath.io/api/quicktask?qt=https://www.hotsauce.com')
+        .then(async response => {
+			notifySuccess('Successfully started a quick task', 3000)
+            await new Promise(r => setTimeout(r, 1000))
+			await this.props.refreshPage()
         },
         error=>{
         
