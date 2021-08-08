@@ -56,6 +56,10 @@
 	color: #C4C4C4;
 }
 
+.dropdown-toggle::after {
+    content: none;
+}
+
 
 .create-profile-shipping-container .button{
 	width: 130px;

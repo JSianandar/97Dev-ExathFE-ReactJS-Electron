@@ -303,8 +303,8 @@ class CreateProfile extends React.Component{
 							</div>
 							<div className="col-1"></div>
 							<div className="col-4">
-								<Dropdown name="shippingCountry" onSelect={this.handleClickShippingCountry}>
-									<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" >
+								<Dropdown name="shippingCountry" onSelect={this.handleClickShippingCountry} >
+									<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex">
 										<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectShippingCountry}</h3>
 									</Dropdown.Toggle>
 									<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>

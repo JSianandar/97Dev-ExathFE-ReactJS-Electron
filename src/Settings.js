@@ -138,18 +138,18 @@ class Settings extends React.Component{
 							</div>
 						</div>
 						<div className="row mx-auto pt-2">	
-						<Dropdown onSelect = {this.handleClickProfile}>
-							<Dropdown.Toggle variant="outline-none" className="setup-button-wrapper  pt-1 d-flex ml-3">
-								<img className="icon" src={profile_logo} />
-								<p className="heading my-auto ml-2">{this.state.profile}</p>
-							</Dropdown.Toggle>
+							<Dropdown onSelect = {this.handleClickProfile}>
+								<Dropdown.Toggle variant="outline-none" className="setup-button-wrapper  pt-1 d-flex ml-3">
+									<img className="icon" src={profile_logo} />
+									<p className="heading my-auto ml-2">{this.state.profile}</p>
+								</Dropdown.Toggle>
 
-							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-								{this.state.profiles.map((e, index) => {
-									return(<Dropdown.Item href="#/action-1" eventKey = {e.name} >{e.name}</Dropdown.Item>)
-								})}
-							</Dropdown.Menu>
-						</Dropdown>
+								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
+									{this.state.profiles.map((e, index) => {
+										return(<Dropdown.Item href="#/action-1" eventKey = {e.name} >{e.name}</Dropdown.Item>)
+									})}
+								</Dropdown.Menu>
+							</Dropdown>
 						</div>
 
 						<div className="row mx-auto pt-3">
