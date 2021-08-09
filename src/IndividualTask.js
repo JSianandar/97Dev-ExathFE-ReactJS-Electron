@@ -13,12 +13,6 @@ import EditTask from "./EditTask.js";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const notify = (text, delay) => toast.dark(text, {
-    position: 'bottom-right',
-    autoClose: delay,
-    hideProgressBar: false
-});
-
 const notifySuccess = (text, delay) => toast.success(text, {
     position: 'bottom-right',
     autoClose: delay,
@@ -39,7 +33,7 @@ class IndividualTask extends React.Component{
 			profiles: [],
 			proxies: [],
 			refreshPageState: '',
-			id: '',
+			id: ''
 		}
 	}
 
@@ -49,7 +43,9 @@ class IndividualTask extends React.Component{
 		.then(async res => {
 			notifySuccess('Successfully deleted task', 3000)
             await new Promise(r => setTimeout(r, 1000))
-			await this.props.refreshPage()
+			this.props.refreshPage()
+		}, error => {
+			notifyError('Error while deleting task..', 3000)
 		})
 	}
 
@@ -59,10 +55,9 @@ class IndividualTask extends React.Component{
         .then(async res => {
 			notifySuccess('Successfully started task', 3000)
             await new Promise(r => setTimeout(r, 1000))
-			await this.props.refreshPage()
-        },
-        error=>{
-        
+			this.props.refreshPage()
+        }, error=>{
+			notifyError('Error while starting task..', 3000)
 		})
 	}
 
@@ -73,9 +68,8 @@ class IndividualTask extends React.Component{
 			notifySuccess('Successfully stopped task', 3000)
             await new Promise(r => setTimeout(r, 1000))
             this.props.refreshPage()
-        },
-        error=>{
-        
+        }, error=>{
+			notifyError('Error while stopping task..', 3000)
 		})
 	}
 
@@ -83,7 +77,6 @@ class IndividualTask extends React.Component{
 		await this.getTasks()
 		await this.getProfiles()
 		await this.getProxy()
-		this.props.refreshPage()
 	}
 
 	async componentDidUpdate(prevprop){
@@ -116,22 +109,19 @@ class IndividualTask extends React.Component{
 				}
 				if (shouldRefreshPage) this.props.refreshPage();
 			}
-		},
-		error=>{
-		
+		}, error => {
+			notifyError('Error while retrieving tasks..', 3000)
 		})
 	}
 
 	getProfiles = async() =>{
 		await axios.get('http://exath.io/api/profiles/')
 		.then(response => {
-			
 			this.setState({
 				profiles : response.data
 			})
-		},
-		error=>{
-
+		}, error => {
+			notifyError('Error while retrieving profiles..', 3000)
 		})
 	}
 
@@ -142,9 +132,8 @@ class IndividualTask extends React.Component{
 			this.setState({
 				proxies : response.data
 			})
-		},
-		error=>{
-
+		}, error => {
+			notifyError('Error while retrieving proxies..', 3000)
 		})
 	}
 

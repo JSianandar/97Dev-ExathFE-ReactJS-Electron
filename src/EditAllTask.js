@@ -163,10 +163,12 @@ class EditAllTask extends React.Component{
 				document.getElementById('EditAllTask-AccountInput').value = ''
 				document.getElementById('EditAllTask-PasswordInput').value = ''
 			} finally {
-				 notifySuccess('Successfully updated all tasks', 3000)
+				notifySuccess('Successfully updated all tasks', 3000)
 				await new Promise(r => setTimeout(r, 1000))
-				await this.props.refreshPage()
+				this.props.refreshPage()
 			}
+		}, error => {
+            notifyError('Error while bulk updating all tasks..', 3000)
 		})
 	}
 
@@ -213,15 +215,14 @@ class EditAllTask extends React.Component{
 		}
 	}
 
-	getProfiles = async () =>{
+	getProfiles = async () => {
 		await axios.get('http://exath.io/api/profiles')
-		.then(response => {
+		.then(async response => {
 			this.setState({
 				profiles : response.data
 			})
-		},
-		error=>{
-		
+		}, error => {
+			notifyError('Error while retrieving profiles data..', 3000)
 		})
 	}
 
@@ -231,9 +232,8 @@ class EditAllTask extends React.Component{
 			this.setState({
 				sizes : response.data
 			})
-		},
-		error=>{
-		
+		}, error => {
+			notifyError('Error while retrieving sizes data..', 3000)
 		})
 	}
 
@@ -243,9 +243,8 @@ class EditAllTask extends React.Component{
 			this.setState({
 				proxies : response.data
 			})
-		},
-		error=>{
-		
+		}, error => {
+			notifyError('Error while retrieving proxies data..', 3000)
 		})
 	}
 
@@ -255,9 +254,8 @@ class EditAllTask extends React.Component{
 			this.setState({
 				sites : response.data
 			})
-		},
-		error=>{
-		
+		}, error => {
+			notifyError('Error while retrieving sitelists data..', 3000)
 		})
 	}
 

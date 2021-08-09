@@ -63,7 +63,6 @@ class Activation extends React.Component {
             // If key is invalid or something went wrong, show error message from API.
             document.getElementById('appKeyInput').value = error.response.data.Message
             notifyError('Error - ' + error.response.data.Message, 3000)
-            await new Promise(r => setTimeout(r, 1000))
         })
     }
 

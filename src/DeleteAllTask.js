@@ -5,12 +5,6 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const notify = (text, delay) => toast.dark(text, {
-    position: 'bottom-right',
-    autoClose: delay,
-    hideProgressBar: false
-});
-
 const notifySuccess = (text, delay) => toast.success(text, {
     position: 'bottom-right',
     autoClose: delay,
@@ -37,16 +31,13 @@ class DeleteAllTask extends React.Component{
         .then(async res => {
 			notifySuccess('Successfully deleted all tasks', 3000)
             await new Promise(r => setTimeout(r, 1000))
-            await this.props.refreshPage()
-        },
-        error=>{
-        
-        })
-  }
-
-	componentDidMount(){
-
+            this.props.refreshPage()
+        }, error => {
+			notifyError('Error while deleting all task..', 3000)
+		})
 	}
+
+	componentDidMount(){}
 
 	componentDidUpdate(prevprop){
 		if(prevprop.refreshPageState != this.props.refreshPageState){

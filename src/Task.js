@@ -21,12 +21,6 @@ import QuickTask from './QuickTask';
 import CreateTask from './CreateTask';
 import DeleteAllTask from './DeleteAllTask';
 
-const notify = (text, delay) => toast.dark(text, {
-    position: 'bottom-right',
-    autoClose: delay,
-    hideProgressBar: false
-});
-
 const notifySuccess = (text, delay) => toast.success(text, {
     position: 'bottom-right',
     autoClose: delay,
@@ -77,13 +71,12 @@ class Task extends React.Component{
             *    change in the state's data being called in the render() function hence why using the
             *    refreshPage() function will only re-render the page once task's status is implemented. 
             */
-            // this.refreshPage()
             notifySuccess('Successfully started all tasks', 2000)
             await new Promise(r => setTimeout(r, 1000))
-            await this.reloadPage()
-        },
-        error=>{
-        
+            // this.refreshPage()
+            this.reloadPage()
+        }, error => {
+            notifyError('Error while starting all tasks..', 3000)
         })
     }
 
@@ -97,13 +90,12 @@ class Task extends React.Component{
             *    change in the state's data being called in the render() function hence why using the
             *    refreshPage() function will only re-render the page once task's status is implemented. 
             */
-            // this.refreshPage()
             notifySuccess('Successfully stopped all tasks', 2000)
             await new Promise(r => setTimeout(r, 1000))
-            await this.reloadPage()
-        },
-        error=>{
-        
+            // this.refreshPage()
+            this.reloadPage()
+        }, error => {
+            notifyError('Error while stopping all tasks..', 3000)
         })
     }
 
