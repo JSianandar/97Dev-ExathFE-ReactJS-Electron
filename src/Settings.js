@@ -169,9 +169,9 @@ class Settings extends React.Component{
 						<div className="row mx-auto">
 							<form variant="outline-none" className="setup-button-wrapper d-flex pt-1 ml-3">
 								<img className="discord_icon pt-1" src={discord_logo} />
-								<input type="text" className="background-color ml-2" style={{outline: 'none', width: '400px'}} placeholder = "Discord Webhook" required name="discord" onChange={this.handleChange}/>
+								<input type="text" className="background-color ml-2" style={{outline: 'none', width: '530px'}} placeholder = "Discord Webhook" required name="discord" onChange={this.handleChange}/>
 							</form>
-							<div className="col-2"></div>
+							<div className="col-1" style={{marginLeft: '25px'}}></div>
 
 							<Button variant="outline-none" className="test-button-wrapper col-1" onClick = {this.handleSubmitDiscordTest}>
 								<p className="heading my-auto text-center">Test</p>
@@ -185,7 +185,7 @@ class Settings extends React.Component{
 						</div>
 						<div className="row mx-auto pt-2">	
 							<Dropdown onSelect = {this.handleClickProfile} name="qtProfile" onChange={this.handleChange}>
-								<Dropdown.Toggle variant="outline-none" className="setup-button-wrapper  pt-1 d-flex ml-3">
+								<Dropdown.Toggle variant="outline-none" className="quick-task-button-wrapper  pt-1 d-flex ml-3">
 									<img className="icon" src={profile_logo} />
 									<p className="heading my-auto ml-2">{this.state.selectProfile}</p>
 								</Dropdown.Toggle>
@@ -200,7 +200,7 @@ class Settings extends React.Component{
 
 						<div className="row mx-auto pt-3">
 							<Dropdown onSelect = {this.handleClickSize} name="preferredSize" onChange={this.handleChange}>
-								<Dropdown.Toggle variant="outline-none" className="setup-button-wrapper col pt-1 d-flex ml-3">
+								<Dropdown.Toggle variant="outline-none" className="quick-task-button-wrapper col pt-1 d-flex ml-3">
 									<img className="icon" src={ruler_logo} />
 									<p className="heading my-auto ml-2" >{this.state.selectSize}</p>
 								</Dropdown.Toggle>
