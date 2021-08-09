@@ -17,11 +17,6 @@ import ruler_logo from './assets/icons/ruler_logo.svg';
 
 import axios from 'axios';
 
-const notify = (text, delay) => toast.dark(text, {
-    position: 'bottom-right',
-    autoClose: delay,
-    hideProgressBar: false
-});
 
 const notifySuccess = (text, delay) => toast.success(text, {
     position: 'bottom-right',

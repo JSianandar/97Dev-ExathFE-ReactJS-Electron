@@ -11,11 +11,6 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const notify = (text, delay) => toast.dark(text, {
-    position: 'bottom-right',
-    autoClose: delay,
-    hideProgressBar: false
-});
 
 const notifySuccess = (text, delay) => toast.success(text, {
     position: 'bottom-right',

@@ -12,11 +12,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const notify = (text, delay) => toast.dark(text, {
-    position: 'bottom-right',
-    autoClose: delay,
-    hideProgressBar: false
-});
+
 
 const notifySuccess = (text, delay) => toast.success(text, {
     position: 'bottom-right',
@@ -337,8 +333,8 @@ class CreateProfile extends React.Component{
 							</div>
 							<div className="col-1"></div>
 							<div className="col-4">
-								<Dropdown name="shippingCountry" onSelect={this.handleClickShippingCountry} style={{width: '300px'}}>
-									<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" style={{maxWidth: '250px'}} >
+								<Dropdown name="shippingCountry" onSelect={this.handleClickShippingCountry}>
+									<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex">
 										<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectShippingCountry}</h3>
 									</Dropdown.Toggle>
 									<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
