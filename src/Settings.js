@@ -136,7 +136,7 @@ class Settings extends React.Component{
 		})
 	}
 
-	getSettings = async () =>{
+	getSettings = async () => {
 		await axios.get('http://exath.io/api/settings')
 		.then(response => {
 			this.setState({
@@ -151,6 +151,16 @@ class Settings extends React.Component{
 		error => {
 			notifyError('Error while retrieving settings..')
 		})
+	}
+
+	getProfileNameById = (id) => {
+		var results = ""
+		this.state.profiles.forEach(profile => {
+			if (profile.id == id) {
+				results = profile.name
+			}
+		});
+		return results
 	}
 
 	render(){
@@ -193,11 +203,11 @@ class Settings extends React.Component{
 							<Dropdown onSelect = {this.handleClickProfile} name="qtProfile" onChange={this.handleChange}>
 								<Dropdown.Toggle variant="outline-none" className="quick-task-button-wrapper  pt-1 d-flex ml-3">
 									<img className="icon" src={profile_logo} />
-									<p className="heading my-auto ml-2">{this.state.qtProfile ? this.state.qtProfile : this.state.selectProfile}</p>
+									<p className="heading my-auto ml-2">{this.state.qtProfile ? this.getProfileNameById(this.state.qtProfile) : this.state.selectProfile}</p>
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 									{this.state.profiles.map((e, index) => {
-										return(<Dropdown.Item href="#/action-1" active={e.name == this.state.qtProfile} eventKey={e.name}>{e.name}</Dropdown.Item>)
+										return(<Dropdown.Item href="#/action-1" active={e.id == this.state.qtProfile} eventKey={e.id}>{e.name}</Dropdown.Item>)
 									})}
 								</Dropdown.Menu>
 							</Dropdown>
