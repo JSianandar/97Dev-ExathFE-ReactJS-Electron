@@ -15,6 +15,9 @@ import CreateCaptcha from './CreateCaptcha.js';
 import EditCaptcha from './EditCaptcha.js';
 import CaptchaHarvester from './CaptchaHarvester.js';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 class Captcha extends React.Component{
 	constructor(props){
@@ -92,6 +95,7 @@ class Captcha extends React.Component{
 
 				
 				</div>
+				<ToastContainer newestOnTop />
 			</div>
 		);
 	}

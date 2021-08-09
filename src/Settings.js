@@ -94,9 +94,11 @@ class Settings extends React.Component{
 			"discord": this.state.discord,
 		})
 		.then(async res => {
-			notifySuccess('Successfully Updated Settings', 3000)
+			notifySuccess('Successfully updated settings', 3000)
             await new Promise(r => setTimeout(r, 1000))
-			await this.refreshPage();
+			this.refreshPage();
+		}).catch(async error=>{
+			notifyError('Error updated settings ', 3000)
 		})
 	}
 

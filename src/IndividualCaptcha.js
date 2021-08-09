@@ -8,9 +8,27 @@ import table_delete from "./assets/icons/table_delete.png";
 import harvester_logo from './assets/icons/harvester_logo.svg';
 import EditCaptcha from './EditCaptcha.js';
 import CaptchaHarvester from './CaptchaHarvester.js';
-//const { ipcRenderer } = require("electron");
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+const notify = (text, delay) => toast.dark(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifySuccess = (text, delay) => toast.success(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifyError = (text, delay) => toast.error(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
 
 class IndividualCaptcha extends React.Component{
 	constructor(props){
@@ -26,11 +44,16 @@ class IndividualCaptcha extends React.Component{
 		this.getCaptcha()
 	}
 
-	handleSubmit = event => {
+	handleSubmit = async (event) => {
 		event.preventDefault();
 		axios.delete(`http://exath.io/api/captcha/update/${event.target.name}`)
-		.then(res => {
+		.then(async res => {	
+			notifySuccess('Successfully deleted captcha', 3000)
+            await new Promise(r => setTimeout(r, 1000))
 			this.props.refreshPage()
+			
+		}).catch(async error =>{
+			notifyError('Error deleting captcha ', 3000)
 		})
 	}
 

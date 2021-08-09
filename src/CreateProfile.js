@@ -8,6 +8,29 @@ import credit_card_logo from './assets/icons/credit_card_logo.png';
 import axios from 'axios';
 import Dropdown from 'react-bootstrap/Dropdown';
 
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const notify = (text, delay) => toast.dark(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifySuccess = (text, delay) => toast.success(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifyError = (text, delay) => toast.error(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+
 class CreateProfile extends React.Component{
 	constructor(props){
 		super(props)
@@ -100,7 +123,7 @@ class CreateProfile extends React.Component{
 		this.setState({ selectBillingProvince: event, billingProvince: event })
 	}
 
-	handleSubmit = event =>{
+	handleSubmit = async (event) =>{
 		event.preventDefault();
 
 		axios.post('http://exath.io/api/profiles/create', {
@@ -131,8 +154,13 @@ class CreateProfile extends React.Component{
 			"yearExp": this.state.yearExp.split('/')[1],
 			"sameAsShipping": this.state.sameAsShipping
 		})
-		.then(res => {
+		.then(async res => {
+			notifySuccess('Successfully created profile', 3000)
+            await new Promise(r => setTimeout(r, 1000))
 			this.props.refreshPage()
+			
+		}).catch(async error => {
+			notifyError('Error creating profile ', 3000)
 		})
 	}
 
@@ -309,8 +337,8 @@ class CreateProfile extends React.Component{
 							</div>
 							<div className="col-1"></div>
 							<div className="col-4">
-								<Dropdown name="shippingCountry" onSelect={this.handleClickShippingCountry} >
-									<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex">
+								<Dropdown name="shippingCountry" onSelect={this.handleClickShippingCountry} style={{width: '300px'}}>
+									<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" style={{maxWidth: '250px'}} >
 										<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectShippingCountry}</h3>
 									</Dropdown.Toggle>
 									<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>

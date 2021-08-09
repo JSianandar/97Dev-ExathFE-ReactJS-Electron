@@ -7,6 +7,27 @@ import table_edit from "./assets/icons/table_edit.png";
 import table_delete from "./assets/icons/table_delete.png";
 import EditProxy from './EditProxy.js';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const notify = (text, delay) => toast.dark(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifySuccess = (text, delay) => toast.success(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifyError = (text, delay) => toast.error(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
 class IndividualProxy extends React.Component{
 	constructor(props){
 		super(props)
@@ -30,11 +51,15 @@ class IndividualProxy extends React.Component{
 		}
 	}
 
-	handleDelete = event => {
+	handleDelete = async(event) => {
 		event.preventDefault();
 		axios.delete(`http://exath.io/api/proxies/update/${event.target.name}`)
-		.then(res => {
+		.then(async res => {
+			notifySuccess('Successfully deleted proxy', 3000)
+            await new Promise(r => setTimeout(r, 1000))
 			this.props.refreshPage()
+		}).catch(async error =>{
+			notifyError('Error deleting proxy ', 3000)
 		})
 	}
 

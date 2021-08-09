@@ -5,6 +5,27 @@ import Form from 'react-bootstrap/Form';
 
 import axios from 'axios';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const notify = (text, delay) => toast.dark(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifySuccess = (text, delay) => toast.success(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifyError = (text, delay) => toast.error(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
 class CreateProxy extends React.Component{
 	constructor(props){
 		super(props)
@@ -19,14 +40,18 @@ class CreateProxy extends React.Component{
 		this.setState({ [event.target.name]: event.target.value });
 	}
 
-	handleSubmit = event =>{
+	handleSubmit = async (event) =>{
 		event.preventDefault()
 		axios.post('http://exath.io/api/proxies/create', {
 			"proxyList": this.state.proxyList.split('\n'),
 			"group": this.state.group
 		})
-		.then(res=>{
+		.then(async res=>{
 			this.props.refreshPage()
+			notifySuccess('Successfully created proxy', 3000)
+            await new Promise(r => setTimeout(r, 1000))
+		}).catch(async error =>{
+			notifyError('Error creating captcha', 3000)
 		})
 	}
 
