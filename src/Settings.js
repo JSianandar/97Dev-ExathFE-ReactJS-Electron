@@ -69,12 +69,11 @@ class Settings extends React.Component{
 
 	handleSubmitDiscordTest = event =>{
 		event.preventDefault();
-		axios.post('https://discord.com/api/webhooks/791366221815349258/ZaLjC5d_aNBbn-aWryS03Q09QgttE8g6md7bnG3eGf1r23i7eE5-4_wpeZ2IHnqw-l3n')
+		axios.post(this.state.webhook)
 		.then(res=> {
 			this.refreshPage()
-		},
-		error=>{
-
+		}, error => {
+			notifyError('Error while hitting Discord Webhook..', 3000)
 		})
 	}
 
@@ -92,21 +91,23 @@ class Settings extends React.Component{
 			notifySuccess('Successfully updated settings', 3000)
             await new Promise(r => setTimeout(r, 1000))
 			this.refreshPage();
-		}).catch(async error=>{
+		}).catch(error => {
 			notifyError('Error updated settings ', 3000)
 		})
 	}
 
 
 	async componentDidMount(){
-		await this.getProfiles();
-		await this.getSizes();
+		await this.getProfiles()
+		await this.getSizes()
+		await this.getSettings()
 	}
 
 	async componentDidUpdate(prevprop){
 		if(prevprop != this.props){
-			await this.getProfiles();
-			await this.getSizes();
+			await this.getProfiles()
+			await this.getSizes()
+			await this.getSettings()
 			this.setState({
 				refreshPage: this.refreshPage
 			})
@@ -116,35 +117,39 @@ class Settings extends React.Component{
 	getProfiles = async () =>{
 		await axios.get('http://exath.io/api/profiles')
 		.then(response => {
-		
 			this.setState({
 				profiles : response.data
 			})
-		},
-		error=>{
-		
+		}, error => {
+			notifyError('Error while retrieving profiles data..')
 		})
 	}
 
 	getSizes = async () =>{
 		await axios.get('http://exath.io/api/sizes')
 		.then(response => {
-		
 			this.setState({
 				sizes : response.data
 			})
-		},
-		error=>{
-		
+		}, error => {
+			notifyError('Error while retrieving sizes data..')
 		})
 	}
 
 	getSettings = async () =>{
 		await axios.get('http://exath.io/api/settings')
 		.then(response => {
+			this.setState({
+				webhook: response.data.webhook,
+				qtProfile: response.data.qtProfile,
+				preferredSize: response.data.preferredSize,
+				account: response.data.account,
+				password: response.data.password,
+				discord: response.data.discord
+			})
 		},
-		error=>{
-		
+		error => {
+			notifyError('Error while retrieving settings..')
 		})
 	}
 
@@ -169,11 +174,12 @@ class Settings extends React.Component{
 						<div className="row mx-auto">
 							<form variant="outline-none" className="setup-button-wrapper d-flex pt-1 ml-3">
 								<img className="discord_icon pt-1" src={discord_logo} />
-								<input type="text" className="background-color ml-2" style={{outline: 'none', width: '530px'}} placeholder = "Discord Webhook" required name="discord" onChange={this.handleChange}/>
+								<input type="text" className="background-color ml-2" style={{outline: 'none', width: '530px'}} placeholder="Discord Webhook" name="discord"
+									value={this.state.webhook} onChange={this.handleChange} required />
 							</form>
 							<div className="col-1" style={{marginLeft: '25px'}}></div>
 
-							<Button variant="outline-none" className="test-button-wrapper col-1" onClick = {this.handleSubmitDiscordTest}>
+							<Button variant="outline-none" className="test-button-wrapper col-1" onClick={this.handleSubmitDiscordTest}>
 								<p className="heading my-auto text-center">Test</p>
 							</Button>
 						</div>
@@ -187,12 +193,11 @@ class Settings extends React.Component{
 							<Dropdown onSelect = {this.handleClickProfile} name="qtProfile" onChange={this.handleChange}>
 								<Dropdown.Toggle variant="outline-none" className="quick-task-button-wrapper  pt-1 d-flex ml-3">
 									<img className="icon" src={profile_logo} />
-									<p className="heading my-auto ml-2">{this.state.selectProfile}</p>
+									<p className="heading my-auto ml-2">{this.state.qtProfile ? this.state.qtProfile : this.state.selectProfile}</p>
 								</Dropdown.Toggle>
-
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 									{this.state.profiles.map((e, index) => {
-										return(<Dropdown.Item href="#/action-1" eventKey = {e.name} >{e.name}</Dropdown.Item>)
+										return(<Dropdown.Item href="#/action-1" active={e.name == this.state.qtProfile} eventKey={e.name}>{e.name}</Dropdown.Item>)
 									})}
 								</Dropdown.Menu>
 							</Dropdown>
@@ -202,12 +207,12 @@ class Settings extends React.Component{
 							<Dropdown onSelect = {this.handleClickSize} name="preferredSize" onChange={this.handleChange}>
 								<Dropdown.Toggle variant="outline-none" className="quick-task-button-wrapper col pt-1 d-flex ml-3">
 									<img className="icon" src={ruler_logo} />
-									<p className="heading my-auto ml-2" >{this.state.selectSize}</p>
+									<p className="heading my-auto ml-2" >{this.state.preferredSize ? this.state.preferredSize : this.state.selectSize}</p>
 								</Dropdown.Toggle>
 
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 								{this.state.sizes.map((e, index) => {
-									return(<Dropdown.Item href="#/action-1"  eventKey = {e} >{e}</Dropdown.Item>)
+									return(<Dropdown.Item href="#/action-1" active={e == this.state.preferredSize} eventKey={e}>{e}</Dropdown.Item>)
 								})}
 								</Dropdown.Menu>
 							</Dropdown>
@@ -215,12 +220,14 @@ class Settings extends React.Component{
 						<div className="row mx-auto pt-3">
 							<form className="col-4 quick-task-button-wrapper ml-3">
 								<img className="discord_icon" src={user_logo} />
-								<input type="text" className="background-color ml-3" onChange={this.handleChange}  placeholder = "Account" required name="account"/>
+								<input type="text" className="background-color ml-3" onChange={this.handleChange} placeholder="Account" name="account" 
+									value={this.state.account} required/>
 							</form>
 							<div className="col-1"></div>
 							<form className="col-4 quick-task-button-wrapper">
 								<img className="discord_icon" src={password_logo} />
-								<input type="password" className="background-color ml-3" onChange={this.handleChange} placeholder = "Password" required name="password"/>
+								<input type="password" className="background-color ml-3" onChange={this.handleChange} placeholder="Password" name="password" 
+									value={this.state.password} required/>
 							</form>
 						</div>
 						<div className="updates-wrapper row pt-4">
@@ -236,7 +243,7 @@ class Settings extends React.Component{
 						</div>
 
 						<div className="row pt-5" style = {{marginLeft: '565px'}}>
-							<Button variant="outline-none" className="cfu-button-wrapper pt-1 ml-3" onClick = {this.handleSubmitUpdateSettings}>
+							<Button variant="outline-none" className="cfu-button-wrapper pt-1 ml-3" onClick={this.handleSubmitUpdateSettings}>
 								<p className="heading text-center">Update Settings</p>
 							</Button>
 						</div>
