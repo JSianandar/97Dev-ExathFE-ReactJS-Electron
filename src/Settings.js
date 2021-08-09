@@ -173,8 +173,8 @@ class Settings extends React.Component{
 
 						<div className="row mx-auto">
 							<form variant="outline-none" className="setup-button-wrapper d-flex pt-1 ml-3">
-								<img className="discord_icon pt-1" src={discord_logo} />
-								<input type="text" className="background-color ml-2" style={{outline: 'none', width: '530px'}} placeholder="Discord Webhook" name="discord"
+								<img className="discord_icon pt-0" src={discord_logo} />
+								<input type="text" className="background-color ml-1" style={{outline: 'none', width: '530px'}} placeholder="Discord Webhook" name="discord"
 									value={this.state.webhook} onChange={this.handleChange} required />
 							</form>
 							<div className="col-1" style={{marginLeft: '25px'}}></div>
