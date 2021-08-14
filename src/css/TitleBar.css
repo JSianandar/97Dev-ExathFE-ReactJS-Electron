@@ -4,27 +4,46 @@
 	width: 1050x;
 	height: 35px;
 	-webkit-app-region: drag;
-	
-	
 }
+
 .title-container .button-wrapper{
 	float: right;
 	background: transparent;
-	
-	
+	padding-top: 5px;
+	padding-right: 5px;
+	width: 100px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 .title-container .button-wrapper .close-btn{
-	margin-left:10px;
+	height: 100% !important;
+	width: 50% !important;
 	background: transparent;
 	opacity: 1.0;
+	cursor: pointer;
 	-webkit-app-region: no-drag;
+}
 
+.title-container .button-wrapper .close-btn:hover{
+	background: #2c2c3b;
+	opacity: 1.0;
+	-webkit-app-region: no-drag;
 }
 
 .title-container .button-wrapper .minimize-btn{
-	
+	height: 100% !important;
+	width: 50% !important;
 	background: transparent;
+	opacity: 1.0;
+	cursor: pointer;
+	height: 20px;
+	-webkit-app-region: no-drag;
+}
+
+.title-container .button-wrapper .minimize-btn:hover{
+	background: #2c2c3b;
 	opacity: 1.0;
 	-webkit-app-region: no-drag;
 }
@@ -35,22 +54,6 @@
 
 .title-container .button-wrapper .minimize-btn img{
 	filter: invert(92%) sepia(0%) saturate(235%) hue-rotate(141deg) brightness(85%) contrast(95%);
-}
-
-
-
-.title-container .button-wrapper .minimize-btn:hover{
-	
-	background: #1B1B24;
-	opacity: 1.0;
-	-webkit-app-region: no-drag;
-}
-
-.title-container .button-wrapper .close-btn:hover{
-	
-	background: #1B1B24;
-	opacity: 1.0;
-	-webkit-app-region: no-drag;
 }
 
 .title-container .buttons-active{

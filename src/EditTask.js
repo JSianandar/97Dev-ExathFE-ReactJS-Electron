@@ -14,6 +14,28 @@ import ruler_icon from './assets/icons/createtask/ruler.svg';
 import select_site_icon from './assets/icons/createtask/select_site.svg';
 import axios from 'axios';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const notify = (text, delay) => toast.dark(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifySuccess = (text, delay) => toast.success(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifyError = (text, delay) => toast.error(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+
 class EditTask extends React.Component{
 	constructor(props){
 		super(props)
@@ -40,9 +62,9 @@ class EditTask extends React.Component{
 			selectProxies: 'Proxies',
 			selectMode: 'Select Mode',
 			refreshPageState: '',
-
+			selectedProfileName: '',
+			selectedProxyGroup: '',
 		}
-		console.log(this.state)
 	}
 
 	async componentDidMount(){
@@ -50,28 +72,42 @@ class EditTask extends React.Component{
 		await this.getSizes();
 		await this.getSites();
 		await this.getProxies();
+		this.state.profiles.map((e, index) => {						
+			if(e.id == this.state.profile)
+				this.setState({selectedProfileName : e.name})
+		})
+		this.state.proxies.map((e, index) => {						
+			if(e.id == this.state.proxyGroup)
+				this.setState({selectedProxyGroup : e.group})
+		})
 	}
 
 	handleClickSite = (event) => {
 		this.setState({ selectSite: event, site: event })
-		console.log(event)
 	}
 
 	handleClickSize = (event) => {
 		this.setState({ selectSize: event, size: event })
 	}
 
-	handleClickProfile = (event) => {
-		this.setState({ selectProfile: event, profile: event })
+	handleClickProfile = async (event) => {
+		await this.setState({ selectProfile: event, profile: event })
+		await this.state.profiles.map((e, index) => {						
+			if(e.id == this.state.profile)
+				this.setState({selectedProfileName : e.name})
+		})
 	}
 
-	handleClickProxies = (event) => {
-		this.setState({ selectProxies: event, proxyGroup: event })
+	handleClickProxies = async (event) => {
+		await this.setState({ selectProxies: event, proxyGroup: event })
+		await this.state.proxies.map((e, index) => {						
+			if(e.id == this.state.proxyGroup)
+				this.setState({selectedProxyGroup : e.group})
+		})
 	}
 
 	handleClickMode = (event) => {
 		this.setState({ selectMode: event, mode: event })
-		console.log(event)
 	}
 
 	handleChange = event => {
@@ -91,27 +127,49 @@ class EditTask extends React.Component{
 		})
 	}
 
-	handleSubmit = event =>{
+	handleSubmit = async (event) =>{
 		event.preventDefault();
+
+		let skuArray = this.state.sku.split(',')
+		let positiveKey = []
+		let negativeKey = []
+		let directLink = ''
+		let sku = ''
+
+
+		for(let i=0; i<skuArray.length; i++) {
+			if(skuArray[i][0] == '+'){
+				positiveKey.push(skuArray[i].substring(1))
+			}
+			else if(skuArray[i][0] == '-'){
+				negativeKey.push(skuArray[i].substring(1))
+			}
+			else if(skuArray[i][0] == '#'){
+				directLink = skuArray[i].substring(1)
+			}
+			else if(skuArray[i][0] == '&'){
+				sku = skuArray[i].substring(1)
+			}
+		}
 
 
 		axios.put(`http://exath.io/api/tasks/update/${this.state.id}`, {
-			"profile": this.getStateProfileIdByName(this.state.profile),
+			"profile": this.state.profile,
 			"site": this.state.site,
 			"mode": this.state.mode,
-			"sku": this.state.sku,
-			"positiveKey" : this.state.positiveKey,
-			"negativeKey": this.state.negativeKey,
-			"directLink": this.state.directLink,
+			"sku": sku,
+			"positiveKey" : positiveKey,
+			"negativeKey": negativeKey,
+			"directLink": directLink,
 			"size": this.state.size,
-			"proxyGroup": this.getStateProxyIdByGroup(this.state.proxyGroup),
+			"proxyGroup": this.state.proxyGroup,
 			"accountEmail": this.state.accountEmail,
 			"accountPassword": this.state.accountPassword,
 		})
-		.then(res => {
-			console.log(res);
-			console.log(res.data);
-			this.props.refreshPageState()
+		.then(async res => {
+			notifySuccess('Successfully updated task', 3000)
+            await new Promise(r => setTimeout(r, 1000))
+			await this.props.refreshPage()
 		})
 	}
 
@@ -203,36 +261,30 @@ class EditTask extends React.Component{
 	getStateProfileName
 
 	async componentDidUpdate(prevprop){
-		console.log('prevprop', prevprop)
-
 		if(prevprop.refreshPageState != this.props.refreshPageState){
 			await this.getProfiles();
 			await this.getSizes();
 			await this.getSites();
 			await this.getProxies();
-			document.getElementById('input-keyword').value = ''
-			document.getElementById('input-quantity').value = ''
-			document.getElementById('input-account').value = ''
-			document.getElementById('input-password').value = ''
 			this.setState({
-				selectSite: 'Select Site',
-				selectSize: 'Size',
-				selectProfile: 'Profile',
-				selectProxies: 'Proxies',
-				selectMode: 'Select Mode',
-				inputKeyword: 'Keywords/URL/SKU',
-				inputAccount: 'Account',
-				inputPassword: 'Password',
+				profile: this.props.profile,
+				site: this.props.site,
+				mode: this.props.mode,
+				sku: this.props.sku,
+				id: this.props.id,
+				accountEmail: this.props.accountEmail,
+				accountPassword: this.props.accountPassword,
+				size: this.props.size,
+				proxyGroup: this.props.proxyGroup,
 				refreshPageState : this.props.refreshPageState
 				
 			})
 		}
 	}
 
-
 	render(){
 		return(
-			<div> 
+			<div className="modal fade" id={`edit-${this.state.id}`} tabIndex="-1" aria-labelledby={`edit-${this.state.id}`} aria-hidden="true" style={{overflowY: 'hidden'}}> 
 				<div className="edit-task-container">
 					<div className="row pt-2">
 						<div className="col-4 ml-3">
@@ -275,7 +327,7 @@ class EditTask extends React.Component{
 					<div className="row pt-4">
 						<form variant="outline-none" className="text-area-left  ml-5 d-flex">
 							<img src={keyword_icon} style={{width: '18.66px', marginLeft: '12px'}}/>
-							<input type="text" className="background-color ml-2" style={{outline: 'none'}} placeholder = "Keywords/URL/SKU" id= "input-keyword" value = {this.state.sku} required name="sku" onChange={this.handleChange}/>
+							<input type="text" className="background-color ml-2" style={{outline: 'none', width: '400px'}} placeholder = "Keywords/URL/SKU" id= "input-keyword" value = {this.state.sku} required name="sku" onChange={this.handleChange}/>
 						</form>
 						<Dropdown name="size" onChange={this.handleChange} onSelect= {this.handleClickSize}>
 							<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" style={{marginLeft: '40px'}}>
@@ -298,13 +350,12 @@ class EditTask extends React.Component{
 						<Dropdown name="profile" onChange={this.handleChange} onSelect={this.handleClickProfile}>
 							<Dropdown.Toggle variant="outline-none" className="text-area-left col ml-5 d-flex">
 								<img src={profile_icon}/>
-								<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.profile}</h2>
+								<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.selectedProfileName}</h2>
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
 								{this.state.profiles.map((e, index) => {
-									
-									return(<Dropdown.Item href="#/action-1" active = {e.name == this.state.profile} eventKey={e.name}>{e.name}</Dropdown.Item>)
+									return(<Dropdown.Item href="#/action-1" active = {e.id == this.state.profile} eventKey={e.id}>{e.name}</Dropdown.Item>)
 									
 								})}
 							</Dropdown.Menu>
@@ -317,14 +368,14 @@ class EditTask extends React.Component{
 						<Dropdown name="proxyGroup" onChange={this.handleChange} onSelect={this.handleClickProxies}>
 							<Dropdown.Toggle variant="outline-none" className="text-area-left col ml-5 d-flex">
 								<img src={proxy_icon}/>
-								<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.proxyGroup}</h2>
+								<h2 className="ml-2" style={{marginTop: '-3px'}}>{this.state.selectedProxyGroup}</h2>
 							</Dropdown.Toggle>
 					
 					
 							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
 								{this.state.proxies.map((e, index) => {
 									
-									return(<Dropdown.Item href="#/action-1" active = {e.group == this.state.proxyGroup}eventKey= {e.group} >{e.group}</Dropdown.Item>)
+									return(<Dropdown.Item href="#/action-1" active = {e.id == this.state.proxyGroup} eventKey= {e.id} >{e.group}</Dropdown.Item>)
 									
 								})}
 							</Dropdown.Menu>
@@ -357,6 +408,7 @@ class EditTask extends React.Component{
 					</div>
 
 				</div>
+			<div className="modal-dialog"></div>
 			</div>
 		);
 	}

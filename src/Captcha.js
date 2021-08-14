@@ -15,22 +15,24 @@ import CreateCaptcha from './CreateCaptcha.js';
 import EditCaptcha from './EditCaptcha.js';
 import CaptchaHarvester from './CaptchaHarvester.js';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 class Captcha extends React.Component{
 	constructor(props){
 		super(props)
-		var refreshPage =  this.refreshPage.bind(this)
+		var refreshPage = this.refreshPage.bind(this)
 		this.state = {
 			refreshPage: ''
 		}
 	}
 
 	refreshPage(){
-    this.setState({
-        refreshPage : Math.floor(Math.random() * 99999)
-    })
-    console.log('page Refreshed')
-  }
+		this.setState({
+			refreshPage : Math.floor(Math.random() * 99999)
+		})
+	}
 
 	componentDidMount(){
 
@@ -93,6 +95,7 @@ class Captcha extends React.Component{
 
 				
 				</div>
+				<ToastContainer newestOnTop />
 			</div>
 		);
 	}

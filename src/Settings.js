@@ -6,6 +6,8 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import TitleBar from './TitleBar.js';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import discord_logo from './assets/icons/discord_logo.svg';
 import user_logo from './assets/icons/account_logo.svg';
@@ -16,55 +18,149 @@ import ruler_logo from './assets/icons/ruler_logo.svg';
 import axios from 'axios';
 
 
+const notifySuccess = (text, delay) => toast.success(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifyError = (text, delay) => toast.error(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
 class Settings extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
+		var refreshPage =  this.refreshPage.bind(this)
 		this.state = {
 			profiles: [],
 			sizes: [],
-			size: 'Preferred Size',
-			profile: 'Choose Profile'
+			selectSize: 'Preferred Size',
+			selectProfile: 'Choose Profile',
+			refreshPage: '',
+			qtProfile: '',
+			preferredSize: '',
+			account: '',
+			password: '',
+			webhook: '',
+			discord: ''
 		}
 	}
 
-	handleClick = (event) => {
-		this.setState({ size: event });
+	refreshPage() {
+        this.setState({
+            refreshPage : Math.floor(Math.random() * 99999)
+        })
+    }
+
+	handleClickSize = (event) => {
+		this.setState({ selectSize: event, preferredSize: event })
 	}
 
 	handleClickProfile = (event) => {
-		this.setState({ profile: event })
+		this.setState({ selectProfile: event, qtProfile: event })
+	}
+
+	handleChange = event => {
+		this.setState({ [event.target.name]: event.target.value });
+	}
+
+	handleSubmitDiscordTest = event =>{
+		event.preventDefault();
+		axios.post(this.state.webhook)
+		.then(res=> {
+			this.refreshPage()
+		}, error => {
+			notifyError('Error while hitting Discord Webhook..', 3000)
+		})
+	}
+
+	handleSubmitUpdateSettings = async (event) =>{
+		event.preventDefault();
+
+		axios.put('http://exath.io/api/settings/update/', {
+			"qtProfile": this.state.qtProfile,
+			"preferredSize": this.state.preferredSize,
+			"account": this.state.account,
+			"password": this.state.password,
+			"discord": this.state.discord,
+		})
+		.then(async res => {
+			notifySuccess('Successfully updated settings', 3000)
+            await new Promise(r => setTimeout(r, 1000))
+			this.refreshPage();
+		}).catch(error => {
+			notifyError('Error updated settings ', 3000)
+		})
 	}
 
 
 	async componentDidMount(){
-		await this.getProfiles();
-		await this.getSizes();
+		await this.getProfiles()
+		await this.getSizes()
+		await this.getSettings()
+	}
+
+	async componentDidUpdate(prevprop){
+		if(prevprop != this.props){
+			await this.getProfiles()
+			await this.getSizes()
+			await this.getSettings()
+			this.setState({
+				refreshPage: this.refreshPage
+			})
+		}
 	}
 
 	getProfiles = async () =>{
 		await axios.get('http://exath.io/api/profiles')
 		.then(response => {
-		
 			this.setState({
 				profiles : response.data
 			})
-		},
-		error=>{
-		
+		}, error => {
+			notifyError('Error while retrieving profiles data..')
 		})
 	}
 
 	getSizes = async () =>{
 		await axios.get('http://exath.io/api/sizes')
 		.then(response => {
-		
 			this.setState({
 				sizes : response.data
 			})
-		},
-		error=>{
-		
+		}, error => {
+			notifyError('Error while retrieving sizes data..')
 		})
+	}
+
+	getSettings = async () => {
+		await axios.get('http://exath.io/api/settings')
+		.then(response => {
+			this.setState({
+				webhook: response.data.webhook,
+				qtProfile: response.data.qtProfile,
+				preferredSize: response.data.preferredSize,
+				account: response.data.account,
+				password: response.data.password,
+				discord: response.data.discord
+			})
+		},
+		error => {
+			notifyError('Error while retrieving settings..')
+		})
+	}
+
+	getProfileNameById = (id) => {
+		var results = ""
+		this.state.profiles.forEach(profile => {
+			if (profile.id == id) {
+				results = profile.name
+			}
+		});
+		return results
 	}
 
 	render(){
@@ -86,12 +182,14 @@ class Settings extends React.Component{
 						</div>
 
 						<div className="row mx-auto">
-							<Button variant="outline-none" className="setup-button-wrapper d-flex pt-1 ml-3" onClick = {()=> window.open("https://discord.com/api/webhooks/791366221815349258/ZaLjC5d_aNBbn-aWryS03Q09QgttE8g6md7bnG3eGf1r23i7eE5-4_wpeZ2IHnqw-l3n", "_blank")}>
-								<img className="discord_icon pt-1" src={discord_logo} />
-								<p className="heading ml-2">Discord Webhook</p>
-							</Button>
-							<div className="col-2"></div>
-							<Button variant="outline-none" className="test-button-wrapper col-1">
+							<form variant="outline-none" className="setup-button-wrapper d-flex pt-1 ml-3">
+								<img className="discord_icon pt-0" src={discord_logo} />
+								<input type="text" className="background-color ml-1" style={{outline: 'none'}} placeholder="Discord Webhook" name="discord"
+									value={this.state.webhook} onChange={this.handleChange} required />
+							</form>
+							<div className="col-1" style={{marginLeft: '25px'}}></div>
+
+							<Button variant="outline-none" className="test-button-wrapper col-1" onClick={this.handleSubmitDiscordTest}>
 								<p className="heading my-auto text-center">Test</p>
 							</Button>
 						</div>
@@ -102,47 +200,44 @@ class Settings extends React.Component{
 							</div>
 						</div>
 						<div className="row mx-auto pt-2">	
-						<Dropdown onSelect = {this.handleClickProfile}>
-							<Dropdown.Toggle variant="outline-none" className="setup-button-wrapper  pt-1 d-flex ml-3">
-								<img className="icon" src={profile_logo} />
-								<p className="heading my-auto ml-2">{this.state.profile}</p>
-							</Dropdown.Toggle>
-
-							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-								{this.state.profiles.map((e, index) => {
-									
-									return(<Dropdown.Item href="#/action-1" eventKey = {e.name} >{e.name}</Dropdown.Item>)
-									
-								})}
-							</Dropdown.Menu>
-						</Dropdown>
+							<Dropdown onSelect = {this.handleClickProfile} name="qtProfile" onChange={this.handleChange}>
+								<Dropdown.Toggle variant="outline-none" className="quick-task-button-wrapper  pt-1 d-flex ml-3">
+									<img className="icon" src={profile_logo} />
+									<p className="heading my-auto ml-2">{this.state.qtProfile ? this.getProfileNameById(this.state.qtProfile) : this.state.selectProfile}</p>
+								</Dropdown.Toggle>
+								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
+									{this.state.profiles.map((e, index) => {
+										return(<Dropdown.Item href="#/action-1" active={e.id == this.state.qtProfile} eventKey={e.id}>{e.name}</Dropdown.Item>)
+									})}
+								</Dropdown.Menu>
+							</Dropdown>
 						</div>
 
 						<div className="row mx-auto pt-3">
-							<Dropdown onSelect = {this.handleClick}>
-								<Dropdown.Toggle variant="outline-none" className="setup-button-wrapper col pt-1 d-flex ml-3">
+							<Dropdown onSelect = {this.handleClickSize} name="preferredSize" onChange={this.handleChange}>
+								<Dropdown.Toggle variant="outline-none" className="quick-task-button-wrapper col pt-1 d-flex ml-3">
 									<img className="icon" src={ruler_logo} />
-									<p className="heading my-auto ml-2" >{this.state.size}</p>
+									<p className="heading my-auto ml-2" >{this.state.preferredSize ? this.state.preferredSize : this.state.selectSize}</p>
 								</Dropdown.Toggle>
 
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 								{this.state.sizes.map((e, index) => {
-									
-									return(<Dropdown.Item href="#/action-1"  eventKey = {e} >{e}</Dropdown.Item>)
-									
+									return(<Dropdown.Item href="#/action-1" active={e == this.state.preferredSize} eventKey={e}>{e}</Dropdown.Item>)
 								})}
-								 </Dropdown.Menu>
+								</Dropdown.Menu>
 							</Dropdown>
 						</div>
 						<div className="row mx-auto pt-3">
 							<form className="col-4 quick-task-button-wrapper ml-3">
 								<img className="discord_icon" src={user_logo} />
-								<input type="text" className="background-color ml-3"  placeholder = "Account" required/>
+								<input type="text" className="background-color ml-3" onChange={this.handleChange} placeholder="Account" name="account" 
+									value={this.state.account} required/>
 							</form>
 							<div className="col-1"></div>
 							<form className="col-4 quick-task-button-wrapper">
 								<img className="discord_icon" src={password_logo} />
-								<input type="text" className="background-color ml-3" placeholder = "Password" required/>
+								<input type="password" className="background-color ml-3" onChange={this.handleChange} placeholder="Password" name="password" 
+									value={this.state.password} required/>
 							</form>
 						</div>
 						<div className="updates-wrapper row pt-4">
@@ -156,8 +251,16 @@ class Settings extends React.Component{
 								<p className="heading text-center">Check for Updates</p>
 							</Button>
 						</div>
+
+						<div className="row pt-5" style = {{marginLeft: '565px'}}>
+							<Button variant="outline-none" className="cfu-button-wrapper pt-1 ml-3" onClick={this.handleSubmitUpdateSettings}>
+								<p className="heading text-center">Update Settings</p>
+							</Button>
+						</div>
+
 					</div>
 				</div>
+				<ToastContainer newestOnTop />
 			</div>
 		);
 	}

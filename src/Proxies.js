@@ -13,6 +13,11 @@ import table_delete from "./assets/icons/table_delete.png";
 import TitleBar from './TitleBar.js';
 import CreateProxy from './CreateProxy.js';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
 class Proxies extends React.Component{
 	constructor(props){
 		super(props)
@@ -26,7 +31,6 @@ class Proxies extends React.Component{
 		this.setState({
 			refreshPage : Math.floor(Math.random() * 99999)
 		})
-		console.log('page Refreshed')
 	}
 
 	componentDidMount(){
@@ -90,6 +94,7 @@ class Proxies extends React.Component{
 						{/*CreateProxyModal*/}
 					</div>
 				</div>
+				 <ToastContainer newestOnTop />
 			</div>
 		);
 	}

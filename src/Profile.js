@@ -7,14 +7,29 @@ import export_logo from "./assets/icons/export_logo.png";
 import import_logo from "./assets/icons/import_logo.png";
 import create_logo from "./assets/icons/create_task_logo.png";
 
-import table_edit from "./assets/icons/table_edit.png";
-import table_delete from "./assets/icons/table_delete.png";
 import TitleBar from './TitleBar.js';
-
-import CreateProfileShipping from './CreateProfileShipping.js';
-import CreateProfileBilling from './CreateProfileBilling.js';
-import CreateProfileCard from './CreateProfileCard.js';
 import CreateProfile from './CreateProfile.js';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const notify = (text, delay) => toast.dark(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifySuccess = (text, delay) => toast.success(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifyError = (text, delay) => toast.error(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
 
 
 class Profile extends React.Component{
@@ -22,7 +37,8 @@ class Profile extends React.Component{
 		super(props)
 		var refreshPage =  this.refreshPage.bind(this)
 		this.state = {
-			refreshPage: ''
+			refreshPage: '',
+			countriesData: this.props.countriesData
 		}
 	}
 
@@ -30,12 +46,9 @@ class Profile extends React.Component{
 		this.setState({
 			refreshPage : Math.floor(Math.random() * 99999)
 		})
-		console.log('page Refreshed')
 	}
 
-	componentDidMount(){
-
-	}
+	componentDidMount(){}
 
 	render(){
 		return(
@@ -78,25 +91,31 @@ class Profile extends React.Component{
 							</div>
 						</div>
 						{/*individual Profile*/}
-						<IndividualProfile refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
+						<IndividualProfile
+							refreshPage={this.refreshPage.bind(this)}
+							refreshPageState={this.state.refreshPage}
+							countriesData={this.state.countriesData}
+						/>
 						{/*individual Profile*/}
 							
 
 						{/*CreateProfileModal*/}
 							<div className="modal fade" id="createProfile" tabIndex="-1" aria-labelledby="createProfileLabel" aria-hidden="true" style={{overflowY: 'hidden'}}>
-								<CreateProfile refreshPage={this.refreshPage.bind(this)} refreshPageState={this.state.refreshPage}/>
+								<CreateProfile
+									countriesData={this.state.countriesData}
+									refreshPage={this.refreshPage.bind(this)}
+									refreshPageState={this.state.refreshPage}
+								/>
 								<div className= "modal-dialog modal-dialog-centered">
 									<div className="modal-content">		
 									</div>
 								</div>
 							</div>
-						{/*CreateProfileModal*/}
-
-
-						
+						{/*CreateProfileModal*/}						
 
 					</div>
 				</div>
+				<ToastContainer newestOnTop />
 			</div>
 		);
 	}

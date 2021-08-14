@@ -1,6 +1,7 @@
 .IndividualProxy {
 	height: 510px;
 	overflow-y: scroll !important;
+	overflow-x: hidden !important;
 }
 
 .individual-proxy{
@@ -30,4 +31,12 @@
 .individual-proxy .icons-wrapper .icon{
 	display: inline;
 	padding-right: 10px;
+}
+
+.individual-proxy .icons-wrapper .icon .icon-delete{
+	filter: invert(58%) sepia(94%) saturate(828%) hue-rotate(334deg) brightness(91%) contrast(81%);
+}
+
+.individual-proxy .icons-wrapper .icon .icon-edit{
+	filter: invert(74%) sepia(11%) saturate(5266%) hue-rotate(186deg) brightness(97%) contrast(93%);
 }

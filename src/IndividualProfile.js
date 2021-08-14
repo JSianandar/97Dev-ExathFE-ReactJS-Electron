@@ -12,13 +12,30 @@ import EditProfileCard from './EditProfileCard.js';
 
 import EditProfile from './EditProfile.js';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+const notifySuccess = (text, delay) => toast.success(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
+const notifyError = (text, delay) => toast.error(text, {
+    position: 'bottom-right',
+    autoClose: delay,
+    hideProgressBar: false
+});
+
 class IndividualProfile extends React.Component{
 	constructor(props){
 		super(props)
 		this.state = {
-			profiles: [],
-			refreshPage: '',
+			profiles: null,
+			refreshPageState: '',
 			id: '',
+			countriesData: this.props.countriesData
 		}
 	}
 
@@ -26,17 +43,18 @@ class IndividualProfile extends React.Component{
 		this.getProfiles()
 	}
 
-	componentDidUpdate(prevprop){
-		if(prevprop.refreshPage != this.props.refreshPage){
-			this.getProfiles()
+	async componentDidUpdate(prevprop){
+		if(prevprop.refreshPageState != this.props.refreshPageState){
+			await this.getProfiles()
 			this.setState({
-				refreshPage : this.props.refreshPage
+				refreshPageState : this.props.refreshPage,
+				countriesData: this.props.countriesData
 			})
 		}
 	}
 
-	getProfiles = () =>{
-		axios.get('http://exath.io/api/profiles')
+	getProfiles = async () =>{
+		await axios.get('http://exath.io/api/profiles')
 		.then(response => {
 			this.setState({
 				profiles : response.data
@@ -47,13 +65,16 @@ class IndividualProfile extends React.Component{
 		})
 	}
 
-	handleDelete = event => {
+	handleDelete = async (event) => {
 		event.preventDefault();
 		axios.delete(`http://exath.io/api/profiles/update/${event.target.name}`)
-		  .then(res => {
-			console.log(res);
-			console.log(res.data);
+		.then(async res => {
+			notifySuccess('Successfully deleted profile', 3000)
+            await new Promise(r => setTimeout(r, 1000))
 			this.props.refreshPage()
+
+		}).catch(async error=> {
+			notifyError('Error deleting profile ', 3000)
 		})
 	}
 
@@ -61,7 +82,7 @@ class IndividualProfile extends React.Component{
 		return(
 			<div className="IndividualProfile">
 			{
-				this.state.profiles.reverse().map( (e, index) =>{
+				this.state.profiles && this.state.profiles.reverse().map( (e, index) =>{
 					return(
 						<React.Fragment>
 							<div className="row pt-2"></div>
@@ -80,15 +101,16 @@ class IndividualProfile extends React.Component{
 								</div>
 								<div className="col-2 ml-0">
 									<ul className="icons-wrapper" style={{marginLeft:'10px'}}>
-										<li className="icon"><Link data-toggle="modal" data-target={`#edit-${e.id}`}><img src={table_edit} /></Link></li>
-										<li className="icon"><Link onClick= {this.handleDelete}><img src={table_delete} name = {e.id} /></Link></li>
+										<li className="icon"><Link data-toggle="modal" data-target={`#edit-${e.id}`}><img className="icon-edit" src={table_edit} /></Link></li>
+										<li className="icon"><Link onClick= {this.handleDelete}><img className="icon-delete" src={table_delete} name = {e.id} /></Link></li>
 									</ul>
 								</div>
 							</div>
 
-						{/*EditProfileModal*/}
-							<div className="modal fade" id={`edit-${e.id}`} tabIndex="-1" aria-labelledby={`edit-${e.id}`} aria-hidden="true" style={{overflowY: 'hidden'}}>
-								<EditProfile 
+							{/*EditProfileModal*/}
+							<EditProfile
+								countriesData = {this.state.countriesData}
+								sameAsShipping = {e.sameAsShipping}
 								name = {e.name}
 								shippingFirstName = {e.shippingFirstName}
 								shippingLastName = {e.shippingLastName}
@@ -112,17 +134,12 @@ class IndividualProfile extends React.Component{
 								cardHolder = {e.cardHolder}
 								cardNumber = {e.cardNumber}
 								cvv = {e.cvv}
-								yearExp = {e.yearExp}
-								
-								id = {e.id} 
-								
-								refreshPageState={this.props.refreshPage}/>
-								<div className= "modal-dialog modal-dialog-centered">
-									<div className="modal-content">		
-									</div>
-								</div>
-							</div>
-						{/*EditProfileModal*/}
+								yearExp = {(e.monthExp) + '/' + (e.yearExp)}
+								id = {e.id}
+								refreshPageState={this.state.refreshPageState}
+								refreshPage={this.props.refreshPage.bind(this)}
+							/>
+							{/*EditProfileModal*/}
 							
 						</React.Fragment>
 					)

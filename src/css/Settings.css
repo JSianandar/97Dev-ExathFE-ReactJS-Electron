@@ -37,7 +37,7 @@
 }
 
 .settings-container .page-wrapper .setup-button-wrapper{
-	width: 450px;
+	width: 550px;
 	height: 31px;
 
 	background: #291C43;
@@ -64,6 +64,14 @@
 
 	color: #C4C4C4;
 
+}
+
+.settings-container .page-wrapper .setup-button-wrapper .background-color{
+	background: #291C43;
+	width: 500px;
+	border: 0;
+	outline: none;
+	color: #C4C4C4;
 }
 
 .settings-container .page-wrapper .test-button-wrapper{
@@ -141,7 +149,7 @@
 	font-family: MADE TOMMY;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 22px;
 
 	color: #C4C4C4;

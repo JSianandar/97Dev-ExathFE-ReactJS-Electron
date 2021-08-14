@@ -1,14 +1,9 @@
-const electron = require("electron");
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
-const ipcMain = electron.ipcMain;
+const { app, BrowserWindow, ipcMain } = require("electron");
 const isDev = require("electron-is-dev");
-const ipc = ipcMain ;
-let mainWindow;
 const path = require("path");
 const fs = require("fs");
 
-
+let mainWindow;
 
 function createWindow() {
     mainWindow = new BrowserWindow(
@@ -28,9 +23,18 @@ function createWindow() {
                 enableRemoteModule: true,
                 nodeIntegration: false
             }
-
+    mainWindow = new BrowserWindow({ 
+        width: 1250, 
+        height: 750,
+        resizable: false,
+        frame: false,
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false,
+            enableRemoteModule: true
         }
-    );
+    });
+
     mainWindow.setMenuBarVisibility(false);
     mainWindow.loadURL(
         isDev
@@ -41,21 +45,19 @@ function createWindow() {
 
 
     //Close app
-    ipc.on('closeApp', ()=>{
-        console.log('clicked on close btn')
+    ipcMain.on('closeApp', ()=> {
         mainWindow.close();
     });
 
     //Minimize app
-    ipc.on('minimizeApp', ()=>{
-        console.log('clicked on minimzie btn')
+    ipcMain.on('minimizeApp', ()=> {
         mainWindow.minimize();
     });
 
     //Open Harvester
-    ipc.on('harvesterOpen', ()=>{
-        console.log('clicked on harvester open button')
-    })
+    ipcMain.on('harvesterOpen', ()=> {
+        
+    });
     
 }
 
