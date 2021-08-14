@@ -83,13 +83,7 @@ class EditProxy extends React.Component{
 
 					<div className="row pt-3">
 						<div className="text-area mx-auto">
-							<div className="row ml-4 pt-3">
-								<p>Paste Your Proxy Here</p>
-							</div>
-							<div className="row ml-4">
-								<p>Format = ipadress:port:user:password</p>
-							</div>
-							<div className="row ml-4">
+							<div className="row ml-4 pt-2">
 								<form>
 										<textarea 
 											required
