@@ -6,23 +6,6 @@ const fs = require("fs");
 let mainWindow;
 
 function createWindow() {
-    mainWindow = new BrowserWindow(
-        { 
-
-            width: 1280, 
-            height: 750,
-            frame:false,
-            resizable: false
-
-            width: 1250, 
-            height: 750,
-            resizable: false,
-            frame: false,
-            webPreferences: {
-                contextIsolation: false,
-                enableRemoteModule: true,
-                nodeIntegration: false
-            }
     mainWindow = new BrowserWindow({ 
         width: 1250, 
         height: 750,
