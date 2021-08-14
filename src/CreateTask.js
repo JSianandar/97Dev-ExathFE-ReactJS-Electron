@@ -142,11 +142,11 @@ class CreateTask extends React.Component{
 			else if(skuArray[i][0] == '-'){
 				negativeKey.push(skuArray[i].substring(1))
 			}
-			else if(skuArray[i][0] == '#'){
-				directLink = skuArray[i].substring(1)
-			}
 			else if(skuArray[i][0] == '&'){
 				sku = skuArray[i].substring(1)
+			}
+			else{
+				directLink = skuArray[i].substring(0)
 			}
 		}
 
