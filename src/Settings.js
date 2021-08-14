@@ -185,7 +185,7 @@ class Settings extends React.Component{
 							<form variant="outline-none" className="setup-button-wrapper d-flex pt-1 ml-3">
 								<img className="discord_icon pt-0" src={discord_logo} />
 								<input type="text" className="background-color ml-1" style={{outline: 'none'}} placeholder="Discord Webhook" name="discord"
-									value={this.state.webhook} onChange={this.handleChange} required />
+									value={this.state.discord} onChange={this.handleChange} required />
 							</form>
 							<div className="col-1" style={{marginLeft: '25px'}}></div>
 
