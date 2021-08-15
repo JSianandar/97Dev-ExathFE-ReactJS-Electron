@@ -2,10 +2,9 @@ import React from 'react';
 import './css/EditProxy.css';
 import {Link} from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
-import IndividualProxy from './IndividualProxy.js';
 import axios from 'axios';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const notifySuccess = (text, delay) => toast.success(text, {
@@ -47,11 +46,11 @@ class EditProxy extends React.Component{
 		axios.put(`http://exath.io/api/proxies/update/${this.state.id}`, {
 			"proxyList": this.state.proxyList.split('\n')
 		})
-		.then(async res=>{
+		.then(async ()=>{
 			this.props.refreshPage()
 			notifySuccess('Successfully updated proxy', 3000)
             await new Promise(r => setTimeout(r, 1000))
-		}).catch(async error=> {
+		}).catch(async ()=> {
 			notifyError('Error updating proxy ', 3000)
 		})
 	}

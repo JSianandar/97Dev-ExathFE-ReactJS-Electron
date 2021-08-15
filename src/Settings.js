@@ -1,10 +1,7 @@
 import React from 'react';
 import './css/Settings.css';
-import {Link} from 'react-router-dom';
-import Navbar from 'react-bootstrap/Navbar';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import TitleBar from './TitleBar.js';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -33,7 +30,6 @@ const notifyError = (text, delay) => toast.error(text, {
 class Settings extends React.Component{
 	constructor(props){
 		super(props)
-		var refreshPage =  this.refreshPage.bind(this)
 		this.state = {
 			profiles: [],
 			sizes: [],
@@ -70,9 +66,9 @@ class Settings extends React.Component{
 	handleSubmitDiscordTest = event =>{
 		event.preventDefault();
 		axios.post(this.state.webhook)
-		.then(res=> {
+		.then(()=> {
 			this.refreshPage()
-		}, error => {
+		}, () => {
 			notifyError('Error while hitting Discord Webhook..', 3000)
 		})
 	}
@@ -87,11 +83,11 @@ class Settings extends React.Component{
 			"password": this.state.password,
 			"discord": this.state.discord,
 		})
-		.then(async res => {
+		.then(async () => {
 			notifySuccess('Successfully updated settings', 3000)
             await new Promise(r => setTimeout(r, 1000))
 			this.refreshPage();
-		}).catch(error => {
+		}).catch(() => {
 			notifyError('Error updated settings ', 3000)
 		})
 	}
@@ -120,7 +116,7 @@ class Settings extends React.Component{
 			this.setState({
 				profiles : response.data
 			})
-		}, error => {
+		}, () => {
 			notifyError('Error while retrieving profiles data..')
 		})
 	}
@@ -131,7 +127,7 @@ class Settings extends React.Component{
 			this.setState({
 				sizes : response.data
 			})
-		}, error => {
+		}, () => {
 			notifyError('Error while retrieving sizes data..')
 		})
 	}
@@ -148,7 +144,7 @@ class Settings extends React.Component{
 				discord: response.data.discord
 			})
 		},
-		error => {
+		() => {
 			notifyError('Error while retrieving settings..')
 		})
 	}
@@ -206,7 +202,7 @@ class Settings extends React.Component{
 									<p className="heading my-auto ml-2">{this.state.qtProfile ? this.getProfileNameById(this.state.qtProfile) : this.state.selectProfile}</p>
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-									{this.state.profiles.map((e, index) => {
+									{this.state.profiles.map((e) => {
 										return(<Dropdown.Item href="#/action-1" active={e.id == this.state.qtProfile} eventKey={e.id}>{e.name}</Dropdown.Item>)
 									})}
 								</Dropdown.Menu>
@@ -221,7 +217,7 @@ class Settings extends React.Component{
 								</Dropdown.Toggle>
 
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-								{this.state.sizes.map((e, index) => {
+								{this.state.sizes.map((e) => {
 									return(<Dropdown.Item href="#/action-1" active={e == this.state.preferredSize} eventKey={e}>{e}</Dropdown.Item>)
 								})}
 								</Dropdown.Menu>

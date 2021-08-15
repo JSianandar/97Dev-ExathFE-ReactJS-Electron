@@ -1,9 +1,6 @@
 import React from 'react';
 import './css/EditCaptcha.css';
 import {Link} from 'react-router-dom';
-import {useHistory} from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import IndividualCaptcha from './IndividualCaptcha.js';
 import axios from 'axios';
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -45,11 +42,11 @@ class EditCaptcha extends React.Component {
 			"email": this.state.email,
 			"proxy": this.state.proxy,
 		})
-		.then(async res => {
+		.then(async () => {
 			this.props.refreshPage()
 			notifySuccess('Successfully updated captcha', 3000)
             await new Promise(r => setTimeout(r, 1000))
-		}).catch(async error=> {
+		}).catch(async ()=> {
 			notifyError('Error updating captcha', 3000)
 		})
 	}

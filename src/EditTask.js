@@ -1,12 +1,10 @@
 import React from 'react';
 import './css/EditTask.css';
 import {Link} from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 import account_icon from './assets/icons/createtask/account.svg';
 import keyword_icon from './assets/icons/createtask/keyword.svg';
-import number_of_task_icon from './assets/icons/createtask/number_of_task.svg';
 import password_icon from './assets/icons/createtask/password.svg';
 import profile_icon from './assets/icons/createtask/profile.svg';
 import proxy_icon from './assets/icons/createtask/proxy.svg';
@@ -14,14 +12,9 @@ import ruler_icon from './assets/icons/createtask/ruler.svg';
 import select_site_icon from './assets/icons/createtask/select_site.svg';
 import axios from 'axios';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const notify = (text, delay) => toast.dark(text, {
-    position: 'bottom-right',
-    autoClose: delay,
-    hideProgressBar: false
-});
 
 const notifySuccess = (text, delay) => toast.success(text, {
     position: 'bottom-right',
@@ -29,11 +22,6 @@ const notifySuccess = (text, delay) => toast.success(text, {
     hideProgressBar: false
 });
 
-const notifyError = (text, delay) => toast.error(text, {
-    position: 'bottom-right',
-    autoClose: delay,
-    hideProgressBar: false
-});
 
 
 class EditTask extends React.Component{
@@ -72,11 +60,11 @@ class EditTask extends React.Component{
 		await this.getSizes();
 		await this.getSites();
 		await this.getProxies();
-		this.state.profiles.map((e, index) => {						
+		this.state.profiles.map((e) => {						
 			if(e.id == this.state.profile)
 				this.setState({selectedProfileName : e.name})
 		})
-		this.state.proxies.map((e, index) => {						
+		this.state.proxies.map((e) => {						
 			if(e.id == this.state.proxyGroup)
 				this.setState({selectedProxyGroup : e.group})
 		})
@@ -92,7 +80,7 @@ class EditTask extends React.Component{
 
 	handleClickProfile = async (event) => {
 		await this.setState({ selectProfile: event, profile: event })
-		await this.state.profiles.map((e, index) => {						
+		await this.state.profiles.map((e) => {						
 			if(e.id == this.state.profile)
 				this.setState({selectedProfileName : e.name})
 		})
@@ -100,7 +88,7 @@ class EditTask extends React.Component{
 
 	handleClickProxies = async (event) => {
 		await this.setState({ selectProxies: event, proxyGroup: event })
-		await this.state.proxies.map((e, index) => {						
+		await this.state.proxies.map((e) => {						
 			if(e.id == this.state.proxyGroup)
 				this.setState({selectedProxyGroup : e.group})
 		})
@@ -122,7 +110,7 @@ class EditTask extends React.Component{
 				profiles : response.data
 			})
 		},
-		error=>{
+		()=>{
 		
 		})
 	}
@@ -166,7 +154,7 @@ class EditTask extends React.Component{
 			"accountEmail": this.state.accountEmail,
 			"accountPassword": this.state.accountPassword,
 		})
-		.then(async res => {
+		.then(async () => {
 			notifySuccess('Successfully updated task', 3000)
             await new Promise(r => setTimeout(r, 1000))
 			await this.props.refreshPage()
@@ -181,7 +169,7 @@ class EditTask extends React.Component{
 				sizes : response.data
 			})
 		},
-		error=>{
+		()=>{
 		
 		})
 	}
@@ -194,7 +182,7 @@ class EditTask extends React.Component{
 				proxies : response.data
 			})
 		},
-		error=>{
+		()=>{
 		
 		})
 	}
@@ -207,7 +195,7 @@ class EditTask extends React.Component{
 				sites : response.data
 			})
 		},
-		error=>{
+		()=>{
 		
 		})
 	}
@@ -300,7 +288,7 @@ class EditTask extends React.Component{
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-								{this.state.sites.map((e, index) => {
+								{this.state.sites.map((e) => {
 									
 									return(<Dropdown.Item href="#/action-1" active = {e.identifier == this.state.site} eventKey= {e.identifier} >{e.identifier}</Dropdown.Item>)
 									
@@ -336,7 +324,7 @@ class EditTask extends React.Component{
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
-								{this.state.sizes.map((e, index) => {
+								{this.state.sizes.map((e) => {
 									
 									return(<Dropdown.Item href="#/action-1" active = {e == this.state.size} eventKey= {e} >{e}</Dropdown.Item>)
 									
@@ -354,7 +342,7 @@ class EditTask extends React.Component{
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
-								{this.state.profiles.map((e, index) => {
+								{this.state.profiles.map((e) => {
 									return(<Dropdown.Item href="#/action-1" active = {e.id == this.state.profile} eventKey={e.id}>{e.name}</Dropdown.Item>)
 									
 								})}
@@ -373,7 +361,7 @@ class EditTask extends React.Component{
 					
 					
 							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
-								{this.state.proxies.map((e, index) => {
+								{this.state.proxies.map((e) => {
 									
 									return(<Dropdown.Item href="#/action-1" active = {e.id == this.state.proxyGroup} eventKey= {e.id} >{e.group}</Dropdown.Item>)
 									

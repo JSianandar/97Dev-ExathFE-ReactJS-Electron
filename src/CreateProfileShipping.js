@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/CreateProfileShipping.css';
 import {Link} from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
+
 
 class CreateProfileShipping extends React.Component{
 	constructor(){
