@@ -13,6 +13,10 @@ const closeApp = () => {
     ipcRenderer.send('closeApp')
 }
 
+const resizeAppNormal = () => {
+    ipcRenderer.send('ResizeAppNormal')
+}
+
 const notify = (text, delay) => toast.dark(text, {
     position: 'bottom-right',
     autoClose: delay,
@@ -59,6 +63,7 @@ class Activation extends React.Component {
             this.props.setSessionStorageValue('user', res.data.user[0].user)
             this.props.setLocalStorageValue('appKey', res.data.user[0].key)
             this.props.history.push('/task')
+            resizeAppNormal()
         }).catch(async error => {
             // If key is invalid or something went wrong, show error message from API.
             document.getElementById('appKeyInput').value = error.response.data.Message
@@ -72,14 +77,14 @@ class Activation extends React.Component {
 
     render(){
         return(
-            <div>
+            <div className="h-100">
                 <TitleBar />
-                <div className="activation-container">
-                    <div className="row pt-4">
+                <div className="activation-container w-100">
+                    <div className="row">
                         <div className="exath-activation mx-auto"></div>   
                     </div>
-                    <div className="row pt-3">
-                        <div className="col-12">
+                    <div className="row">
+                        <div className="col-10 mx-auto">
                             <form>
                                 <input
                                     id="appKeyInput"
@@ -95,16 +100,15 @@ class Activation extends React.Component {
                         </div>
                     </div>
 
-                    <div className="row pt-5">
-                        <div className="col-3 ml-4"></div>
-                        <Link className="col-2 ml-5 button" id="closeBtn" onClick={closeApp} style={{ textDecoration: 'none' }}>
+                    <div className="row activationPageButtonWrapper">
+                        <div className="col-2"></div>
+                        <Link className="col-3 closeButton" id="closeBtn" onClick={closeApp} style={{ textDecoration: 'none' }}>
                             <h1 className="text-center">Close</h1>
                         </Link>
-            
-                        <Link onClick={this.handleSubmit} className="col-2 ml-5 button" style={{ textDecoration: 'none' }}>
+                        <Link onClick={this.handleSubmit} className="col-3 activateButton" style={{ textDecoration: 'none' }}>
                             <h1 className="text-center">Activate</h1>
                         </Link>
-                        <div className="col-3"></div>
+                        <div className="col-2"></div>
                     </div>
                 </div>
                 <ToastContainer newestOnTop />

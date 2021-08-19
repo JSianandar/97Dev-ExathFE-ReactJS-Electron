@@ -1,12 +1,12 @@
 .activation-container{
-	width: 1080px;
-	height: 360px;
-	transform: translateY(45%);
+	height: 420px;
 	z-index: 99;
 	background: #1E142F;
 	margin: auto;
 	border-radius: 10px;
-
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
 }
 
 .activation-container .exath-activation{
@@ -21,7 +21,7 @@
 	
 }
 .activation-container .key_input{
-	width: 920px;
+	width: 100%;
 	height: 50px;
 	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
 	outline: none;
@@ -29,17 +29,31 @@
 	padding-left: 10px;
 	background: #25193E;
 	border-radius: 20px;
-	margin-left: 75px;
 	border: 0;
 }
-.activation-container .button{
+
+.activationPageButtonWrapper {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+
+.activation-container .closeButton {
 	background: #25193E;
 	border-radius: 15px;
-	width: 160px;
+	/* width: 160px; */
 	height: 60px;
-
 	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
 }
+
+.activation-container .activateButton {
+	background: #25193E;
+	border-radius: 15px;
+	/* width: 160px; */
+	height: 60px;
+	filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.45));
+}
+
 .activation-container h1{
 	font-family: MADE TOMMY;
 	font-style: normal;
