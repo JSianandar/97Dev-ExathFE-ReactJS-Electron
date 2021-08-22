@@ -182,7 +182,7 @@ class IndividualTask extends React.Component{
 							//if (posKey== "")
 							//newPosKey= posKey
 							else
-							newPosKey = newPosKey.concat('+'.concat(posKey[i]+','))
+							newPosKey = newPosKey.concat('+'.concat(posKey[i]+', '))
 						}
 						
 						for(var i=0; i<negKey.length; i++) {
@@ -191,7 +191,7 @@ class IndividualTask extends React.Component{
 							//if (negKey== "")
 							//newNegKey= negKey
 							else
-							newNegKey = newNegKey.concat('-'.concat(negKey[i]+','))
+							newNegKey = newNegKey.concat('-'.concat(negKey[i]+', '))
 						}
 					} catch (error) {
 
@@ -211,7 +211,7 @@ class IndividualTask extends React.Component{
 									</div>
 
 									<div className="col-3">
-										<p className="headings-other text-center" style={{marginLeft: '-20px'}}>{e.positiveKey[0] != '' && newPosKey+','}<span style={{ color: '#C4C4C4' }}>{ e.negativeKey[0] != '' && newNegKey+',' }</span><span style={{ color: '#C4C4C4' }}>{e.sku}</span><span style={{ color: '#C4C4C4' }}>{e.directLink}</span></p>
+										<p className="headings-other text-center" style={{marginLeft: '-20px',  color: '#C4C4C4'}}>{e.positiveKey[0] != '' && newPosKey + ', '}{e.negativeKey[0] != '' && newNegKey + ', '}{e.sku != '' && '&' + e.sku + ', '}{e.directLink != '' && e.directLink}</p>
 									</div>
 									<div className="col">
 										<p className="headings-other text-center" style={{marginLeft: '-35px'}}>{profile}</p>
