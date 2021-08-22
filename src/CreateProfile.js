@@ -333,7 +333,7 @@ class CreateProfile extends React.Component{
 							<div className="col-1"></div>
 							<div className="col-4">
 								<Dropdown name="shippingCountry" onSelect={this.handleClickShippingCountry}>
-									<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex">
+									<Dropdown.Toggle variant="outline-none" className="text-area-right-dropdown  d-flex">
 										<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectShippingCountry}</h3>
 									</Dropdown.Toggle>
 									<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
@@ -364,7 +364,7 @@ class CreateProfile extends React.Component{
 							<div className="col-1"></div>
 							<div className="col-4">
 								<Dropdown name="shippingProvince" onChange={this.handleChange} onSelect={this.handleClickShippingProvince}>
-									<Dropdown.Toggle id="shippingProvinceDropdownToggle" variant="outline-none" className="text-area-right d-flex">
+									<Dropdown.Toggle id="shippingProvinceDropdownToggle" variant="outline-none" className="text-area-right-dropdown d-flex">
 										<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectShippingProvince}</h3>
 									</Dropdown.Toggle>
 									<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
@@ -547,7 +547,7 @@ class CreateProfile extends React.Component{
 						<div className="col-1"></div>
 						<div className="col-4">
 							<Dropdown name= "billingCountry" onChange={this.handleChange} onSelect= {this.handleClickBillingCountry}>
-								<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" >
+								<Dropdown.Toggle variant="outline-none" className="text-area-right-dropdown  d-flex" >
 									<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectBillingCountry}</h3>
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
@@ -578,7 +578,7 @@ class CreateProfile extends React.Component{
 						<div className="col-1"></div>
 						<div className="col-4">
 							<Dropdown name="billingProvince" onChange={this.handleChange} onSelect= {this.handleClickBillingProvince}>
-								<Dropdown.Toggle id="billingProvinceDropdownToggle" variant="outline-none" className="text-area-right  d-flex">
+								<Dropdown.Toggle id="billingProvinceDropdownToggle" variant="outline-none" className="text-area-right-dropdown  d-flex">
 									<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectBillingProvince}</h3>
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>

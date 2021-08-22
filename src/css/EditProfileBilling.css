@@ -100,6 +100,21 @@
 	border:0;
 }
 
+.edit-profile-billing-container .text-area-right-dropdown{
+	width: 180px;
+	height: 30px;
+	background: #291C43;
+	border-radius: 10px;
+	outline: none;
+	color: #C4C4C4;
+	padding-left: 10px;
+	border:0;
+	overflow: hidden;
+    white-space: pre;
+    text-overflow: ellipsis;
+    -webkit-appearance: none;
+}
+
 .edit-profile-billing-container .button-text{
 	font-family: MADE TOMMY;
 	font-style: normal;
