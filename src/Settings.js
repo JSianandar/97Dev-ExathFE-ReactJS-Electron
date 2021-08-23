@@ -104,7 +104,7 @@ class Settings extends React.Component{
 			}]
 		}
 
-		axios.post(this.state.discord, body, {"Content-Type": "application/json"})
+		axios.post(this.state.webhook, body, {"Content-Type": "application/json"})
 		.then(async res => {
 			notifySuccess('Successfully Hit Webhook', 3000)
             await new Promise(r => setTimeout(r, 1000))
@@ -122,7 +122,7 @@ class Settings extends React.Component{
 			"preferredSize": this.state.preferredSize,
 			"account": this.state.account,
 			"password": this.state.password,
-			"discord": this.state.discord,
+			"webhook": this.state.webhook,
 		})
 		.then(async () => {
 			notifySuccess('Successfully updated settings', 3000)
@@ -221,8 +221,8 @@ class Settings extends React.Component{
 						<div className="row mx-auto">
 							<form variant="outline-none" className="setup-button-wrapper d-flex pt-1 ml-3">
 								<img className="discord_icon pt-0" src={discord_logo} />
-								<input type="text" className="background-color ml-1" style={{outline: 'none'}} placeholder="Discord Webhook" name="discord"
-									value={this.state.discord} onChange={this.handleChange} required />
+								<input type="text" className="background-color ml-1" style={{outline: 'none'}} placeholder="Discord Webhook" name="webhook"
+									value={this.state.webhook} onChange={this.handleChange} required />
 							</form>
 							<div className="col-1" style={{marginLeft: '25px'}}></div>
 
