@@ -11,6 +11,7 @@ function createWindow() {
         height: 500,
         resizable: false,
         frame: false,
+        icon: __dirname + '../src/assets/icons/exath_logo.png',
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
