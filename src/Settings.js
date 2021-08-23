@@ -63,12 +63,53 @@ class Settings extends React.Component{
 		this.setState({ [event.target.name]: event.target.value });
 	}
 
-	handleSubmitDiscordTest = event =>{
+	handleSubmitDiscordTest = async event =>{
 		event.preventDefault();
-		axios.post(this.state.webhook)
-		.then(()=> {
+
+		let body = {
+			"content": null,
+			"embeds": [{
+				"title": "ExathAIO Test Webhook",
+				"url": "https://twitter.com/ExathAIO",
+				"color": 2144324,
+				"fields": [
+					{
+						"name": "Product",
+						"value": "Test Product"
+					},
+					{
+						"name": "Size",
+						"value": "rs"
+					},
+					{
+						"name": "Price",
+						"value": "$1"
+					},
+					{
+					"name": "Store",
+					"value": "ExathAIO"
+					},
+					{
+					"name": "Mode",
+					"value": "Default"
+					}
+				],
+				"footer": {
+					"text": "ExathAIO v1.0.0",
+					"icon_url": "https://cdn.discordapp.com/attachments/764840125850189854/844530421588688896/ExathAIO_Profile_Picture_1.png"
+				},
+				"thumbnail": {
+					"url": "https://cdn.discordapp.com/attachments/764840125850189854/844530421588688896/ExathAIO_Profile_Picture_1.png"
+				}
+			}]
+		}
+
+		axios.post(this.state.discord, body, {"Content-Type": "application/json"})
+		.then(async res => {
+			notifySuccess('Successfully Hit Webhook', 3000)
+            await new Promise(r => setTimeout(r, 1000))
 			this.refreshPage()
-		}, () => {
+		}).catch(error => {
 			notifyError('Error while hitting Discord Webhook..', 3000)
 		})
 	}
