@@ -60,20 +60,7 @@
   "description": "Exath Front End Project",
   "author": "Jason Sianandar",
   "build": {
-    "appId": "com.exathfrontend",
-    "win": {
-      "icon": "../src/assets/icons/exath_logo.png"
-    },
-    "files": [
-      "./build/**/*",
-      "./dist/**/*",
-      "./node_modules/**/*",
-      "./public/**/*",      
-      "*.js"
-    ],
-    "directories": {
-      "buildResources": "public"
-    }
+    "appId": "com.exathfrontend"
   },
   "main": "public/electron.js",
   "homepage": "."
