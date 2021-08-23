@@ -15,12 +15,17 @@ class NavBar extends React.Component {
   constructor(){
     super()
     this.state = {
-
+      appVersion: ""
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
+    this.setState({appVersion: this.props.appVersion})
+  }
 
+  componentDidUpdate() {
+    if (this.props.appVersion != this.state.appVersion)
+      this.setState({appVersion: this.props.appVersion})
   }
 
   render(){
@@ -59,7 +64,7 @@ class NavBar extends React.Component {
               <p className="my-auto">Settings</p>
             </NavLink>
 
-            <p className="version-number">2.0.1</p>
+            <p className="version-number">{this.state.appVersion}</p>
           </Nav>
         </div>
     );

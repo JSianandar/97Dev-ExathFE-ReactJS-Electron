@@ -26,6 +26,7 @@ class App extends React.Component {
     this.checkAndValidateSession = this.checkAndValidateSession.bind(this)
 
     this.state = {
+      appVersion: "",
       isLoading: false,
       isAuthenticated: false,
       user: '',
@@ -35,6 +36,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({appVersion: `${process.env.REACT_APP_VERSION}`})
     if (this.isAppKeyExistsInLocalStorage())
       this.setState({appKey: window.localStorage.getItem('appKey')})
     if (!this.state.countriesData)
@@ -113,7 +115,7 @@ class App extends React.Component {
             <Route exact path="/task">
               { this.state.isAuthenticated
                 ? <div className="d-flex">
-                    <NavBar checkAndValidateSession={this.checkAndValidateSession} />
+                    <NavBar appVersion={this.state.appVersion} checkAndValidateSession={this.checkAndValidateSession} />
                     <Task user={this.state.user} />
                   </div>
                 : <Redirect to="/activation" />
@@ -123,7 +125,7 @@ class App extends React.Component {
             <Route exact path="/profile">
               { this.state.isAuthenticated
                 ? <div className="d-flex">
-                    <NavBar checkAndValidateSession={this.checkAndValidateSession} />
+                    <NavBar appVersion={this.state.appVersion} checkAndValidateSession={this.checkAndValidateSession} />
                     <Profile countriesData={this.state.countriesData} />
                   </div>
                 : <Redirect to="/activation" />
@@ -133,7 +135,7 @@ class App extends React.Component {
             <Route exact path="/proxies">
               { this.state.isAuthenticated
                 ? <div className="d-flex">
-                    <NavBar checkAndValidateSession={this.checkAndValidateSession} />
+                    <NavBar appVersion={this.state.appVersion} checkAndValidateSession={this.checkAndValidateSession} />
                     <Proxies />
                   </div>
                 : <Redirect to="/activation" />
@@ -143,7 +145,7 @@ class App extends React.Component {
             <Route exact path="/captcha">
               { this.state.isAuthenticated
                 ? <div className="d-flex">
-                    <NavBar checkAndValidateSession={this.checkAndValidateSession} />
+                    <NavBar appVersion={this.state.appVersion} checkAndValidateSession={this.checkAndValidateSession} />
                     <Captcha />
                   </div>
                 : <Redirect to="/activation" />
@@ -153,7 +155,7 @@ class App extends React.Component {
             <Route exact path="/dashboard">
               { this.state.isAuthenticated
                 ? <div className="d-flex">
-                    <NavBar checkAndValidateSession={this.checkAndValidateSession} />
+                    <NavBar appVersion={this.state.appVersion} checkAndValidateSession={this.checkAndValidateSession} />
                     <Dashboard />
                   </div>
                 : <Redirect to="/activation" />
@@ -163,7 +165,7 @@ class App extends React.Component {
             <Route exact path="/settings">
               { this.state.isAuthenticated
                 ? <div className="d-flex">
-                    <NavBar checkAndValidateSession={this.checkAndValidateSession} />
+                    <NavBar appVersion={this.state.appVersion} checkAndValidateSession={this.checkAndValidateSession} />
                     <Settings />
                   </div>
                 : <Redirect to="/activation" />
