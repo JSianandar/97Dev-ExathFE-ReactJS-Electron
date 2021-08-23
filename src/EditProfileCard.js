@@ -2,7 +2,6 @@ import React from 'react';
 import './css/EditProfileCard.css';
 import {Link} from 'react-router-dom';
 import credit_card_logo from './assets/icons/credit_card_logo.png';
-import Form from 'react-bootstrap/Form';
 
 class EditProfileCard extends React.Component{
 	constructor(){

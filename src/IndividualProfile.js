@@ -6,9 +6,6 @@ import {Link} from 'react-router-dom';
 import table_edit from "./assets/icons/table_edit.png";
 import table_delete from "./assets/icons/table_delete.png";
 
-import EditProfileShipping from './EditProfileShipping.js';
-import EditProfileBilling from './EditProfileBilling.js';
-import EditProfileCard from './EditProfileCard.js';
 
 import EditProfile from './EditProfile.js';
 

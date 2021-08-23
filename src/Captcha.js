@@ -2,27 +2,19 @@ import React from 'react';
 import './css/Captcha.css';
 import {Link} from 'react-router-dom';
 
-import export_logo from "./assets/icons/export_logo.png";
-import import_logo from "./assets/icons/import_logo.png";
 import create_logo from "./assets/icons/create_task_logo.png";
-import harvester_logo from "./assets/icons/harvester_logo.svg";
 
-import table_edit from "./assets/icons/table_edit.png";
-import table_delete from "./assets/icons/table_delete.png";
 import TitleBar from './TitleBar.js';
 import IndividualCaptcha from './IndividualCaptcha.js';
 import CreateCaptcha from './CreateCaptcha.js';
-import EditCaptcha from './EditCaptcha.js';
-import CaptchaHarvester from './CaptchaHarvester.js';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 class Captcha extends React.Component{
 	constructor(props){
 		super(props)
-		var refreshPage = this.refreshPage.bind(this)
 		this.state = {
 			refreshPage: ''
 		}

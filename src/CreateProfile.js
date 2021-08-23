@@ -3,13 +3,12 @@ import './css/CreateProfileShipping.css';
 import './css/CreateProfileBilling.css';
 import './css/CreateProfileCard.css';
 import {Link} from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
 import credit_card_logo from './assets/icons/credit_card_logo.png';
 import axios from 'axios';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -150,12 +149,12 @@ class CreateProfile extends React.Component{
 			"yearExp": this.state.yearExp.split('/')[1],
 			"sameAsShipping": this.state.sameAsShipping
 		})
-		.then(async res => {
+		.then(async () => {
 			notifySuccess('Successfully created profile', 3000)
             await new Promise(r => setTimeout(r, 1000))
 			this.props.refreshPage()
 			
-		}).catch(async error => {
+		}).catch(async () => {
 			notifyError('Error creating profile ', 3000)
 		})
 	}
@@ -334,12 +333,13 @@ class CreateProfile extends React.Component{
 							<div className="col-1"></div>
 							<div className="col-4">
 								<Dropdown name="shippingCountry" onSelect={this.handleClickShippingCountry}>
-									<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex">
+									<Dropdown.Toggle variant="outline-none" className="text-area-right-dropdown  d-flex">
 										<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectShippingCountry}</h3>
 									</Dropdown.Toggle>
 									<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-										{this.state.countriesData ? Object.keys(this.state.countriesData).map((countryName, i) => {
-											return (<Dropdown.Item href="#/action-1" eventKey={countryName}>{countryName}</Dropdown.Item>)
+										{this.state.countriesData ? Object.keys(this.state.countriesData).map((countryName) => {
+											return (<Dropdown.Item href="#/action-1" active={countryName == this.state.shippingCountry}
+											eventKey={countryName}>{countryName}</Dropdown.Item>)
 										}) : null}
 									</Dropdown.Menu>
 								</Dropdown>
@@ -365,12 +365,13 @@ class CreateProfile extends React.Component{
 							<div className="col-1"></div>
 							<div className="col-4">
 								<Dropdown name="shippingProvince" onChange={this.handleChange} onSelect={this.handleClickShippingProvince}>
-									<Dropdown.Toggle id="shippingProvinceDropdownToggle" variant="outline-none" className="text-area-right d-flex">
+									<Dropdown.Toggle id="shippingProvinceDropdownToggle" variant="outline-none" className="text-area-right-dropdown d-flex">
 										<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectShippingProvince}</h3>
 									</Dropdown.Toggle>
 									<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-										{this.state.shippingProvincesOptions ? this.state.shippingProvincesOptions.map((provinceName, index) => {
-											return (<Dropdown.Item href="#/action-1" eventKey={provinceName}>{provinceName}</Dropdown.Item>)
+										{this.state.shippingProvincesOptions ? this.state.shippingProvincesOptions.map((provinceName) => {
+											return (<Dropdown.Item href="#/action-1" active={provinceName == this.state.shippingProvince}
+											eventKey={provinceName}>{provinceName}</Dropdown.Item>)
 										}) : null}
 									</Dropdown.Menu>
 								</Dropdown>
@@ -548,12 +549,13 @@ class CreateProfile extends React.Component{
 						<div className="col-1"></div>
 						<div className="col-4">
 							<Dropdown name= "billingCountry" onChange={this.handleChange} onSelect= {this.handleClickBillingCountry}>
-								<Dropdown.Toggle variant="outline-none" className="text-area-right  d-flex" >
+								<Dropdown.Toggle variant="outline-none" className="text-area-right-dropdown  d-flex" >
 									<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectBillingCountry}</h3>
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-									{this.state.countriesData ? Object.keys(this.state.countriesData).map((countryName, i) => {
-										return (<Dropdown.Item href="#/action-1" eventKey={countryName}>{countryName}</Dropdown.Item>)
+									{this.state.countriesData ? Object.keys(this.state.countriesData).map((countryName) => {
+										return (<Dropdown.Item href="#/action-1" active={countryName == this.state.billingCountry}
+											eventKey={countryName}>{countryName}</Dropdown.Item>)
 									}) : null}
 								</Dropdown.Menu>
 							</Dropdown>
@@ -579,12 +581,13 @@ class CreateProfile extends React.Component{
 						<div className="col-1"></div>
 						<div className="col-4">
 							<Dropdown name="billingProvince" onChange={this.handleChange} onSelect= {this.handleClickBillingProvince}>
-								<Dropdown.Toggle id="billingProvinceDropdownToggle" variant="outline-none" className="text-area-right  d-flex">
+								<Dropdown.Toggle id="billingProvinceDropdownToggle" variant="outline-none" className="text-area-right-dropdown  d-flex">
 									<h3 className="" style={{marginTop: '-3px'}}>{this.state.selectBillingProvince}</h3>
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-									{this.state.billingProvincesOptions ? this.state.billingProvincesOptions.map((provinceName, index) => {
-										return (<Dropdown.Item href="#/action-1" eventKey={provinceName}>{provinceName}</Dropdown.Item>)
+									{this.state.billingProvincesOptions ? this.state.billingProvincesOptions.map((provinceName) => {
+										return (<Dropdown.Item href="#/action-1" active={provinceName == this.state.billingProvince}
+											eventKey={provinceName}>{provinceName}</Dropdown.Item>)
 									}) : null}
 								</Dropdown.Menu>
 							</Dropdown>

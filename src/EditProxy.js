@@ -2,10 +2,9 @@ import React from 'react';
 import './css/EditProxy.css';
 import {Link} from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
-import IndividualProxy from './IndividualProxy.js';
 import axios from 'axios';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const notifySuccess = (text, delay) => toast.success(text, {
@@ -47,11 +46,11 @@ class EditProxy extends React.Component{
 		axios.put(`http://exath.io/api/proxies/update/${this.state.id}`, {
 			"proxyList": this.state.proxyList.split('\n')
 		})
-		.then(async res=>{
+		.then(async ()=>{
 			this.props.refreshPage()
 			notifySuccess('Successfully updated proxy', 3000)
             await new Promise(r => setTimeout(r, 1000))
-		}).catch(async error=> {
+		}).catch(async ()=> {
 			notifyError('Error updating proxy ', 3000)
 		})
 	}
@@ -83,13 +82,7 @@ class EditProxy extends React.Component{
 
 					<div className="row pt-3">
 						<div className="text-area mx-auto">
-							<div className="row ml-4 pt-3">
-								<p>Paste Your Proxy Here</p>
-							</div>
-							<div className="row ml-4">
-								<p>Format = ipadress:port:user:password</p>
-							</div>
-							<div className="row ml-4">
+							<div className="row ml-4 pt-2">
 								<form>
 										<textarea 
 											required

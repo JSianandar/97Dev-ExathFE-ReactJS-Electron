@@ -3,7 +3,6 @@ import './css/TitleBar.css';
 
 import minimize_logo from './assets/icons/titlebar/minus.svg';
 import close_logo from './assets/icons/titlebar/close.svg';
-import Button from 'react-bootstrap/Button';
 
 const ipcRenderer = window.require('electron').ipcRenderer
 

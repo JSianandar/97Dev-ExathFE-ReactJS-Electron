@@ -2,8 +2,6 @@ import React from 'react';
 import './css/DiscordWebhook.css';
 import { Link } from 'react-router-dom';
 
-import axios from 'axios';
-
 class DiscordWebhook extends React.Component{
 	constructor(props){
 		super(props)

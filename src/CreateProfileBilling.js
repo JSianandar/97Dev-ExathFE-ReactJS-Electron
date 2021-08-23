@@ -1,7 +1,6 @@
 import React from 'react';
 import './css/CreateProfileBilling.css';
 import {Link} from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
 
 class CreateProfileBilling extends React.Component{
 	constructor(){

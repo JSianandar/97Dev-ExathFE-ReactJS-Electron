@@ -7,8 +7,8 @@ let mainWindow;
 
 function createWindow() {
     mainWindow = new BrowserWindow({ 
-        width: 1250, 
-        height: 750,
+        width: 800,
+        height: 500,
         resizable: false,
         frame: false,
         webPreferences: {
@@ -28,19 +28,19 @@ function createWindow() {
 
 
     //Close app
-    ipcMain.on('closeApp', ()=> {
+    ipcMain.on('closeApp', () => {
         mainWindow.close();
     });
 
     //Minimize app
-    ipcMain.on('minimizeApp', ()=> {
+    ipcMain.on('minimizeApp', () => {
         mainWindow.minimize();
     });
 
-    //Open Harvester
-    ipcMain.on('harvesterOpen', ()=> {
-        
-    });
+    // Resize App to Big
+    ipcMain.on('ResizeAppNormal', () => {
+        mainWindow.setSize(1250, 750)
+    })
     
 }
 

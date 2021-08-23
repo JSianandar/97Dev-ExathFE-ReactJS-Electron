@@ -27,7 +27,7 @@
 }
 
 .title-container .button-wrapper .close-btn:hover{
-	background: #2c2c3b;
+	background: #180F29;
 	opacity: 1.0;
 	-webkit-app-region: no-drag;
 }
@@ -43,7 +43,8 @@
 }
 
 .title-container .button-wrapper .minimize-btn:hover{
-	background: #2c2c3b;
+	background: #180F29;
+	/* background: #2c2c3b; */
 	opacity: 1.0;
 	-webkit-app-region: no-drag;
 }

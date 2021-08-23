@@ -1,10 +1,7 @@
 import React from 'react';
 import './css/Settings.css';
-import {Link} from 'react-router-dom';
-import Navbar from 'react-bootstrap/Navbar';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import TitleBar from './TitleBar.js';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -33,7 +30,6 @@ const notifyError = (text, delay) => toast.error(text, {
 class Settings extends React.Component{
 	constructor(props){
 		super(props)
-		var refreshPage =  this.refreshPage.bind(this)
 		this.state = {
 			profiles: [],
 			sizes: [],
@@ -67,12 +63,53 @@ class Settings extends React.Component{
 		this.setState({ [event.target.name]: event.target.value });
 	}
 
-	handleSubmitDiscordTest = event =>{
+	handleSubmitDiscordTest = async event =>{
 		event.preventDefault();
-		axios.post(this.state.webhook)
-		.then(res=> {
+
+		let body = {
+			"content": null,
+			"embeds": [{
+				"title": "ExathAIO Test Webhook",
+				"url": "https://twitter.com/ExathAIO",
+				"color": 2144324,
+				"fields": [
+					{
+						"name": "Product",
+						"value": "Test Product"
+					},
+					{
+						"name": "Size",
+						"value": "rs"
+					},
+					{
+						"name": "Price",
+						"value": "$1"
+					},
+					{
+					"name": "Store",
+					"value": "ExathAIO"
+					},
+					{
+					"name": "Mode",
+					"value": "Default"
+					}
+				],
+				"footer": {
+					"text": "ExathAIO v1.0.0",
+					"icon_url": "https://cdn.discordapp.com/attachments/764840125850189854/844530421588688896/ExathAIO_Profile_Picture_1.png"
+				},
+				"thumbnail": {
+					"url": "https://cdn.discordapp.com/attachments/764840125850189854/844530421588688896/ExathAIO_Profile_Picture_1.png"
+				}
+			}]
+		}
+
+		axios.post(this.state.webhook, body, {"Content-Type": "application/json"})
+		.then(async res => {
+			notifySuccess('Successfully Hit Webhook', 3000)
+            await new Promise(r => setTimeout(r, 1000))
 			this.refreshPage()
-		}, error => {
+		}).catch(error => {
 			notifyError('Error while hitting Discord Webhook..', 3000)
 		})
 	}
@@ -85,13 +122,13 @@ class Settings extends React.Component{
 			"preferredSize": this.state.preferredSize,
 			"account": this.state.account,
 			"password": this.state.password,
-			"discord": this.state.discord,
+			"webhook": this.state.webhook,
 		})
-		.then(async res => {
+		.then(async () => {
 			notifySuccess('Successfully updated settings', 3000)
             await new Promise(r => setTimeout(r, 1000))
 			this.refreshPage();
-		}).catch(error => {
+		}).catch(() => {
 			notifyError('Error updated settings ', 3000)
 		})
 	}
@@ -120,7 +157,7 @@ class Settings extends React.Component{
 			this.setState({
 				profiles : response.data
 			})
-		}, error => {
+		}, () => {
 			notifyError('Error while retrieving profiles data..')
 		})
 	}
@@ -131,7 +168,7 @@ class Settings extends React.Component{
 			this.setState({
 				sizes : response.data
 			})
-		}, error => {
+		}, () => {
 			notifyError('Error while retrieving sizes data..')
 		})
 	}
@@ -148,7 +185,7 @@ class Settings extends React.Component{
 				discord: response.data.discord
 			})
 		},
-		error => {
+		() => {
 			notifyError('Error while retrieving settings..')
 		})
 	}
@@ -184,7 +221,7 @@ class Settings extends React.Component{
 						<div className="row mx-auto">
 							<form variant="outline-none" className="setup-button-wrapper d-flex pt-1 ml-3">
 								<img className="discord_icon pt-0" src={discord_logo} />
-								<input type="text" className="background-color ml-1" style={{outline: 'none'}} placeholder="Discord Webhook" name="discord"
+								<input type="text" className="background-color ml-1" style={{outline: 'none'}} placeholder="Discord Webhook" name="webhook"
 									value={this.state.webhook} onChange={this.handleChange} required />
 							</form>
 							<div className="col-1" style={{marginLeft: '25px'}}></div>
@@ -206,7 +243,7 @@ class Settings extends React.Component{
 									<p className="heading my-auto ml-2">{this.state.qtProfile ? this.getProfileNameById(this.state.qtProfile) : this.state.selectProfile}</p>
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-									{this.state.profiles.map((e, index) => {
+									{this.state.profiles.map((e) => {
 										return(<Dropdown.Item href="#/action-1" active={e.id == this.state.qtProfile} eventKey={e.id}>{e.name}</Dropdown.Item>)
 									})}
 								</Dropdown.Menu>
@@ -221,7 +258,7 @@ class Settings extends React.Component{
 								</Dropdown.Toggle>
 
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-								{this.state.sizes.map((e, index) => {
+								{this.state.sizes.map((e) => {
 									return(<Dropdown.Item href="#/action-1" active={e == this.state.preferredSize} eventKey={e}>{e}</Dropdown.Item>)
 								})}
 								</Dropdown.Menu>

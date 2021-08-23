@@ -7,8 +7,6 @@ import export_logo from "./assets/icons/export_logo.png";
 import import_logo from "./assets/icons/import_logo.png";
 import create_logo from "./assets/icons/create_task_logo.png";
 
-import table_edit from "./assets/icons/table_edit.png";
-import table_delete from "./assets/icons/table_delete.png";
 
 import TitleBar from './TitleBar.js';
 import CreateProxy from './CreateProxy.js';

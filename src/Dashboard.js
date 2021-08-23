@@ -1,8 +1,6 @@
 import React from 'react';
 import './css/Dashboard.css';
-import {Link} from 'react-router-dom';
 
-import shoe_img from './assets/icons/travis_1.svg';
 import TitleBar from './TitleBar.js';
 import IndividualDashboard from './IndividualDashboard.js';
 

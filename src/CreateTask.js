@@ -1,8 +1,6 @@
 import React from 'react';
 import './css/CreateTask.css';
 import {Link} from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 import account_icon from './assets/icons/createtask/account.svg';
@@ -13,17 +11,11 @@ import profile_icon from './assets/icons/createtask/profile.svg';
 import proxy_icon from './assets/icons/createtask/proxy.svg';
 import ruler_icon from './assets/icons/createtask/ruler.svg';
 import select_site_icon from './assets/icons/createtask/select_site.svg';
-import Task from './Task.js';
 
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const notify = (text, delay) => toast.dark(text, {
-    position: 'bottom-right',
-    autoClose: delay,
-    hideProgressBar: false
-});
 
 const notifySuccess = (text, delay) => toast.success(text, {
     position: 'bottom-right',
@@ -31,11 +23,6 @@ const notifySuccess = (text, delay) => toast.success(text, {
     hideProgressBar: false
 });
 
-const notifyError = (text, delay) => toast.error(text, {
-    position: 'bottom-right',
-    autoClose: delay,
-    hideProgressBar: false
-});
 
 
 class CreateTask extends React.Component{
@@ -142,11 +129,11 @@ class CreateTask extends React.Component{
 			else if(skuArray[i][0] == '-'){
 				negativeKey.push(skuArray[i].substring(1))
 			}
-			else if(skuArray[i][0] == '#'){
-				directLink = skuArray[i].substring(1)
-			}
 			else if(skuArray[i][0] == '&'){
 				sku = skuArray[i].substring(1)
+			}
+			else{
+				directLink = skuArray[i].substring(0)
 			}
 		}
 
@@ -163,7 +150,7 @@ class CreateTask extends React.Component{
 			"accountEmail": this.state.accountEmail,
 			"accountPassword": this.state.accountPassword,
 			"quantity": this.state.quantity
-		}).then( async res => {
+		}).then( async () => {
 			try {
 				document.getElementById('CreateTaskForm-KeywordInput').value = ''
 				document.getElementById('CreateTaskForm-QuantityInput').value = ''
@@ -206,7 +193,7 @@ class CreateTask extends React.Component{
 				profiles : response.data
 			})
 		},
-		error=>{
+		()=>{
 		
 		})
 	}
@@ -218,7 +205,7 @@ class CreateTask extends React.Component{
 				sizes : response.data
 			})
 		},
-		error=>{
+		()=>{
 		
 		})
 	}
@@ -230,7 +217,7 @@ class CreateTask extends React.Component{
 				proxies : response.data
 			})
 		},
-		error=>{
+		()=>{
 		
 		})
 	}
@@ -242,7 +229,7 @@ class CreateTask extends React.Component{
 				sites : response.data
 			})
 		},
-		error=>{
+		()=>{
 		
 		})
 	}
@@ -287,7 +274,7 @@ class CreateTask extends React.Component{
 						</Dropdown.Toggle>
 
 						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-							{this.state.sites.map((e, index) => {
+							{this.state.sites.map((e) => {
 									
 								return(<Dropdown.Item href="#/action-1" eventKey= {e.identifier} >{e.identifier}</Dropdown.Item>)
 									
@@ -323,7 +310,7 @@ class CreateTask extends React.Component{
 						</Dropdown.Toggle>
 
 						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
-							{this.state.sizes.map((e, index) => {
+							{this.state.sizes.map((e) => {
 									
 								return(<Dropdown.Item href="#/action-1" eventKey= {e} >{e}</Dropdown.Item>)
 									
@@ -341,7 +328,7 @@ class CreateTask extends React.Component{
 						</Dropdown.Toggle>
 
 						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
-							{this.state.profiles.map((e, index) => {
+							{this.state.profiles.map((e) => {
 									
 								return(<Dropdown.Item href="#/action-1" eventKey={e.name}>{e.name}</Dropdown.Item>)
 									
@@ -364,7 +351,7 @@ class CreateTask extends React.Component{
 						</Dropdown.Toggle>
 					
 						<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
-							{this.state.proxies.map((e, index) => {
+							{this.state.proxies.map((e) => {
 									
 								return(<Dropdown.Item href="#/action-1" eventKey= {e.group} >{e.group}</Dropdown.Item>)
 									

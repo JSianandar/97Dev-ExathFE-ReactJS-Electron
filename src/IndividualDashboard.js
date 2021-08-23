@@ -2,7 +2,6 @@ import React from 'react';
 import './css/IndividualDashboard.css';
 import axios from 'axios';
 
-import {Link} from 'react-router-dom';
 
 class IndividualDashboard extends React.Component{
 	constructor(){
