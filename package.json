@@ -63,5 +63,5 @@
     "appId": "com.exathfrontend"
   },
   "main": "public/electron.js",
-  "homepage": "./"
+  "homepage": "."
 }
