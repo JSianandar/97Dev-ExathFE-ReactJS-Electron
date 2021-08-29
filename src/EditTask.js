@@ -290,7 +290,7 @@ class EditTask extends React.Component{
 							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 								{this.state.sites.map((e) => {
 									
-									return(<Dropdown.Item href="#/action-1" active = {e.identifier == this.state.site} eventKey= {e.identifier} >{e.identifier}</Dropdown.Item>)
+									return(<Dropdown.Item active = {e.identifier == this.state.site} eventKey= {e.identifier} >{e.identifier}</Dropdown.Item>)
 									
 								})}
 							</Dropdown.Menu>
@@ -304,10 +304,10 @@ class EditTask extends React.Component{
 							</Dropdown.Toggle>
 
 							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
-								<Dropdown.Item href="#/action-1" active = {"Safe Preload" == this.state.mode} eventKey= "Safe Preload" >Safe Preload</Dropdown.Item>
-								<Dropdown.Item href="#/action-1" active = {"Safe" == this.state.mode} eventKey= "Safe">Safe</Dropdown.Item>
-								<Dropdown.Item href="#/action-1" active = {"Request" == this.state.mode} eventKey= "Request">Request</Dropdown.Item>
-								<Dropdown.Item href="#/action-1" active = {"Requests" == this.state.mode} eventKey= "Requests">Requests</Dropdown.Item>
+								<Dropdown.Item active = {"Safe Preload" == this.state.mode} eventKey= "Safe Preload" >Safe Preload</Dropdown.Item>
+								<Dropdown.Item active = {"Safe" == this.state.mode} eventKey= "Safe">Safe</Dropdown.Item>
+								<Dropdown.Item active = {"Request" == this.state.mode} eventKey= "Request">Request</Dropdown.Item>
+								<Dropdown.Item active = {"Requests" == this.state.mode} eventKey= "Requests">Requests</Dropdown.Item>
 							</Dropdown.Menu>
 						</Dropdown>
 					</div>
@@ -326,7 +326,7 @@ class EditTask extends React.Component{
 							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
 								{this.state.sizes.map((e) => {
 									
-									return(<Dropdown.Item href="#/action-1" active = {e == this.state.size} eventKey= {e} >{e}</Dropdown.Item>)
+									return(<Dropdown.Item active = {e == this.state.size} eventKey= {e} >{e}</Dropdown.Item>)
 									
 								})}
 							</Dropdown.Menu>
@@ -343,7 +343,7 @@ class EditTask extends React.Component{
 
 							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
 								{this.state.profiles.map((e) => {
-									return(<Dropdown.Item href="#/action-1" active = {e.id == this.state.profile} eventKey={e.id}>{e.name}</Dropdown.Item>)
+									return(<Dropdown.Item active = {e.id == this.state.profile} eventKey={e.id}>{e.name}</Dropdown.Item>)
 									
 								})}
 							</Dropdown.Menu>
@@ -363,7 +363,7 @@ class EditTask extends React.Component{
 							<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}} >
 								{this.state.proxies.map((e) => {
 									
-									return(<Dropdown.Item href="#/action-1" active = {e.id == this.state.proxyGroup} eventKey= {e.id} >{e.group}</Dropdown.Item>)
+									return(<Dropdown.Item active = {e.id == this.state.proxyGroup} eventKey= {e.id} >{e.group}</Dropdown.Item>)
 									
 								})}
 							</Dropdown.Menu>

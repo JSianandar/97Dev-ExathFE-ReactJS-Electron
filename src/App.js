@@ -11,7 +11,7 @@ import Captcha from './Captcha.js';
 import Dashboard from './Dashboard.js';
 import Settings from './Settings.js';
 
-import{ BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import{ HashRouter as Router, Route, Switch} from 'react-router-dom';
 import { Redirect } from "react-router-dom";
 import axios from 'axios';
 

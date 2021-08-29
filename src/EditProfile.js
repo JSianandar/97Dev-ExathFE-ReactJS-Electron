@@ -322,7 +322,7 @@ class EditProfile extends React.Component{
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 									{this.state.countriesData ? Object.keys(this.state.countriesData).map((countryName) => {
-										return (<Dropdown.Item href="#/action-1" active={countryName == this.state.shippingCountry}
+										return (<Dropdown.Item active={countryName == this.state.shippingCountry}
 											eventKey={countryName}>{countryName}</Dropdown.Item>)
 									}) : null}
 								</Dropdown.Menu>
@@ -353,7 +353,7 @@ class EditProfile extends React.Component{
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 									{this.state.shippingProvincesOptions ? this.state.shippingProvincesOptions.map((provinceName) => {
-										return (<Dropdown.Item href="#/action-1" active={provinceName == this.state.shippingProvince}
+										return (<Dropdown.Item active={provinceName == this.state.shippingProvince}
 											eventKey={provinceName}>{provinceName}</Dropdown.Item>)
 									}) : null}
 								</Dropdown.Menu>
@@ -529,7 +529,7 @@ class EditProfile extends React.Component{
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 									{this.state.countriesData ? Object.keys(this.state.countriesData).map((countryName) => {
-										return (<Dropdown.Item href="#/action-1" active={countryName == this.state.billingCountry}
+										return (<Dropdown.Item active={countryName == this.state.billingCountry}
 											eventKey={countryName}>{countryName}</Dropdown.Item>)
 									}) : null}
 								</Dropdown.Menu>
@@ -560,7 +560,7 @@ class EditProfile extends React.Component{
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 									{this.state.billingProvincesOptions ? this.state.billingProvincesOptions.map((provinceName) => {
-										return (<Dropdown.Item href="#/action-1" active={provinceName == this.state.billingProvince}
+										return (<Dropdown.Item active={provinceName == this.state.billingProvince}
 											eventKey={provinceName}>{provinceName}</Dropdown.Item>)
 									}) : null}
 								</Dropdown.Menu>
