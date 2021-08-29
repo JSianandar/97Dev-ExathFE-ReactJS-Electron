@@ -12,5 +12,8 @@ In the project directory, you can run:
 Runs the app in the development mode using command prompt.
 CD to the folder dir.
 
+For Build production, use:
+1. yarn build
+
 Open http://localhost:3000 to view it in the browser.
 
