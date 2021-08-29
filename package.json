@@ -60,7 +60,9 @@
   "description": "Exath Front End Project",
   "author": "Jason Sianandar",
   "build": {
-    "appId": "com.exathfrontend"
+    "appId": "com.exathfrontend",
+    "productName": "ExathIO",
+    "icon": "build/exath_activation.ico"
   },
   "main": "public/electron.js",
   "homepage": "."

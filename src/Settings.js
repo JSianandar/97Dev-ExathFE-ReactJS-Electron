@@ -244,7 +244,7 @@ class Settings extends React.Component{
 								</Dropdown.Toggle>
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 									{this.state.profiles.map((e) => {
-										return(<Dropdown.Item href="#/action-1" active={e.id == this.state.qtProfile} eventKey={e.id}>{e.name}</Dropdown.Item>)
+										return(<Dropdown.Item active={e.id == this.state.qtProfile} eventKey={e.id}>{e.name}</Dropdown.Item>)
 									})}
 								</Dropdown.Menu>
 							</Dropdown>
@@ -259,7 +259,7 @@ class Settings extends React.Component{
 
 								<Dropdown.Menu style={{overflowY : 'scroll', maxHeight: '300px'}}>
 								{this.state.sizes.map((e) => {
-									return(<Dropdown.Item href="#/action-1" active={e == this.state.preferredSize} eventKey={e}>{e}</Dropdown.Item>)
+									return(<Dropdown.Item active={e == this.state.preferredSize} eventKey={e}>{e}</Dropdown.Item>)
 								})}
 								</Dropdown.Menu>
 							</Dropdown>

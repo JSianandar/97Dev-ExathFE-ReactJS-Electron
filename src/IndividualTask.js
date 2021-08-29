@@ -93,8 +93,9 @@ class IndividualTask extends React.Component{
 	getTasks = async () =>{
 		await axios.get('http://exath.io/api/tasks')
 		.then(response => {
+			let tasksArray = response.data
 			this.setState({
-				tasks : response.data
+				tasks : tasksArray.reverse()
 			})
 			this.props.updateTaskStateValue('totalTasksCount', response.data.length)
 			if (response.data.length > 0) {
@@ -141,7 +142,7 @@ class IndividualTask extends React.Component{
 		return(
 			<div className="IndividualTask">
 			{
-				this.state.tasks.reverse().map((e, index) => {
+				this.state.tasks.map((e, index) => {
 					var profile = ''
 					for(var i=0; i<this.state.profiles.length; i++) {
 						if(this.state.profiles[i].id == e.profile) {
