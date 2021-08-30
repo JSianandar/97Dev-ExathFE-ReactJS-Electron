@@ -58,11 +58,16 @@
     "wait-on": "^5.3.0"
   },
   "description": "Exath Front End Project",
-  "author": "Jason Sianandar",
+  "author": "NinetySevenDev",
   "build": {
     "appId": "com.exathfrontend",
     "productName": "ExathIO",
-    "icon": "build/exath_activation.ico"
+    "icon": "build/exath_activation.ico",
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "main": "public/electron.js",
   "homepage": "."
